@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--mQoL Studies - UNIGE-->
+        <scene sceneID="TEr-mT-LAQ">
+            <objects>
+                <viewController id="zme-V4-3z4" customClass="OurLabConsentViewController" customModule="mQoL_Lab_1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p05-yR-kK3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YYP-r7-bKf">
+                                <rect key="frame" x="0.0" y="64" width="375" height="539"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E0v-8S-ZUM">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="539"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Introduction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Q3G-EZ-MCE">
+                                                <rect key="frame" x="16" y="16" width="186" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Tul-kl-MZc">
+                                                <rect key="frame" x="16" y="67" width="343" height="122"/>
+                                                <string key="text">Quality of Life (QoL) technologies lab conducts inter-disciplinary research and development aimed at improving Quality of Life of individuals throughout their lives. We are part of the University of Geneva in Switzerland. </string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UNIGE" translatesAutoresizingMaskIntoConstraints="NO" id="aOG-PE-Oyi">
+                                                <rect key="frame" x="77.5" y="205" width="220" height="117.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="aOG-PE-Oyi" secondAttribute="height" multiplier="15:8" id="wJt-cW-9Yq"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="E8I-4C-lPF">
+                                                <rect key="frame" x="16" y="338.5" width="343" height="101.5"/>
+                                                <string key="text">The lab mission is to develop and evaluate emerging mobile technologies with the goal of assessing individuals’ life quality as it unfolds naturally over time and in context, and improving it at all stages of life. </string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qol" translatesAutoresizingMaskIntoConstraints="NO" id="oC7-9N-mHr">
+                                                <rect key="frame" x="98" y="456" width="179" height="95.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="oC7-9N-mHr" secondAttribute="height" multiplier="15:8" id="SJQ-AA-bDP"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="aOG-PE-Oyi" firstAttribute="centerX" secondItem="E0v-8S-ZUM" secondAttribute="centerX" id="1fc-qo-2SS"/>
+                                            <constraint firstItem="E8I-4C-lPF" firstAttribute="leading" secondItem="E0v-8S-ZUM" secondAttribute="leading" constant="16" id="3xQ-xZ-Ths"/>
+                                            <constraint firstItem="E8I-4C-lPF" firstAttribute="top" secondItem="aOG-PE-Oyi" secondAttribute="bottom" constant="16" id="5FL-iV-s64"/>
+                                            <constraint firstItem="oC7-9N-mHr" firstAttribute="centerX" secondItem="E0v-8S-ZUM" secondAttribute="centerX" id="6Or-Ps-Oee"/>
+                                            <constraint firstAttribute="height" constant="539" id="8FK-oL-28n"/>
+                                            <constraint firstItem="Q3G-EZ-MCE" firstAttribute="leading" secondItem="E0v-8S-ZUM" secondAttribute="leading" constant="16" id="AhO-gc-3C6"/>
+                                            <constraint firstAttribute="trailing" secondItem="E8I-4C-lPF" secondAttribute="trailing" constant="16" id="FMO-zy-O2y"/>
+                                            <constraint firstItem="aOG-PE-Oyi" firstAttribute="top" secondItem="Tul-kl-MZc" secondAttribute="bottom" constant="16" id="MbF-yh-UGW"/>
+                                            <constraint firstItem="Q3G-EZ-MCE" firstAttribute="top" secondItem="E0v-8S-ZUM" secondAttribute="top" constant="16" id="W6N-yk-G3t"/>
+                                            <constraint firstItem="oC7-9N-mHr" firstAttribute="top" secondItem="E8I-4C-lPF" secondAttribute="bottom" constant="16" id="WUq-PJ-wpd"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Q3G-EZ-MCE" secondAttribute="trailing" constant="90" id="eEv-1Q-1Q4"/>
+                                            <constraint firstAttribute="trailing" secondItem="Tul-kl-MZc" secondAttribute="trailing" constant="16" id="hpJ-2F-KwF"/>
+                                            <constraint firstItem="Tul-kl-MZc" firstAttribute="leading" secondItem="E0v-8S-ZUM" secondAttribute="leading" constant="16" id="pxM-V9-40V"/>
+                                            <constraint firstItem="Tul-kl-MZc" firstAttribute="top" secondItem="Q3G-EZ-MCE" secondAttribute="bottom" constant="8" id="rhk-a8-Enu"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="539" id="4r5-Tm-RbT"/>
+                                    <constraint firstItem="E0v-8S-ZUM" firstAttribute="top" secondItem="YYP-r7-bKf" secondAttribute="top" id="5Ub-5X-Rlo"/>
+                                    <constraint firstItem="E0v-8S-ZUM" firstAttribute="leading" secondItem="YYP-r7-bKf" secondAttribute="leading" id="KYy-7t-9Pi"/>
+                                    <constraint firstAttribute="trailing" secondItem="E0v-8S-ZUM" secondAttribute="trailing" id="X0P-Ur-ClT"/>
+                                    <constraint firstAttribute="bottom" secondItem="E0v-8S-ZUM" secondAttribute="bottom" constant="151" id="hsr-Fn-uSw"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YYP-r7-bKf" firstAttribute="trailing" secondItem="tKe-WJ-zfw" secondAttribute="trailing" id="FPS-qV-lhF"/>
+                            <constraint firstItem="E0v-8S-ZUM" firstAttribute="width" secondItem="tKe-WJ-zfw" secondAttribute="width" id="Jvp-hr-z75"/>
+                            <constraint firstItem="YYP-r7-bKf" firstAttribute="top" secondItem="tKe-WJ-zfw" secondAttribute="top" id="dlt-6z-rdf"/>
+                            <constraint firstItem="YYP-r7-bKf" firstAttribute="leading" secondItem="tKe-WJ-zfw" secondAttribute="leading" id="qgj-79-gLb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tKe-WJ-zfw"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="mQoL Studies - UNIGE" id="5fI-bn-UiX">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="7vq-3q-fDP"/>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="Mra-9b-lyg">
+                            <connections>
+                                <segue destination="FdY-fR-xA1" kind="show" id="Jre-oM-8ii"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M5R-Ql-nwW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1784.8" y="-696.05911330049264"/>
+        </scene>
+        <!--mQoL Studies - UNIGE-->
+        <scene sceneID="Dcs-nD-UMD">
+            <objects>
+                <viewController id="FdY-fR-xA1" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0bE-Zw-Z1F">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About the Studies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="gbJ-b7-IY0">
+                                <rect key="frame" x="16" y="80" width="276" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rgw-ui-4P9">
+                                <rect key="frame" x="16" y="139" width="343" height="81.5"/>
+                                <string key="text">In exchange for your participation in our studies, some studies allow you to participate in drawings for monetary prices like gift cards.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="BAs-uk-1XF">
+                                <rect key="frame" x="155.5" y="236.5" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="4ZE-GM-1yC"/>
+                                    <constraint firstAttribute="width" constant="64" id="vgt-MK-XI6"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chart" translatesAutoresizingMaskIntoConstraints="NO" id="sv4-dK-FTA">
+                                <rect key="frame" x="76.5" y="236.5" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="bhN-rl-ALr"/>
+                                    <constraint firstAttribute="height" constant="64" id="u46-x7-C4m"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="zZ9-70-Cyg">
+                                <rect key="frame" x="234.5" y="236.5" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="DlY-ZX-H53"/>
+                                    <constraint firstAttribute="width" constant="64" id="VL3-Zn-w4W"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gEp-5r-psj" firstAttribute="trailing" secondItem="Rgw-ui-4P9" secondAttribute="trailing" constant="16" id="0It-xx-ycx"/>
+                            <constraint firstItem="BAs-uk-1XF" firstAttribute="top" secondItem="Rgw-ui-4P9" secondAttribute="bottom" constant="16" id="1wq-Pj-DRc"/>
+                            <constraint firstItem="Rgw-ui-4P9" firstAttribute="top" secondItem="gbJ-b7-IY0" secondAttribute="bottom" constant="16" id="3ZH-JF-awc"/>
+                            <constraint firstItem="zZ9-70-Cyg" firstAttribute="top" secondItem="Rgw-ui-4P9" secondAttribute="bottom" constant="16" id="Cfi-jQ-bq7"/>
+                            <constraint firstItem="zZ9-70-Cyg" firstAttribute="leading" secondItem="BAs-uk-1XF" secondAttribute="trailing" constant="15" id="K66-nq-0E0"/>
+                            <constraint firstItem="gbJ-b7-IY0" firstAttribute="leading" secondItem="gEp-5r-psj" secondAttribute="leading" constant="16" id="L4n-sB-A5F"/>
+                            <constraint firstItem="sv4-dK-FTA" firstAttribute="top" secondItem="Rgw-ui-4P9" secondAttribute="bottom" constant="16" id="RiO-Mf-rRd"/>
+                            <constraint firstItem="BAs-uk-1XF" firstAttribute="leading" secondItem="sv4-dK-FTA" secondAttribute="trailing" constant="15" id="SGp-Je-TWy"/>
+                            <constraint firstItem="gEp-5r-psj" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gbJ-b7-IY0" secondAttribute="trailing" constant="50" id="Wqt-qJ-sUR"/>
+                            <constraint firstItem="gbJ-b7-IY0" firstAttribute="top" secondItem="gEp-5r-psj" secondAttribute="top" constant="16" id="Yke-Yy-z0u"/>
+                            <constraint firstItem="Rgw-ui-4P9" firstAttribute="leading" secondItem="gEp-5r-psj" secondAttribute="leading" constant="16" id="c4p-ud-7e1"/>
+                            <constraint firstItem="BAs-uk-1XF" firstAttribute="centerX" secondItem="0bE-Zw-Z1F" secondAttribute="centerX" id="icM-zZ-AGW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gEp-5r-psj"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="mQoL Studies - UNIGE" id="TJH-7i-QIc">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="dM9-VI-7Yh"/>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="DWP-9y-2eg">
+                            <connections>
+                                <segue destination="wc6-cQ-qmF" kind="show" id="HaN-D7-4Cv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8i7-Yx-adz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2599" y="-696"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="m0r-aq-n9w">
+            <objects>
+                <navigationController storyboardIdentifier="ourLab" automaticallyAdjustsScrollViewInsets="NO" id="Met-DU-JWd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GOU-bC-zsd">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="zme-V4-3z4" kind="relationship" relationship="rootViewController" id="ojm-HO-Gmt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g3W-Mk-XLy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="845.60000000000002" y="-695.80209895052474"/>
+        </scene>
+        <!--mQoL Studies - UNIGE-->
+        <scene sceneID="VJw-ik-KY8">
+            <objects>
+                <viewController id="wc6-cQ-qmF" customClass="OurLabConsentViewController" customModule="mQoL_Lab_1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rLa-TL-25N">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ecW-aB-WrY">
+                                <rect key="frame" x="0.0" y="64" width="375" height="481"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="glU-5k-FnO">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="481"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2j-xs-xbF">
+                                                <rect key="frame" x="112" y="441" width="151" height="30"/>
+                                                <state key="normal" title="ACCEPT AGREEMENT"/>
+                                                <connections>
+                                                    <action selector="giveConsent:" destination="wc6-cQ-qmF" eventType="touchUpInside" id="5AF-gK-g4F"/>
+                                                    <segue destination="fQ2-XX-POf" kind="show" id="Nce-Uy-NAb"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lab Informed Consent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="j7K-5N-Pwd">
+                                                <rect key="frame" x="16" y="16" width="342" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please download and read the Lab Agreement before you continue." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="9YV-BF-Xjs">
+                                                <rect key="frame" x="16" y="75" width="343" height="41"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqx-6O-epy">
+                                                <rect key="frame" x="82" y="141" width="211" height="30"/>
+                                                <state key="normal" title="DOWNLOAD LAB AGREEMENT">
+                                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am 18 years or older." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="GfI-iG-0hD">
+                                                <rect key="frame" x="75" y="196" width="284" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1Iq-WP-QHb">
+                                                <rect key="frame" x="16" y="191" width="51" height="31"/>
+                                            </switch>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. You have the option to download this agreement." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="AOJ-DV-cx4">
+                                                <rect key="frame" x="16" y="298" width="343" height="41"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. If you disagree with the terms, please feel free to uninstall the app. Thank you for your participation." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="U7S-Kw-FWw">
+                                                <rect key="frame" x="16" y="355" width="343" height="61"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="RWg-XS-paH">
+                                                <rect key="frame" x="16" y="242" width="51" height="31"/>
+                                            </switch>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I have read and accept the terms and conditions for using this application" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1G8-om-kQZ">
+                                                <rect key="frame" x="75" y="237" width="284" height="41"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="GfI-iG-0hD" firstAttribute="leading" secondItem="1Iq-WP-QHb" secondAttribute="trailing" constant="10" id="02Z-48-8FG"/>
+                                            <constraint firstItem="AOJ-DV-cx4" firstAttribute="leading" secondItem="glU-5k-FnO" secondAttribute="leading" constant="16" id="24V-is-4gg"/>
+                                            <constraint firstItem="9YV-BF-Xjs" firstAttribute="leading" secondItem="glU-5k-FnO" secondAttribute="leading" constant="16" id="2Kj-TU-a51"/>
+                                            <constraint firstAttribute="trailing" secondItem="AOJ-DV-cx4" secondAttribute="trailing" constant="16" id="3sj-nB-9gs"/>
+                                            <constraint firstItem="GfI-iG-0hD" firstAttribute="top" secondItem="eqx-6O-epy" secondAttribute="bottom" constant="25" id="Arl-Cg-9Wz"/>
+                                            <constraint firstItem="1G8-om-kQZ" firstAttribute="centerY" secondItem="RWg-XS-paH" secondAttribute="centerY" id="DWm-f7-9Jo"/>
+                                            <constraint firstAttribute="trailing" secondItem="9YV-BF-Xjs" secondAttribute="trailing" constant="16" id="DqR-S2-VZD"/>
+                                            <constraint firstItem="AOJ-DV-cx4" firstAttribute="top" secondItem="1G8-om-kQZ" secondAttribute="bottom" constant="20" id="E6m-BI-HDY"/>
+                                            <constraint firstItem="e2j-xs-xbF" firstAttribute="top" secondItem="U7S-Kw-FWw" secondAttribute="bottom" constant="25" id="EEj-i9-DbI"/>
+                                            <constraint firstItem="eqx-6O-epy" firstAttribute="top" secondItem="9YV-BF-Xjs" secondAttribute="bottom" constant="25" id="FLZ-Ja-t3V"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="j7K-5N-Pwd" secondAttribute="trailing" constant="5" id="IHB-m2-xNB"/>
+                                            <constraint firstItem="RWg-XS-paH" firstAttribute="leading" secondItem="glU-5k-FnO" secondAttribute="leading" constant="16" id="J9M-2U-iVI"/>
+                                            <constraint firstItem="U7S-Kw-FWw" firstAttribute="leading" secondItem="glU-5k-FnO" secondAttribute="leading" constant="16" id="Qis-RR-vuV"/>
+                                            <constraint firstItem="e2j-xs-xbF" firstAttribute="centerX" secondItem="glU-5k-FnO" secondAttribute="centerX" id="S4J-qb-w05"/>
+                                            <constraint firstItem="9YV-BF-Xjs" firstAttribute="top" secondItem="j7K-5N-Pwd" secondAttribute="bottom" constant="16" id="SJJ-wd-ZZa"/>
+                                            <constraint firstAttribute="trailing" secondItem="1G8-om-kQZ" secondAttribute="trailing" constant="16" id="TSd-he-rbR"/>
+                                            <constraint firstItem="j7K-5N-Pwd" firstAttribute="leading" secondItem="glU-5k-FnO" secondAttribute="leading" constant="16" id="VhK-t4-92L"/>
+                                            <constraint firstAttribute="trailing" secondItem="U7S-Kw-FWw" secondAttribute="trailing" constant="16" id="WMc-vB-meB"/>
+                                            <constraint firstItem="U7S-Kw-FWw" firstAttribute="top" secondItem="AOJ-DV-cx4" secondAttribute="bottom" constant="16" id="ZYr-Ci-1Od"/>
+                                            <constraint firstItem="1Iq-WP-QHb" firstAttribute="centerY" secondItem="GfI-iG-0hD" secondAttribute="centerY" id="dwd-Qd-nXO"/>
+                                            <constraint firstAttribute="height" constant="481" id="i1z-Ce-cMX"/>
+                                            <constraint firstItem="eqx-6O-epy" firstAttribute="centerX" secondItem="glU-5k-FnO" secondAttribute="centerX" id="jr4-AE-dOl"/>
+                                            <constraint firstItem="j7K-5N-Pwd" firstAttribute="top" secondItem="glU-5k-FnO" secondAttribute="top" constant="16" id="lcl-Tc-55o"/>
+                                            <constraint firstAttribute="trailing" secondItem="GfI-iG-0hD" secondAttribute="trailing" constant="16" id="mRI-Yb-4AR"/>
+                                            <constraint firstItem="1G8-om-kQZ" firstAttribute="top" secondItem="GfI-iG-0hD" secondAttribute="bottom" constant="20" id="pfa-13-cUQ"/>
+                                            <constraint firstItem="1G8-om-kQZ" firstAttribute="leading" secondItem="RWg-XS-paH" secondAttribute="trailing" constant="10" id="sPI-Iv-aDg"/>
+                                            <constraint firstItem="1Iq-WP-QHb" firstAttribute="leading" secondItem="glU-5k-FnO" secondAttribute="leading" constant="16" id="xNk-Pj-Cns"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="glU-5k-FnO" secondAttribute="trailing" id="8ok-jj-bfJ"/>
+                                    <constraint firstItem="glU-5k-FnO" firstAttribute="leading" secondItem="ecW-aB-WrY" secondAttribute="leading" id="Drk-n8-YC8"/>
+                                    <constraint firstAttribute="height" constant="481" id="Hng-Lk-z4w"/>
+                                    <constraint firstItem="glU-5k-FnO" firstAttribute="top" secondItem="ecW-aB-WrY" secondAttribute="top" id="cnl-w3-SFm"/>
+                                    <constraint firstAttribute="bottom" secondItem="glU-5k-FnO" secondAttribute="bottom" id="f90-UY-UNO"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ecW-aB-WrY" firstAttribute="leading" secondItem="dLA-DD-Ytv" secondAttribute="leading" id="GEr-TB-bC8"/>
+                            <constraint firstItem="ecW-aB-WrY" firstAttribute="top" secondItem="dLA-DD-Ytv" secondAttribute="top" id="LMK-xD-Drl"/>
+                            <constraint firstItem="glU-5k-FnO" firstAttribute="width" secondItem="dLA-DD-Ytv" secondAttribute="width" id="b6T-Ch-jnA"/>
+                            <constraint firstItem="ecW-aB-WrY" firstAttribute="trailing" secondItem="dLA-DD-Ytv" secondAttribute="trailing" id="vXD-96-TcX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dLA-DD-Ytv"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="mQoL Studies - UNIGE" id="AJl-c2-DpD">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="VQB-3u-xBq"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vB4-fI-xG3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3367.1999999999998" y="-696.7016491754124"/>
+        </scene>
+        <!--mQoL Studies - UNIGE-->
+        <scene sceneID="9ft-i0-bf8">
+            <objects>
+                <viewController id="fQ2-XX-POf" customClass="OurLabConsentViewController" customModule="mQoL_Lab_1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eX7-oy-LbX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYc-dt-CSL">
+                                <rect key="frame" x="141" y="318.5" width="93" height="30"/>
+                                <state key="normal" title="SEE STUDIES"/>
+                                <connections>
+                                    <action selector="seeStudies:" destination="fQ2-XX-POf" eventType="touchUpInside" id="5AI-Jo-nCc"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank you for Joining the mQoL Lab" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="H5M-nZ-AZv">
+                                <rect key="frame" x="16" y="80" width="343" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please visit the list of available studies and help our research by joining one or more studies." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAs-Ak-ywk">
+                                <rect key="frame" x="16" y="126" width="343" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TAs-Ak-ywk" firstAttribute="top" secondItem="H5M-nZ-AZv" secondAttribute="bottom" constant="16" id="Oiy-BJ-VAo"/>
+                            <constraint firstItem="H5M-nZ-AZv" firstAttribute="top" secondItem="XfG-9M-G4G" secondAttribute="top" constant="16" id="ROw-eG-5uE"/>
+                            <constraint firstItem="zYc-dt-CSL" firstAttribute="centerX" secondItem="eX7-oy-LbX" secondAttribute="centerX" id="Vse-bQ-wxj"/>
+                            <constraint firstItem="zYc-dt-CSL" firstAttribute="centerY" secondItem="eX7-oy-LbX" secondAttribute="centerY" id="ZcT-1u-pRF"/>
+                            <constraint firstItem="H5M-nZ-AZv" firstAttribute="leading" secondItem="XfG-9M-G4G" secondAttribute="leading" constant="16" id="aCi-iW-SAW"/>
+                            <constraint firstItem="XfG-9M-G4G" firstAttribute="trailing" secondItem="TAs-Ak-ywk" secondAttribute="trailing" constant="16" id="kd4-0f-UEn"/>
+                            <constraint firstItem="TAs-Ak-ywk" firstAttribute="leading" secondItem="XfG-9M-G4G" secondAttribute="leading" constant="16" id="nG7-iJ-rVn"/>
+                            <constraint firstItem="XfG-9M-G4G" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="H5M-nZ-AZv" secondAttribute="trailing" constant="16" id="v8v-Bp-myE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XfG-9M-G4G"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="mQoL Studies - UNIGE" id="3Fy-aL-qwe">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="MFu-G4-rmd"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t6o-n7-10W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4074" y="-696"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="UNIGE" width="220" height="98"/>
+        <image name="calendar" width="64" height="64"/>
+        <image name="chart" width="48" height="48"/>
+        <image name="clock" width="64" height="64"/>
+        <image name="qol" width="179" height="92"/>
+    </resources>
+</document>
