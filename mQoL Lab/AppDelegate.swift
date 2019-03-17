@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let parseConfig = ParseClientConfiguration {
+            $0.applicationId = "mQoL-app-dev"
+            $0.server = "https://qol1.unige.ch/mqol-parse-dev/"
+        }
+        Parse.initialize(with: parseConfig)
+        
+        PFCloud.callFunction(inBackground: "registerOrLoginUser", withParameters: ["google_ad_id":"testFromiOS"], block: { (object: Any?, error: Error?) in
+            
+            if error != nil {
+                print ("An error orrcured!")
+                print (error!)
+            }
+            
+            if object != nil {
+                print ("Login Successful")
+                print (object!)
+            }
+        })
+        
         Switcher.updateRootVC()
         return true
     }

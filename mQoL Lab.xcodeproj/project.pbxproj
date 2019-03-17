@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C41998BAB2D41F7DAC77B87 /* Pods_mQoL_Lab.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCEAB8823597AEE575D02EC /* Pods_mQoL_Lab.framework */; };
 		861EE73F223288DF00FB57B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861EE73E223288DF00FB57B3 /* AppDelegate.swift */; };
 		861EE741223288DF00FB57B3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861EE740223288DF00FB57B3 /* ViewController.swift */; };
 		861EE744223288DF00FB57B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 861EE742223288DF00FB57B3 /* Main.storyboard */; };
@@ -48,6 +49,9 @@
 		86403978223CF28000209B6E /* StudyThanksForJoiningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyThanksForJoiningViewController.swift; sourceTree = "<group>"; };
 		8640397A223D1E4700209B6E /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		8640397C223D203200209B6E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		A1DF7154F88C55FFF0699203 /* Pods-mQoL Lab.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mQoL Lab.release.xcconfig"; path = "Pods/Target Support Files/Pods-mQoL Lab/Pods-mQoL Lab.release.xcconfig"; sourceTree = "<group>"; };
+		ADCEAB8823597AEE575D02EC /* Pods_mQoL_Lab.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mQoL_Lab.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDBB46C3E83F3A5F014BE4F2 /* Pods-mQoL Lab.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mQoL Lab.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mQoL Lab/Pods-mQoL Lab.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,18 +59,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C41998BAB2D41F7DAC77B87 /* Pods_mQoL_Lab.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		51E0CD87441E6A8FBE014BD5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CDBB46C3E83F3A5F014BE4F2 /* Pods-mQoL Lab.debug.xcconfig */,
+				A1DF7154F88C55FFF0699203 /* Pods-mQoL Lab.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		861EE732223288DF00FB57B3 = {
 			isa = PBXGroup;
 			children = (
 				8640397C223D203200209B6E /* Default-568h@2x.png */,
 				861EE73D223288DF00FB57B3 /* mQoL Lab */,
 				861EE73C223288DF00FB57B3 /* Products */,
+				51E0CD87441E6A8FBE014BD5 /* Pods */,
+				D65722957547DA577D9B613A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,6 +151,14 @@
 			path = "Helper Class";
 			sourceTree = "<group>";
 		};
+		D65722957547DA577D9B613A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ADCEAB8823597AEE575D02EC /* Pods_mQoL_Lab.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -142,9 +166,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 861EE74D223288E000FB57B3 /* Build configuration list for PBXNativeTarget "mQoL Lab" */;
 			buildPhases = (
+				1F7589AE095064BC296F2840 /* [CP] Check Pods Manifest.lock */,
 				861EE737223288DF00FB57B3 /* Sources */,
 				861EE738223288DF00FB57B3 /* Frameworks */,
 				861EE739223288DF00FB57B3 /* Resources */,
+				448A0945B4C9D6DDEF3D1BF6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -204,6 +230,55 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1F7589AE095064BC296F2840 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mQoL Lab-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		448A0945B4C9D6DDEF3D1BF6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-mQoL Lab/Pods-mQoL Lab-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mQoL Lab/Pods-mQoL Lab-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		861EE737223288DF00FB57B3 /* Sources */ = {
@@ -364,6 +439,7 @@
 		};
 		861EE74E223288E000FB57B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CDBB46C3E83F3A5F014BE4F2 /* Pods-mQoL Lab.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -382,6 +458,7 @@
 		};
 		861EE74F223288E000FB57B3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1DF7154F88C55FFF0699203 /* Pods-mQoL Lab.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

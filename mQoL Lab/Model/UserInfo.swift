@@ -6,7 +6,7 @@
 //  Copyright © 2019 FBS. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct UserInfo {
     static var UUID = "Test UUID"
