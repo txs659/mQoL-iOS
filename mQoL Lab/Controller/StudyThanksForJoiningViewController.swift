@@ -1,6 +1,6 @@
 //
 //  StudyThanksForJoiningViewController.swift
-//  mQoL Lab 1
+//  mQoL Lab
 //
 //  Created by Frederik Schmøde on 16/03/2019.
 //  Copyright © 2019 FBS. All rights reserved.

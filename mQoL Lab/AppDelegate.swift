@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  mQoL Lab 1
+//  mQoL Lab
 //
 //  Created by Frederik Schmøde on 08/03/2019.
 //  Copyright © 2019 FBS. All rights reserved.
@@ -19,12 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        // Initializing call to the Parse server
         let parseConfig = ParseClientConfiguration {
             $0.applicationId = "mQoL-app-dev"
             $0.server = "https://qol1.unige.ch/mqol-parse-dev/"
         }
         Parse.initialize(with: parseConfig)
         
+        // Calls the cloud code to either login or create a user with the UUID
         PFCloud.callFunction(inBackground: "registerOrLoginUser", withParameters: ["google_ad_id":"testFromiOS"], block: { (object: Any?, error: Error?) in
             
             if error != nil {
@@ -35,10 +37,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if object != nil {
                 print ("Login Successful")
                 print (object!)
+
+                if let user = PFUser.current() {
+                    print (user)
+                }
             }
         })
         
+        // Creates a unique identifier for the device
+        if let identifier = UIDevice.current.identifierForVendor?.uuidString {
+            print (identifier)
+        }
+        
+        // Decides what view to show the user
         Switcher.updateRootVC()
+        
         return true
     }
 

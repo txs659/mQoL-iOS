@@ -26,6 +26,7 @@
 		86403979223CF28000209B6E /* StudyThanksForJoiningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86403978223CF28000209B6E /* StudyThanksForJoiningViewController.swift */; };
 		8640397B223D1E4700209B6E /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8640397A223D1E4700209B6E /* UserInfo.swift */; };
 		8640397D223D203200209B6E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8640397C223D203200209B6E /* Default-568h@2x.png */; };
+		8640397F223E7AFE00209B6E /* OurLabThanksForJoiningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8640397E223E7AFE00209B6E /* OurLabThanksForJoiningViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		86403978223CF28000209B6E /* StudyThanksForJoiningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyThanksForJoiningViewController.swift; sourceTree = "<group>"; };
 		8640397A223D1E4700209B6E /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		8640397C223D203200209B6E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		8640397E223E7AFE00209B6E /* OurLabThanksForJoiningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OurLabThanksForJoiningViewController.swift; path = ../../../../Documents/OurLabThanksForJoiningViewController.swift; sourceTree = "<group>"; };
 		A1DF7154F88C55FFF0699203 /* Pods-mQoL Lab.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mQoL Lab.release.xcconfig"; path = "Pods/Target Support Files/Pods-mQoL Lab/Pods-mQoL Lab.release.xcconfig"; sourceTree = "<group>"; };
 		ADCEAB8823597AEE575D02EC /* Pods_mQoL_Lab.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mQoL_Lab.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDBB46C3E83F3A5F014BE4F2 /* Pods-mQoL Lab.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mQoL Lab.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mQoL Lab/Pods-mQoL Lab.debug.xcconfig"; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			children = (
 				861EE740223288DF00FB57B3 /* ViewController.swift */,
 				861EE7502232898A00FB57B3 /* OurLabConsentViewController.swift */,
+				8640397E223E7AFE00209B6E /* OurLabThanksForJoiningViewController.swift */,
 				864039732233C0B900209B6E /* StudyConsentViewController.swift */,
 				86403978223CF28000209B6E /* StudyThanksForJoiningViewController.swift */,
 				861EE75222328A4E00FB57B3 /* StudyViewController.swift */,
@@ -292,6 +295,7 @@
 				861EE7512232898A00FB57B3 /* OurLabConsentViewController.swift in Sources */,
 				861EE741223288DF00FB57B3 /* ViewController.swift in Sources */,
 				861EE75322328A4E00FB57B3 /* StudyViewController.swift in Sources */,
+				8640397F223E7AFE00209B6E /* OurLabThanksForJoiningViewController.swift in Sources */,
 				861EE73F223288DF00FB57B3 /* AppDelegate.swift in Sources */,
 				86403979223CF28000209B6E /* StudyThanksForJoiningViewController.swift in Sources */,
 				8640397B223D1E4700209B6E /* UserInfo.swift in Sources */,

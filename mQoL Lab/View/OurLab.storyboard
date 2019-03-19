@@ -13,7 +13,7 @@
         <!--mQoL Studies - UNIGE-->
         <scene sceneID="TEr-mT-LAQ">
             <objects>
-                <viewController id="zme-V4-3z4" customClass="OurLabConsentViewController" customModule="mQoL_Lab_1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zme-V4-3z4" customClass="OurLabConsentViewController" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p05-yR-kK3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -201,7 +201,7 @@
         <!--mQoL Studies - UNIGE-->
         <scene sceneID="VJw-ik-KY8">
             <objects>
-                <viewController id="wc6-cQ-qmF" customClass="OurLabConsentViewController" customModule="mQoL_Lab_1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wc6-cQ-qmF" customClass="OurLabConsentViewController" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rLa-TL-25N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -217,7 +217,6 @@
                                                 <state key="normal" title="ACCEPT AGREEMENT"/>
                                                 <connections>
                                                     <action selector="giveConsent:" destination="wc6-cQ-qmF" eventType="touchUpInside" id="5AF-gK-g4F"/>
-                                                    <segue destination="fQ2-XX-POf" kind="show" id="Nce-Uy-NAb"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lab Informed Consent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="j7K-5N-Pwd">
@@ -322,6 +321,11 @@
                     <navigationItem key="navigationItem" title="mQoL Studies - UNIGE" id="AJl-c2-DpD">
                         <barButtonItem key="backBarButtonItem" title="Back" id="VQB-3u-xBq"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="over18Switch" destination="1Iq-WP-QHb" id="WWF-iT-5uh"/>
+                        <outlet property="readAndAcceptSwitch" destination="RWg-XS-paH" id="t90-h5-870"/>
+                        <segue destination="fQ2-XX-POf" kind="show" identifier="ourLabThankYou" id="DvT-9o-Hyf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vB4-fI-xG3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -330,7 +334,7 @@
         <!--mQoL Studies - UNIGE-->
         <scene sceneID="9ft-i0-bf8">
             <objects>
-                <viewController id="fQ2-XX-POf" customClass="OurLabConsentViewController" customModule="mQoL_Lab_1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fQ2-XX-POf" customClass="OurLabThanksForJoiningViewController" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eX7-oy-LbX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

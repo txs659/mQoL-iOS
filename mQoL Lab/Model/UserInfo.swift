@@ -9,6 +9,6 @@
 import UIKit
 
 struct UserInfo {
-    static var UUID = "Test UUID"
-    static var sessionID = "Test sessionID"
+    static var UUID = ""
+    static var sessionToken = ""
 }
