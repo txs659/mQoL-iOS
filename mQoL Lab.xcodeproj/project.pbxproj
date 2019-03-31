@@ -30,6 +30,12 @@
 		8691AC12224FE4A50077EA6C /* Study.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8691AC11224FE4A50077EA6C /* Study.swift */; };
 		8691AC212250F56F0077EA6C /* OurLabThanksForJoining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8691AC202250F56F0077EA6C /* OurLabThanksForJoining.swift */; };
 		8691AC252250F6ED0077EA6C /* StudyWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8691AC242250F6ED0077EA6C /* StudyWelcome.swift */; };
+		8691AC27225117520077EA6C /* AnsweringSurveys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8691AC26225117520077EA6C /* AnsweringSurveys.swift */; };
+		8691AC29225146DA0077EA6C /* DataCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8691AC28225146DA0077EA6C /* DataCollection.swift */; };
+		8691AC2B2251489B0077EA6C /* DataProtection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8691AC2A2251489B0077EA6C /* DataProtection.swift */; };
+		8691AC2D225149C30077EA6C /* WhatToExpect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8691AC2C225149C30077EA6C /* WhatToExpect.swift */; };
+		8691AC2F22514B2D0077EA6C /* ParticipantsRights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8691AC2E22514B2D0077EA6C /* ParticipantsRights.swift */; };
+		8691AC3122514C6B0077EA6C /* RiskAndBenefits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8691AC3022514C6B0077EA6C /* RiskAndBenefits.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +64,12 @@
 		8691AC162250F42B0077EA6C /* OurLabThanksForJoiningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurLabThanksForJoiningViewController.swift; sourceTree = "<group>"; };
 		8691AC202250F56F0077EA6C /* OurLabThanksForJoining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurLabThanksForJoining.swift; sourceTree = "<group>"; };
 		8691AC242250F6ED0077EA6C /* StudyWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyWelcome.swift; sourceTree = "<group>"; };
+		8691AC26225117520077EA6C /* AnsweringSurveys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnsweringSurveys.swift; sourceTree = "<group>"; };
+		8691AC28225146DA0077EA6C /* DataCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCollection.swift; sourceTree = "<group>"; };
+		8691AC2A2251489B0077EA6C /* DataProtection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProtection.swift; sourceTree = "<group>"; };
+		8691AC2C225149C30077EA6C /* WhatToExpect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatToExpect.swift; sourceTree = "<group>"; };
+		8691AC2E22514B2D0077EA6C /* ParticipantsRights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantsRights.swift; sourceTree = "<group>"; };
+		8691AC3022514C6B0077EA6C /* RiskAndBenefits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskAndBenefits.swift; sourceTree = "<group>"; };
 		A1DF7154F88C55FFF0699203 /* Pods-mQoL Lab.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mQoL Lab.release.xcconfig"; path = "Pods/Target Support Files/Pods-mQoL Lab/Pods-mQoL Lab.release.xcconfig"; sourceTree = "<group>"; };
 		ADCEAB8823597AEE575D02EC /* Pods_mQoL_Lab.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mQoL_Lab.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDBB46C3E83F3A5F014BE4F2 /* Pods-mQoL Lab.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mQoL Lab.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mQoL Lab/Pods-mQoL Lab.debug.xcconfig"; sourceTree = "<group>"; };
@@ -192,6 +204,12 @@
 				86403978223CF28000209B6E /* StudyThanksForJoiningViewController.swift */,
 				861EE75B22329AD200FB57B3 /* StudyListViewController.swift */,
 				8691AC242250F6ED0077EA6C /* StudyWelcome.swift */,
+				8691AC26225117520077EA6C /* AnsweringSurveys.swift */,
+				8691AC28225146DA0077EA6C /* DataCollection.swift */,
+				8691AC2A2251489B0077EA6C /* DataProtection.swift */,
+				8691AC2C225149C30077EA6C /* WhatToExpect.swift */,
+				8691AC2E22514B2D0077EA6C /* ParticipantsRights.swift */,
+				8691AC3022514C6B0077EA6C /* RiskAndBenefits.swift */,
 			);
 			path = "Study List";
 			sourceTree = "<group>";
@@ -341,11 +359,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8691AC27225117520077EA6C /* AnsweringSurveys.swift in Sources */,
+				8691AC29225146DA0077EA6C /* DataCollection.swift in Sources */,
 				8691AC12224FE4A50077EA6C /* Study.swift in Sources */,
 				861EE75522328E7E00FB57B3 /* Switcher.swift in Sources */,
 				864039832241293A00209B6E /* MqolUser.swift in Sources */,
 				864039742233C0B900209B6E /* StudyConsentViewController.swift in Sources */,
 				864039872241755700209B6E /* SplashScreenViewController.swift in Sources */,
+				8691AC2D225149C30077EA6C /* WhatToExpect.swift in Sources */,
 				861EE7572232965100FB57B3 /* StudyHomeViewController.swift in Sources */,
 				8691AC252250F6ED0077EA6C /* StudyWelcome.swift in Sources */,
 				864039722233A28700209B6E /* StudyCell.swift in Sources */,
@@ -355,6 +376,9 @@
 				861EE73F223288DF00FB57B3 /* AppDelegate.swift in Sources */,
 				86403979223CF28000209B6E /* StudyThanksForJoiningViewController.swift in Sources */,
 				861EE75C22329AD200FB57B3 /* StudyListViewController.swift in Sources */,
+				8691AC2B2251489B0077EA6C /* DataProtection.swift in Sources */,
+				8691AC2F22514B2D0077EA6C /* ParticipantsRights.swift in Sources */,
+				8691AC3122514C6B0077EA6C /* RiskAndBenefits.swift in Sources */,
 				864039892241799400209B6E /* ParseController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
