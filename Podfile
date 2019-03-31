@@ -7,5 +7,6 @@ target 'mQoL Lab' do
 
   # Pods for mQoL Lab
   pod 'Parse'
+  pod 'JGProgressHUD'
 
 end

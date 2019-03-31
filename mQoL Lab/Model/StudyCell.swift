@@ -13,4 +13,6 @@ class StudyCell: UICollectionViewCell {
     @IBOutlet weak var studyTitle: UILabel!
     @IBOutlet weak var studyDescription: UILabel!
     
+    var study : Study = Study()
+    
 }

@@ -7,10 +7,16 @@
 //
 
 import UIKit
+import Parse
+import JGProgressHUD
 
 private let reuseIdentifier = "Cell"
 
+
 class StudyListViewController: UICollectionViewController {
+    
+    public var studiesArray = Array<Study>()
+    var pressedCell = StudyCell()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,19 +26,23 @@ class StudyListViewController: UICollectionViewController {
 
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Loading"
+        hud.show(in: self.view)
+        
+        ParseController.getStudyList().continueWith { (task) -> Any? in
+            self.studiesArray = task.result as! Array<Study>
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+            hud.dismiss()
+            return nil
+        }
+        
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+    
 
     // MARK: UICollectionViewDataSource
 
@@ -44,15 +54,17 @@ class StudyListViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 8
+        return studiesArray.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! StudyCell
         
-        cell.studyTitle.text = "Quality of Experience [EN]"
-        cell.studyDescription.text = "Tell us about your perceived experience when using certain services and applications on your smartphone and get a chance to win a new Google Pixel phone!"
-    
+        cell.studyTitle.text = studiesArray[indexPath.row].value(forKey: "name") as? String
+        cell.studyDescription.text = studiesArray[indexPath.row].value(forKey: "teaser") as? String
+        
+        cell.study = studiesArray[indexPath.row]
+        
         // Configure the cell
         cell.contentView.layer.cornerRadius = 4.0
         cell.contentView.layer.borderWidth = 1.0
@@ -69,7 +81,16 @@ class StudyListViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "toStudyInfo", sender: self)
+        
+        let selectedCell = collectionView.cellForItem(at: indexPath) as? StudyCell
+        self.pressedCell = selectedCell!
+        self.performSegue(withIdentifier: "welcome", sender: self)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as? StudyWelcome
+        vc?.study = pressedCell.study
+    }
+    
 
 }

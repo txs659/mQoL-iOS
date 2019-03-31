@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0C41998BAB2D41F7DAC77B87 /* Pods_mQoL_Lab.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCEAB8823597AEE575D02EC /* Pods_mQoL_Lab.framework */; };
 		861EE73F223288DF00FB57B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861EE73E223288DF00FB57B3 /* AppDelegate.swift */; };
-		861EE741223288DF00FB57B3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861EE740223288DF00FB57B3 /* ViewController.swift */; };
 		861EE744223288DF00FB57B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 861EE742223288DF00FB57B3 /* Main.storyboard */; };
 		861EE746223288E000FB57B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 861EE745223288E000FB57B3 /* Assets.xcassets */; };
 		861EE749223288E000FB57B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 861EE747223288E000FB57B3 /* LaunchScreen.storyboard */; };
@@ -24,15 +23,18 @@
 		864039722233A28700209B6E /* StudyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864039712233A28700209B6E /* StudyCell.swift */; };
 		864039742233C0B900209B6E /* StudyConsentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864039732233C0B900209B6E /* StudyConsentViewController.swift */; };
 		86403979223CF28000209B6E /* StudyThanksForJoiningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86403978223CF28000209B6E /* StudyThanksForJoiningViewController.swift */; };
-		8640397B223D1E4700209B6E /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8640397A223D1E4700209B6E /* UserInfo.swift */; };
 		8640397D223D203200209B6E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8640397C223D203200209B6E /* Default-568h@2x.png */; };
-		8640397F223E7AFE00209B6E /* OurLabThanksForJoiningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8640397E223E7AFE00209B6E /* OurLabThanksForJoiningViewController.swift */; };
+		864039832241293A00209B6E /* MqolUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864039822241293A00209B6E /* MqolUser.swift */; };
+		864039872241755700209B6E /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864039862241755700209B6E /* SplashScreenViewController.swift */; };
+		864039892241799400209B6E /* ParseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864039882241799400209B6E /* ParseController.swift */; };
+		8691AC12224FE4A50077EA6C /* Study.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8691AC11224FE4A50077EA6C /* Study.swift */; };
+		8691AC212250F56F0077EA6C /* OurLabThanksForJoining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8691AC202250F56F0077EA6C /* OurLabThanksForJoining.swift */; };
+		8691AC252250F6ED0077EA6C /* StudyWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8691AC242250F6ED0077EA6C /* StudyWelcome.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		861EE73B223288DF00FB57B3 /* mQoL Lab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mQoL Lab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		861EE73E223288DF00FB57B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		861EE740223288DF00FB57B3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		861EE743223288DF00FB57B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		861EE745223288E000FB57B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		861EE748223288E000FB57B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -48,9 +50,14 @@
 		864039712233A28700209B6E /* StudyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyCell.swift; sourceTree = "<group>"; };
 		864039732233C0B900209B6E /* StudyConsentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyConsentViewController.swift; sourceTree = "<group>"; };
 		86403978223CF28000209B6E /* StudyThanksForJoiningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyThanksForJoiningViewController.swift; sourceTree = "<group>"; };
-		8640397A223D1E4700209B6E /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		8640397C223D203200209B6E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		8640397E223E7AFE00209B6E /* OurLabThanksForJoiningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OurLabThanksForJoiningViewController.swift; path = ../../../../Documents/OurLabThanksForJoiningViewController.swift; sourceTree = "<group>"; };
+		864039822241293A00209B6E /* MqolUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MqolUser.swift; path = ../../../../../Documents/MqolUser.swift; sourceTree = "<group>"; };
+		864039862241755700209B6E /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SplashScreenViewController.swift; path = ../../../../Documents/SplashScreenViewController.swift; sourceTree = "<group>"; };
+		864039882241799400209B6E /* ParseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ParseController.swift; path = ../../../../../Documents/ParseController.swift; sourceTree = "<group>"; };
+		8691AC11224FE4A50077EA6C /* Study.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Study.swift; sourceTree = "<group>"; };
+		8691AC162250F42B0077EA6C /* OurLabThanksForJoiningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurLabThanksForJoiningViewController.swift; sourceTree = "<group>"; };
+		8691AC202250F56F0077EA6C /* OurLabThanksForJoining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurLabThanksForJoining.swift; sourceTree = "<group>"; };
+		8691AC242250F6ED0077EA6C /* StudyWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyWelcome.swift; sourceTree = "<group>"; };
 		A1DF7154F88C55FFF0699203 /* Pods-mQoL Lab.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mQoL Lab.release.xcconfig"; path = "Pods/Target Support Files/Pods-mQoL Lab/Pods-mQoL Lab.release.xcconfig"; sourceTree = "<group>"; };
 		ADCEAB8823597AEE575D02EC /* Pods_mQoL_Lab.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mQoL_Lab.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDBB46C3E83F3A5F014BE4F2 /* Pods-mQoL Lab.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mQoL Lab.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mQoL Lab/Pods-mQoL Lab.debug.xcconfig"; sourceTree = "<group>"; };
@@ -124,15 +131,11 @@
 		864039752237AB9E00209B6E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				861EE740223288DF00FB57B3 /* ViewController.swift */,
-				861EE7502232898A00FB57B3 /* OurLabConsentViewController.swift */,
-				8640397E223E7AFE00209B6E /* OurLabThanksForJoiningViewController.swift */,
-				864039732233C0B900209B6E /* StudyConsentViewController.swift */,
-				86403978223CF28000209B6E /* StudyThanksForJoiningViewController.swift */,
-				861EE75222328A4E00FB57B3 /* StudyViewController.swift */,
-				861EE7562232965100FB57B3 /* StudyHomeViewController.swift */,
-				861EE75B22329AD200FB57B3 /* StudyListViewController.swift */,
-				864039772237ABD500209B6E /* Helper Class */,
+				8691AC232250F6270077EA6C /* Study Home */,
+				8691AC222250F6140077EA6C /* Study List */,
+				8691AC152250F41A0077EA6C /* Our Lab */,
+				864039862241755700209B6E /* SplashScreenViewController.swift */,
+				864039772237ABD500209B6E /* Helpers */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -140,18 +143,66 @@
 		864039762237ABB400209B6E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8691AC10224FE48E0077EA6C /* Study */,
+				864039812241291B00209B6E /* Users */,
 				864039712233A28700209B6E /* StudyCell.swift */,
-				8640397A223D1E4700209B6E /* UserInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		864039772237ABD500209B6E /* Helper Class */ = {
+		864039772237ABD500209B6E /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				861EE75422328E7E00FB57B3 /* Switcher.swift */,
+				864039882241799400209B6E /* ParseController.swift */,
 			);
-			path = "Helper Class";
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		864039812241291B00209B6E /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				864039822241293A00209B6E /* MqolUser.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
+		8691AC10224FE48E0077EA6C /* Study */ = {
+			isa = PBXGroup;
+			children = (
+				8691AC11224FE4A50077EA6C /* Study.swift */,
+			);
+			path = Study;
+			sourceTree = "<group>";
+		};
+		8691AC152250F41A0077EA6C /* Our Lab */ = {
+			isa = PBXGroup;
+			children = (
+				861EE7502232898A00FB57B3 /* OurLabConsentViewController.swift */,
+				8691AC162250F42B0077EA6C /* OurLabThanksForJoiningViewController.swift */,
+				8691AC202250F56F0077EA6C /* OurLabThanksForJoining.swift */,
+			);
+			path = "Our Lab";
+			sourceTree = "<group>";
+		};
+		8691AC222250F6140077EA6C /* Study List */ = {
+			isa = PBXGroup;
+			children = (
+				864039732233C0B900209B6E /* StudyConsentViewController.swift */,
+				86403978223CF28000209B6E /* StudyThanksForJoiningViewController.swift */,
+				861EE75B22329AD200FB57B3 /* StudyListViewController.swift */,
+				8691AC242250F6ED0077EA6C /* StudyWelcome.swift */,
+			);
+			path = "Study List";
+			sourceTree = "<group>";
+		};
+		8691AC232250F6270077EA6C /* Study Home */ = {
+			isa = PBXGroup;
+			children = (
+				861EE75222328A4E00FB57B3 /* StudyViewController.swift */,
+				861EE7562232965100FB57B3 /* StudyHomeViewController.swift */,
+			);
+			path = "Study Home";
 			sourceTree = "<group>";
 		};
 		D65722957547DA577D9B613A /* Frameworks */ = {
@@ -267,6 +318,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-mQoL Lab/Pods-mQoL Lab-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -274,6 +326,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,18 +341,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8691AC12224FE4A50077EA6C /* Study.swift in Sources */,
 				861EE75522328E7E00FB57B3 /* Switcher.swift in Sources */,
+				864039832241293A00209B6E /* MqolUser.swift in Sources */,
 				864039742233C0B900209B6E /* StudyConsentViewController.swift in Sources */,
+				864039872241755700209B6E /* SplashScreenViewController.swift in Sources */,
 				861EE7572232965100FB57B3 /* StudyHomeViewController.swift in Sources */,
+				8691AC252250F6ED0077EA6C /* StudyWelcome.swift in Sources */,
 				864039722233A28700209B6E /* StudyCell.swift in Sources */,
 				861EE7512232898A00FB57B3 /* OurLabConsentViewController.swift in Sources */,
-				861EE741223288DF00FB57B3 /* ViewController.swift in Sources */,
 				861EE75322328A4E00FB57B3 /* StudyViewController.swift in Sources */,
-				8640397F223E7AFE00209B6E /* OurLabThanksForJoiningViewController.swift in Sources */,
+				8691AC212250F56F0077EA6C /* OurLabThanksForJoining.swift in Sources */,
 				861EE73F223288DF00FB57B3 /* AppDelegate.swift in Sources */,
 				86403979223CF28000209B6E /* StudyThanksForJoiningViewController.swift in Sources */,
-				8640397B223D1E4700209B6E /* UserInfo.swift in Sources */,
 				861EE75C22329AD200FB57B3 /* StudyListViewController.swift in Sources */,
+				864039892241799400209B6E /* ParseController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -119,7 +119,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="Cil-EJ-CsD"/>
                     </navigationItem>
                     <connections>
-                        <segue destination="Dzp-8g-tZl" kind="show" identifier="toStudyInfo" id="u8h-gy-kYU"/>
+                        <segue destination="Dzp-8g-tZl" kind="show" identifier="welcome" id="YYw-yC-EyW"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cRh-PU-1T3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -129,62 +129,96 @@
         <!--mQoL Lab - UNIGE-->
         <scene sceneID="kYi-Ly-SjU">
             <objects>
-                <viewController storyboardIdentifier="studyInfo" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Dzp-8g-tZl" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="studyInfo" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Dzp-8g-tZl" customClass="StudyWelcome" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="idS-py-6U2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="iil-Et-lp9">
-                                <rect key="frame" x="254" y="163" width="64" height="64"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="64" id="CRz-M7-vK7"/>
-                                    <constraint firstAttribute="height" constant="64" id="ONQ-SH-DoX"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="Ide-1J-AQG">
-                                <rect key="frame" x="175" y="163" width="64" height="64"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="0Tp-rd-Idi"/>
-                                    <constraint firstAttribute="width" constant="64" id="RY1-dk-6zR"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chart" translatesAutoresizingMaskIntoConstraints="NO" id="RL3-c0-w8n">
-                                <rect key="frame" x="96" y="163" width="64" height="64"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="11q-Xx-FWn"/>
-                                    <constraint firstAttribute="width" constant="64" id="xQl-J2-L18"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4UK-HB-knd">
-                                <rect key="frame" x="16" y="243" width="382" height="467"/>
-                                <string key="text">When joining the study… Suscipit metus ea ea ut sagittis. Etiam rhoncus eget in. Nulla integer in ullamcorper, lacinia lorem nec quis neque mattis ac. Sodales vel eligendi dui nulla a, parturient neque non faucibus integer justo blanditiis. Donec ante suspendisse animi eu. Wisi in, magna nisl eget vivamus tellus mauris sed, eleifend aliquam neque, metus ultricies, proin litora sociosqu magna vestibulum ligula. 
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HJR-hh-SZz">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oqZ-di-cQK">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="790"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="iil-Et-lp9">
+                                                <rect key="frame" x="255" y="75" width="64" height="64"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="64" id="CRz-M7-vK7"/>
+                                                    <constraint firstAttribute="height" constant="64" id="ONQ-SH-DoX"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="Ide-1J-AQG">
+                                                <rect key="frame" x="175" y="75" width="64" height="64"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="64" id="0Tp-rd-Idi"/>
+                                                    <constraint firstAttribute="width" constant="64" id="RY1-dk-6zR"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chart" translatesAutoresizingMaskIntoConstraints="NO" id="RL3-c0-w8n">
+                                                <rect key="frame" x="95" y="75" width="64" height="64"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="64" id="11q-Xx-FWn"/>
+                                                    <constraint firstAttribute="width" constant="64" id="xQl-J2-L18"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4UK-HB-knd">
+                                                <rect key="frame" x="16" y="191.5" width="382" height="467"/>
+                                                <string key="text">When joining the study… Suscipit metus ea ea ut sagittis. Etiam rhoncus eget in. Nulla integer in ullamcorper, lacinia lorem nec quis neque mattis ac. Sodales vel eligendi dui nulla a, parturient neque non faucibus integer justo blanditiis. Donec ante suspendisse animi eu. Wisi in, magna nisl eget vivamus tellus mauris sed, eleifend aliquam neque, metus ultricies, proin litora sociosqu magna vestibulum ligula. 
 
  quisque leo quis, id viverra cras diam sociis, deserunt semper, sem pellentesque sed, porttitor elit quam leo ante. Lectus pharetra varius, justo proin wisi aut, egestas penatibus cursus est dictumst nulla tristique, orci vivamus sed quis justo amet velit. Ligula quis rhoncus odio consequat, elementum lorem ut massa duis ut sed, placerat enim elit rutrum eleifend, at tincidunt vivamus suscipit urna, mauris pede suscipit arcu porta quis. Excepturi molestie natoque fermentum donec massa vel, non donec ut adipiscing blandit ante, suspendisse lectus erat.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answering Surveys" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="EvR-Wx-pOs">
-                                <rect key="frame" x="60" y="104" width="294" height="43"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="EvR-Wx-pOs">
+                                                <rect key="frame" x="135" y="16" width="144.5" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xl-ir-Qig">
+                                                <rect key="frame" x="186" y="155" width="42" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="RL3-c0-w8n" firstAttribute="top" secondItem="EvR-Wx-pOs" secondAttribute="bottom" constant="16" id="2ay-Ns-i2C"/>
+                                            <constraint firstItem="8xl-ir-Qig" firstAttribute="centerX" secondItem="oqZ-di-cQK" secondAttribute="centerX" id="4Vp-DY-CHz"/>
+                                            <constraint firstAttribute="trailing" secondItem="4UK-HB-knd" secondAttribute="trailing" constant="16" id="6GR-Mw-NfL"/>
+                                            <constraint firstAttribute="height" constant="790" id="CF1-o7-PDj"/>
+                                            <constraint firstItem="EvR-Wx-pOs" firstAttribute="centerX" secondItem="oqZ-di-cQK" secondAttribute="centerX" id="Ion-es-wBa"/>
+                                            <constraint firstItem="Ide-1J-AQG" firstAttribute="leading" secondItem="RL3-c0-w8n" secondAttribute="trailing" constant="16" id="JmB-LV-rP3"/>
+                                            <constraint firstItem="4UK-HB-knd" firstAttribute="leading" secondItem="oqZ-di-cQK" secondAttribute="leading" constant="16" id="K2Y-Wx-U8C"/>
+                                            <constraint firstItem="EvR-Wx-pOs" firstAttribute="top" secondItem="oqZ-di-cQK" secondAttribute="top" constant="16" id="M0d-S1-15v"/>
+                                            <constraint firstItem="4UK-HB-knd" firstAttribute="top" secondItem="8xl-ir-Qig" secondAttribute="bottom" constant="16" id="Rg4-P5-NGD"/>
+                                            <constraint firstItem="Ide-1J-AQG" firstAttribute="centerX" secondItem="oqZ-di-cQK" secondAttribute="centerX" id="UbR-pM-90G"/>
+                                            <constraint firstItem="Ide-1J-AQG" firstAttribute="top" secondItem="EvR-Wx-pOs" secondAttribute="bottom" constant="16" id="cFh-vG-QwO"/>
+                                            <constraint firstItem="4UK-HB-knd" firstAttribute="top" secondItem="8xl-ir-Qig" secondAttribute="bottom" constant="16" id="kLV-Ye-OtS"/>
+                                            <constraint firstItem="8xl-ir-Qig" firstAttribute="top" secondItem="Ide-1J-AQG" secondAttribute="bottom" constant="16" id="omc-mw-aTm"/>
+                                            <constraint firstItem="iil-Et-lp9" firstAttribute="leading" secondItem="Ide-1J-AQG" secondAttribute="trailing" constant="16" id="qXw-Uv-nTD"/>
+                                            <constraint firstItem="Ide-1J-AQG" firstAttribute="leading" secondItem="RL3-c0-w8n" secondAttribute="trailing" constant="16" id="yBv-gb-aQm"/>
+                                            <constraint firstItem="iil-Et-lp9" firstAttribute="top" secondItem="EvR-Wx-pOs" secondAttribute="bottom" constant="16" id="z0d-lS-wJV"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="oqZ-di-cQK" firstAttribute="top" secondItem="HJR-hh-SZz" secondAttribute="top" id="MXo-az-vEk"/>
+                                    <constraint firstAttribute="trailing" secondItem="oqZ-di-cQK" secondAttribute="trailing" id="Mxv-zD-lvz"/>
+                                    <constraint firstAttribute="bottom" secondItem="oqZ-di-cQK" secondAttribute="bottom" id="ftI-Nq-c9q"/>
+                                    <constraint firstItem="oqZ-di-cQK" firstAttribute="leading" secondItem="HJR-hh-SZz" secondAttribute="leading" id="gRd-4N-RBC"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="EvR-Wx-pOs" firstAttribute="top" secondItem="Gd1-M6-wHR" secondAttribute="top" constant="16" id="1iI-he-ogV"/>
-                            <constraint firstItem="iil-Et-lp9" firstAttribute="leading" secondItem="Ide-1J-AQG" secondAttribute="trailing" constant="15" id="7YH-Ym-f7B"/>
-                            <constraint firstItem="4UK-HB-knd" firstAttribute="leading" secondItem="Gd1-M6-wHR" secondAttribute="leading" constant="16" id="Rt7-vJ-C0Q"/>
-                            <constraint firstItem="Ide-1J-AQG" firstAttribute="leading" secondItem="RL3-c0-w8n" secondAttribute="trailing" constant="15" id="UYu-60-s3H"/>
-                            <constraint firstItem="RL3-c0-w8n" firstAttribute="top" secondItem="EvR-Wx-pOs" secondAttribute="bottom" constant="16" id="XXH-tQ-7ac"/>
-                            <constraint firstItem="Ide-1J-AQG" firstAttribute="centerX" secondItem="idS-py-6U2" secondAttribute="centerX" id="ZHV-dD-2nJ"/>
-                            <constraint firstItem="EvR-Wx-pOs" firstAttribute="centerX" secondItem="Ide-1J-AQG" secondAttribute="centerX" id="aK3-nc-NZZ"/>
-                            <constraint firstItem="Gd1-M6-wHR" firstAttribute="trailing" secondItem="4UK-HB-knd" secondAttribute="trailing" constant="16" id="ddG-r4-CuC"/>
-                            <constraint firstItem="EvR-Wx-pOs" firstAttribute="leading" secondItem="Gd1-M6-wHR" secondAttribute="leading" constant="60" id="j1C-Gs-7Ka"/>
-                            <constraint firstItem="iil-Et-lp9" firstAttribute="top" secondItem="EvR-Wx-pOs" secondAttribute="bottom" constant="16" id="sWc-tB-puA"/>
-                            <constraint firstItem="Ide-1J-AQG" firstAttribute="top" secondItem="EvR-Wx-pOs" secondAttribute="bottom" constant="16" id="y7U-a9-gV1"/>
-                            <constraint firstItem="4UK-HB-knd" firstAttribute="top" secondItem="Ide-1J-AQG" secondAttribute="bottom" constant="16" id="zYD-cb-s2s"/>
+                            <constraint firstItem="HJR-hh-SZz" firstAttribute="leading" secondItem="Gd1-M6-wHR" secondAttribute="leading" id="0pm-SW-ier"/>
+                            <constraint firstItem="HJR-hh-SZz" firstAttribute="top" secondItem="Gd1-M6-wHR" secondAttribute="top" id="C7P-aa-oq7"/>
+                            <constraint firstItem="oqZ-di-cQK" firstAttribute="width" secondItem="Gd1-M6-wHR" secondAttribute="width" id="eNA-cA-qVY"/>
+                            <constraint firstAttribute="bottom" secondItem="HJR-hh-SZz" secondAttribute="bottom" id="iiu-9x-K8r"/>
+                            <constraint firstItem="HJR-hh-SZz" firstAttribute="trailing" secondItem="Gd1-M6-wHR" secondAttribute="trailing" id="l1a-cm-rv5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Gd1-M6-wHR"/>
                     </view>
@@ -195,10 +229,15 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="quickFacts" destination="8xl-ir-Qig" id="Rwa-zW-7di"/>
+                        <outlet property="welcomeText" destination="4UK-HB-knd" id="OAd-7v-ysR"/>
+                        <outlet property="welcomeTitle" destination="EvR-Wx-pOs" id="yja-4v-G6G"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mpK-67-rMS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2367" y="28"/>
+            <point key="canvasLocation" x="2366.666666666667" y="27.455357142857142"/>
         </scene>
         <!--mQoL Lab - UNIGE-->
         <scene sceneID="pAg-7V-5Ay">

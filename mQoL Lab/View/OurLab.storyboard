@@ -334,7 +334,7 @@
         <!--mQoL Studies - UNIGE-->
         <scene sceneID="9ft-i0-bf8">
             <objects>
-                <viewController id="fQ2-XX-POf" customClass="OurLabThanksForJoiningViewController" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fQ2-XX-POf" customClass="OurLabThanksForJoining" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eX7-oy-LbX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -344,6 +344,7 @@
                                 <state key="normal" title="SEE STUDIES"/>
                                 <connections>
                                     <action selector="seeStudies:" destination="fQ2-XX-POf" eventType="touchUpInside" id="5AI-Jo-nCc"/>
+                                    <action selector="seeStudiesBtn:" destination="fQ2-XX-POf" eventType="touchUpInside" id="3tl-97-dKP"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank you for Joining the mQoL Lab" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="H5M-nZ-AZv">

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class OurLabConsentViewController: UIViewController {
 
@@ -21,6 +22,7 @@ class OurLabConsentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Adding actions to switches
         if let switch1 = over18Switch {
             switch1.addTarget(self, action: #selector(stateChanged), for: .valueChanged)
         }
@@ -29,6 +31,7 @@ class OurLabConsentViewController: UIViewController {
             switch2.addTarget(self, action: #selector(stateChanged), for: .valueChanged)
         }
         
+        // Adding action to alert
         alert.addAction(UIAlertAction(title: "Ok", style: .default))
 
     }
@@ -48,8 +51,9 @@ class OurLabConsentViewController: UIViewController {
     
     
     @IBAction func giveConsent(_ sender: Any) {
-        UserDefaults.standard.set(true, forKey: "consentGiven")
         if over18 && readAndAccepted {
+            ParseController.mqolUserAcceptLabAgreement()
+            UserDefaults.standard.set(true, forKey: "consentGiven")
             performSegue(withIdentifier: "ourLabThankYou", sender: self)
         } else {
             self.present(alert, animated: true)
