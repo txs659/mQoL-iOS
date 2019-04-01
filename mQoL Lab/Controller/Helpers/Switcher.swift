@@ -12,6 +12,8 @@ class Switcher {
 
     static func updateRootVC() {
         
+        print ("I got to here")
+        
         let consentGiven = UserDefaults.standard.bool(forKey: "consentGiven")
         let studyConsentGiven = UserDefaults.standard.bool(forKey: "studyConsentGiven")
         

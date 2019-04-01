@@ -17,9 +17,10 @@ class OurLabThanksForJoining: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func seeStudiesBtn(_ sender: Any) {
+    @IBAction func seeStudiesPressed(_ sender: Any) {
         Switcher.updateRootVC()
     }
+    
     /*
     // MARK: - Navigation
 
