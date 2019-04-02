@@ -16,8 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
+        // Register parse subclasses
         MqolUser.registerSubclass()
         Study.registerSubclass()
         
@@ -27,6 +27,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.server = "https://qol1.unige.ch/mqol-parse-dev/"
         }
         Parse.initialize(with: parseConfig)
+        
+        
+        // Checks preferred language list from device
+        let prefferedLan = NSLocale.preferredLanguages[2]
+        if prefferedLan.prefix(2) == "fr" {
+            UserDefaults.standard.set("fr", forKey: "language")
+        }
+        else {
+            UserDefaults.standard.set("en", forKey: "language")
+        }
         
         return true
     }
