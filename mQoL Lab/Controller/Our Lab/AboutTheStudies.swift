@@ -1,5 +1,5 @@
 //
-//  LabInto.swift
+//  AboutTheStudies.swift
 //  mQoL Lab
 //
 //  Created by Frederik Schmøde on 02/04/2019.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class LabInto: UIViewController {
-    
+class AboutTheStudies: UIViewController {
+
     let language = UserDefaults.standard.string(forKey: "language")
     
-    @IBOutlet weak var infoTitle: UILabel!
-    @IBOutlet weak var text1: UILabel!
-    @IBOutlet weak var text2: UILabel!
+    @IBOutlet weak var pageTitle: UILabel!
+    @IBOutlet weak var text: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,16 +23,18 @@ class LabInto: UIViewController {
         if language == "fr" {
             navigationItem.backBarButtonItem?.title = FrStrings.back_button
             navigationItem.rightBarButtonItem?.title = FrStrings.next_button
-            infoTitle.text = FrStrings.view_lab_intro
-            text1.text = FrStrings.view_lab_intro_p1
-            text2.text = FrStrings.view_lab_intro_p2
+            pageTitle.text = FrStrings.view_lab_studies_intro
+            text.text = FrStrings.view_lab_studies_intro_p1
+            
         }
         else {
             navigationItem.backBarButtonItem?.title = EnStrings.back_button
             navigationItem.rightBarButtonItem?.title = EnStrings.next_button
-            infoTitle.text = EnStrings.view_lab_intro
-            text1.text = EnStrings.view_lab_intro_p1
-            text2.text = EnStrings.view_lab_intro_p2
+            pageTitle.text = EnStrings.view_lab_studies_intro
+            text.text = EnStrings.view_lab_studies_intro_p1
         }
+        
     }
+    
+
 }

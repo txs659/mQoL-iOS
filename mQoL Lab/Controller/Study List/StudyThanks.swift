@@ -1,5 +1,5 @@
 //
-//  StudyThanksForJoiningViewController.swift
+//  StudyThanks.swift
 //  mQoL Lab
 //
 //  Created by Frederik Schmøde on 16/03/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StudyThanksForJoiningViewController: UIViewController {
+class StudyThanks: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

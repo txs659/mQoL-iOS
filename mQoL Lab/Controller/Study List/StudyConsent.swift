@@ -1,5 +1,5 @@
 //
-//  StudyConsentViewController.swift
+//  StudyConsent.swift
 //  mQoL Lab
 //
 //  Created by Frederik Schmøde on 09/03/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StudyConsentViewController: UIViewController, UITextFieldDelegate {
+class StudyConsent: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var nameField: UITextField!
     

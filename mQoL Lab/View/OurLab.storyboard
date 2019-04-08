@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,14 +11,14 @@
             <objects>
                 <viewController id="zme-V4-3z4" customClass="LabInto" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p05-yR-kK3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YYP-r7-bKf">
-                                <rect key="frame" x="0.0" y="64" width="375" height="539"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="539"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E0v-8S-ZUM">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="539"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="539"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Introduction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Q3G-EZ-MCE">
                                                 <rect key="frame" x="16" y="16" width="186" height="43"/>
@@ -31,27 +27,27 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Tul-kl-MZc">
-                                                <rect key="frame" x="16" y="67" width="343" height="122"/>
+                                                <rect key="frame" x="16" y="67" width="568" height="81.5"/>
                                                 <string key="text">Quality of Life (QoL) technologies lab conducts inter-disciplinary research and development aimed at improving Quality of Life of individuals throughout their lives. We are part of the University of Geneva in Switzerland. </string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UNIGE" translatesAutoresizingMaskIntoConstraints="NO" id="aOG-PE-Oyi">
-                                                <rect key="frame" x="172.5" y="205" width="30" height="16"/>
+                                                <rect key="frame" x="285" y="164.5" width="30" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="aOG-PE-Oyi" secondAttribute="height" multiplier="15:8" id="wJt-cW-9Yq"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="E8I-4C-lPF">
-                                                <rect key="frame" x="16" y="237" width="343" height="101.5"/>
+                                                <rect key="frame" x="16" y="196.5" width="568" height="61"/>
                                                 <string key="text">The lab mission is to develop and evaluate emerging mobile technologies with the goal of assessing individuals’ life quality as it unfolds naturally over time and in context, and improving it at all stages of life. </string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qol" translatesAutoresizingMaskIntoConstraints="NO" id="oC7-9N-mHr">
-                                                <rect key="frame" x="172.5" y="354.5" width="30" height="16"/>
+                                                <rect key="frame" x="285" y="273.5" width="30" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="oC7-9N-mHr" secondAttribute="height" multiplier="15:8" id="SJQ-AA-bDP"/>
                                                 </constraints>
@@ -95,7 +91,7 @@
                         <viewLayoutGuide key="safeArea" id="tKe-WJ-zfw"/>
                     </view>
                     <navigationItem key="navigationItem" title="mQoL Studies - UNIGE" id="5fI-bn-UiX">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="7vq-3q-fDP"/>
+                        <barButtonItem key="backBarButtonItem" title="Back" id="GfL-TB-Dwb"/>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="Mra-9b-lyg">
                             <connections>
                                 <segue destination="FdY-fR-xA1" kind="show" id="Jre-oM-8ii"/>
@@ -115,9 +111,9 @@
         <!--mQoL Studies - UNIGE-->
         <scene sceneID="Dcs-nD-UMD">
             <objects>
-                <viewController id="FdY-fR-xA1" sceneMemberID="viewController">
+                <viewController id="FdY-fR-xA1" customClass="AboutTheStudies" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0bE-Zw-Z1F">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About the Studies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="gbJ-b7-IY0">
@@ -127,28 +123,28 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rgw-ui-4P9">
-                                <rect key="frame" x="16" y="139" width="343" height="81.5"/>
+                                <rect key="frame" x="16" y="139" width="568" height="41"/>
                                 <string key="text">In exchange for your participation in our studies, some studies allow you to participate in drawings for monetary prices like gift cards.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="BAs-uk-1XF">
-                                <rect key="frame" x="155.5" y="236.5" width="64" height="64"/>
+                                <rect key="frame" x="268" y="196" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="4ZE-GM-1yC"/>
                                     <constraint firstAttribute="width" constant="64" id="vgt-MK-XI6"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chart" translatesAutoresizingMaskIntoConstraints="NO" id="sv4-dK-FTA">
-                                <rect key="frame" x="76.5" y="236.5" width="64" height="64"/>
+                                <rect key="frame" x="189" y="196" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="64" id="bhN-rl-ALr"/>
                                     <constraint firstAttribute="height" constant="64" id="u46-x7-C4m"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="zZ9-70-Cyg">
-                                <rect key="frame" x="234.5" y="236.5" width="64" height="64"/>
+                                <rect key="frame" x="347" y="196" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="DlY-ZX-H53"/>
                                     <constraint firstAttribute="width" constant="64" id="VL3-Zn-w4W"/>
@@ -173,13 +169,17 @@
                         <viewLayoutGuide key="safeArea" id="gEp-5r-psj"/>
                     </view>
                     <navigationItem key="navigationItem" title="mQoL Studies - UNIGE" id="TJH-7i-QIc">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="dM9-VI-7Yh"/>
+                        <barButtonItem key="backBarButtonItem" title="Back" id="6Pc-Jr-K5P"/>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="DWP-9y-2eg">
                             <connections>
                                 <segue destination="wc6-cQ-qmF" kind="show" id="HaN-D7-4Cv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="pageTitle" destination="gbJ-b7-IY0" id="1zg-5w-XMk"/>
+                        <outlet property="text" destination="Rgw-ui-4P9" id="gHI-zd-no2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8i7-Yx-adz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -206,19 +206,20 @@
         <!--mQoL Studies - UNIGE-->
         <scene sceneID="VJw-ik-KY8">
             <objects>
-                <viewController id="wc6-cQ-qmF" customClass="OurLabConsentViewController" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wc6-cQ-qmF" customClass="LabConsent" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rLa-TL-25N">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ecW-aB-WrY">
-                                <rect key="frame" x="0.0" y="64" width="375" height="481"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="583"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="glU-5k-FnO">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="481"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="481"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2j-xs-xbF">
-                                                <rect key="frame" x="112" y="441" width="151" height="30"/>
+                                                <rect key="frame" x="215.5" y="380" width="169" height="33"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="ACCEPT AGREEMENT"/>
                                                 <connections>
                                                     <action selector="giveConsent:" destination="wc6-cQ-qmF" eventType="touchUpInside" id="5AF-gK-g4F"/>
@@ -231,43 +232,43 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please download and read the Lab Agreement before you continue." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="9YV-BF-Xjs">
-                                                <rect key="frame" x="16" y="75" width="343" height="41"/>
+                                                <rect key="frame" x="16" y="75" width="568" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqx-6O-epy">
-                                                <rect key="frame" x="82" y="141" width="211" height="30"/>
+                                                <rect key="frame" x="194.5" y="120.5" width="211" height="30"/>
                                                 <state key="normal" title="DOWNLOAD LAB AGREEMENT">
                                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am 18 years or older." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="GfI-iG-0hD">
-                                                <rect key="frame" x="75" y="196" width="284" height="21"/>
+                                                <rect key="frame" x="75" y="175.5" width="509" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1Iq-WP-QHb">
-                                                <rect key="frame" x="16" y="191" width="51" height="31"/>
+                                                <rect key="frame" x="16" y="170.5" width="51" height="31"/>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. You have the option to download this agreement." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="AOJ-DV-cx4">
-                                                <rect key="frame" x="16" y="298" width="343" height="41"/>
+                                                <rect key="frame" x="16" y="277.5" width="568" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. If you disagree with the terms, please feel free to uninstall the app. Thank you for your participation." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="U7S-Kw-FWw">
-                                                <rect key="frame" x="16" y="355" width="343" height="61"/>
+                                                <rect key="frame" x="16" y="314" width="568" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="RWg-XS-paH">
-                                                <rect key="frame" x="16" y="242" width="51" height="31"/>
+                                                <rect key="frame" x="16" y="221.5" width="51" height="31"/>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I have read and accept the terms and conditions for using this application" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1G8-om-kQZ">
-                                                <rect key="frame" x="75" y="237" width="284" height="41"/>
+                                                <rect key="frame" x="75" y="216.5" width="509" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -308,9 +309,9 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="glU-5k-FnO" secondAttribute="trailing" id="8ok-jj-bfJ"/>
                                     <constraint firstItem="glU-5k-FnO" firstAttribute="leading" secondItem="ecW-aB-WrY" secondAttribute="leading" id="Drk-n8-YC8"/>
-                                    <constraint firstAttribute="height" constant="481" id="Hng-Lk-z4w"/>
+                                    <constraint firstAttribute="height" constant="583" id="Hng-Lk-z4w"/>
                                     <constraint firstItem="glU-5k-FnO" firstAttribute="top" secondItem="ecW-aB-WrY" secondAttribute="top" id="cnl-w3-SFm"/>
-                                    <constraint firstAttribute="bottom" secondItem="glU-5k-FnO" secondAttribute="bottom" id="f90-UY-UNO"/>
+                                    <constraint firstAttribute="bottom" secondItem="glU-5k-FnO" secondAttribute="bottom" constant="102" id="f90-UY-UNO"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -324,11 +325,19 @@
                         <viewLayoutGuide key="safeArea" id="dLA-DD-Ytv"/>
                     </view>
                     <navigationItem key="navigationItem" title="mQoL Studies - UNIGE" id="AJl-c2-DpD">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="VQB-3u-xBq"/>
+                        <barButtonItem key="backBarButtonItem" title="Back" id="kkb-aJ-aTn"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="acceptBtn" destination="e2j-xs-xbF" id="uQt-Hb-Uis"/>
+                        <outlet property="downloadAgreement" destination="eqx-6O-epy" id="EfA-ML-B94"/>
                         <outlet property="over18Switch" destination="1Iq-WP-QHb" id="WWF-iT-5uh"/>
+                        <outlet property="pageTitle" destination="j7K-5N-Pwd" id="tDh-lB-UIU"/>
                         <outlet property="readAndAcceptSwitch" destination="RWg-XS-paH" id="t90-h5-870"/>
+                        <outlet property="subtext1" destination="AOJ-DV-cx4" id="IuG-OA-k7b"/>
+                        <outlet property="subtext2" destination="U7S-Kw-FWw" id="HXl-EP-vmV"/>
+                        <outlet property="switchLabel1" destination="GfI-iG-0hD" id="dYr-P9-bT1"/>
+                        <outlet property="switchLabel2" destination="1G8-om-kQZ" id="Fdc-eY-c3E"/>
+                        <outlet property="text1" destination="9YV-BF-Xjs" id="WaL-e6-m2n"/>
                         <segue destination="fQ2-XX-POf" kind="show" identifier="ourLabThankYou" id="DvT-9o-Hyf"/>
                     </connections>
                 </viewController>
@@ -339,26 +348,27 @@
         <!--mQoL Studies - UNIGE-->
         <scene sceneID="9ft-i0-bf8">
             <objects>
-                <viewController id="fQ2-XX-POf" customClass="OurLabThanksForJoining" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fQ2-XX-POf" customClass="LabThanks" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eX7-oy-LbX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYc-dt-CSL">
-                                <rect key="frame" x="141" y="318.5" width="93" height="30"/>
+                                <rect key="frame" x="248" y="283.5" width="104" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="SEE STUDIES"/>
                                 <connections>
                                     <action selector="seeStudiesPressed:" destination="fQ2-XX-POf" eventType="touchUpInside" id="y0j-XR-e0v"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank you for Joining the mQoL Lab" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="H5M-nZ-AZv">
-                                <rect key="frame" x="16" y="80" width="343" height="30"/>
+                                <rect key="frame" x="16" y="80" width="389" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please visit the list of available studies and help our research by joining one or more studies." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAs-Ak-ywk">
-                                <rect key="frame" x="16" y="126" width="343" height="61"/>
+                                <rect key="frame" x="16" y="126" width="568" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -377,9 +387,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XfG-9M-G4G"/>
                     </view>
-                    <navigationItem key="navigationItem" title="mQoL Studies - UNIGE" id="3Fy-aL-qwe">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="MFu-G4-rmd"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="mQoL Studies - UNIGE" id="3Fy-aL-qwe"/>
+                    <connections>
+                        <outlet property="pageTitle" destination="H5M-nZ-AZv" id="xZA-M4-3YK"/>
+                        <outlet property="seeStudiesBtn" destination="zYc-dt-CSL" id="ruU-Jc-xcu"/>
+                        <outlet property="text" destination="TAs-Ak-ywk" id="Stf-TE-SED"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t6o-n7-10W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,9 +27,9 @@
         <!--mQoL Lab - UNIGE-->
         <scene sceneID="NF4-Ea-cUL">
             <objects>
-                <collectionViewController id="Kge-yF-TN0" customClass="StudyListViewController" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="Kge-yF-TN0" customClass="StudyList" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="OMF-I1-x92">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dEc-AO-HMT">
@@ -44,7 +40,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="cell" id="FFC-NN-gFQ" customClass="StudyCell" customModule="mQoL_Lab" customModuleProvider="target">
-                                <rect key="frame" x="39" y="10" width="336" height="169"/>
+                                <rect key="frame" x="132" y="10" width="336" height="169"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="336" height="169"/>
@@ -58,7 +54,7 @@
                                             </constraints>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="66S-oY-Gbf">
-                                            <rect key="frame" x="33" y="64" width="285" height="134"/>
+                                            <rect key="frame" x="33" y="40" width="285" height="134"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addUser" translatesAutoresizingMaskIntoConstraints="NO" id="uWo-7N-6DH">
                                                     <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -131,38 +127,38 @@
             <objects>
                 <viewController storyboardIdentifier="studyInfo" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Dzp-8g-tZl" customClass="StudyWelcome" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="idS-py-6U2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HJR-hh-SZz">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oqZ-di-cQK">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="790"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="790"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="iil-Et-lp9">
-                                                <rect key="frame" x="255" y="75" width="64" height="64"/>
+                                                <rect key="frame" x="348" y="75" width="64" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="64" id="CRz-M7-vK7"/>
                                                     <constraint firstAttribute="height" constant="64" id="ONQ-SH-DoX"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="Ide-1J-AQG">
-                                                <rect key="frame" x="175" y="75" width="64" height="64"/>
+                                                <rect key="frame" x="268" y="75" width="64" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="64" id="0Tp-rd-Idi"/>
                                                     <constraint firstAttribute="width" constant="64" id="RY1-dk-6zR"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chart" translatesAutoresizingMaskIntoConstraints="NO" id="RL3-c0-w8n">
-                                                <rect key="frame" x="95" y="75" width="64" height="64"/>
+                                                <rect key="frame" x="188" y="75" width="64" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="64" id="11q-Xx-FWn"/>
                                                     <constraint firstAttribute="width" constant="64" id="xQl-J2-L18"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4UK-HB-knd">
-                                                <rect key="frame" x="16" y="191.5" width="382" height="467"/>
+                                                <rect key="frame" x="16" y="191.5" width="568" height="304.5"/>
                                                 <string key="text">When joining the study… Suscipit metus ea ea ut sagittis. Etiam rhoncus eget in. Nulla integer in ullamcorper, lacinia lorem nec quis neque mattis ac. Sodales vel eligendi dui nulla a, parturient neque non faucibus integer justo blanditiis. Donec ante suspendisse animi eu. Wisi in, magna nisl eget vivamus tellus mauris sed, eleifend aliquam neque, metus ultricies, proin litora sociosqu magna vestibulum ligula. 
 
  quisque leo quis, id viverra cras diam sociis, deserunt semper, sem pellentesque sed, porttitor elit quam leo ante. Lectus pharetra varius, justo proin wisi aut, egestas penatibus cursus est dictumst nulla tristique, orci vivamus sed quis justo amet velit. Ligula quis rhoncus odio consequat, elementum lorem ut massa duis ut sed, placerat enim elit rutrum eleifend, at tincidunt vivamus suscipit urna, mauris pede suscipit arcu porta quis. Excepturi molestie natoque fermentum donec massa vel, non donec ut adipiscing blandit ante, suspendisse lectus erat.</string>
@@ -171,13 +167,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="EvR-Wx-pOs">
-                                                <rect key="frame" x="135" y="16" width="144.5" height="43"/>
+                                                <rect key="frame" x="228" y="16" width="144.5" height="43"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xl-ir-Qig">
-                                                <rect key="frame" x="186" y="155" width="42" height="20.5"/>
+                                                <rect key="frame" x="279" y="155" width="42" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -245,38 +241,38 @@
             <objects>
                 <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="ef6-WK-q4B" customClass="AnsweringSurveys" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D10-Lu-8kO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Os4-rP-cXJ">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p9s-f7-aWT">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="746"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="746"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="sL3-IH-X6t">
-                                                <rect key="frame" x="255" y="75" width="64" height="64"/>
+                                                <rect key="frame" x="348" y="75" width="64" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="64" id="0xX-kn-YhL"/>
                                                     <constraint firstAttribute="height" constant="64" id="PHz-4t-yup"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="yR5-qJ-qOL">
-                                                <rect key="frame" x="175" y="75" width="64" height="64"/>
+                                                <rect key="frame" x="268" y="75" width="64" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="64" id="4Eg-s9-EdK"/>
                                                     <constraint firstAttribute="height" constant="64" id="jmQ-RA-jla"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chart" translatesAutoresizingMaskIntoConstraints="NO" id="d7B-9o-dC2">
-                                                <rect key="frame" x="95" y="75" width="64" height="64"/>
+                                                <rect key="frame" x="188" y="75" width="64" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="64" id="P37-Yu-aNk"/>
                                                     <constraint firstAttribute="height" constant="64" id="f50-t3-EDF"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="po1-Wi-7h3">
-                                                <rect key="frame" x="16" y="155" width="382" height="467"/>
+                                                <rect key="frame" x="16" y="155" width="568" height="304.5"/>
                                                 <string key="text">When joining the study… Suscipit metus ea ea ut sagittis. Etiam rhoncus eget in. Nulla integer in ullamcorper, lacinia lorem nec quis neque mattis ac. Sodales vel eligendi dui nulla a, parturient neque non faucibus integer justo blanditiis. Donec ante suspendisse animi eu. Wisi in, magna nisl eget vivamus tellus mauris sed, eleifend aliquam neque, metus ultricies, proin litora sociosqu magna vestibulum ligula. 
 
  quisque leo quis, id viverra cras diam sociis, deserunt semper, sem pellentesque sed, porttitor elit quam leo ante. Lectus pharetra varius, justo proin wisi aut, egestas penatibus cursus est dictumst nulla tristique, orci vivamus sed quis justo amet velit. Ligula quis rhoncus odio consequat, elementum lorem ut massa duis ut sed, placerat enim elit rutrum eleifend, at tincidunt vivamus suscipit urna, mauris pede suscipit arcu porta quis. Excepturi molestie natoque fermentum donec massa vel, non donec ut adipiscing blandit ante, suspendisse lectus erat.</string>
@@ -285,7 +281,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ansering Surveys" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="N1D-jH-QGu">
-                                                <rect key="frame" x="16" y="16" width="382" height="43"/>
+                                                <rect key="frame" x="16" y="16" width="568" height="43"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -347,22 +343,22 @@
         <!--mQoL Lab - UNIGE-->
         <scene sceneID="O2l-6Z-4CD">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="7Iv-Cr-jwj" customClass="StudyConsentViewController" customModule="mQoL_Lab" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="7Iv-Cr-jwj" customClass="StudyConsent" customModule="mQoL_Lab" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v5x-up-SpJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GIS-ix-jz0">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VgM-KE-DEd">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="774"/>
                                         <subviews>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="DWp-Ha-sjp">
-                                                <rect key="frame" x="16" y="286.5" width="51" height="31"/>
+                                                <rect key="frame" x="16" y="246" width="51" height="31"/>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am 18 years or older." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNU-8L-34C">
-                                                <rect key="frame" x="73" y="291.5" width="325" height="21"/>
+                                                <rect key="frame" x="73" y="251" width="511" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -374,20 +370,20 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sI6-cT-XVL">
-                                                <rect key="frame" x="16" y="75" width="382" height="81.5"/>
+                                                <rect key="frame" x="16" y="75" width="568" height="41"/>
                                                 <string key="text">You can download the Study informed Consent before you continue. Once you accept the consent, a copy will be available inside the application.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="otm-bM-62X">
-                                                <rect key="frame" x="101.5" y="181.5" width="211" height="30"/>
+                                                <rect key="frame" x="194.5" y="141" width="211" height="30"/>
                                                 <state key="normal" title="DOWNLOAD LAB AGREEMENT">
                                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input your name and surname here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pQ3-P7-Wig">
-                                                <rect key="frame" x="57" y="236.5" width="300" height="30"/>
+                                                <rect key="frame" x="150" y="196" width="300" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="300" id="BkP-l8-8q3"/>
                                                 </constraints>
@@ -399,16 +395,16 @@
                                                 </connections>
                                             </textField>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="07M-Qa-Yw1">
-                                                <rect key="frame" x="16" y="332.5" width="51" height="31"/>
+                                                <rect key="frame" x="16" y="292" width="51" height="31"/>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I have read and accept the terms and conditions for using this application" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xkx-lO-a1C">
-                                                <rect key="frame" x="73" y="327.5" width="325" height="41"/>
+                                                <rect key="frame" x="73" y="287" width="511" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EO7-QV-f6t">
-                                                <rect key="frame" x="131.5" y="618.5" width="151" height="30"/>
+                                                <rect key="frame" x="224.5" y="578" width="151" height="30"/>
                                                 <state key="normal" title="ACCEPT AGREEMENT"/>
                                                 <connections>
                                                     <action selector="giveConsent:" destination="7Iv-Cr-jwj" eventType="touchUpInside" id="AMU-fX-MHC"/>
@@ -475,25 +471,25 @@
         <!--mQoL Lab - UNIGE-->
         <scene sceneID="pqY-1c-WES">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZrN-ND-j1a" customClass="StudyThanksForJoiningViewController" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZrN-ND-j1a" customClass="StudyThanks" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zp8-8r-YUk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVv-k9-fCs">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FmA-Mt-sU1">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="774"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank you for Joining this Study" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="bgL-5x-eSc">
-                                                <rect key="frame" x="16" y="16" width="382" height="43"/>
+                                                <rect key="frame" x="16" y="16" width="492" height="43"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRW-cp-iSs">
-                                                <rect key="frame" x="16" y="75" width="382" height="61"/>
+                                                <rect key="frame" x="16" y="75" width="568" height="41"/>
                                                 <string key="text">You can contact us if you have questions via the contact tab. Please fill the surveys before clicking on the start study button.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -547,38 +543,38 @@
             <objects>
                 <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="Zqr-eD-AAZ" customClass="DataCollection" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xGp-73-9dX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hby-FD-gcq">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="88K-1t-gCd">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="746"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="746"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="vpz-bE-xsh">
-                                                <rect key="frame" x="255" y="75" width="64" height="64"/>
+                                                <rect key="frame" x="348" y="75" width="64" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="64" id="MR1-al-3CR"/>
                                                     <constraint firstAttribute="width" constant="64" id="frG-up-YLm"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="uFV-hO-RBi">
-                                                <rect key="frame" x="175" y="75" width="64" height="64"/>
+                                                <rect key="frame" x="268" y="75" width="64" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="64" id="FLC-o0-RaU"/>
                                                     <constraint firstAttribute="height" constant="64" id="k2x-vo-YXM"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chart" translatesAutoresizingMaskIntoConstraints="NO" id="Ja1-Zv-1wQ">
-                                                <rect key="frame" x="95" y="75" width="64" height="64"/>
+                                                <rect key="frame" x="188" y="75" width="64" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="64" id="JrA-6C-e5d"/>
                                                     <constraint firstAttribute="height" constant="64" id="xH4-2i-6Ps"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="n8g-NK-8lS">
-                                                <rect key="frame" x="16" y="155" width="382" height="467"/>
+                                                <rect key="frame" x="16" y="155" width="568" height="304.5"/>
                                                 <string key="text">When joining the study… Suscipit metus ea ea ut sagittis. Etiam rhoncus eget in. Nulla integer in ullamcorper, lacinia lorem nec quis neque mattis ac. Sodales vel eligendi dui nulla a, parturient neque non faucibus integer justo blanditiis. Donec ante suspendisse animi eu. Wisi in, magna nisl eget vivamus tellus mauris sed, eleifend aliquam neque, metus ultricies, proin litora sociosqu magna vestibulum ligula. 
 
  quisque leo quis, id viverra cras diam sociis, deserunt semper, sem pellentesque sed, porttitor elit quam leo ante. Lectus pharetra varius, justo proin wisi aut, egestas penatibus cursus est dictumst nulla tristique, orci vivamus sed quis justo amet velit. Ligula quis rhoncus odio consequat, elementum lorem ut massa duis ut sed, placerat enim elit rutrum eleifend, at tincidunt vivamus suscipit urna, mauris pede suscipit arcu porta quis. Excepturi molestie natoque fermentum donec massa vel, non donec ut adipiscing blandit ante, suspendisse lectus erat.</string>
@@ -587,7 +583,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data Collection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="5Z8-28-zlO">
-                                                <rect key="frame" x="16" y="16" width="382" height="43"/>
+                                                <rect key="frame" x="16" y="16" width="568" height="43"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -651,38 +647,38 @@
             <objects>
                 <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="krI-Ma-Vpy" customClass="DataProtection" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zqu-uf-Ihv">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0s-er-TDx">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HqF-GC-Mgz">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="746"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="746"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="Jwy-gJ-lqG">
-                                                <rect key="frame" x="255" y="75" width="64" height="64"/>
+                                                <rect key="frame" x="348" y="75" width="64" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="64" id="M6x-TD-xql"/>
                                                     <constraint firstAttribute="height" constant="64" id="daW-11-BwM"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="Axy-ot-q53">
-                                                <rect key="frame" x="175" y="75" width="64" height="64"/>
+                                                <rect key="frame" x="268" y="75" width="64" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="64" id="2GP-16-qDi"/>
                                                     <constraint firstAttribute="width" constant="64" id="yht-eN-pOT"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chart" translatesAutoresizingMaskIntoConstraints="NO" id="ZE3-4e-W5G">
-                                                <rect key="frame" x="95" y="75" width="64" height="64"/>
+                                                <rect key="frame" x="188" y="75" width="64" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="64" id="E9M-Y2-jC3"/>
                                                     <constraint firstAttribute="height" constant="64" id="wsq-TI-R7r"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8pR-KX-bUO">
-                                                <rect key="frame" x="16" y="155" width="382" height="467"/>
+                                                <rect key="frame" x="16" y="155" width="568" height="304.5"/>
                                                 <string key="text">When joining the study… Suscipit metus ea ea ut sagittis. Etiam rhoncus eget in. Nulla integer in ullamcorper, lacinia lorem nec quis neque mattis ac. Sodales vel eligendi dui nulla a, parturient neque non faucibus integer justo blanditiis. Donec ante suspendisse animi eu. Wisi in, magna nisl eget vivamus tellus mauris sed, eleifend aliquam neque, metus ultricies, proin litora sociosqu magna vestibulum ligula. 
 
  quisque leo quis, id viverra cras diam sociis, deserunt semper, sem pellentesque sed, porttitor elit quam leo ante. Lectus pharetra varius, justo proin wisi aut, egestas penatibus cursus est dictumst nulla tristique, orci vivamus sed quis justo amet velit. Ligula quis rhoncus odio consequat, elementum lorem ut massa duis ut sed, placerat enim elit rutrum eleifend, at tincidunt vivamus suscipit urna, mauris pede suscipit arcu porta quis. Excepturi molestie natoque fermentum donec massa vel, non donec ut adipiscing blandit ante, suspendisse lectus erat.</string>
@@ -691,7 +687,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data Protection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="Km2-as-lYf">
-                                                <rect key="frame" x="16" y="16" width="382" height="43"/>
+                                                <rect key="frame" x="16" y="16" width="568" height="43"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -755,38 +751,38 @@
             <objects>
                 <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="8ux-Lf-odH" customClass="WhatToExpect" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iyK-LR-8oR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Khf-Fe-oPr">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aod-Ce-aTG">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="746"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="746"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="n7O-ZW-pVF">
-                                                <rect key="frame" x="255" y="75" width="64" height="64"/>
+                                                <rect key="frame" x="348" y="75" width="64" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="64" id="GBz-BO-aCl"/>
                                                     <constraint firstAttribute="height" constant="64" id="wpj-lE-gad"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="X5b-ah-dUJ">
-                                                <rect key="frame" x="175" y="75" width="64" height="64"/>
+                                                <rect key="frame" x="268" y="75" width="64" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="64" id="ilv-MP-yLq"/>
                                                     <constraint firstAttribute="height" constant="64" id="xiC-3J-DnN"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chart" translatesAutoresizingMaskIntoConstraints="NO" id="L78-6M-BOc">
-                                                <rect key="frame" x="95" y="75" width="64" height="64"/>
+                                                <rect key="frame" x="188" y="75" width="64" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="64" id="XO7-1E-9Mz"/>
                                                     <constraint firstAttribute="width" constant="64" id="rqF-OF-sDZ"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="7DI-VJ-9ch">
-                                                <rect key="frame" x="16" y="155" width="382" height="467"/>
+                                                <rect key="frame" x="16" y="155" width="568" height="304.5"/>
                                                 <string key="text">When joining the study… Suscipit metus ea ea ut sagittis. Etiam rhoncus eget in. Nulla integer in ullamcorper, lacinia lorem nec quis neque mattis ac. Sodales vel eligendi dui nulla a, parturient neque non faucibus integer justo blanditiis. Donec ante suspendisse animi eu. Wisi in, magna nisl eget vivamus tellus mauris sed, eleifend aliquam neque, metus ultricies, proin litora sociosqu magna vestibulum ligula. 
 
  quisque leo quis, id viverra cras diam sociis, deserunt semper, sem pellentesque sed, porttitor elit quam leo ante. Lectus pharetra varius, justo proin wisi aut, egestas penatibus cursus est dictumst nulla tristique, orci vivamus sed quis justo amet velit. Ligula quis rhoncus odio consequat, elementum lorem ut massa duis ut sed, placerat enim elit rutrum eleifend, at tincidunt vivamus suscipit urna, mauris pede suscipit arcu porta quis. Excepturi molestie natoque fermentum donec massa vel, non donec ut adipiscing blandit ante, suspendisse lectus erat.</string>
@@ -795,7 +791,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What to Expect" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="OxG-ov-afz">
-                                                <rect key="frame" x="16" y="16" width="382" height="43"/>
+                                                <rect key="frame" x="16" y="16" width="568" height="43"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -859,38 +855,38 @@
             <objects>
                 <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="Eei-An-Gb4" customClass="ParticipantsRights" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w8Y-PL-Iij">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HB7-O5-2Pl">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K6Y-os-ttR">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="746"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="746"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="kot-4p-l33">
-                                                <rect key="frame" x="255" y="75" width="64" height="64"/>
+                                                <rect key="frame" x="348" y="75" width="64" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="64" id="ChC-VY-D8e"/>
                                                     <constraint firstAttribute="height" constant="64" id="jg4-Gc-5ja"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="XFF-BC-Dcx">
-                                                <rect key="frame" x="175" y="75" width="64" height="64"/>
+                                                <rect key="frame" x="268" y="75" width="64" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="64" id="7QT-se-Ge8"/>
                                                     <constraint firstAttribute="height" constant="64" id="B9A-Pn-MLK"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chart" translatesAutoresizingMaskIntoConstraints="NO" id="sr2-ax-A9T">
-                                                <rect key="frame" x="95" y="75" width="64" height="64"/>
+                                                <rect key="frame" x="188" y="75" width="64" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="64" id="Haa-nx-870"/>
                                                     <constraint firstAttribute="height" constant="64" id="nnK-LJ-iAC"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="d4S-1d-i9g">
-                                                <rect key="frame" x="16" y="155" width="382" height="467"/>
+                                                <rect key="frame" x="16" y="155" width="568" height="304.5"/>
                                                 <string key="text">When joining the study… Suscipit metus ea ea ut sagittis. Etiam rhoncus eget in. Nulla integer in ullamcorper, lacinia lorem nec quis neque mattis ac. Sodales vel eligendi dui nulla a, parturient neque non faucibus integer justo blanditiis. Donec ante suspendisse animi eu. Wisi in, magna nisl eget vivamus tellus mauris sed, eleifend aliquam neque, metus ultricies, proin litora sociosqu magna vestibulum ligula. 
 
  quisque leo quis, id viverra cras diam sociis, deserunt semper, sem pellentesque sed, porttitor elit quam leo ante. Lectus pharetra varius, justo proin wisi aut, egestas penatibus cursus est dictumst nulla tristique, orci vivamus sed quis justo amet velit. Ligula quis rhoncus odio consequat, elementum lorem ut massa duis ut sed, placerat enim elit rutrum eleifend, at tincidunt vivamus suscipit urna, mauris pede suscipit arcu porta quis. Excepturi molestie natoque fermentum donec massa vel, non donec ut adipiscing blandit ante, suspendisse lectus erat.</string>
@@ -899,7 +895,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Participant's Rights" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="a1d-oc-SFq">
-                                                <rect key="frame" x="16" y="16" width="382" height="43"/>
+                                                <rect key="frame" x="16" y="16" width="568" height="43"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -963,38 +959,38 @@
             <objects>
                 <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="0UR-17-4ZU" customClass="RiskAndBenefits" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bMP-mV-bG3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CGU-ki-zSH">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Njw-op-Iwz">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="746"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="746"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="HFv-T2-bn9">
-                                                <rect key="frame" x="255" y="75" width="64" height="64"/>
+                                                <rect key="frame" x="348" y="75" width="64" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="64" id="Y6X-R3-zTh"/>
                                                     <constraint firstAttribute="width" constant="64" id="t7u-mQ-asH"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="B2P-7b-YYr">
-                                                <rect key="frame" x="175" y="75" width="64" height="64"/>
+                                                <rect key="frame" x="268" y="75" width="64" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="64" id="AlF-bd-J1S"/>
                                                     <constraint firstAttribute="height" constant="64" id="czp-66-2xi"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chart" translatesAutoresizingMaskIntoConstraints="NO" id="clg-1e-oDD">
-                                                <rect key="frame" x="95" y="75" width="64" height="64"/>
+                                                <rect key="frame" x="188" y="75" width="64" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="64" id="0GL-xs-X2a"/>
                                                     <constraint firstAttribute="width" constant="64" id="Tgp-jF-Rvp"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="rwv-cE-Vmi">
-                                                <rect key="frame" x="16" y="155" width="382" height="467"/>
+                                                <rect key="frame" x="16" y="155" width="568" height="304.5"/>
                                                 <string key="text">When joining the study… Suscipit metus ea ea ut sagittis. Etiam rhoncus eget in. Nulla integer in ullamcorper, lacinia lorem nec quis neque mattis ac. Sodales vel eligendi dui nulla a, parturient neque non faucibus integer justo blanditiis. Donec ante suspendisse animi eu. Wisi in, magna nisl eget vivamus tellus mauris sed, eleifend aliquam neque, metus ultricies, proin litora sociosqu magna vestibulum ligula. 
 
  quisque leo quis, id viverra cras diam sociis, deserunt semper, sem pellentesque sed, porttitor elit quam leo ante. Lectus pharetra varius, justo proin wisi aut, egestas penatibus cursus est dictumst nulla tristique, orci vivamus sed quis justo amet velit. Ligula quis rhoncus odio consequat, elementum lorem ut massa duis ut sed, placerat enim elit rutrum eleifend, at tincidunt vivamus suscipit urna, mauris pede suscipit arcu porta quis. Excepturi molestie natoque fermentum donec massa vel, non donec ut adipiscing blandit ante, suspendisse lectus erat.</string>
@@ -1003,7 +999,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Risks &amp; Benefits" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="RGR-7v-Jye">
-                                                <rect key="frame" x="16" y="16" width="382" height="43"/>
+                                                <rect key="frame" x="16" y="16" width="568" height="43"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>

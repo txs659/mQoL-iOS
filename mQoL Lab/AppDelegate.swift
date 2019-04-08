@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         // Checks preferred language list from device
-        let prefferedLan = NSLocale.preferredLanguages[2]
+        let prefferedLan = NSLocale.preferredLanguages[0]
         if prefferedLan.prefix(2) == "fr" {
             UserDefaults.standard.set("fr", forKey: "language")
         }

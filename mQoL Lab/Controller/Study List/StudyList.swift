@@ -1,5 +1,5 @@
 //
-//  StudyListViewController.swift
+//  StudyList.swift
 //  mQoL Lab
 //
 //  Created by Frederik Schmøde on 08/03/2019.
@@ -13,7 +13,7 @@ import JGProgressHUD
 private let reuseIdentifier = "Cell"
 
 
-class StudyListViewController: UICollectionViewController {
+class StudyList: UICollectionViewController {
     
     public var studiesArray = Array<Study>()
     var pressedCell = StudyCell()
