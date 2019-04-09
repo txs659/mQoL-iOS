@@ -11,6 +11,8 @@ import UIKit
 class DataCollection: UIViewController {
     
     public var study = Study()
+    
+    let language = UserDefaults.standard.string(forKey: "language")
 
     @IBOutlet weak var infoTitle: UILabel!
     @IBOutlet weak var infoText: UILabel!
@@ -23,6 +25,15 @@ class DataCollection: UIViewController {
         // Do any additional setup after loading the view.
         infoTitle.text = study.object(forKey: "title_sensors") as? String
         infoText.text = study.object(forKey: "text_sensors") as? String
+        
+        if language == "fr" {
+            navigationItem.backBarButtonItem?.title = FrStrings.back_button
+            navigationItem.rightBarButtonItem?.title = FrStrings.next_button
+        }
+        else {
+            navigationItem.backBarButtonItem?.title = EnStrings.back_button
+            navigationItem.rightBarButtonItem?.title = EnStrings.next_button
+        }
         
     }
     

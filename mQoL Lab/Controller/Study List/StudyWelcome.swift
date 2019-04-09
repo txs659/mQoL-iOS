@@ -12,6 +12,8 @@ class StudyWelcome: UIViewController {
     
     public var study = Study()
     
+    let language = UserDefaults.standard.string(forKey: "language")
+    
     @IBOutlet weak var welcomeTitle: UILabel!
     @IBOutlet weak var quickFacts: UILabel!
     @IBOutlet weak var welcomeText: UILabel!
@@ -22,6 +24,15 @@ class StudyWelcome: UIViewController {
         welcomeTitle.text = study.object(forKey: "title_welcome") as? String
         quickFacts.text = study.object(forKey: "quickFacts") as? String
         welcomeText.text = study.object(forKey: "text_welcome") as? String
+        
+        if language == "fr" {
+            navigationItem.backBarButtonItem?.title = FrStrings.back_button
+            navigationItem.rightBarButtonItem?.title = FrStrings.next_button
+        }
+        else {
+            navigationItem.backBarButtonItem?.title = EnStrings.back_button
+            navigationItem.rightBarButtonItem?.title = EnStrings.next_button
+        }
         
     }
 

@@ -17,6 +17,8 @@ class StudyList: UICollectionViewController {
     
     public var studiesArray = Array<Study>()
     var pressedCell = StudyCell()
+    
+    let language = UserDefaults.standard.string(forKey: "language")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +40,13 @@ class StudyList: UICollectionViewController {
             }
             hud.dismiss()
             return nil
+        }
+        
+        if language == "fr" {
+            navigationItem.backBarButtonItem?.title = FrStrings.back_button
+        }
+        else {
+            navigationItem.backBarButtonItem?.title = EnStrings.back_button
         }
         
     }

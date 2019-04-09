@@ -41,6 +41,17 @@ class EnStrings {
     
     
     //Study Consent strings
-    
+    static let view_study_consent = "Study Informed Consent"
+    static let view_study_consent_p1 = "You can download the Study Informed Consent before you continue. Once you accept the consent, a copy will be available inside the application."
+    static let view_study_agreement_download = "Download Informed Consent"
+    static let view_study_consent_ethics_1 = "I have read and understood all the information above."
+    static let view_study_consent_ethics_2 = "I accept that my data will be used for scientific purposes and that the results of the research aggregating my data and the data of other participants will be published in scientific journals or books. The data will remain anonymous and no identity information will be given."
+    static let view_study_consent_ethics_3 = "I accept that my data and that the results of the research aggregating my data will be used for educational purposes (courses and seminars for the training of students or professionals subject to professional secrecy."
+    static let view_study_consent_ethics_4 = "I authorize the sharing of my data with researchers from Quality of Life Technologies Lab, University of Geneva, Switzerland."
+    static let view_study_consent_ethics_5 = "I have voluntarily chosen to participate in this research. I have been informed that I may withdraw at any time without providing any justification and may, if necessary, request the destruction of my personal data. This consent does not relieve the organizers of the research of their responsibilities. I retain all my rights guaranteed by law."
+    static let view_study_consent_email_agree = "1. You have the option to download this agreement."
+    static let view_study_consent_not_agree = "2. If you disagree with the terms, please do not join the study at this moment. Thank you for your participation."
+    static let view_study_agreement = "Accept Agreement"
+    static let view_study_name_surname = "Input your name and surname here"
     
 }

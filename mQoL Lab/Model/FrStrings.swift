@@ -39,6 +39,17 @@ class FrStrings {
     static let view_lab_see_studies = "Études"
     
     //Study Consent strings
-    
+    static let view_study_consent = "Consentement pour l\'Étude"
+    static let view_study_consent_p1 = "Vous pouvez téléchargez le consentement lié à l'étude avant de continuer. Une copie après acceptation sera disponible dans l'application."
+    static let view_study_agreement_download = "Télécharger Consentement"
+    static let view_study_consent_ethics_1 = "J\'ai lu et compris les informations ci-dessus."
+    static let view_study_consent_ethics_2 = "J\'accepte que mes données soient utilisées à des fins scientifiques et que les résultats regroupés de mes données et les données des autres participants soient publiés dans des revues ou des livres scientifiques. Les données resteront anonymes et aucune information d\'identité ne sera donnée."
+    static let view_study_consent_ethics_3 = "J\'accepte que mes données et que les résultats agrégé de mes données soient utilisés à des fins éducatives (cours et séminaires pour la formation d\'étudiants ou de professionnels soumis au secret professionnel."
+    static let view_study_consent_ethics_4 = "J\'autorise le partage de mes données avec les chercheurs du Quality of Life Technologies Lab, Université de Genève, Suisse."
+    static let view_study_consent_ethics_5 = "J\'ai volontairement choisi de participer à cette étude. J\'ai été informé que je peux me rétracter à tout moment sans fournir de justification et que je peux, si nécessaire, demander la destruction de mes données personnelles. Ce consentement ne dégage pas les responsables de leurs responsabilités. Je conserve tous mes droits garantis par la loi."
+    static let view_study_consent_email_agree = "1. Vous avez l\'option de télécharger ce consentement."
+    static let view_study_consent_not_agree = "2. Si les termes ne sont pas accepté, merci de ne pas rejoindre cette étude pour le moment. Merci pour votre intérêt."
+    static let view_study_agreement = "Consentement Approuvé"
+    static let view_study_name_surname = "Entrez votre nom et prénon ici"
     
 }
