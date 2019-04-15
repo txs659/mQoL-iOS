@@ -45,7 +45,7 @@
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="cell" id="FFC-NN-gFQ" customClass="StudyCell" customModule="mQoL_Lab" customModuleProvider="target">
                                 <rect key="frame" x="39" y="10" width="336" height="169"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="336" height="169"/>
                                     <autoresizingMask key="autoresizingMask"/>
@@ -67,12 +67,6 @@
                                                         <constraint firstAttribute="height" constant="40" id="dWx-X1-h5G"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quality of Experience [EN]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKe-2e-xwG">
-                                                    <rect key="frame" x="50" y="0.0" width="229" height="40"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lkx-Er-BUu">
                                                     <rect key="frame" x="0.0" y="50" width="285" height="62.5"/>
                                                     <string key="text">Tell us about your perceived experience when using certain services and applications on your smartphone and get a chance to win a new Google Pixel phone!</string>
@@ -83,16 +77,19 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="sKe-2e-xwG" firstAttribute="top" secondItem="66S-oY-Gbf" secondAttribute="top" id="5fd-EC-h3U"/>
                                                 <constraint firstItem="uWo-7N-6DH" firstAttribute="top" secondItem="66S-oY-Gbf" secondAttribute="top" id="BNd-rx-2lK"/>
                                                 <constraint firstAttribute="trailing" secondItem="Lkx-Er-BUu" secondAttribute="trailing" id="C6K-2T-eUp"/>
                                                 <constraint firstItem="uWo-7N-6DH" firstAttribute="leading" secondItem="66S-oY-Gbf" secondAttribute="leading" id="KsN-7a-g6j"/>
-                                                <constraint firstItem="sKe-2e-xwG" firstAttribute="leading" secondItem="uWo-7N-6DH" secondAttribute="trailing" constant="10" id="R5u-Y5-oF0"/>
                                                 <constraint firstItem="Lkx-Er-BUu" firstAttribute="top" secondItem="uWo-7N-6DH" secondAttribute="bottom" constant="10" id="nHB-iH-tHM"/>
                                                 <constraint firstItem="Lkx-Er-BUu" firstAttribute="leading" secondItem="66S-oY-Gbf" secondAttribute="leading" id="qXb-T5-g5J"/>
-                                                <constraint firstItem="sKe-2e-xwG" firstAttribute="centerY" secondItem="uWo-7N-6DH" secondAttribute="centerY" id="tVu-A6-nhY"/>
                                             </constraints>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quality of Experience [EN]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKe-2e-xwG">
+                                            <rect key="frame" x="83" y="7" width="229" height="154"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -100,9 +97,12 @@
                                     <constraint firstItem="ew2-pR-KXM" firstAttribute="height" secondItem="66S-oY-Gbf" secondAttribute="height" id="1H4-sU-3lC"/>
                                     <constraint firstItem="ew2-pR-KXM" firstAttribute="top" secondItem="FFC-NN-gFQ" secondAttribute="top" constant="12" id="PvI-7K-3CE"/>
                                     <constraint firstItem="66S-oY-Gbf" firstAttribute="leading" secondItem="ew2-pR-KXM" secondAttribute="trailing" constant="10" id="f0m-TY-0dM"/>
+                                    <constraint firstItem="sKe-2e-xwG" firstAttribute="top" secondItem="FFC-NN-gFQ" secondAttribute="top" constant="7" id="gfi-8r-SE2"/>
                                     <constraint firstItem="ew2-pR-KXM" firstAttribute="leading" secondItem="FFC-NN-gFQ" secondAttribute="leading" constant="20" id="gmj-Jf-pql"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="66S-oY-Gbf" secondAttribute="trailing" constant="10" id="hKY-8c-oLj"/>
                                     <constraint firstItem="66S-oY-Gbf" firstAttribute="top" secondItem="FFC-NN-gFQ" secondAttribute="topMargin" constant="12" id="hce-3S-1pI"/>
+                                    <constraint firstItem="sKe-2e-xwG" firstAttribute="centerY" secondItem="uWo-7N-6DH" secondAttribute="centerY" id="uN5-UA-3wi"/>
+                                    <constraint firstItem="sKe-2e-xwG" firstAttribute="leading" secondItem="uWo-7N-6DH" secondAttribute="trailing" constant="10" id="ugE-0x-9Ko"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="studyDescription" destination="Lkx-Er-BUu" id="GNS-jt-8LD"/>
@@ -733,9 +733,9 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="741" id="tcB-pJ-XiV"/>
                                                 </constraints>
-                                                <mutableString key="text">When joining the study… Suscipit metus ea ea ut sagittis. Etiam rhoncus eget in. Nulla integer in ullamcorper, lacinia lorem nec quis neque mattis ac. Sodales vel eligendi dui nulla a, parturient neque non faucibus integer justo blanditiis. Donec ante suspendisse animi eu. Wisi in, magna nisl eget vivamus tellus mauris sed, eleifend aliquam neque, metus ultricies, proin litora sociosqu magna vestibulum ligula. 
+                                                <string key="text">When joining the study… Suscipit metus ea ea ut sagittis. Etiam rhoncus eget in. Nulla integer in ullamcorper, lacinia lorem nec quis neque mattis ac. Sodales vel eligendi dui nulla a, parturient neque non faucibus integer justo blanditiis. Donec ante suspendisse animi eu. Wisi in, magna nisl eget vivamus tellus mauris sed, eleifend aliquam neque, metus ultricies, proin litora sociosqu magna vestibulum ligula. 
 
- quisque leo quis, id viverra cras diam sociis, deserunt semper, sem pellentesque sed, porttitor elit quam leo ante. Lectus pharetra varius, justo proin wisi aut, egestas penatibus cursus est dictumst nulla tristique, orci vivamus sed quis justo amet velit. Ligula quis rhoncus odio consequat, elementum lorem ut massa duis ut sed, placerat enim elit rutrum eleifend, at tincidunt vivamus suscipit urna, mauris pede suscipit arcu porta quis. Excepturi molestie natoque fermentum donec massa vel, non donec ut adipiscing blandit ante, suspendisse lectus erat.</mutableString>
+ quisque leo quis, id viverra cras diam sociis, deserunt semper, sem pellentesque sed, porttitor elit quam leo ante. Lectus pharetra varius, justo proin wisi aut, egestas penatibus cursus est dictumst nulla tristique, orci vivamus sed quis justo amet velit. Ligula quis rhoncus odio consequat, elementum lorem ut massa duis ut sed, placerat enim elit rutrum eleifend, at tincidunt vivamus suscipit urna, mauris pede suscipit arcu porta quis. Excepturi molestie natoque fermentum donec massa vel, non donec ut adipiscing blandit ante, suspendisse lectus erat.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>

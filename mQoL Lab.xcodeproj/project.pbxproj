@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C41998BAB2D41F7DAC77B87 /* Pods_mQoL_Lab.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCEAB8823597AEE575D02EC /* Pods_mQoL_Lab.framework */; };
+		861D47B722653199001D1A78 /* StudyConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861D47B622653199001D1A78 /* StudyConfig.swift */; };
 		861EE73F223288DF00FB57B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861EE73E223288DF00FB57B3 /* AppDelegate.swift */; };
 		861EE744223288DF00FB57B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 861EE742223288DF00FB57B3 /* Main.storyboard */; };
 		861EE746223288E000FB57B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 861EE745223288E000FB57B3 /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		861D47B622653199001D1A78 /* StudyConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyConfig.swift; sourceTree = "<group>"; };
 		861EE73B223288DF00FB57B3 /* mQoL Lab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mQoL Lab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		861EE73E223288DF00FB57B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		861EE743223288DF00FB57B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				8691AC11224FE4A50077EA6C /* Study.swift */,
+				861D47B622653199001D1A78 /* StudyConfig.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				86FE8C442260A9BD004A357C /* readPDF.swift in Sources */,
 				86BA7F6B225372CA0054D17D /* FrStrings.swift in Sources */,
 				86403979223CF28000209B6E /* StudyThanks.swift in Sources */,
+				861D47B722653199001D1A78 /* StudyConfig.swift in Sources */,
 				861EE75C22329AD200FB57B3 /* StudyList.swift in Sources */,
 				86BA7F6F22538D6B0054D17D /* AboutTheStudies.swift in Sources */,
 				8691AC2B2251489B0077EA6C /* DataProtection.swift in Sources */,

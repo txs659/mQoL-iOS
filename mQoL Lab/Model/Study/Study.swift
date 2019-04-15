@@ -15,7 +15,11 @@ class Study : PFObject, PFSubclassing {
         return "Study"
     }
     
-    static func getStudiesByStatusQuery () -> PFQuery<Study>? {
+    static func basicQuery() -> PFQuery<Study> {
+        return self.query() as! PFQuery<Study>
+    }
+    
+    static func getStudiesByStatusQuery() -> PFQuery<Study>? {
         return self.query()?.addAscendingOrder("displayOrder") as? PFQuery<Study>
     }
     

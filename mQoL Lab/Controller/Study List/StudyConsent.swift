@@ -115,8 +115,6 @@ class StudyConsent: UIViewController, UITextFieldDelegate {
         
         // Adding action to alert
         alert.addAction(UIAlertAction(title: "Ok", style: .default))
-        
-        
     }
     
     //Changing the bool variables for the switches when turned on/off
@@ -153,18 +151,34 @@ class StudyConsent: UIViewController, UITextFieldDelegate {
         let name : String = nameField.text!
         if switch1Accepted && switch2Accepted && switch3Accepted && switch4Accepted && switch5Accepted && switch6Accepted && !name.isEmpty {
             UserDefaults.standard.set(true, forKey: "studyConsentGiven")
+            
+            
+            /*
+            //Creating a 'StudyUser' object for the user. This means that the user now has
+            //fully joined a specific study
+            */
+            ParseController.createStudyUser(studyId: study.objectId!)
+            
+            //Save studyId in local storage, so it is easy to access
+            UserDefaults.standard.set(study.objectId!, forKey: "studyId")
+            
+            
+            //Moving on to the 'thank you' screen
             performSegue(withIdentifier: "studyThankYou", sender: self)
         }
+        // If all switches has not been clicked or if the name field is empty display alert.
         else {
             self.present(alert, animated: true)
         }
     }
     
+    //Function that makes keyboard dismiss when 'return' is pressed
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
+    //Downloads PDF file from Parse and displays it on PDFView
     @IBAction func downloadPressed(_ sender: Any) {
         let query = PFQuery(className: study.parseClassName)
         query.getObjectInBackground(withId: study.objectId!) { (object, error) in
@@ -186,6 +200,7 @@ class StudyConsent: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // Sends the PDF file to the PDFView for display
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "readPDF" {
             let vc = segue.destination as? readPDF

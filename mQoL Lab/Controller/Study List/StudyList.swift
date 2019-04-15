@@ -13,7 +13,7 @@ import JGProgressHUD
 private let reuseIdentifier = "Cell"
 
 
-class StudyList: UICollectionViewController {
+class StudyList: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     public var studiesArray = Array<Study>()
     var pressedCell = StudyCell()
@@ -22,9 +22,6 @@ class StudyList: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -55,17 +52,17 @@ class StudyList: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
+    //Sets the number of sections. In this case we only want 1.
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
-
+    
+    //Sets the total number of celss/studies
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return studiesArray.count
     }
-
+    
+    //Is responsible for setting up the cell content of every cell
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! StudyCell
         
@@ -89,6 +86,7 @@ class StudyList: UICollectionViewController {
         return cell
     }
     
+    //Captures the study from the pressed cell
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let selectedCell = collectionView.cellForItem(at: indexPath) as? StudyCell
@@ -96,9 +94,28 @@ class StudyList: UICollectionViewController {
         self.performSegue(withIdentifier: "welcome", sender: self)
     }
     
+    //Sends the pressed study data to the next view
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as? StudyWelcome
         vc?.study = pressedCell.study
+    }
+    
+    // Makes sure that the list of studies can be displayed in both portrait and landscape
+    // mode.
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        let cellWidth : CGFloat = 336
+        
+        let numberOfCells = floor(self.view.frame.size.width / cellWidth)
+        let edgeInsets = (self.view.frame.size.width - (numberOfCells * cellWidth)) / (numberOfCells + 1)
+        
+        return UIEdgeInsets(top: 15, left: edgeInsets, bottom: 0, right: edgeInsets)
+        
+    }
+    
+    //Recalculates the cell sizes on device rotation
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionView?.collectionViewLayout.invalidateLayout();
     }
     
 

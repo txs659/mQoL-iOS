@@ -20,9 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Register parse subclasses
         MqolUser.registerSubclass()
         Study.registerSubclass()
+        StudyUser.registerSubclass()
         
         // Initializing call to the Parse server
         let parseConfig = ParseClientConfiguration {
+            $0.isLocalDatastoreEnabled = true
             $0.applicationId = "mQoL-app-dev"
             $0.server = "https://qol1.unige.ch/mqol-parse-dev/"
         }

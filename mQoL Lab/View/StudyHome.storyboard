@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
         <!--mQoL Studies - UNIGE-->
         <scene sceneID="c9A-ST-mxC">
             <objects>
-                <viewController id="ypL-iW-Cp7" customClass="StudyHomeViewController" customModule="mQoL_Lab_1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ypL-iW-Cp7" customClass="StudyHomeViewController" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9cH-oi-fez">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,7 +24,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yel-Vf-eS3">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="697"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stress Awareness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bi0-Gu-AS8">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stress Awareness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Bi0-Gu-AS8">
                                                 <rect key="frame" x="16" y="16" width="273" height="43"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                 <nil key="textColor"/>
@@ -45,41 +45,56 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1y-xP-bv8">
-                                                <rect key="frame" x="16" y="165" width="343" height="243.66666666666663"/>
+                                                <rect key="frame" x="16" y="165" width="343" height="162.33333333333337"/>
                                                 <string key="text">Nam et auctor tellus, pharetra dictumst porta. Nec justo erat velit at rutrum integer, cubilia justo molestie aliquam mauris in nunc, tincidunt ad id commodo suspendisse sit consectetuer, leo hendrerit class nibh tincidunt id, quis arcu dolor orci mauris. 
 
-Amet dolor semper, neque viverra a, ut enim amet, nunc eget at. Hac wisi a id, porta ac varius optio, posuere ac aliquam magna maecenas odio quis, mauris ut egestas gravida sit in.</string>
+</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4B-kr-v6A">
+                                                <rect key="frame" x="136" y="379.66666666666669" width="103" height="30"/>
+                                                <state key="normal" title="BASELINE SDS"/>
+                                                <connections>
+                                                    <action selector="survey2Pressed:" destination="ypL-iW-Cp7" eventType="touchUpInside" id="j65-3t-Z9L"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffF-1B-Sxz">
+                                                <rect key="frame" x="257" y="379.66666666666669" width="102" height="30"/>
+                                                <state key="normal" title="BASELINE PSS"/>
+                                                <connections>
+                                                    <action selector="survey3Pressed:" destination="ypL-iW-Cp7" eventType="touchUpInside" id="Tbm-q8-sIY"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ea-kH-aOX">
+                                                <rect key="frame" x="28" y="429.66666666666663" width="319" height="30"/>
+                                                <state key="normal" title="PLEASE TAKE THIS EXTERNAL SURVEY: GERT"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5m-Js-JM3">
+                                                <rect key="frame" x="147" y="479.66666666666663" width="81" height="30"/>
+                                                <state key="normal" title="ADD PEERS"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Anf-jr-8rx">
+                                                <rect key="frame" x="16" y="529.66666666666663" width="100" height="30"/>
+                                                <state key="normal" title="START STUDY"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qc5-Db-yZs">
+                                                <rect key="frame" x="270" y="529.66666666666663" width="89" height="30"/>
+                                                <state key="normal" title="QUIT STUDY"/>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="yeK-I6-J0V">
+                                                <rect key="frame" x="16" y="343.33333333333331" width="343" height="20.333333333333314"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f9p-Hh-hea">
-                                                <rect key="frame" x="16" y="428.66666666666663" width="48" height="30"/>
+                                                <rect key="frame" x="16" y="379.66666666666669" width="48" height="30"/>
                                                 <state key="normal" title="ENTRY"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4B-kr-v6A">
-                                                <rect key="frame" x="136" y="428.66666666666663" width="103" height="30"/>
-                                                <state key="normal" title="BASELINE SDS"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffF-1B-Sxz">
-                                                <rect key="frame" x="257" y="428.66666666666663" width="102" height="30"/>
-                                                <state key="normal" title="BASELINE PSS"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ea-kH-aOX">
-                                                <rect key="frame" x="28" y="478.66666666666663" width="319" height="30"/>
-                                                <state key="normal" title="PLEASE TAKE THIS EXTERNAL SURVEY: GERT"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5m-Js-JM3">
-                                                <rect key="frame" x="147" y="528.66666666666663" width="81" height="30"/>
-                                                <state key="normal" title="ADD PEERS"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Anf-jr-8rx">
-                                                <rect key="frame" x="16" y="578.66666666666663" width="100" height="30"/>
-                                                <state key="normal" title="START STUDY"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qc5-Db-yZs">
-                                                <rect key="frame" x="270" y="578.66666666666663" width="89" height="30"/>
-                                                <state key="normal" title="QUIT STUDY"/>
+                                                <connections>
+                                                    <action selector="survey1Pressed:" destination="ypL-iW-Cp7" eventType="touchUpInside" id="Y5L-Sy-HNk"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -89,22 +104,25 @@ Amet dolor semper, neque viverra a, ut enim amet, nunc eget at. Hac wisi a id, p
                                             <constraint firstItem="adI-VH-HuZ" firstAttribute="leading" secondItem="Yel-Vf-eS3" secondAttribute="leading" constant="38" id="1uR-kA-w66"/>
                                             <constraint firstAttribute="trailing" secondItem="ffF-1B-Sxz" secondAttribute="trailing" constant="16" id="3Te-mA-hMM"/>
                                             <constraint firstAttribute="trailing" secondItem="Y1y-xP-bv8" secondAttribute="trailing" constant="16" id="8Ic-9l-j5S"/>
+                                            <constraint firstItem="x4B-kr-v6A" firstAttribute="top" secondItem="yeK-I6-J0V" secondAttribute="bottom" constant="16" id="F0U-s3-ndA"/>
                                             <constraint firstItem="f9p-Hh-hea" firstAttribute="leading" secondItem="Yel-Vf-eS3" secondAttribute="leading" constant="16" id="FvU-f8-voI"/>
                                             <constraint firstAttribute="trailing" secondItem="zpF-aJ-O6d" secondAttribute="trailing" constant="38" id="GlX-Nl-lJc"/>
                                             <constraint firstItem="Bi0-Gu-AS8" firstAttribute="leading" secondItem="Yel-Vf-eS3" secondAttribute="leading" constant="16" id="Mgx-ye-vA7"/>
+                                            <constraint firstItem="yeK-I6-J0V" firstAttribute="leading" secondItem="Yel-Vf-eS3" secondAttribute="leading" constant="16" id="NuM-ab-m5h"/>
                                             <constraint firstItem="Y1y-xP-bv8" firstAttribute="leading" secondItem="Yel-Vf-eS3" secondAttribute="leading" constant="16" id="Ov5-lG-onj"/>
-                                            <constraint firstItem="x4B-kr-v6A" firstAttribute="top" secondItem="Y1y-xP-bv8" secondAttribute="bottom" constant="20" id="SVw-8N-2EM"/>
                                             <constraint firstItem="Anf-jr-8rx" firstAttribute="top" secondItem="G5m-Js-JM3" secondAttribute="bottom" constant="20" id="UJF-aW-cHj"/>
+                                            <constraint firstItem="ffF-1B-Sxz" firstAttribute="top" secondItem="yeK-I6-J0V" secondAttribute="bottom" constant="16" id="WKU-sV-Qfr"/>
                                             <constraint firstItem="Y1y-xP-bv8" firstAttribute="top" secondItem="adI-VH-HuZ" secondAttribute="bottom" constant="16" id="Wag-Db-Hrw"/>
+                                            <constraint firstAttribute="trailing" secondItem="yeK-I6-J0V" secondAttribute="trailing" constant="16" id="YJr-3z-TiG"/>
                                             <constraint firstItem="1Ea-kH-aOX" firstAttribute="centerX" secondItem="Yel-Vf-eS3" secondAttribute="centerX" id="aUk-d6-WMt"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Bi0-Gu-AS8" secondAttribute="trailing" constant="10" id="cbj-Dw-Pn2"/>
                                             <constraint firstItem="x4B-kr-v6A" firstAttribute="centerX" secondItem="Yel-Vf-eS3" secondAttribute="centerX" id="eMN-gg-9WC"/>
                                             <constraint firstItem="Bi0-Gu-AS8" firstAttribute="top" secondItem="Yel-Vf-eS3" secondAttribute="top" constant="16" id="fOt-9S-d6K"/>
                                             <constraint firstItem="Anf-jr-8rx" firstAttribute="leading" secondItem="Yel-Vf-eS3" secondAttribute="leading" constant="16" id="fZK-mZ-QWR"/>
+                                            <constraint firstItem="yeK-I6-J0V" firstAttribute="top" secondItem="Y1y-xP-bv8" secondAttribute="bottom" constant="16" id="hGk-ha-mru"/>
+                                            <constraint firstItem="f9p-Hh-hea" firstAttribute="top" secondItem="yeK-I6-J0V" secondAttribute="bottom" constant="16" id="oU3-LS-iUk"/>
                                             <constraint firstItem="G5m-Js-JM3" firstAttribute="centerX" secondItem="Yel-Vf-eS3" secondAttribute="centerX" id="okz-rF-MNa"/>
                                             <constraint firstItem="adI-VH-HuZ" firstAttribute="top" secondItem="Bi0-Gu-AS8" secondAttribute="bottom" constant="20" id="rhD-TM-i7x"/>
-                                            <constraint firstItem="ffF-1B-Sxz" firstAttribute="top" secondItem="Y1y-xP-bv8" secondAttribute="bottom" constant="20" id="sRt-Vp-kQ0"/>
-                                            <constraint firstItem="f9p-Hh-hea" firstAttribute="top" secondItem="Y1y-xP-bv8" secondAttribute="bottom" constant="20" id="stn-fg-WZo"/>
                                             <constraint firstItem="1Ea-kH-aOX" firstAttribute="top" secondItem="f9p-Hh-hea" secondAttribute="bottom" constant="20" id="t0o-ZT-coo"/>
                                             <constraint firstItem="G5m-Js-JM3" firstAttribute="top" secondItem="1Ea-kH-aOX" secondAttribute="bottom" constant="20" id="uE6-6w-gbt"/>
                                             <constraint firstItem="qc5-Db-yZs" firstAttribute="top" secondItem="G5m-Js-JM3" secondAttribute="bottom" constant="20" id="v2q-gu-Aty"/>
@@ -142,15 +160,23 @@ Amet dolor semper, neque viverra a, ut enim amet, nunc eget at. Hac wisi a id, p
                     <navigationItem key="navigationItem" title="mQoL Studies - UNIGE" id="fJo-px-jzf">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="info" id="jGk-CP-BnM"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="studyDescribtion" destination="Y1y-xP-bv8" id="Gy9-nc-135"/>
+                        <outlet property="studyTasks" destination="yeK-I6-J0V" id="xv0-Po-yz9"/>
+                        <outlet property="studyTitle" destination="Bi0-Gu-AS8" id="Q4A-BN-PBa"/>
+                        <outlet property="survey1" destination="f9p-Hh-hea" id="ob1-uG-KVv"/>
+                        <outlet property="survey2" destination="x4B-kr-v6A" id="0vy-DJ-pZp"/>
+                        <outlet property="survey3" destination="ffF-1B-Sxz" id="5pN-K8-0ng"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9F7-Es-zvV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="856.52173913043487" y="727.90178571428567"/>
+            <point key="canvasLocation" x="855.20000000000005" y="727.83251231527095"/>
         </scene>
         <!--Study View Controller-->
         <scene sceneID="mvO-FI-Rbh">
             <objects>
-                <navigationController storyboardIdentifier="studies" automaticallyAdjustsScrollViewInsets="NO" id="l8U-G7-JGM" customClass="StudyViewController" customModule="mQoL_Lab_1" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="studies" automaticallyAdjustsScrollViewInsets="NO" id="l8U-G7-JGM" customClass="StudyViewController" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="f7R-jd-U5f">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
