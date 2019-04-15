@@ -39,6 +39,11 @@ class RiskAndBenefits: UIViewController {
         self.performSegue(withIdentifier: "toConsent", sender: self)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as? StudyConsent
+        vc?.study = study
+    }
+    
     
     
 }

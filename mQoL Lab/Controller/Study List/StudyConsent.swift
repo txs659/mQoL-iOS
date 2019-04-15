@@ -7,8 +7,14 @@
 //
 
 import UIKit
+import PDFKit
+import Parse
 
 class StudyConsent: UIViewController, UITextFieldDelegate {
+    
+    public var study = Study()
+    
+    var pdf = PDFDocument()
     
     let language = UserDefaults.standard.string(forKey: "language")
 
@@ -32,10 +38,22 @@ class StudyConsent: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var subtext2: UILabel!
     @IBOutlet weak var AcceptBtn: UIButton!
     
+    @IBOutlet weak var pdfView: PDFView!
+    
+    // Bools checking if switches has been set to on/true
+    var switch1Accepted : Bool = false
+    var switch2Accepted : Bool = false
+    var switch3Accepted : Bool = false
+    var switch4Accepted : Bool = false
+    var switch5Accepted : Bool = false
+    var switch6Accepted : Bool = false
+    
+    //Creating the alarm that pops up, if not all switches has been pressed
+    let alert = UIAlertController(title: "Agreement missing", message: "You need to write you full name and agree to all the terms in order to continue", preferredStyle: .alert)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         self.nameField.delegate = self
         
         if language == "fr" {
@@ -75,12 +93,71 @@ class StudyConsent: UIViewController, UITextFieldDelegate {
             AcceptBtn.setTitle(EnStrings.view_study_agreement, for: .normal)
         }
         
+        // Adding actions to switches
+        if let switch1 = switch1 {
+            switch1.addTarget(self, action: #selector(stateChanged), for: .valueChanged)
+        }
+        if let switch2 = switch2 {
+            switch2.addTarget(self, action: #selector(stateChanged), for: .valueChanged)
+        }
+        if let switch3 = switch3 {
+            switch3.addTarget(self, action: #selector(stateChanged), for: .valueChanged)
+        }
+        if let switch4 = switch4 {
+            switch4.addTarget(self, action: #selector(stateChanged), for: .valueChanged)
+        }
+        if let switch5 = switch5 {
+            switch5.addTarget(self, action: #selector(stateChanged), for: .valueChanged)
+        }
+        if let switch6 = switch6 {
+            switch6.addTarget(self, action: #selector(stateChanged), for: .valueChanged)
+        }
         
+        // Adding action to alert
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        
+        
+    }
+    
+    //Changing the bool variables for the switches when turned on/off
+    @objc func stateChanged(switchState: UISwitch) {
+        if switchState.isOn && switchState == switch1 {
+            switch1Accepted = true
+        } else if switchState.isOn && switchState == switch2 {
+            switch2Accepted = true
+        } else if switchState.isOn && switchState == switch3 {
+            switch3Accepted = true
+        } else if switchState.isOn && switchState == switch4 {
+            switch4Accepted = true
+        } else if switchState.isOn && switchState == switch5 {
+            switch5Accepted = true
+        } else if switchState.isOn && switchState == switch6 {
+            switch6Accepted = true
+        } else if !switchState.isOn && switchState == switch1{
+            switch1Accepted = false
+        } else if !switchState.isOn && switchState == switch2{
+            switch2Accepted = false
+        } else if !switchState.isOn && switchState == switch3{
+            switch3Accepted = false
+        } else if !switchState.isOn && switchState == switch4{
+            switch4Accepted = false
+        } else if !switchState.isOn && switchState == switch5{
+            switch5Accepted = false
+        } else if !switchState.isOn && switchState == switch6{
+            switch6Accepted = false
+        }
     }
    
     
     @IBAction func giveConsent(_ sender: Any) {
-        UserDefaults.standard.set(true, forKey: "studyConsentGiven")
+        let name : String = nameField.text!
+        if switch1Accepted && switch2Accepted && switch3Accepted && switch4Accepted && switch5Accepted && switch6Accepted && !name.isEmpty {
+            UserDefaults.standard.set(true, forKey: "studyConsentGiven")
+            performSegue(withIdentifier: "studyThankYou", sender: self)
+        }
+        else {
+            self.present(alert, animated: true)
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -88,7 +165,32 @@ class StudyConsent: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    @IBAction func downloadConsentPressed(_ sender: Any) {
+    @IBAction func downloadPressed(_ sender: Any) {
+        let query = PFQuery(className: study.parseClassName)
+        query.getObjectInBackground(withId: study.objectId!) { (object, error) in
+            if (error == nil && object != nil) {
+                let file = object!["informedConsent"] as! PFFileObject
+                let pdfURL = URL(string: file.url!)
+                if let pdf = PDFDocument(url: pdfURL!) {
+                    self.pdf = pdf
+                    self.performSegue(withIdentifier: "readPDF", sender: self)
+                }
+                else {
+                    print ("PDF file not found")
+                }
+                
+            }
+            else {
+                print (error!)
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "readPDF" {
+            let vc = segue.destination as? readPDF
+            vc?.pdfFile = self.pdf
+        }
     }
     
 }

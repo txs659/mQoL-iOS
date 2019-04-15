@@ -388,7 +388,7 @@
                                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="downloadConsentPressed:" destination="7Iv-Cr-jwj" eventType="touchUpInside" id="yJD-ag-I6Y"/>
+                                                    <action selector="downloadPressed:" destination="7Iv-Cr-jwj" eventType="touchUpInside" id="Fu2-8a-hJB"/>
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input your name and surname here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pQ3-P7-Wig">
@@ -441,7 +441,6 @@
                                                 <state key="normal" title="ACCEPT AGREEMENT"/>
                                                 <connections>
                                                     <action selector="giveConsent:" destination="7Iv-Cr-jwj" eventType="touchUpInside" id="AMU-fX-MHC"/>
-                                                    <segue destination="ZrN-ND-j1a" kind="show" id="t4h-aQ-rgI"/>
                                                 </connections>
                                             </button>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4n7-g6-11U">
@@ -554,7 +553,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="AcceptBtn" destination="EO7-QV-f6t" id="w49-gb-Dmy"/>
-                        <outlet property="downloadBtn" destination="otm-bM-62X" id="SWL-7n-zaI"/>
+                        <outlet property="downloadBtn" destination="otm-bM-62X" id="BhA-VY-OF1"/>
                         <outlet property="nameField" destination="pQ3-P7-Wig" id="aiK-3F-YG3"/>
                         <outlet property="pageTitle" destination="FmR-tD-aAu" id="hBS-YK-szk"/>
                         <outlet property="subtext1" destination="3ge-M6-PV6" id="yM1-TH-ghN"/>
@@ -572,11 +571,57 @@
                         <outlet property="switch6" destination="pPY-Zp-s1m" id="U0c-1s-6bM"/>
                         <outlet property="switch6Label" destination="zMR-lr-9ne" id="YRG-Ca-wEM"/>
                         <outlet property="text" destination="sI6-cT-XVL" id="JGp-Qt-kXo"/>
+                        <segue destination="ZrN-ND-j1a" kind="show" identifier="studyThankYou" id="puT-la-Iaz"/>
+                        <segue destination="VDG-81-wUM" kind="presentation" identifier="readPDF" id="ojR-X1-v44"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Vc-Zl-3s2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7747.826086956522" y="24.776785714285712"/>
+        </scene>
+        <!--ReadPDF-->
+        <scene sceneID="Mch-hm-LVx">
+            <objects>
+                <viewController id="VDG-81-wUM" customClass="readPDF" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eft-Ip-xVD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wjt-oH-2tJ" customClass="PDFView">
+                                <rect key="frame" x="0.0" y="106" width="414" height="756"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23Y-dj-gQg">
+                                <rect key="frame" x="16" y="60" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="rIP-8L-HbK"/>
+                                    <constraint firstAttribute="height" constant="30" id="roZ-HH-o1i"/>
+                                </constraints>
+                                <state key="normal" image="CloseBtn"/>
+                                <connections>
+                                    <action selector="closePressedWithSender:" destination="VDG-81-wUM" eventType="touchUpInside" id="IMI-IS-iBT"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="23Y-dj-gQg" firstAttribute="top" secondItem="eAp-L3-rPp" secondAttribute="top" constant="16" id="8QY-fd-NcF"/>
+                            <constraint firstItem="eAp-L3-rPp" firstAttribute="bottom" secondItem="wjt-oH-2tJ" secondAttribute="bottom" id="9bo-FS-clZ"/>
+                            <constraint firstItem="wjt-oH-2tJ" firstAttribute="leading" secondItem="eAp-L3-rPp" secondAttribute="leading" id="G7g-jl-9ax"/>
+                            <constraint firstItem="eAp-L3-rPp" firstAttribute="trailing" secondItem="wjt-oH-2tJ" secondAttribute="trailing" id="hPZ-dC-KfS"/>
+                            <constraint firstItem="23Y-dj-gQg" firstAttribute="leading" secondItem="eAp-L3-rPp" secondAttribute="leading" constant="16" id="hcw-EA-4SA"/>
+                            <constraint firstItem="wjt-oH-2tJ" firstAttribute="top" secondItem="23Y-dj-gQg" secondAttribute="bottom" constant="16" id="mr7-L5-PoX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eAp-L3-rPp"/>
+                    </view>
+                    <connections>
+                        <outlet property="btn" destination="23Y-dj-gQg" id="VPf-jp-Lbe"/>
+                        <outlet property="pdfView" destination="wjt-oH-2tJ" id="9Px-Ix-Gwt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X4D-q5-Y1J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7747.826086956522" y="728.57142857142856"/>
         </scene>
         <!--mQoL Lab - UNIGE-->
         <scene sceneID="pqY-1c-WES">
@@ -659,8 +704,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hby-FD-gcq">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="88K-1t-gCd">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="746"/>
+                                    <view contentMode="scaleToFill" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="88K-1t-gCd">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="vpz-bE-xsh">
                                                 <rect key="frame" x="255" y="75" width="64" height="64"/>
@@ -683,11 +728,14 @@
                                                     <constraint firstAttribute="height" constant="64" id="xH4-2i-6Ps"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="n8g-NK-8lS">
-                                                <rect key="frame" x="16" y="155" width="382" height="467"/>
-                                                <string key="text">When joining the study… Suscipit metus ea ea ut sagittis. Etiam rhoncus eget in. Nulla integer in ullamcorper, lacinia lorem nec quis neque mattis ac. Sodales vel eligendi dui nulla a, parturient neque non faucibus integer justo blanditiis. Donec ante suspendisse animi eu. Wisi in, magna nisl eget vivamus tellus mauris sed, eleifend aliquam neque, metus ultricies, proin litora sociosqu magna vestibulum ligula. 
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="n8g-NK-8lS">
+                                                <rect key="frame" x="16" y="155" width="382" height="741"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="741" id="tcB-pJ-XiV"/>
+                                                </constraints>
+                                                <mutableString key="text">When joining the study… Suscipit metus ea ea ut sagittis. Etiam rhoncus eget in. Nulla integer in ullamcorper, lacinia lorem nec quis neque mattis ac. Sodales vel eligendi dui nulla a, parturient neque non faucibus integer justo blanditiis. Donec ante suspendisse animi eu. Wisi in, magna nisl eget vivamus tellus mauris sed, eleifend aliquam neque, metus ultricies, proin litora sociosqu magna vestibulum ligula. 
 
- quisque leo quis, id viverra cras diam sociis, deserunt semper, sem pellentesque sed, porttitor elit quam leo ante. Lectus pharetra varius, justo proin wisi aut, egestas penatibus cursus est dictumst nulla tristique, orci vivamus sed quis justo amet velit. Ligula quis rhoncus odio consequat, elementum lorem ut massa duis ut sed, placerat enim elit rutrum eleifend, at tincidunt vivamus suscipit urna, mauris pede suscipit arcu porta quis. Excepturi molestie natoque fermentum donec massa vel, non donec ut adipiscing blandit ante, suspendisse lectus erat.</string>
+ quisque leo quis, id viverra cras diam sociis, deserunt semper, sem pellentesque sed, porttitor elit quam leo ante. Lectus pharetra varius, justo proin wisi aut, egestas penatibus cursus est dictumst nulla tristique, orci vivamus sed quis justo amet velit. Ligula quis rhoncus odio consequat, elementum lorem ut massa duis ut sed, placerat enim elit rutrum eleifend, at tincidunt vivamus suscipit urna, mauris pede suscipit arcu porta quis. Excepturi molestie natoque fermentum donec massa vel, non donec ut adipiscing blandit ante, suspendisse lectus erat.</mutableString>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -704,34 +752,36 @@
                                             <constraint firstItem="uFV-hO-RBi" firstAttribute="centerX" secondItem="88K-1t-gCd" secondAttribute="centerX" id="1LN-1Q-lbe"/>
                                             <constraint firstItem="uFV-hO-RBi" firstAttribute="leading" secondItem="Ja1-Zv-1wQ" secondAttribute="trailing" constant="16" id="4hY-Oc-9fV"/>
                                             <constraint firstItem="vpz-bE-xsh" firstAttribute="top" secondItem="5Z8-28-zlO" secondAttribute="bottom" constant="16" id="4im-dE-hmb"/>
-                                            <constraint firstAttribute="height" constant="746" id="6rm-Zq-3cI"/>
                                             <constraint firstItem="n8g-NK-8lS" firstAttribute="leading" secondItem="88K-1t-gCd" secondAttribute="leading" constant="16" id="7Z9-RL-pdJ"/>
                                             <constraint firstItem="uFV-hO-RBi" firstAttribute="top" secondItem="5Z8-28-zlO" secondAttribute="bottom" constant="16" id="Ig3-e3-Tzh"/>
                                             <constraint firstAttribute="trailing" secondItem="5Z8-28-zlO" secondAttribute="trailing" constant="16" id="QGj-Qq-BXA"/>
                                             <constraint firstAttribute="trailing" secondItem="n8g-NK-8lS" secondAttribute="trailing" constant="16" id="QyK-I7-708"/>
                                             <constraint firstItem="5Z8-28-zlO" firstAttribute="top" secondItem="88K-1t-gCd" secondAttribute="top" constant="16" id="VnZ-cF-Mqn"/>
+                                            <constraint firstAttribute="height" constant="896" id="cLu-0U-QPE"/>
                                             <constraint firstItem="n8g-NK-8lS" firstAttribute="top" secondItem="vpz-bE-xsh" secondAttribute="bottom" constant="16" id="fWa-af-Wih"/>
                                             <constraint firstItem="5Z8-28-zlO" firstAttribute="leading" secondItem="88K-1t-gCd" secondAttribute="leading" constant="16" id="jcJ-Xi-aWd"/>
                                             <constraint firstItem="Ja1-Zv-1wQ" firstAttribute="top" secondItem="5Z8-28-zlO" secondAttribute="bottom" constant="16" id="tLL-qc-bJQ"/>
                                             <constraint firstItem="vpz-bE-xsh" firstAttribute="leading" secondItem="uFV-hO-RBi" secondAttribute="trailing" constant="16" id="uyK-La-4hs"/>
+                                            <constraint firstAttribute="bottom" secondItem="n8g-NK-8lS" secondAttribute="bottom" id="vVM-CR-j93"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="88K-1t-gCd" firstAttribute="leading" secondItem="hby-FD-gcq" secondAttribute="leading" id="Jf0-Ub-eI6"/>
-                                    <constraint firstAttribute="trailing" secondItem="88K-1t-gCd" secondAttribute="trailing" id="QtC-K9-UtV"/>
-                                    <constraint firstAttribute="bottom" secondItem="88K-1t-gCd" secondAttribute="bottom" id="Xjv-fS-avo"/>
-                                    <constraint firstItem="88K-1t-gCd" firstAttribute="top" secondItem="hby-FD-gcq" secondAttribute="top" id="fSj-vV-oHh"/>
+                                    <constraint firstAttribute="trailing" secondItem="88K-1t-gCd" secondAttribute="trailing" id="BdM-zv-WoF"/>
+                                    <constraint firstAttribute="bottom" secondItem="88K-1t-gCd" secondAttribute="bottom" id="CYV-mo-PZU"/>
+                                    <constraint firstItem="88K-1t-gCd" firstAttribute="top" secondItem="hby-FD-gcq" secondAttribute="top" id="FTz-Iq-UYZ"/>
+                                    <constraint firstItem="88K-1t-gCd" firstAttribute="leading" secondItem="hby-FD-gcq" secondAttribute="leading" id="nzm-NR-k5C"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="hby-FD-gcq" firstAttribute="trailing" secondItem="1Fj-oq-5X5" secondAttribute="trailing" id="2cI-fE-jCt"/>
-                            <constraint firstItem="1Fj-oq-5X5" firstAttribute="bottom" secondItem="hby-FD-gcq" secondAttribute="bottom" id="9qn-c6-84f"/>
-                            <constraint firstItem="88K-1t-gCd" firstAttribute="width" secondItem="1Fj-oq-5X5" secondAttribute="width" id="HZ1-Oi-5I6"/>
-                            <constraint firstItem="hby-FD-gcq" firstAttribute="leading" secondItem="1Fj-oq-5X5" secondAttribute="leading" id="KXt-Ol-oQx"/>
-                            <constraint firstItem="hby-FD-gcq" firstAttribute="top" secondItem="1Fj-oq-5X5" secondAttribute="top" id="bwD-Vc-jMd"/>
+                            <constraint firstItem="hby-FD-gcq" firstAttribute="top" secondItem="1Fj-oq-5X5" secondAttribute="top" id="8ou-E9-iIJ"/>
+                            <constraint firstItem="hby-FD-gcq" firstAttribute="leading" secondItem="1Fj-oq-5X5" secondAttribute="leading" id="H5M-ti-Fmf"/>
+                            <constraint firstItem="88K-1t-gCd" firstAttribute="height" relation="greaterThanOrEqual" secondItem="xGp-73-9dX" secondAttribute="height" priority="250" id="Kcf-6J-fRP"/>
+                            <constraint firstItem="88K-1t-gCd" firstAttribute="width" secondItem="xGp-73-9dX" secondAttribute="width" id="T4e-W2-7s8"/>
+                            <constraint firstItem="hby-FD-gcq" firstAttribute="trailing" secondItem="1Fj-oq-5X5" secondAttribute="trailing" id="bpH-JT-FTg"/>
+                            <constraint firstItem="hby-FD-gcq" firstAttribute="bottom" secondItem="1Fj-oq-5X5" secondAttribute="bottom" id="kFg-sy-sQa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1Fj-oq-5X5"/>
                     </view>
@@ -751,7 +801,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TeH-dF-HRE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3875" y="27"/>
+            <point key="canvasLocation" x="3873.913043478261" y="26.785714285714285"/>
         </scene>
         <!--mQoL Lab - UNIGE-->
         <scene sceneID="IYf-Cu-J6Z">
@@ -1175,6 +1225,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="CloseBtn" width="50" height="50"/>
         <image name="Line" width="3" height="82"/>
         <image name="addUser" width="100" height="100"/>
         <image name="calendar" width="64" height="64"/>
