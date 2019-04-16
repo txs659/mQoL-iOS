@@ -82,6 +82,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qc5-Db-yZs">
                                                 <rect key="frame" x="270" y="529.66666666666663" width="89" height="30"/>
                                                 <state key="normal" title="QUIT STUDY"/>
+                                                <connections>
+                                                    <action selector="quitStudyPressed:" destination="ypL-iW-Cp7" eventType="touchUpInside" id="JBU-Mq-pRa"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="yeK-I6-J0V">
                                                 <rect key="frame" x="16" y="343.33333333333331" width="343" height="20.333333333333314"/>
@@ -96,6 +99,13 @@
                                                     <action selector="survey1Pressed:" destination="ypL-iW-Cp7" eventType="touchUpInside" id="Y5L-Sy-HNk"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bpk-GP-w93">
+                                                <rect key="frame" x="56" y="591.66666666666663" width="263" height="30"/>
+                                                <state key="normal" title="DEBUG BUTTON: DELETE CONSENTS"/>
+                                                <connections>
+                                                    <action selector="resetConsents:" destination="ypL-iW-Cp7" eventType="touchUpInside" id="Uqi-Xv-mi2"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -107,6 +117,7 @@
                                             <constraint firstItem="x4B-kr-v6A" firstAttribute="top" secondItem="yeK-I6-J0V" secondAttribute="bottom" constant="16" id="F0U-s3-ndA"/>
                                             <constraint firstItem="f9p-Hh-hea" firstAttribute="leading" secondItem="Yel-Vf-eS3" secondAttribute="leading" constant="16" id="FvU-f8-voI"/>
                                             <constraint firstAttribute="trailing" secondItem="zpF-aJ-O6d" secondAttribute="trailing" constant="38" id="GlX-Nl-lJc"/>
+                                            <constraint firstItem="Bpk-GP-w93" firstAttribute="centerX" secondItem="Yel-Vf-eS3" secondAttribute="centerX" id="IP7-0w-uaF"/>
                                             <constraint firstItem="Bi0-Gu-AS8" firstAttribute="leading" secondItem="Yel-Vf-eS3" secondAttribute="leading" constant="16" id="Mgx-ye-vA7"/>
                                             <constraint firstItem="yeK-I6-J0V" firstAttribute="leading" secondItem="Yel-Vf-eS3" secondAttribute="leading" constant="16" id="NuM-ab-m5h"/>
                                             <constraint firstItem="Y1y-xP-bv8" firstAttribute="leading" secondItem="Yel-Vf-eS3" secondAttribute="leading" constant="16" id="Ov5-lG-onj"/>
@@ -127,6 +138,7 @@
                                             <constraint firstItem="G5m-Js-JM3" firstAttribute="top" secondItem="1Ea-kH-aOX" secondAttribute="bottom" constant="20" id="uE6-6w-gbt"/>
                                             <constraint firstItem="qc5-Db-yZs" firstAttribute="top" secondItem="G5m-Js-JM3" secondAttribute="bottom" constant="20" id="v2q-gu-Aty"/>
                                             <constraint firstAttribute="height" constant="697" id="vDF-Z1-yOl"/>
+                                            <constraint firstItem="Bpk-GP-w93" firstAttribute="top" secondItem="Anf-jr-8rx" secondAttribute="bottom" constant="32" id="yi0-MB-BgF"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -137,19 +149,10 @@
                                     <constraint firstAttribute="bottom" secondItem="Yel-Vf-eS3" secondAttribute="bottom" id="qhU-qD-JXw"/>
                                 </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bpk-GP-w93">
-                                <rect key="frame" x="56" y="733" width="263" height="30"/>
-                                <state key="normal" title="DEBUG BUTTON: DELETE CONSENTS"/>
-                                <connections>
-                                    <action selector="resetConsents:" destination="ypL-iW-Cp7" eventType="touchUpInside" id="Uqi-Xv-mi2"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Bpk-GP-w93" firstAttribute="top" secondItem="F80-Rm-8sF" secondAttribute="bottom" id="75K-qo-NY1"/>
                             <constraint firstItem="JyJ-q6-ZML" firstAttribute="bottom" secondItem="F80-Rm-8sF" secondAttribute="bottom" constant="45" id="CYV-6q-gcj"/>
-                            <constraint firstItem="Bpk-GP-w93" firstAttribute="centerX" secondItem="F80-Rm-8sF" secondAttribute="centerX" id="Ykf-aM-XrM"/>
                             <constraint firstItem="Yel-Vf-eS3" firstAttribute="width" secondItem="JyJ-q6-ZML" secondAttribute="width" id="atL-XD-RKB"/>
                             <constraint firstItem="F80-Rm-8sF" firstAttribute="trailing" secondItem="JyJ-q6-ZML" secondAttribute="trailing" id="cPK-Uw-aVR"/>
                             <constraint firstItem="F80-Rm-8sF" firstAttribute="top" secondItem="JyJ-q6-ZML" secondAttribute="top" id="jEh-B7-ah1"/>
@@ -158,7 +161,11 @@
                         <viewLayoutGuide key="safeArea" id="JyJ-q6-ZML"/>
                     </view>
                     <navigationItem key="navigationItem" title="mQoL Studies - UNIGE" id="fJo-px-jzf">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="info" id="jGk-CP-BnM"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="info" id="jGk-CP-BnM">
+                            <connections>
+                                <action selector="infoPressed:" destination="ypL-iW-Cp7" id="F6m-ob-mp4"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="studyDescribtion" destination="Y1y-xP-bv8" id="Gy9-nc-135"/>

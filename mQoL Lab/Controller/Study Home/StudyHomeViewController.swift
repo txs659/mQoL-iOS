@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+import SafariServices
 
 class StudyHomeViewController: UIViewController {
     
@@ -34,24 +36,40 @@ class StudyHomeViewController: UIViewController {
             }
             return nil
             }.continueOnSuccessWith { (task) -> Any? in
-                    ParseController.getStudyConfigByStudy(self.study).continueOnSuccessWith { (task) -> Any? in
-                    self.studyConfig = task.result! as StudyConfig
-                    print (self.studyConfig)
-                    return nil
+                ParseController.getStudyConfigByStudy(self.study).continueOnSuccessWith { (task) -> Any? in
+                self.studyConfig = task.result! as StudyConfig
+                DispatchQueue.main.async {
+                    self.survey1.setTitle(self.studyConfig.value(forKey: "survey1_title") as? String, for: .normal)
+                    self.survey2.setTitle(self.studyConfig.value(forKey: "survey2_title") as? String, for: .normal)
+                    self.survey3.setTitle(self.studyConfig.value(forKey: "survey3_title") as? String, for: .normal)
                 }
+                print (self.studyConfig)
+                return nil
+            }
         }
         
         
     }
+        
+    @IBAction func infoPressed(_ sender: Any) {
+        let optionMenu = UIAlertController(title: nil, message: "Insert options here", preferredStyle: .actionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        optionMenu.addAction(cancelAction)
+        
+        self.present(optionMenu, animated: true, completion: nil)
+    }
     
     @IBAction func resetConsents(_ sender: Any) {
         UserDefaults.standard.set(false, forKey: "consentGiven")
-        UserDefaults.standard.set(false, forKey: "studyConsentGiven")
-        Switcher.updateRootVC()
     }
     
     @IBAction func survey1Pressed(_ sender: Any) {
         print ("Survey1 pressed")
+        let url : URL = URL(string: "https://www.google.com/")!
+        let safariController = SFSafariViewController(url: url)
+        self.present(safariController, animated: true, completion: nil)
     }
     
     @IBAction func survey2Pressed(_ sender: Any) {
@@ -60,6 +78,16 @@ class StudyHomeViewController: UIViewController {
     
     @IBAction func survey3Pressed(_ sender: Any) {
         print ("Survey3 pressed")
+    }
+    
+    @IBAction func quitStudyPressed(_ sender: Any) {
+        UserDefaults.standard.set(false, forKey: "studyConsentGiven")
+        UserDefaults.standard.set("", forKey: "studyId")
+        
+        //Insert cleaner functions for StudyUser table here
+        
+        
+        Switcher.updateRootVC()
     }
     
 }
