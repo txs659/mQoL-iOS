@@ -67,7 +67,7 @@ class StudyHomeViewController: UIViewController {
     
     @IBAction func survey1Pressed(_ sender: Any) {
         print ("Survey1 pressed")
-        let url : URL = URL(string: "https://www.google.com/")!
+        let url : URL = URL(string: "https://dequeuniversity.com/library/responsive/1-non-responsive")!
         let safariController = SFSafariViewController(url: url)
         self.present(safariController, animated: true, completion: nil)
     }
