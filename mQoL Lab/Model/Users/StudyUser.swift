@@ -12,6 +12,11 @@ import PDFKit
 
 class StudyUser : PFObject, PFSubclassing {
     
+    public static let STUDY_FLOW_STATE_1 = "awaiting";
+    public static let STUDY_FLOW_STATE_2 = "ongoing";
+    public static let STUDY_FLOW_STATE_3 = "finished";
+
+    
     public static let  STATUS_NONE = "none";
     public static let  STATUS_ACTIVE = "active";
     public static let  STATUS_INACTIVE = "inactive";
@@ -54,6 +59,10 @@ class StudyUser : PFObject, PFSubclassing {
     
     func setStatus (_ newStatus : String) {
         self.status = newStatus
+    }
+    
+    func setStudyFlowState (_ statusFlow : String) {
+        self.flowState = statusFlow
     }
     
     

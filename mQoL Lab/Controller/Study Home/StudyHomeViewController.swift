@@ -27,39 +27,21 @@ class StudyHomeViewController: UIViewController {
     @IBOutlet weak var studyTitle : UILabel!
     @IBOutlet weak var studyDescribtion : UILabel!
     @IBOutlet weak var studyTasks : UILabel!
+    @IBOutlet weak var daysInStudy : UILabel!
     
     @IBOutlet weak var survey1 : UIButton!
     @IBOutlet weak var survey2 : UIButton!
     @IBOutlet weak var survey3 : UIButton!
+    @IBOutlet weak var externalSurveyBtn : UIButton!
     
-    //Creating the alarm that pops up when start study is pressed
-    let startAlert = UIAlertController(title: "Attention", message: "Before you move on and start the study, all previous surveys need to be completed.", preferredStyle: .alert)
-    
-    //Creating the alarm pop up when quit study is pressed
-    let quitAlert = UIAlertController(title: EnStrings.quit_study_warning_title, message: EnStrings.quit_study_warning, preferredStyle: .alert)
-    
-    let quitAction = UIAlertAction(title: EnStrings.quit_continue, style: .default) { (action) in
-        print ("quited!")
-    }
-    
-    let continueAction = UIAlertAction(title: "Start survey", style: .default) { (action) in
-        print ("Survey started!")
-    }
+    @IBOutlet weak var startBtn : UIButton!
+    @IBOutlet weak var quitBtn : UIButton!
+    @IBOutlet weak var addPeerBtn : UIButton!
     
     
-    let cancelAction = UIAlertAction(title: "Go back", style: .default)
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Adding actions to pop-up alerts
-        startAlert.addAction(continueAction)
-        startAlert.addAction(cancelAction)
-        quitAlert.addAction(quitAction)
-        quitAlert.addAction(cancelAction)
-        
-
+    
         let studyId = UserDefaults.standard.string(forKey: "studyId")
         ParseController.getStudy(studyId: studyId!).continueWith { (task) -> Any? in
             self.study = task.result! as Study
@@ -160,18 +142,6 @@ class StudyHomeViewController: UIViewController {
         }
     }
     
-    @IBAction func quitStudyPressed(_ sender: Any) {
-        //UserDefaults.standard.set(false, forKey: "studyConsentGiven")
-        //UserDefaults.standard.set("", forKey: "studyId")
-        
-        self.present(quitAlert, animated: true)
-        
-        //Switcher.updateRootVC()
-    }
-    
-    @IBAction func startStudyPressed(_ sender: Any) {
-        self.present(startAlert, animated: true)
-    }
     
     private func goToSurveyURL (surveyId : String) {
         ParseController.getMqolUser().continueOnSuccessWith { (task) -> Any? in
@@ -191,6 +161,73 @@ class StudyHomeViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as? SurveyDisplayer
         vc?.targetURL = urlString
+    }
+    
+    
+    
+    
+    
+    
+    // MARK: - Start/quit study buttons and helper functions
+    
+    
+    //Function called when quit study is pressed.
+    @IBAction func quitStudyPressed(_ sender: Any) {
+        //Creating the alarm pop up when quit study is pressed
+        let quitAlert = UIAlertController(title: EnStrings.quit_study_warning_title, message: EnStrings.quit_study_warning, preferredStyle: .alert)
+        
+        let quitAction = UIAlertAction(title: EnStrings.quit_continue, style: .default, handler: quitHandler)
+        
+        let cancelAction = UIAlertAction(title: "Go back", style: .default)
+        
+        quitAlert.addAction(quitAction)
+        quitAlert.addAction(cancelAction)
+        
+        self.present(quitAlert, animated: true)
+    }
+    
+    
+    //Function called when start study is pressed.
+    @IBAction func startStudyPressed(_ sender: Any) {
+        
+        //Creating the alarm that pops up when start study is pressed
+        let startAlert = UIAlertController(title: "Attention", message: "Before you move on and start the study, all previous surveys need to be completed.", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Go back", style: .default)
+        
+        let continueAction = UIAlertAction(title: "Start survey", style: .default, handler: continueHandler)
+        
+        //Adding actions to pop-up alerts
+        startAlert.addAction(continueAction)
+        startAlert.addAction(cancelAction)
+        
+        self.present(startAlert, animated: true)
+        
+    }
+    
+    
+    //Handler function called if user press start study on pop up alert. It is called from startStudyPressed()
+    func continueHandler (_ action : UIAlertAction) {
+
+        //Hides buttons when study is started
+        survey1.isHidden = true
+        survey2.isHidden = true
+        survey3.isHidden = true
+        externalSurveyBtn.isHidden = true
+        startBtn.isHidden = true
+        self.daysInStudy.isHidden = false
+        
+        ParseController.setStudyUserFlowState(studyUserId: self.studyUser.objectId!, statusFlow: StudyUser.STUDY_FLOW_STATE_2)
+        
+    }
+    
+    //Handler function called if user press quit study on pop up alert. It is called from quitStudyPressed()
+    func quitHandler (_ action : UIAlertAction) {
+        ParseController.disableUserFromStudy(studyId: self.study.objectId!, status: "quited")
+        ParseController.setStudyUserFlowState(studyUserId: self.studyUser.objectId!, statusFlow: StudyUser.STUDY_FLOW_STATE_3)
+        UserDefaults.standard.set(false, forKey: "studyConsentGiven")
+        UserDefaults.standard.set("", forKey: "studyId")
+        Switcher.updateRootVC()
     }
     
 }

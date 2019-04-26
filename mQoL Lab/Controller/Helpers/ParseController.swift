@@ -20,9 +20,7 @@ class ParseController {
     private static let TRIGGER_STORE_KEY = "triggers";
     
     private static let ACTIVE_STUDY_KEY = "active_study";
-    // should not reset
-    // Bucket is the same for all the study users
-    // In this bucket there are the following objects: STUDY_USER
+
     private static let STUDY_USER_STORE_KEY = "study_users";
     
     
@@ -255,6 +253,10 @@ class ParseController {
     
 
     
+    
+    // MARK: - Functions used when user quits a study
+    
+    
     static func disableUserFromStudy (studyId : String, status : String) {
         var studyUser = StudyUser()
         getStudyUserByStudyId(studyId).continueOnSuccessWith { (task) -> Void in
@@ -293,6 +295,16 @@ class ParseController {
                 PFObject.unpinAll(inBackground: arrayOfTriggers as? [PFObject])
                 PFObject.deleteAll(inBackground: arrayOfTriggers as? [PFObject])
             })
+        }
+    }
+    
+    
+    static func setStudyUserFlowState (studyUserId : String, statusFlow : String) {
+        var studyUser = StudyUser()
+        getStudyUserByStudyId(studyUserId).continueOnSuccessWith { (task) -> Void in
+            studyUser = task.result! as StudyUser
+            studyUser.setStudyFlowState(statusFlow)
+            studyUser.saveEventually()
         }
     }
     

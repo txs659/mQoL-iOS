@@ -54,7 +54,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4B-kr-v6A">
-                                                <rect key="frame" x="136" y="379.66666666666669" width="103" height="30"/>
+                                                <rect key="frame" x="74" y="379.66666666666669" width="227" height="30"/>
                                                 <state key="normal" title="BASELINE SDS"/>
                                                 <connections>
                                                     <action selector="survey2Pressed:" destination="ypL-iW-Cp7" eventType="touchUpInside" id="j65-3t-Z9L"/>
@@ -109,6 +109,12 @@
                                                     <action selector="resetConsents:" destination="ypL-iW-Cp7" eventType="touchUpInside" id="Uqi-Xv-mi2"/>
                                                 </connections>
                                             </button>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nxU-eY-hOW">
+                                                <rect key="frame" x="16" y="379.66666666666669" width="42" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -116,10 +122,12 @@
                                             <constraint firstItem="zpF-aJ-O6d" firstAttribute="top" secondItem="Bi0-Gu-AS8" secondAttribute="bottom" constant="20" id="1j4-Fm-ewK"/>
                                             <constraint firstItem="adI-VH-HuZ" firstAttribute="leading" secondItem="Yel-Vf-eS3" secondAttribute="leading" constant="38" id="1uR-kA-w66"/>
                                             <constraint firstAttribute="trailing" secondItem="ffF-1B-Sxz" secondAttribute="trailing" constant="16" id="3Te-mA-hMM"/>
+                                            <constraint firstItem="x4B-kr-v6A" firstAttribute="leading" secondItem="nxU-eY-hOW" secondAttribute="trailing" constant="16" id="3nR-MP-zVU"/>
                                             <constraint firstAttribute="trailing" secondItem="Y1y-xP-bv8" secondAttribute="trailing" constant="16" id="8Ic-9l-j5S"/>
                                             <constraint firstItem="x4B-kr-v6A" firstAttribute="top" secondItem="yeK-I6-J0V" secondAttribute="bottom" constant="16" id="F0U-s3-ndA"/>
                                             <constraint firstItem="f9p-Hh-hea" firstAttribute="leading" secondItem="Yel-Vf-eS3" secondAttribute="leading" constant="16" id="FvU-f8-voI"/>
                                             <constraint firstAttribute="trailing" secondItem="zpF-aJ-O6d" secondAttribute="trailing" constant="38" id="GlX-Nl-lJc"/>
+                                            <constraint firstItem="nxU-eY-hOW" firstAttribute="leading" secondItem="Yel-Vf-eS3" secondAttribute="leading" constant="16" id="H9d-g3-sfE"/>
                                             <constraint firstItem="Bpk-GP-w93" firstAttribute="centerX" secondItem="Yel-Vf-eS3" secondAttribute="centerX" id="IP7-0w-uaF"/>
                                             <constraint firstItem="Bi0-Gu-AS8" firstAttribute="leading" secondItem="Yel-Vf-eS3" secondAttribute="leading" constant="16" id="Mgx-ye-vA7"/>
                                             <constraint firstItem="yeK-I6-J0V" firstAttribute="leading" secondItem="Yel-Vf-eS3" secondAttribute="leading" constant="16" id="NuM-ab-m5h"/>
@@ -141,6 +149,7 @@
                                             <constraint firstItem="G5m-Js-JM3" firstAttribute="top" secondItem="1Ea-kH-aOX" secondAttribute="bottom" constant="20" id="uE6-6w-gbt"/>
                                             <constraint firstItem="qc5-Db-yZs" firstAttribute="top" secondItem="G5m-Js-JM3" secondAttribute="bottom" constant="20" id="v2q-gu-Aty"/>
                                             <constraint firstAttribute="height" constant="697" id="vDF-Z1-yOl"/>
+                                            <constraint firstItem="nxU-eY-hOW" firstAttribute="top" secondItem="yeK-I6-J0V" secondAttribute="bottom" constant="16" id="wkQ-T1-QMO"/>
                                             <constraint firstItem="Bpk-GP-w93" firstAttribute="top" secondItem="Anf-jr-8rx" secondAttribute="bottom" constant="32" id="yi0-MB-BgF"/>
                                         </constraints>
                                     </view>
@@ -171,6 +180,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addPeerBtn" destination="G5m-Js-JM3" id="yvi-sP-q2d"/>
+                        <outlet property="daysInStudy" destination="nxU-eY-hOW" id="8TG-Z1-wRN"/>
+                        <outlet property="externalSurveyBtn" destination="1Ea-kH-aOX" id="9Ga-XS-F9S"/>
+                        <outlet property="quitBtn" destination="qc5-Db-yZs" id="h72-vV-SBC"/>
+                        <outlet property="startBtn" destination="Anf-jr-8rx" id="xJ9-G2-glo"/>
                         <outlet property="studyDescribtion" destination="Y1y-xP-bv8" id="Gy9-nc-135"/>
                         <outlet property="studyTasks" destination="yeK-I6-J0V" id="xv0-Po-yz9"/>
                         <outlet property="studyTitle" destination="Bi0-Gu-AS8" id="Q4A-BN-PBa"/>
