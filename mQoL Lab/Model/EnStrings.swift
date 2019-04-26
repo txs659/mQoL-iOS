@@ -54,4 +54,13 @@ class EnStrings {
     static let view_study_agreement = "Accept Agreement"
     static let view_study_name_surname = "Input your name and surname here"
     
+    
+    
+    //Strings for study home screen
+    
+    static let quit_study_warning = "Please be aware that you will not be able to reverse this action. You can not rejoin the study if you quit, before it is completed."
+    static let quit_study_warning_title = "Heads Up!"
+    static let quit_continue = "I want to quit"
+    static let quit_abort = "Cancel"
+
 }

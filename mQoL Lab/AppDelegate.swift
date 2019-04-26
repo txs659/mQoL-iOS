@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MqolUser.registerSubclass()
         Study.registerSubclass()
         StudyUser.registerSubclass()
+        Survey.registerSubclass()
+        SurveyTrigger.registerSubclass()
         
         // Initializing call to the Parse server
         let parseConfig = ParseClientConfiguration {

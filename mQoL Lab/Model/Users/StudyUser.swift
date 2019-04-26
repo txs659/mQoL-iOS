@@ -8,8 +8,16 @@
 
 import UIKit
 import Parse
+import PDFKit
 
 class StudyUser : PFObject, PFSubclassing {
+    
+    public static let  STATUS_NONE = "none";
+    public static let  STATUS_ACTIVE = "active";
+    public static let  STATUS_INACTIVE = "inactive";
+    public static let  STATUS_QUITED = "quited";
+    public static let  STATUS_FINISHED = "finished";
+
     
     @NSManaged var observersChannel : String
     @NSManaged var study : Study
@@ -20,6 +28,8 @@ class StudyUser : PFObject, PFSubclassing {
     @NSManaged var baselineSurveyDone : Bool
     @NSManaged var demographicsSurveyDone : Bool
     @NSManaged var flowState : String
+    @NSManaged var endDate : Date
+    @NSManaged var studyConsent : PFFileObject
     
     static func parseClassName() -> String {
         return "StudyUser"
@@ -35,6 +45,63 @@ class StudyUser : PFObject, PFSubclassing {
         baselineSurveyDone = false
         demographicsSurveyDone = false
         flowState = "awaiting"
+    }
+    
+    func setEndDate (_ duration : Int) {
+        self.endDate = Calendar.current.date(byAdding: .day, value: duration, to: Date())!
+        
+    }
+    
+    func setStatus (_ newStatus : String) {
+        self.status = newStatus
+    }
+    
+    
+    
+    
+    
+    
+    //DOES NOT WORK ATM
+    
+    //Puts the users name and current date into the PDF file
+    func setAndSignInformedConsent (file : PFFileObject, name : String) {
+        let fileUrl = URL(string : file.url!)
+        let document = PDFDocument(url: fileUrl!)
+        
+        let lastPage = document?.page(at: 3)
+        let annotations = lastPage!.annotations
+        
+        for annotation in annotations {
+            if annotation.fieldName == "name" {
+                annotation.setValue(name, forAnnotationKey: .widgetValue)
+                annotation.contents = name
+                lastPage!.removeAnnotation(annotation)
+                lastPage!.addAnnotation(annotation)
+            }
+            else if annotation.fieldName == "date" {
+                let date : Date = Date()
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd-MM-yyyy"
+                let dateString = dateFormatter.string(from: date)
+                annotation.setValue(dateString, forAnnotationKey: .widgetValue)
+                annotation.contents = dateString
+                lastPage!.removeAnnotation(annotation)
+                lastPage!.addAnnotation(annotation)
+            }
+        }
+        
+        do {
+            let dataUrl = document?.documentURL
+            let data = try Data(contentsOf: dataUrl!)
+            
+            let newDoc = try PFFileObject(name: "file.pdf", data: data, contentType: "application/pdf")
+            self.studyConsent = newDoc
+        } catch {
+            print ("Error")
+        }
+        
+        
+        
     }
     
     

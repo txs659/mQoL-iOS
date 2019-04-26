@@ -35,6 +35,8 @@ class DataCollection: UIViewController {
             navigationItem.rightBarButtonItem?.title = EnStrings.next_button
         }
         
+        infoText.sizeToFit()
+        
     }
     
     @IBAction func nextPressed(_ sender: Any) {

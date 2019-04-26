@@ -728,21 +728,22 @@
                                                     <constraint firstAttribute="height" constant="64" id="xH4-2i-6Ps"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="n8g-NK-8lS">
-                                                <rect key="frame" x="16" y="155" width="382" height="741"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="741" id="tcB-pJ-XiV"/>
-                                                </constraints>
-                                                <string key="text">When joining the study… Suscipit metus ea ea ut sagittis. Etiam rhoncus eget in. Nulla integer in ullamcorper, lacinia lorem nec quis neque mattis ac. Sodales vel eligendi dui nulla a, parturient neque non faucibus integer justo blanditiis. Donec ante suspendisse animi eu. Wisi in, magna nisl eget vivamus tellus mauris sed, eleifend aliquam neque, metus ultricies, proin litora sociosqu magna vestibulum ligula. 
-
- quisque leo quis, id viverra cras diam sociis, deserunt semper, sem pellentesque sed, porttitor elit quam leo ante. Lectus pharetra varius, justo proin wisi aut, egestas penatibus cursus est dictumst nulla tristique, orci vivamus sed quis justo amet velit. Ligula quis rhoncus odio consequat, elementum lorem ut massa duis ut sed, placerat enim elit rutrum eleifend, at tincidunt vivamus suscipit urna, mauris pede suscipit arcu porta quis. Excepturi molestie natoque fermentum donec massa vel, non donec ut adipiscing blandit ante, suspendisse lectus erat.</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data Collection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="5Z8-28-zlO">
                                                 <rect key="frame" x="16" y="16" width="382" height="43"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="n8g-NK-8lS">
+                                                <rect key="frame" x="16" y="155" width="382" height="467"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="382" id="Skf-gD-t2d"/>
+                                                    <constraint firstAttribute="height" priority="250" constant="467" id="rG2-qg-HMC"/>
+                                                </constraints>
+                                                <mutableString key="text">When joining the study… Suscipit metus ea ea ut sagittis. Etiam rhoncus eget in. Nulla integer in ullamcorper, lacinia lorem nec quis neque mattis ac. Sodales vel eligendi dui nulla a, parturient neque non faucibus integer justo blanditiis. Donec ante suspendisse animi eu. Wisi in, magna nisl eget vivamus tellus mauris sed, eleifend aliquam neque, metus ultricies, proin litora sociosqu magna vestibulum ligula. 
+
+ quisque leo quis, id viverra cras diam sociis, deserunt semper, sem pellentesque sed, porttitor elit quam leo ante. Lectus pharetra varius, justo proin wisi aut, egestas penatibus cursus est dictumst nulla tristique, orci vivamus sed quis justo amet velit. Ligula quis rhoncus odio consequat, elementum lorem ut massa duis ut sed, placerat enim elit rutrum eleifend, at tincidunt vivamus suscipit urna, mauris pede suscipit arcu porta quis. Excepturi molestie natoque fermentum donec massa vel, non donec ut adipiscing blandit ante, suspendisse lectus erat.</mutableString>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -753,16 +754,15 @@
                                             <constraint firstItem="uFV-hO-RBi" firstAttribute="leading" secondItem="Ja1-Zv-1wQ" secondAttribute="trailing" constant="16" id="4hY-Oc-9fV"/>
                                             <constraint firstItem="vpz-bE-xsh" firstAttribute="top" secondItem="5Z8-28-zlO" secondAttribute="bottom" constant="16" id="4im-dE-hmb"/>
                                             <constraint firstItem="n8g-NK-8lS" firstAttribute="leading" secondItem="88K-1t-gCd" secondAttribute="leading" constant="16" id="7Z9-RL-pdJ"/>
+                                            <constraint firstItem="n8g-NK-8lS" firstAttribute="top" secondItem="vpz-bE-xsh" secondAttribute="bottom" constant="16" id="EfC-EL-9MZ"/>
                                             <constraint firstItem="uFV-hO-RBi" firstAttribute="top" secondItem="5Z8-28-zlO" secondAttribute="bottom" constant="16" id="Ig3-e3-Tzh"/>
                                             <constraint firstAttribute="trailing" secondItem="5Z8-28-zlO" secondAttribute="trailing" constant="16" id="QGj-Qq-BXA"/>
                                             <constraint firstAttribute="trailing" secondItem="n8g-NK-8lS" secondAttribute="trailing" constant="16" id="QyK-I7-708"/>
                                             <constraint firstItem="5Z8-28-zlO" firstAttribute="top" secondItem="88K-1t-gCd" secondAttribute="top" constant="16" id="VnZ-cF-Mqn"/>
-                                            <constraint firstAttribute="height" constant="896" id="cLu-0U-QPE"/>
-                                            <constraint firstItem="n8g-NK-8lS" firstAttribute="top" secondItem="vpz-bE-xsh" secondAttribute="bottom" constant="16" id="fWa-af-Wih"/>
                                             <constraint firstItem="5Z8-28-zlO" firstAttribute="leading" secondItem="88K-1t-gCd" secondAttribute="leading" constant="16" id="jcJ-Xi-aWd"/>
+                                            <constraint firstAttribute="bottom" secondItem="n8g-NK-8lS" secondAttribute="bottom" constant="274" id="rfd-uV-itc"/>
                                             <constraint firstItem="Ja1-Zv-1wQ" firstAttribute="top" secondItem="5Z8-28-zlO" secondAttribute="bottom" constant="16" id="tLL-qc-bJQ"/>
                                             <constraint firstItem="vpz-bE-xsh" firstAttribute="leading" secondItem="uFV-hO-RBi" secondAttribute="trailing" constant="16" id="uyK-La-4hs"/>
-                                            <constraint firstAttribute="bottom" secondItem="n8g-NK-8lS" secondAttribute="bottom" id="vVM-CR-j93"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -778,10 +778,10 @@
                         <constraints>
                             <constraint firstItem="hby-FD-gcq" firstAttribute="top" secondItem="1Fj-oq-5X5" secondAttribute="top" id="8ou-E9-iIJ"/>
                             <constraint firstItem="hby-FD-gcq" firstAttribute="leading" secondItem="1Fj-oq-5X5" secondAttribute="leading" id="H5M-ti-Fmf"/>
-                            <constraint firstItem="88K-1t-gCd" firstAttribute="height" relation="greaterThanOrEqual" secondItem="xGp-73-9dX" secondAttribute="height" priority="250" id="Kcf-6J-fRP"/>
                             <constraint firstItem="88K-1t-gCd" firstAttribute="width" secondItem="xGp-73-9dX" secondAttribute="width" id="T4e-W2-7s8"/>
                             <constraint firstItem="hby-FD-gcq" firstAttribute="trailing" secondItem="1Fj-oq-5X5" secondAttribute="trailing" id="bpH-JT-FTg"/>
                             <constraint firstItem="hby-FD-gcq" firstAttribute="bottom" secondItem="1Fj-oq-5X5" secondAttribute="bottom" id="kFg-sy-sQa"/>
+                            <constraint firstAttribute="height" secondItem="88K-1t-gCd" secondAttribute="height" priority="250" id="rw9-Ps-2q2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1Fj-oq-5X5"/>
                     </view>

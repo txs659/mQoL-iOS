@@ -148,8 +148,8 @@ class StudyConsent: UIViewController, UITextFieldDelegate {
    
     
     @IBAction func giveConsent(_ sender: Any) {
-        let name : String = nameField.text!
-        if switch1Accepted && switch2Accepted && switch3Accepted && switch4Accepted && switch5Accepted && switch6Accepted && !name.isEmpty {
+        let nameFieldText : String = nameField.text!
+        if switch1Accepted && switch2Accepted && switch3Accepted && switch4Accepted && switch5Accepted && switch6Accepted && !nameFieldText.isEmpty {
             UserDefaults.standard.set(true, forKey: "studyConsentGiven")
             
             
@@ -157,7 +157,7 @@ class StudyConsent: UIViewController, UITextFieldDelegate {
             //Creating a 'StudyUser' object for the user. This means that the user now has
             //fully joined a specific study
             */
-            ParseController.createStudyUser(studyId: study.objectId!)
+            ParseController.createStudyUser(studyId: study.objectId!, name : nameFieldText)
             
             //Save studyId in local storage, so it is easy to access
             UserDefaults.standard.set(study.objectId!, forKey: "studyId")
