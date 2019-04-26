@@ -34,6 +34,7 @@ class StudyUser : PFObject, PFSubclassing {
     @NSManaged var demographicsSurveyDone : Bool
     @NSManaged var flowState : String
     @NSManaged var endDate : Date
+    @NSManaged var elapsedDays : Int
     @NSManaged var studyConsent : PFFileObject
     
     static func parseClassName() -> String {
@@ -63,6 +64,10 @@ class StudyUser : PFObject, PFSubclassing {
     
     func setStudyFlowState (_ statusFlow : String) {
         self.flowState = statusFlow
+    }
+    
+    func setElapsedDays (days : Int) {
+        self.elapsedDays = days
     }
     
     

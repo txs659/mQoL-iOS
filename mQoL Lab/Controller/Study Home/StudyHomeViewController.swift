@@ -217,8 +217,7 @@ class StudyHomeViewController: UIViewController {
         startBtn.isHidden = true
         self.daysInStudy.isHidden = false
         
-        ParseController.setStudyUserFlowState(studyUserId: self.studyUser.objectId!, statusFlow: StudyUser.STUDY_FLOW_STATE_2)
-        
+        ParseController.startStudyCountDown(studyId: self.study.objectId!)
     }
     
     //Handler function called if user press quit study on pop up alert. It is called from quitStudyPressed()

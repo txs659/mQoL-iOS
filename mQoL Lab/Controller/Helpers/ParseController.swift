@@ -251,6 +251,53 @@ class ParseController {
     }
     
     
+    
+    static func setStudyUserFlowState (studyUserId : String, statusFlow : String) {
+        var studyUser = StudyUser()
+        getStudyUserByStudyId(studyUserId).continueOnSuccessWith { (task) -> Void in
+            studyUser = task.result! as StudyUser
+            studyUser.setStudyFlowState(statusFlow)
+            studyUser.saveEventually()
+        }
+    }
+    
+    
+    
+    
+    
+    
+    // MARK: - Functions used when user starts a study
+    
+    static func startStudyCountDown (studyId : String) {
+        var study = Study()
+        var studyConfig = StudyConfig()
+        var studyUser = StudyUser()
+        getStudy(studyId: studyId).continueOnSuccessWith { (task) -> Void in
+            study = task.result! as Study
+            
+            getStudyConfigByStudy(study).continueOnSuccessWith(block: { (task) -> Void in
+                studyConfig = task.result! as StudyConfig
+                
+                getStudyUserByStudyId(study.objectId!).continueOnSuccessWith(block: { (task) -> Void in
+                    studyUser = task.result! as StudyUser
+                    
+                    let durationDays = studyConfig.value(forKey: "durationDays") as! Int
+                    studyUser.setEndDate(durationDays)
+                    studyUser.setStudyFlowState(StudyUser.STUDY_FLOW_STATE_2)
+                    studyUser.setElapsedDays(days: 1)
+                    
+                    studyUser.pinInBackground(withName: STUDY_USER_STORE_KEY).continueOnSuccessWith(block: { (task) -> Void in
+                        studyUser.saveEventually()
+                    })
+                    
+                })
+                
+            })
+            
+        }
+    }
+    
+    
 
     
     
@@ -299,14 +346,6 @@ class ParseController {
     }
     
     
-    static func setStudyUserFlowState (studyUserId : String, statusFlow : String) {
-        var studyUser = StudyUser()
-        getStudyUserByStudyId(studyUserId).continueOnSuccessWith { (task) -> Void in
-            studyUser = task.result! as StudyUser
-            studyUser.setStudyFlowState(statusFlow)
-            studyUser.saveEventually()
-        }
-    }
     
     
     
