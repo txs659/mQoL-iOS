@@ -90,6 +90,7 @@ class StudyList: UICollectionViewController, UICollectionViewDelegateFlowLayout 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let selectedCell = collectionView.cellForItem(at: indexPath) as? StudyCell
+        
         self.pressedCell = selectedCell!
         self.performSegue(withIdentifier: "welcome", sender: self)
     }

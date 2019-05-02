@@ -90,6 +90,7 @@ class ParseController {
     
     
     static func getStudy(studyId : String) -> BFTask<Study> {
+        PFObject.unpinAllObjectsInBackground(withName: STUDY_STORE_KEY)
         return Study.basicQuery().fromLocalDatastore().getObjectInBackground(withId: studyId).continueWith(block: { (task) -> BFTask<Study> in
             if task.error != nil {
                 return Study.basicQuery().getObjectInBackground(withId: studyId).continueWith(block: { (task) -> BFTask<AnyObject> in
@@ -162,6 +163,7 @@ class ParseController {
     
     static func getStudyUserByStudyId (_ studyId : String) -> BFTask<StudyUser> {
         PFObject.unpinAllObjectsInBackground(withName: STUDY_USER_STORE_KEY)
+        PFObject.unpinAllObjectsInBackground()
         var mqolUser = MqolUser()
         var study = Study()
         return getMqolUser().continueOnSuccessWith(block: { (task) -> Any? in
@@ -184,8 +186,6 @@ class ParseController {
             })
         }) as! BFTask<StudyUser>
     }
-    
-    
     
     
     
@@ -252,9 +252,9 @@ class ParseController {
     
     
     
-    static func setStudyUserFlowState (studyUserId : String, statusFlow : String) {
+    static func setStudyUserFlowState (studyId : String, statusFlow : String) {
         var studyUser = StudyUser()
-        getStudyUserByStudyId(studyUserId).continueOnSuccessWith { (task) -> Void in
+        getStudyUserByStudyId(studyId).continueOnSuccessWith { (task) -> Void in
             studyUser = task.result! as StudyUser
             studyUser.setStudyFlowState(statusFlow)
             studyUser.saveEventually()
@@ -262,7 +262,17 @@ class ParseController {
     }
     
     
-    
+    static func setSurveyDone (studyUser : StudyUser, surveyNumber : Int) {
+        if surveyNumber >= 1 && surveyNumber <= 3 {
+            
+            studyUser.setSurveyDone(surveyNumber)
+            studyUser.saveEventually()
+            
+        }
+        else {
+            print ("Survey number must be between 1 and 3, since it must correspond to Survey1, Survey2 or Survey3")
+        }
+    }
     
     
     

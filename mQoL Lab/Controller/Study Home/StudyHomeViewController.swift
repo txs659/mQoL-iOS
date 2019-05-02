@@ -41,7 +41,44 @@ class StudyHomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let isStudyStarted = UserDefaults.standard.bool(forKey: "studyLoaded")
+        
+        if isStudyStarted {
+            loadStudyRunningScreen()
+        } else {
+            loadBeginStudyScreen()
+        }
+        
+
+    }
     
+    
+    // Check everytime survyes is done, to see if the start study button should be displyed.
+    override func viewDidAppear(_ animated: Bool) {
+        let isStudyStarted = UserDefaults.standard.bool(forKey: "studyLoaded")
+    
+        if !isStudyStarted {
+            studyUser.fetchInBackground().continueOnSuccessWith { (task) -> Void in
+                let survey1Done = self.studyUser.survey1Done
+                let survey2Done = self.studyUser.survey2Done
+                let survey3Done = self.studyUser.survey3Done
+                
+                if survey1Done && survey2Done && survey3Done {
+                    DispatchQueue.main.async {
+                        self.startBtn.isHidden = false
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    // MARK: - Functions for screen load
+    
+    //This function is called if the study has not been started. It loads all the text, buttons etc.
+    func loadBeginStudyScreen () {
+        startBtn.isHidden = true
         let studyId = UserDefaults.standard.string(forKey: "studyId")
         ParseController.getStudy(studyId: studyId!).continueWith { (task) -> Any? in
             self.study = task.result! as Study
@@ -69,36 +106,90 @@ class StudyHomeViewController: UIViewController {
                         self.survey3.setTitle(self.studyConfig.value(forKey: "survey3_title") as? String, for: .normal)
                     }
                 ParseController.getStudyUserByStudyId(self.study.objectId!).continueOnSuccessWith(block: { (task) -> Any? in
-                        self.studyUser = task.result! as StudyUser
+                    self.studyUser = task.result! as StudyUser
                     
-                        //check if any of the surveys has been done. If yes, hide that particular button
-                        if self.studyUser.entrySurveyDone {
-                            DispatchQueue.main.async {
-                                self.survey1.isHidden = true
-                            }
+                    
+                    //check if any of the surveys has been done. If yes, hide that particular button
+                    if self.studyUser.survey1Done {
+                        DispatchQueue.main.async {
+                            self.survey1.isHidden = true
                         }
+                    }
                     
-                        if self.studyUser.demographicsSurveyDone {
-                            DispatchQueue.main.async {
-                                self.survey2.isHidden = true
-                            }
+                    if self.studyUser.survey2Done {
+                        DispatchQueue.main.async {
+                            self.survey2.isHidden = true
                         }
+                    }
                     
-                        if self.studyUser.baselineSurveyDone{
-                            DispatchQueue.main.async {
-                                self.survey3.isHidden = true
-                            }
+                    if self.studyUser.survey3Done {
+                        DispatchQueue.main.async {
+                            self.survey3.isHidden = true
                         }
+                    }
                     
-                        ParseController.disableUserFromStudy(studyId: self.study.objectId!, status: StudyUser.STATUS_QUITED)
+                    if self.studyUser.survey1Done && self.studyUser.survey2Done && self.studyUser.survey3Done {
+                        DispatchQueue.main.async {
+                            self.startBtn.isHidden = false
+                        }
+                    }
                     
-                        return nil
-                    })
-
+                    return nil
+                })
+                    
                 return nil
             }
         }
-
+    }
+    
+    func loadStudyRunningScreen () {
+        
+        startBtn.isHidden = true
+        survey1.isHidden = true
+        survey2.isHidden = true
+        survey3.isHidden = true
+        externalSurveyBtn.isHidden = true
+        startBtn.isHidden = true
+        self.daysInStudy.isHidden = false
+        
+        let studyId = UserDefaults.standard.string(forKey: "studyId")
+        
+        ParseController.getStudy(studyId: studyId!).continueWith { (task) -> Any? in
+            self.study = task.result! as Study
+            
+            DispatchQueue.main.async {
+                self.studyTitle.text = self.study.object(forKey: "name") as? String
+                self.studyDescribtion.text = self.study.object(forKey: "description") as? String
+                self.studyTasks.text = self.study.object(forKey: "userTasks") as? String
+                
+            }
+            
+            return nil
+            }.continueOnSuccessWith { (task) -> Any? in
+                ParseController.getStudyConfigByStudy(self.study).continueOnSuccessWith { (task) -> Any? in
+                    
+                    self.studyConfig = task.result! as StudyConfig
+                ParseController.getStudyUserByStudyId(self.study.objectId!).continueOnSuccessWith(block: { (task) -> Any? in
+                        self.studyUser = task.result! as StudyUser
+                    
+                        let totalDays = self.studyConfig.value(forKey: "durationDays") as! Int
+                        let endDate = self.studyUser.value(forKey: "endDate") as! Date
+                        let today = Date()
+                        let daysLeft = Calendar.current.dateComponents([.day], from: today, to: endDate).day! as Int
+                        let daysPassed = totalDays - daysLeft
+                    
+                    
+                        DispatchQueue.main.async {
+                            self.daysInStudy.text = "Thank you for being in day \(daysPassed) of \(totalDays)"
+                        }
+                    
+                    
+                        return nil
+                    })
+                    
+                    return nil
+                }
+            }
     }
         
     @IBAction func infoPressed(_ sender: Any) {
@@ -121,6 +212,7 @@ class StudyHomeViewController: UIViewController {
             
             //Hide button when it has been pressed.
             survey1.isHidden = true
+            ParseController.setSurveyDone(studyUser: studyUser, surveyNumber: 1)
         }
     }
     
@@ -130,6 +222,7 @@ class StudyHomeViewController: UIViewController {
             
             //Hide button when it has been pressed.
             survey2.isHidden = true
+            ParseController.setSurveyDone(studyUser: studyUser, surveyNumber: 2)
         }
     }
     
@@ -139,6 +232,7 @@ class StudyHomeViewController: UIViewController {
             
             //Hide button when it has been pressed.
             survey3.isHidden = true
+            ParseController.setSurveyDone(studyUser: studyUser, surveyNumber: 3)
         }
     }
     
@@ -162,8 +256,6 @@ class StudyHomeViewController: UIViewController {
         let vc = segue.destination as? SurveyDisplayer
         vc?.targetURL = urlString
     }
-    
-    
     
     
     
@@ -218,14 +310,17 @@ class StudyHomeViewController: UIViewController {
         self.daysInStudy.isHidden = false
         
         ParseController.startStudyCountDown(studyId: self.study.objectId!)
+        UserDefaults.standard.set(true, forKey: "studyLoaded")
+        
     }
     
     //Handler function called if user press quit study on pop up alert. It is called from quitStudyPressed()
     func quitHandler (_ action : UIAlertAction) {
-        ParseController.disableUserFromStudy(studyId: self.study.objectId!, status: "quited")
-        ParseController.setStudyUserFlowState(studyUserId: self.studyUser.objectId!, statusFlow: StudyUser.STUDY_FLOW_STATE_3)
+        ParseController.disableUserFromStudy(studyId: self.study.objectId!, status: StudyUser.STATUS_QUITED)
+        ParseController.setStudyUserFlowState(studyId: self.study.objectId!, statusFlow: StudyUser.STUDY_FLOW_STATE_3)
         UserDefaults.standard.set(false, forKey: "studyConsentGiven")
         UserDefaults.standard.set("", forKey: "studyId")
+        UserDefaults.standard.set(false, forKey: "studyLoaded")
         Switcher.updateRootVC()
     }
     

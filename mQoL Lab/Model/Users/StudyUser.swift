@@ -36,6 +36,9 @@ class StudyUser : PFObject, PFSubclassing {
     @NSManaged var endDate : Date
     @NSManaged var elapsedDays : Int
     @NSManaged var studyConsent : PFFileObject
+    @NSManaged var survey1Done : Bool
+    @NSManaged var survey2Done : Bool
+    @NSManaged var survey3Done : Bool
     
     static func parseClassName() -> String {
         return "StudyUser"
@@ -46,10 +49,10 @@ class StudyUser : PFObject, PFSubclassing {
         study = stud
         observersChannel = channel
         status = "active"
-        entrySurveyDone = false
+        survey1Done = false
+        survey2Done = false
+        survey3Done = false
         exitSurveyDone = false
-        baselineSurveyDone = false
-        demographicsSurveyDone = false
         flowState = "awaiting"
     }
     
@@ -70,6 +73,17 @@ class StudyUser : PFObject, PFSubclassing {
         self.elapsedDays = days
     }
     
+    func setSurveyDone (_ surveyNumber : Int) {
+        if surveyNumber == 1 {
+            self.survey1Done = true
+        }
+        else if surveyNumber == 2 {
+            self.survey2Done = true
+        }
+        else {
+            self.survey3Done = true
+        }
+    }
     
     
     
