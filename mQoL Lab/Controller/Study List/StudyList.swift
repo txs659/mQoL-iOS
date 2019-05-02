@@ -34,8 +34,8 @@ class StudyList: UICollectionViewController, UICollectionViewDelegateFlowLayout 
             self.studiesArray = task.result as! Array<Study>
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
+                hud.dismiss()
             }
-            hud.dismiss()
             return nil
         }
         
