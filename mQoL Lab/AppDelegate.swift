@@ -8,7 +8,9 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 import Parse
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,6 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         Parse.initialize(with: parseConfig)
         
+        // Use Firebase library to configure APIs
+        //FirebaseApp.configure()
         
         // Checks preferred language list from device
         let prefferedLan = NSLocale.preferredLanguages[0]
@@ -42,9 +46,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set("en", forKey: "language")
         }
         
+        //Setting this class as UserNotificationCenter delegate, so we are able to make custom actions for the notification
+        UNUserNotificationCenter.current().delegate = self
+        
         return true
     }
-
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -68,5 +75,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    //Function that handles notifications when the app is background
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void)
+    {
+        let id = response.notification.request.identifier
+        let survey : String = response.notification.request.content.userInfo["survey"] as! String
+        
+        UserDefaults.standard.set(true, forKey: "fireNotificationSurvey")
+        UserDefaults.standard.set(survey, forKey: "surveyToFire")
+        
+        print("Received notification with ID = \(id)")
+        print("The survey is: \(survey)")
+        
+        Switcher.updateRootVC()
+        
+        completionHandler()
+    }
+    
+    //Function that handles notifications when the app is running
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
+    {
+        let id = notification.request.identifier
+        print("Received notification with ID = \(id)")
+        
+        completionHandler([.sound, .alert])
+    }
 }
 

@@ -14,6 +14,7 @@ class DataCollection: UIViewController {
     
     let language = UserDefaults.standard.string(forKey: "language")
     
+    //Defining UI elements
     let scrollView = UIScrollView()
     let pageTitle = UILabel()
     let pageInfo = UILabel()

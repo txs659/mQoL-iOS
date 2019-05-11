@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import UserNotifications
 
 class StudyHomeViewController: UIViewController {
     
@@ -41,7 +42,6 @@ class StudyHomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let isStudyStarted = UserDefaults.standard.bool(forKey: "studyLoaded")
         
         if isStudyStarted {
@@ -50,14 +50,13 @@ class StudyHomeViewController: UIViewController {
             loadBeginStudyScreen()
         }
         
-
     }
     
     
     // Check everytime survyes is done, to see if the start study button should be displyed.
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         let isStudyStarted = UserDefaults.standard.bool(forKey: "studyLoaded")
-    
+        
         if !isStudyStarted {
             studyUser.fetchInBackground().continueOnSuccessWith { (task) -> Void in
                 let survey1Done = self.studyUser.survey1Done
@@ -71,6 +70,20 @@ class StudyHomeViewController: UIViewController {
                 }
             }
         }
+        
+        
+        //Checks if a notification has been pressed and thus a survey should be fired
+        let fireNotificationSurvey = UserDefaults.standard.bool(forKey: "fireNotificationSurvey")
+        
+        
+        if fireNotificationSurvey {
+            let surveyToFire = UserDefaults.standard.string(forKey: "surveyToFire")
+            self.goToSurveyURL(surveyId: surveyToFire!)
+            UserDefaults.standard.set(false, forKey: "fireNotificationSurvey")
+            UserDefaults.standard.set("", forKey: "surveyToFire")
+        }
+        
+        
     }
     
     
@@ -133,7 +146,6 @@ class StudyHomeViewController: UIViewController {
                             self.startBtn.isHidden = false
                         }
                     }
-                    
                     return nil
                 })
                     
@@ -142,6 +154,8 @@ class StudyHomeViewController: UIViewController {
         }
     }
     
+    
+    //Loads the elements that should be shown when a study has been started and is running.
     func loadStudyRunningScreen () {
         
         startBtn.isHidden = true
@@ -183,7 +197,6 @@ class StudyHomeViewController: UIViewController {
                             self.daysInStudy.text = "Thank you for being in day \(daysPassed) of \(totalDays)"
                         }
                     
-                    
                         return nil
                     })
                     
@@ -203,7 +216,13 @@ class StudyHomeViewController: UIViewController {
     }
     
     @IBAction func resetConsents(_ sender: Any) {
-        UserDefaults.standard.set(false, forKey: "consentGiven")
+        //UserDefaults.standard.set(false, forKey: "consentGiven")
+        
+        let scheduleInfo = self.studyConfig.value(forKey: "notificationScheduleInfo") as! [String : Any]
+        let durationDays = self.studyConfig.value(forKey: "durationDays") as! Int
+        
+        let scheduler = NotificationScheduler()
+        scheduler.scheduleAllNotifications(info: scheduleInfo, days: durationDays)
     }
     
     @IBAction func survey1Pressed(_ sender: Any) {
@@ -258,8 +277,6 @@ class StudyHomeViewController: UIViewController {
     }
     
     
-    
-    
     // MARK: - Start/quit study buttons and helper functions
     
     
@@ -311,6 +328,7 @@ class StudyHomeViewController: UIViewController {
         
         ParseController.startStudyCountDown(studyId: self.study.objectId!)
         UserDefaults.standard.set(true, forKey: "studyLoaded")
+        self.loadStudyRunningScreen()
         
     }
     

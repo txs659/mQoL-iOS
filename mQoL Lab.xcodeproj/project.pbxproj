@@ -44,6 +44,8 @@
 		86BA7F6B225372CA0054D17D /* FrStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BA7F6A225372CA0054D17D /* FrStrings.swift */; };
 		86BA7F6D2253762D0054D17D /* LabInto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BA7F6C2253762D0054D17D /* LabInto.swift */; };
 		86BA7F6F22538D6B0054D17D /* AboutTheStudies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BA7F6E22538D6B0054D17D /* AboutTheStudies.swift */; };
+		86E44BF822844B1B00FAA683 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E44BF722844B1B00FAA683 /* LocalNotificationManager.swift */; };
+		86E44BFA2286B65300FAA683 /* NotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E44BF92286B65300FAA683 /* NotificationScheduler.swift */; };
 		86FE8C442260A9BD004A357C /* readPDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FE8C432260A9BC004A357C /* readPDF.swift */; };
 		86FE8C462264C0FB004A357C /* StudyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FE8C452264C0FB004A357C /* StudyUser.swift */; };
 /* End PBXBuildFile section */
@@ -64,6 +66,7 @@
 		861EE75F2233075700FB57B3 /* OurLab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OurLab.storyboard; sourceTree = "<group>"; };
 		861EE76122330A4600FB57B3 /* ListOfStudies.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ListOfStudies.storyboard; sourceTree = "<group>"; };
 		861EE76322330B8B00FB57B3 /* StudyHome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StudyHome.storyboard; sourceTree = "<group>"; };
+		86226DC2227C1D8B00B73E37 /* mQoL Lab.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "mQoL Lab.entitlements"; sourceTree = "<group>"; };
 		862B5898226D986B00CC93A7 /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 		862B589A226D9C5700CC93A7 /* SurveyDisplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyDisplayer.swift; sourceTree = "<group>"; };
 		862B58A0226F2C2700CC93A7 /* SurveyTrigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyTrigger.swift; sourceTree = "<group>"; };
@@ -87,6 +90,8 @@
 		86BA7F6A225372CA0054D17D /* FrStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrStrings.swift; sourceTree = "<group>"; };
 		86BA7F6C2253762D0054D17D /* LabInto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInto.swift; sourceTree = "<group>"; };
 		86BA7F6E22538D6B0054D17D /* AboutTheStudies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTheStudies.swift; sourceTree = "<group>"; };
+		86E44BF722844B1B00FAA683 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
+		86E44BF92286B65300FAA683 /* NotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduler.swift; sourceTree = "<group>"; };
 		86FE8C432260A9BC004A357C /* readPDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = readPDF.swift; sourceTree = "<group>"; };
 		86FE8C452264C0FB004A357C /* StudyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyUser.swift; sourceTree = "<group>"; };
 		A1DF7154F88C55FFF0699203 /* Pods-mQoL Lab.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mQoL Lab.release.xcconfig"; path = "Pods/Target Support Files/Pods-mQoL Lab/Pods-mQoL Lab.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,6 +142,7 @@
 		861EE73D223288DF00FB57B3 /* mQoL Lab */ = {
 			isa = PBXGroup;
 			children = (
+				86226DC2227C1D8B00B73E37 /* mQoL Lab.entitlements */,
 				864039762237ABB400209B6E /* Model */,
 				861EE76522330BF400FB57B3 /* View */,
 				864039752237AB9E00209B6E /* Controller */,
@@ -198,6 +204,8 @@
 			children = (
 				861EE75422328E7E00FB57B3 /* Switcher.swift */,
 				864039882241799400209B6E /* ParseController.swift */,
+				86E44BF722844B1B00FAA683 /* LocalNotificationManager.swift */,
+				86E44BF92286B65300FAA683 /* NotificationScheduler.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -306,6 +314,9 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
 						};
 					};
 				};
@@ -378,16 +389,20 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-mQoL Lab/Pods-mQoL Lab-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -407,9 +422,11 @@
 				861EE75522328E7E00FB57B3 /* Switcher.swift in Sources */,
 				864039832241293A00209B6E /* MqolUser.swift in Sources */,
 				864039742233C0B900209B6E /* StudyConsent.swift in Sources */,
+				86E44BF822844B1B00FAA683 /* LocalNotificationManager.swift in Sources */,
 				864039872241755700209B6E /* SplashScreenViewController.swift in Sources */,
 				862B589B226D9C5700CC93A7 /* SurveyDisplayer.swift in Sources */,
 				8691AC2D225149C30077EA6C /* WhatToExpect.swift in Sources */,
+				86E44BFA2286B65300FAA683 /* NotificationScheduler.swift in Sources */,
 				861EE7572232965100FB57B3 /* StudyHomeViewController.swift in Sources */,
 				86BA7F6D2253762D0054D17D /* LabInto.swift in Sources */,
 				8691AC252250F6ED0077EA6C /* StudyWelcome.swift in Sources */,
@@ -578,14 +595,15 @@
 			baseConfigurationReference = CDBB46C3E83F3A5F014BE4F2 /* Pods-mQoL Lab.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "mQoL Lab/mQoL Lab.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7MFXXYF5BX;
+				DEVELOPMENT_TEAM = P95JFB5JVF;
 				INFOPLIST_FILE = "$(SRCROOT)/mQoL Lab/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.fbs.mQoL-Lab";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mqol.mQoL-Lab";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -597,14 +615,15 @@
 			baseConfigurationReference = A1DF7154F88C55FFF0699203 /* Pods-mQoL Lab.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "mQoL Lab/mQoL Lab.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7MFXXYF5BX;
+				DEVELOPMENT_TEAM = P95JFB5JVF;
 				INFOPLIST_FILE = "$(SRCROOT)/mQoL Lab/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.fbs.mQoL-Lab";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mqol.mQoL-Lab";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

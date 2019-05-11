@@ -8,5 +8,7 @@ target 'mQoL Lab' do
   # Pods for mQoL Lab
   pod 'Parse'
   pod 'JGProgressHUD'
+  pod 'Firebase/Core'
+  pod 'Firebase/DynamicLinks'
 
 end
