@@ -118,6 +118,14 @@ class StudyHomeViewController: UIViewController {
                     self.survey2_survey = self.studyConfig.value(forKey: "survey2_survey") as! Survey
                     self.survey3_survey = self.studyConfig.value(forKey: "survey3_survey") as! Survey
                     
+                    //Checking if the study allows peers - if not button is hidden
+                    let isPeerStudy = self.studyConfig.value(forKey: "isPeerStudy") as! Bool
+                    if !isPeerStudy {
+                        DispatchQueue.main.async {
+                            self.addPeerBtn.isHidden = true
+                        }
+                    }
+                    
                     //Updating the survey button labels
                     DispatchQueue.main.async {
                         self.survey1.setTitle(self.studyConfig.value(forKey: "survey1_title") as? String, for: .normal)
@@ -152,6 +160,7 @@ class StudyHomeViewController: UIViewController {
                             self.startBtn.isHidden = false
                         }
                     }
+                    
                     return nil
                 })
                     
@@ -189,6 +198,14 @@ class StudyHomeViewController: UIViewController {
                 ParseController.getStudyConfigByStudy(self.study).continueOnSuccessWith { (task) -> Any? in
                     
                     self.studyConfig = task.result! as StudyConfig
+                    
+                    //Checking if the study allows peers - if not button is hidden
+                    let isPeerStudy = self.studyConfig.value(forKey: "isPeerStudy") as! Bool
+                    if !isPeerStudy {
+                        DispatchQueue.main.async {
+                            self.addPeerBtn.isHidden = true
+                        }
+                    }
                 ParseController.getStudyUserByStudyId(self.study.objectId!).continueOnSuccessWith(block: { (task) -> Any? in
                         self.studyUser = task.result! as StudyUser
                     
