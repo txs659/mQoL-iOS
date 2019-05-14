@@ -14,9 +14,8 @@
 		861EE746223288E000FB57B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 861EE745223288E000FB57B3 /* Assets.xcassets */; };
 		861EE749223288E000FB57B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 861EE747223288E000FB57B3 /* LaunchScreen.storyboard */; };
 		861EE7512232898A00FB57B3 /* LabConsent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861EE7502232898A00FB57B3 /* LabConsent.swift */; };
-		861EE75322328A4E00FB57B3 /* StudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861EE75222328A4E00FB57B3 /* StudyViewController.swift */; };
 		861EE75522328E7E00FB57B3 /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861EE75422328E7E00FB57B3 /* Switcher.swift */; };
-		861EE7572232965100FB57B3 /* StudyHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861EE7562232965100FB57B3 /* StudyHomeViewController.swift */; };
+		861EE7572232965100FB57B3 /* StudyHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861EE7562232965100FB57B3 /* StudyHome.swift */; };
 		861EE75C22329AD200FB57B3 /* StudyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861EE75B22329AD200FB57B3 /* StudyList.swift */; };
 		861EE7602233075700FB57B3 /* OurLab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 861EE75F2233075700FB57B3 /* OurLab.storyboard */; };
 		861EE76222330A4600FB57B3 /* ListOfStudies.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 861EE76122330A4600FB57B3 /* ListOfStudies.storyboard */; };
@@ -60,9 +59,8 @@
 		861EE748223288E000FB57B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		861EE74A223288E000FB57B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		861EE7502232898A00FB57B3 /* LabConsent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabConsent.swift; sourceTree = "<group>"; };
-		861EE75222328A4E00FB57B3 /* StudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyViewController.swift; sourceTree = "<group>"; };
 		861EE75422328E7E00FB57B3 /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
-		861EE7562232965100FB57B3 /* StudyHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyHomeViewController.swift; sourceTree = "<group>"; };
+		861EE7562232965100FB57B3 /* StudyHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyHome.swift; sourceTree = "<group>"; };
 		861EE75B22329AD200FB57B3 /* StudyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyList.swift; sourceTree = "<group>"; };
 		861EE75F2233075700FB57B3 /* OurLab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OurLab.storyboard; sourceTree = "<group>"; };
 		861EE76122330A4600FB57B3 /* ListOfStudies.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ListOfStudies.storyboard; sourceTree = "<group>"; };
@@ -149,6 +147,7 @@
 				861EE76522330BF400FB57B3 /* View */,
 				864039752237AB9E00209B6E /* Controller */,
 				861EE73E223288DF00FB57B3 /* AppDelegate.swift */,
+				864039862241755700209B6E /* SplashScreenViewController.swift */,
 				861EE745223288E000FB57B3 /* Assets.xcassets */,
 				861EE74A223288E000FB57B3 /* Info.plist */,
 			);
@@ -183,7 +182,6 @@
 				8691AC232250F6270077EA6C /* Study Home */,
 				8691AC222250F6140077EA6C /* Study List */,
 				8691AC152250F41A0077EA6C /* Our Lab */,
-				864039862241755700209B6E /* SplashScreenViewController.swift */,
 				864039772237ABD500209B6E /* Helpers */,
 			);
 			path = Controller;
@@ -263,8 +261,7 @@
 		8691AC232250F6270077EA6C /* Study Home */ = {
 			isa = PBXGroup;
 			children = (
-				861EE75222328A4E00FB57B3 /* StudyViewController.swift */,
-				861EE7562232965100FB57B3 /* StudyHomeViewController.swift */,
+				861EE7562232965100FB57B3 /* StudyHome.swift */,
 				862B589A226D9C5700CC93A7 /* SurveyDisplayer.swift */,
 			);
 			path = "Study Home";
@@ -318,7 +315,7 @@
 								enabled = 1;
 							};
 							com.apple.SafariKeychain = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -431,12 +428,11 @@
 				862B589B226D9C5700CC93A7 /* SurveyDisplayer.swift in Sources */,
 				8691AC2D225149C30077EA6C /* WhatToExpect.swift in Sources */,
 				86E44BFA2286B65300FAA683 /* NotificationScheduler.swift in Sources */,
-				861EE7572232965100FB57B3 /* StudyHomeViewController.swift in Sources */,
+				861EE7572232965100FB57B3 /* StudyHome.swift in Sources */,
 				86BA7F6D2253762D0054D17D /* LabInto.swift in Sources */,
 				8691AC252250F6ED0077EA6C /* StudyWelcome.swift in Sources */,
 				864039722233A28700209B6E /* StudyCell.swift in Sources */,
 				861EE7512232898A00FB57B3 /* LabConsent.swift in Sources */,
-				861EE75322328A4E00FB57B3 /* StudyViewController.swift in Sources */,
 				862B5899226D986B00CC93A7 /* Survey.swift in Sources */,
 				8691AC212250F56F0077EA6C /* LabThanks.swift in Sources */,
 				861EE73F223288DF00FB57B3 /* AppDelegate.swift in Sources */,
@@ -599,9 +595,8 @@
 			baseConfigurationReference = CDBB46C3E83F3A5F014BE4F2 /* Pods-mQoL Lab.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "mQoL Lab/mQoL Lab.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P95JFB5JVF;
+				DEVELOPMENT_TEAM = 55RD9S7S4Y;
 				INFOPLIST_FILE = "$(SRCROOT)/mQoL Lab/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -619,9 +614,8 @@
 			baseConfigurationReference = A1DF7154F88C55FFF0699203 /* Pods-mQoL Lab.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "mQoL Lab/mQoL Lab.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P95JFB5JVF;
+				DEVELOPMENT_TEAM = 55RD9S7S4Y;
 				INFOPLIST_FILE = "$(SRCROOT)/mQoL Lab/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

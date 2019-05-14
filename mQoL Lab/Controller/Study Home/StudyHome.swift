@@ -1,5 +1,5 @@
 //
-//  StudyHomeViewController.swift
+//  StudyHome.swift
 //  mQoL Lab
 //
 //  Created by Frederik Schmøde on 08/03/2019.
@@ -9,8 +9,9 @@
 import UIKit
 import Parse
 import UserNotifications
+import MessageUI
 
-class StudyHomeViewController: UIViewController {
+class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     
     //Objects are fetched when view is loaded and stored in these variables.
     var study = Study()
@@ -233,8 +234,10 @@ class StudyHomeViewController: UIViewController {
         let optionMenu = UIAlertController(title: nil, message: "Insert options here", preferredStyle: .actionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let contactUsAction = UIAlertAction(title: "Contact us", style: .default, handler: sendEmailToUs)
         
         optionMenu.addAction(cancelAction)
+        optionMenu.addAction(contactUsAction)
         
         self.present(optionMenu, animated: true, completion: nil)
     }
@@ -376,6 +379,8 @@ class StudyHomeViewController: UIViewController {
     func quitHandler (_ action : UIAlertAction) {
         ParseController.disableUserFromStudy(studyId: self.study.objectId!, status: StudyUser.STATUS_QUITED)
         ParseController.setStudyUserFlowState(studyId: self.study.objectId!, statusFlow: StudyUser.STUDY_FLOW_STATE_3)
+        
+        //Setting local values
         UserDefaults.standard.set(false, forKey: "studyConsentGiven")
         UserDefaults.standard.set("", forKey: "studyId")
         UserDefaults.standard.set(false, forKey: "studyLoaded")
@@ -389,6 +394,41 @@ class StudyHomeViewController: UIViewController {
         ParseController.setExitSurveyDone(studyUser: self.studyUser)
         
         self.exitSurveyFired = true
+    }
+    
+    
+    // MARK: - Functions responsible for mail
+    
+    //Function triggered when user wants to invite peers.
+    func sendEmailToPeer() {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
+            
+            present(mail, animated: true)
+        } else {
+            print ("Cannot send email")
+        }
+    }
+    
+    //Function triggered when the user presses the 'contact us' button.
+    func sendEmailToUs(_ action : UIAlertAction) {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["you@yoursite.com"])
+            mail.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
+            
+            present(mail, animated: true)
+        } else {
+            print ("Cannot send email")
+        }
+    }
+    
+    //This function dismisses the email UI when the mail has been sent.
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
     }
     
 }

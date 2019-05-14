@@ -13,7 +13,7 @@
         <!--mQoL Studies - UNIGE-->
         <scene sceneID="c9A-ST-mxC">
             <objects>
-                <viewController id="ypL-iW-Cp7" customClass="StudyHomeViewController" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ypL-iW-Cp7" customClass="StudyHome" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9cH-oi-fez">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -201,10 +201,10 @@
             </objects>
             <point key="canvasLocation" x="855.20000000000005" y="727.83251231527095"/>
         </scene>
-        <!--Study View Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="mvO-FI-Rbh">
             <objects>
-                <navigationController storyboardIdentifier="studies" automaticallyAdjustsScrollViewInsets="NO" id="l8U-G7-JGM" customClass="StudyViewController" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="studies" automaticallyAdjustsScrollViewInsets="NO" id="l8U-G7-JGM" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="f7R-jd-U5f">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>

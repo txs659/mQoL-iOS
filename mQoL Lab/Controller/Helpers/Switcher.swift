@@ -22,7 +22,7 @@ class Switcher {
             rootVC = UIStoryboard(name: "ListOfStudies", bundle: nil).instantiateViewController(withIdentifier: "studyList") as! UINavigationController
         }
         else if (consentGiven && studyConsentGiven) {
-            rootVC = UIStoryboard(name: "StudyHome", bundle: nil).instantiateViewController(withIdentifier: "studies") as! StudyViewController
+            rootVC = UIStoryboard(name: "StudyHome", bundle: nil).instantiateViewController(withIdentifier: "studies") as! UINavigationController
         }
         else {
             rootVC = UIStoryboard(name: "OurLab", bundle: nil).instantiateViewController(withIdentifier: "ourLab") as! UINavigationController
