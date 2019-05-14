@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import PDFKit
 
 class LabConsent: UIViewController {
     
@@ -27,6 +28,8 @@ class LabConsent: UIViewController {
     
     var over18 : Bool = false
     var readAndAccepted : Bool = false
+    
+    var pdf = PDFDocument()
     
     let alert = UIAlertController(title: "Agreement missing", message: "You need to agree to all the terms in order to continue", preferredStyle: .alert)
     
@@ -97,6 +100,29 @@ class LabConsent: UIViewController {
             self.present(alert, animated: true)
         }
         
+    }
+    
+    @IBAction func downloadAgreement(_ sender: Any) {
+        PFConfig.getInBackground { (config, error) in
+            if error != nil {
+                print (error!)
+            } else {
+                let file = config!["lab_agreement"] as! PFFileObject
+                let pdfURL = URL(string: file.url!)
+                if let pdf = PDFDocument(url: pdfURL!) {
+                    self.pdf = pdf
+                    self.performSegue(withIdentifier: "readPDF", sender: self)
+                }
+            }
+        }
+    }
+    
+    // Sends the PDF file to the PDFView for display
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "readPDF" {
+            let vc = segue.destination as? readPDF
+            vc?.pdfFile = self.pdf
+        }
     }
     
 

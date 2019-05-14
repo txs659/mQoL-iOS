@@ -25,6 +25,8 @@ class StudyHomeViewController: UIViewController {
     //Used in call to mqol web application
     var urlString = ""
     
+    var exitSurveyFired = false
+    
     @IBOutlet weak var studyTitle : UILabel!
     @IBOutlet weak var studyDescribtion : UILabel!
     @IBOutlet weak var studyTasks : UILabel!
@@ -81,6 +83,10 @@ class StudyHomeViewController: UIViewController {
             self.goToSurveyURL(surveyId: surveyToFire!)
             UserDefaults.standard.set(false, forKey: "fireNotificationSurvey")
             UserDefaults.standard.set("", forKey: "surveyToFire")
+        }
+        
+        if self.exitSurveyFired {
+            Switcher.updateRootVC()
         }
         
         
@@ -204,7 +210,8 @@ class StudyHomeViewController: UIViewController {
                 }
             }
     }
-        
+    
+    //Function fired if the 'info' icon is pressed. This will show a collection of options.
     @IBAction func infoPressed(_ sender: Any) {
         let optionMenu = UIAlertController(title: nil, message: "Insert options here", preferredStyle: .actionSheet)
         
@@ -216,15 +223,11 @@ class StudyHomeViewController: UIViewController {
     }
     
     @IBAction func resetConsents(_ sender: Any) {
-        //UserDefaults.standard.set(false, forKey: "consentGiven")
+        UserDefaults.standard.set(false, forKey: "consentGiven")
         
-        let scheduleInfo = self.studyConfig.value(forKey: "notificationScheduleInfo") as! [String : Any]
-        let durationDays = self.studyConfig.value(forKey: "durationDays") as! Int
-        
-        let scheduler = NotificationScheduler()
-        scheduler.scheduleAllNotifications(info: scheduleInfo, days: durationDays)
     }
     
+    //Function fired when survey2 button is pressed. The button is hidden after it has been pressed.
     @IBAction func survey1Pressed(_ sender: Any) {
         if let surveyId = survey1_survey.objectId {
             goToSurveyURL(surveyId: surveyId)
@@ -235,6 +238,7 @@ class StudyHomeViewController: UIViewController {
         }
     }
     
+    //Function fired when survey2 button is pressed. The button is hidden after it has been pressed.
     @IBAction func survey2Pressed(_ sender: Any) {
         if let surveyId = survey2_survey.objectId {
             goToSurveyURL(surveyId: surveyId)
@@ -245,6 +249,7 @@ class StudyHomeViewController: UIViewController {
         }
     }
     
+    //Function fired when survey3 button is pressed. The button is hidden after it has been pressed.
     @IBAction func survey3Pressed(_ sender: Any) {
         if let surveyId = survey3_survey.objectId {
             goToSurveyURL(surveyId: surveyId)
@@ -255,13 +260,20 @@ class StudyHomeViewController: UIViewController {
         }
     }
     
+    @IBAction func invitePeers(_ sender: Any) {
+        
+        print ("invite peer is pressed!")
+        
+    }
     
+    
+    //Creates the URL used to call the web app and then switching view to the WebView.
     private func goToSurveyURL (surveyId : String) {
         ParseController.getMqolUser().continueOnSuccessWith { (task) -> Any? in
             let mqolUser = task.result as! MqolUser
             let mqolUserId = mqolUser.objectId! 
-            self.urlString = "https://mqolweb.com/mqoluser/\(mqolUserId)/survey/\(surveyId)"
-            //self.urlString = "https://www.w3schools.com/jsref/met_win_alert.asp"
+            //self.urlString = "https://mqolweb.com/user/\(mqolUserId)/survey/\(surveyId)"
+            self.urlString = "localhost:3000/user/\(mqolUserId)/survey/\(surveyId)"
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "surveyDisplayer", sender: self)
             }
@@ -271,6 +283,7 @@ class StudyHomeViewController: UIViewController {
         
     }
     
+    //This function is used to give pass the URL on to the WebView.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as? SurveyDisplayer
         vc?.targetURL = urlString
@@ -326,8 +339,18 @@ class StudyHomeViewController: UIViewController {
         startBtn.isHidden = true
         self.daysInStudy.isHidden = false
         
+        //Schedule notifications
+        let scheduleInfo = self.studyConfig.value(forKey: "notificationScheduleInfo") as! [String : Any]
+        let durationDays = self.studyConfig.value(forKey: "durationDays") as! Int
+        
+        let scheduler = NotificationScheduler()
+        scheduler.scheduleAllNotifications(info: scheduleInfo, days: durationDays)
+        
+        
         ParseController.startStudyCountDown(studyId: self.study.objectId!)
         UserDefaults.standard.set(true, forKey: "studyLoaded")
+        
+        //Load new view
         self.loadStudyRunningScreen()
         
     }
@@ -339,7 +362,16 @@ class StudyHomeViewController: UIViewController {
         UserDefaults.standard.set(false, forKey: "studyConsentGiven")
         UserDefaults.standard.set("", forKey: "studyId")
         UserDefaults.standard.set(false, forKey: "studyLoaded")
-        Switcher.updateRootVC()
+        
+        //Delete all notifications
+        let manager = LocalNotificationManager()
+        manager.deleteAllNotifications()
+        
+        let exitSurvey = self.studyConfig.value(forKey: "exitSurvey") as! PFObject
+        self.goToSurveyURL(surveyId: exitSurvey.objectId!)
+        ParseController.setExitSurveyDone(studyUser: self.studyUser)
+        
+        self.exitSurveyFired = true
     }
     
 }

@@ -85,6 +85,10 @@ class StudyUser : PFObject, PFSubclassing {
         }
     }
     
+    func setExitSurveyDone () {
+        self.exitSurveyDone = true
+    }
+    
     
     
     

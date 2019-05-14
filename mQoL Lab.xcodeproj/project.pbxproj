@@ -24,6 +24,7 @@
 		862B5899226D986B00CC93A7 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862B5898226D986B00CC93A7 /* Survey.swift */; };
 		862B589B226D9C5700CC93A7 /* SurveyDisplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862B589A226D9C5700CC93A7 /* SurveyDisplayer.swift */; };
 		862B58A1226F2C2700CC93A7 /* SurveyTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862B58A0226F2C2700CC93A7 /* SurveyTrigger.swift */; };
+		862C2583228AD1D000153F40 /* ReadPDF.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 862C2582228AD1D000153F40 /* ReadPDF.storyboard */; };
 		864039722233A28700209B6E /* StudyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864039712233A28700209B6E /* StudyCell.swift */; };
 		864039742233C0B900209B6E /* StudyConsent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864039732233C0B900209B6E /* StudyConsent.swift */; };
 		86403979223CF28000209B6E /* StudyThanks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86403978223CF28000209B6E /* StudyThanks.swift */; };
@@ -70,6 +71,7 @@
 		862B5898226D986B00CC93A7 /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 		862B589A226D9C5700CC93A7 /* SurveyDisplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyDisplayer.swift; sourceTree = "<group>"; };
 		862B58A0226F2C2700CC93A7 /* SurveyTrigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyTrigger.swift; sourceTree = "<group>"; };
+		862C2582228AD1D000153F40 /* ReadPDF.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReadPDF.storyboard; sourceTree = "<group>"; };
 		864039712233A28700209B6E /* StudyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyCell.swift; sourceTree = "<group>"; };
 		864039732233C0B900209B6E /* StudyConsent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyConsent.swift; sourceTree = "<group>"; };
 		86403978223CF28000209B6E /* StudyThanks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyThanks.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				861EE75F2233075700FB57B3 /* OurLab.storyboard */,
 				861EE76122330A4600FB57B3 /* ListOfStudies.storyboard */,
 				861EE76322330B8B00FB57B3 /* StudyHome.storyboard */,
+				862C2582228AD1D000153F40 /* ReadPDF.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -305,7 +308,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
-				ORGANIZATIONNAME = FBS;
+				ORGANIZATIONNAME = mQoL;
 				TargetAttributes = {
 					861EE73A223288DF00FB57B3 = {
 						CreatedOnToolsVersion = 10.1;
@@ -351,6 +354,7 @@
 				861EE746223288E000FB57B3 /* Assets.xcassets in Resources */,
 				8640397D223D203200209B6E /* Default-568h@2x.png in Resources */,
 				861EE744223288DF00FB57B3 /* Main.storyboard in Resources */,
+				862C2583228AD1D000153F40 /* ReadPDF.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

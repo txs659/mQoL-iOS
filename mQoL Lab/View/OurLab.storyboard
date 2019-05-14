@@ -246,6 +246,9 @@
                                                 <state key="normal" title="DOWNLOAD LAB AGREEMENT">
                                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="downloadAgreement:" destination="wc6-cQ-qmF" eventType="touchUpInside" id="bGE-Lf-JLi"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am 18 years or older." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="GfI-iG-0hD">
                                                 <rect key="frame" x="75" y="196" width="284" height="21"/>
@@ -343,11 +346,20 @@
                         <outlet property="switchLabel2" destination="1G8-om-kQZ" id="Fdc-eY-c3E"/>
                         <outlet property="text1" destination="9YV-BF-Xjs" id="WaL-e6-m2n"/>
                         <segue destination="fQ2-XX-POf" kind="show" identifier="ourLabThankYou" id="DvT-9o-Hyf"/>
+                        <segue destination="FFk-f2-omm" kind="presentation" identifier="readPDF" id="Zve-9r-18o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vB4-fI-xG3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3367.1999999999998" y="-696.7016491754124"/>
+        </scene>
+        <!--readPDF-->
+        <scene sceneID="Yf1-rl-h3k">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ReadPDF" referencedIdentifier="readPDF" id="FFk-f2-omm" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6JR-TA-94C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3367" y="-128"/>
         </scene>
         <!--mQoL Studies - UNIGE-->
         <scene sceneID="9ft-i0-bf8">

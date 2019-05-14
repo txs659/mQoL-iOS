@@ -26,7 +26,6 @@ class NotificationScheduler {
         self.scheduleRandomEvents()
         
         manager.schedule()
-        manager.deleteAllNotifications()
     }
     
     //This function creates the random event notifications
@@ -55,7 +54,7 @@ class NotificationScheduler {
         //Iterates through a time period calculated from the current day and a number of days
         //equal to the study duration forward. For each day a number of random events is
         //scheduled
-        for day in 1...durationDays {
+        for day in 0..<1{ //should be 1...durationDays - changed for debug purpose
             
             //Making a dateformater so we can compare accepted days with the calculated day
             //with the format "Mon", "Tue" etc.
@@ -73,6 +72,8 @@ class NotificationScheduler {
                     //Generates a random hour and minute within the given hour interval
                     let randomHour = Int.random(in: startHour..<endHour)
                     let randomMinute = Int.random(in: 0..<60)
+                    
+                    print ("\(randomHour) : \(randomMinute)")
                     
                     //Adds the notification to the notification array
                     manager.notifications.append(surveyNotification(

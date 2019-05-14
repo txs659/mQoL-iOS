@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--ReadPDF-->
+        <scene sceneID="STk-7S-NCF">
+            <objects>
+                <viewController storyboardIdentifier="readPDF" id="KHA-9J-qNu" customClass="readPDF" customModule="mQoL_Lab" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="T98-o2-Jk4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aLD-No-bt1" customClass="PDFView">
+                                <rect key="frame" x="0.0" y="106" width="414" height="756"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2i-hu-fgt">
+                                <rect key="frame" x="16" y="60" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="EcO-hy-5w1"/>
+                                    <constraint firstAttribute="width" constant="30" id="s6P-d9-hEN"/>
+                                </constraints>
+                                <state key="normal" image="CloseBtn"/>
+                                <connections>
+                                    <action selector="closePressedWithSender:" destination="KHA-9J-qNu" eventType="touchUpInside" id="IXl-u7-0cC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aLD-No-bt1" firstAttribute="top" secondItem="Z2i-hu-fgt" secondAttribute="bottom" constant="16" id="46L-66-N6g"/>
+                            <constraint firstItem="M6S-yY-kxh" firstAttribute="trailing" secondItem="aLD-No-bt1" secondAttribute="trailing" id="Frr-oh-484"/>
+                            <constraint firstItem="Z2i-hu-fgt" firstAttribute="top" secondItem="M6S-yY-kxh" secondAttribute="top" constant="16" id="G2c-Wc-nsd"/>
+                            <constraint firstItem="aLD-No-bt1" firstAttribute="leading" secondItem="M6S-yY-kxh" secondAttribute="leading" id="Mu4-qu-x7N"/>
+                            <constraint firstItem="Z2i-hu-fgt" firstAttribute="leading" secondItem="M6S-yY-kxh" secondAttribute="leading" constant="16" id="iiG-ta-Tel"/>
+                            <constraint firstItem="M6S-yY-kxh" firstAttribute="bottom" secondItem="aLD-No-bt1" secondAttribute="bottom" id="qAx-Kv-HSe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="M6S-yY-kxh"/>
+                    </view>
+                    <connections>
+                        <outlet property="btn" destination="Z2i-hu-fgt" id="e4f-b0-39k"/>
+                        <outlet property="pdfView" destination="aLD-No-bt1" id="eYI-Ih-bSJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RKj-VX-3le" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7747.826086956522" y="728.57142857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="CloseBtn" width="50" height="50"/>
+    </resources>
+</document>

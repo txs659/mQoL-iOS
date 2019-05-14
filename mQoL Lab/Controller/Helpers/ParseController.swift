@@ -274,6 +274,11 @@ class ParseController {
         }
     }
     
+    static func setExitSurveyDone (studyUser : StudyUser) {
+        studyUser.setExitSurveyDone()
+        studyUser.saveEventually()
+    }
+    
     
     
     // MARK: - Functions used when user starts a study
