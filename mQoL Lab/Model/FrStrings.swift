@@ -52,4 +52,9 @@ class FrStrings {
     static let view_study_agreement = "Consentement Approuvé"
     static let view_study_name_surname = "Entrez votre nom et prénon ici"
     
+    
+    //Strings for email
+    static let invitation_message = "Rejoignez moi dans un projet de recherche de l\'Université de Genève."
+    static let email_failed_title = "Email échoué"
+    static let email_failed_text = "Votre appareil n\'est pas configuré pour les emails. Veuillez le faire et essayez à nouveau."
 }

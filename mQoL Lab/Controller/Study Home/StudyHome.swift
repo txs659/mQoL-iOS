@@ -28,6 +28,8 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     
     var exitSurveyFired = false
     
+    let language = UserDefaults.standard.string(forKey: "language")
+    
     @IBOutlet weak var studyTitle : UILabel!
     @IBOutlet weak var studyDescribtion : UILabel!
     @IBOutlet weak var studyTasks : UILabel!
@@ -46,6 +48,7 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         let isStudyStarted = UserDefaults.standard.bool(forKey: "studyLoaded")
+        
         
         if isStudyStarted {
             loadStudyRunningScreen()
@@ -123,7 +126,7 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
                     let isPeerStudy = self.studyConfig.value(forKey: "isPeerStudy") as! Bool
                     if !isPeerStudy {
                         DispatchQueue.main.async {
-                            self.addPeerBtn.isHidden = true
+                            self.addPeerBtn.isHidden = false //This should be true, only false for debugging.
                         }
                     }
                     
@@ -200,13 +203,15 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
                     
                     self.studyConfig = task.result! as StudyConfig
                     
+
                     //Checking if the study allows peers - if not button is hidden
                     let isPeerStudy = self.studyConfig.value(forKey: "isPeerStudy") as! Bool
                     if !isPeerStudy {
                         DispatchQueue.main.async {
-                            self.addPeerBtn.isHidden = true
+                            self.addPeerBtn.isHidden = false //This needs to be true - only false for debugging
                         }
                     }
+ 
                 ParseController.getStudyUserByStudyId(self.study.objectId!).continueOnSuccessWith(block: { (task) -> Any? in
                         self.studyUser = task.result! as StudyUser
                     
@@ -231,7 +236,7 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     
     //Function fired if the 'info' icon is pressed. This will show a collection of options.
     @IBAction func infoPressed(_ sender: Any) {
-        let optionMenu = UIAlertController(title: nil, message: "Insert options here", preferredStyle: .actionSheet)
+        let optionMenu = UIAlertController(title: nil, message: "", preferredStyle: .actionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let contactUsAction = UIAlertAction(title: "Contact us", style: .default, handler: sendEmailToUs)
@@ -280,10 +285,25 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
         }
     }
     
+    /*
+     * This function is called when the user presses 'invite peers'. The user is then
+     * asked what language the mail should be writte in.
+     */
     @IBAction func invitePeers(_ sender: Any) {
         
-        print ("invite peer is pressed!")
+        let alert = UIAlertController(title: "Email language", message: "What language should the mail be written in?", preferredStyle: .alert)
         
+        let englishMail = UIAlertAction(title: "English", style: .default, handler: self.sendEmailToPeerEn)
+    
+        let frenchMail = UIAlertAction(title: "French", style: .default, handler: self.sendEmailToPeerFr)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        
+        alert.addAction(englishMail)
+        alert.addAction(frenchMail)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true)
     }
     
     
@@ -399,16 +419,65 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     
     // MARK: - Functions responsible for mail
     
-    //Function triggered when user wants to invite peers.
-    func sendEmailToPeer() {
+    //Function triggered when user wants to invite peers - English version.
+    func sendEmailToPeerEn(_ action : UIAlertAction) {
         if MFMailComposeViewController.canSendMail() {
+            
+            //Create deeplink for Firebase
+            let deeplink = "https://google.com"
+            
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
-            mail.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
+            mail.setSubject(EnStrings.invitation_message)
+            mail.setMessageBody("<![CDATA[<p><em>Hello</em></p><p>Your friend, the sender of this message is inviting you to participate in a research study for a new data collection method to explore the role of peers in the assessment of human stress.</p><p>Your contributions as a peer will help us to enhance the accuracy of computer algorithms that are being designed to improve stress awareness. As a peer in this study, you will receive notifications to answer short surveys regarding the person who invited you to this study.&nbsp;</p><p>Please <a href=\"\(deeplink)\">install this application</a> to get started.</p><p>Please do not hesitate to contact the person who sent you this invitation so that you can receive more details about the study. You can also contact the researchers and request further clarifications at any moment.&nbsp;</p><p>CONTACT INFORMATION: &nbsp;If you have any questions, concerns or complaints about this research, its procedures, risks,&nbsp;and benefits, contact the Protocol Director, <a href=\"mailto:Katarzyna.Wac@unige.ch\">Katarzyna Wac</a></p><p>You can also contact the second investigator <a href=\"mailto:allan.berrocal@unige.ch\">Allan Berrocal</a> ISS, Center for Informatics, University of Geneva. Battelle B&acirc;timent A. Office 230. 7, route de Drize, 1227 Carouge, Switzerland Ph. +41 022 379 02 42</p><p>Thank you in advance for your invaluable collaboration.</p><p>&nbsp;</p>", isHTML: true)
             
             present(mail, animated: true)
         } else {
-            print ("Cannot send email")
+            //If device is not setup for sending emails, display a warning to user
+            
+            //Check if language is French or English and create the alert accordingly
+            if self.language == "fr" {
+                let alert = UIAlertController(title: FrStrings.email_failed_title, message: FrStrings.email_failed_text, preferredStyle: .alert)
+                let okAction = UIAlertAction(title: FrStrings.back_button, style: .default)
+                alert.addAction(okAction)
+                self.present(alert, animated: true)
+            } else {
+                let alert = UIAlertController(title: EnStrings.email_failed_title, message: EnStrings.email_failed_text, preferredStyle: .alert)
+                let okAction = UIAlertAction(title: EnStrings.back_button, style: .default)
+                alert.addAction(okAction)
+                self.present(alert, animated: true)
+            }
+        }
+    }
+    
+    //Function triggered when user wants to invite peers - French version.
+    func sendEmailToPeerFr(_ action : UIAlertAction) {
+        if MFMailComposeViewController.canSendMail() {
+            
+            //Create deeplink for Firebase
+            let deeplink = "https://google.com"
+            
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setSubject(FrStrings.invitation_message)
+            mail.setMessageBody("<![CDATA[<p>Vous avez reçu cette invitation de votre ami-e pour participer à une étude sur le stress humain.</p><p>Avec votre participation, nous espérons améliorer la précision des algorithmes informatiques que nous créons pour aider les personnes qui souffrent de stress. En tant qu\'ami d\'un participant à l\'étude vous rapportez, dans ces courts sondages, ce que vous percevez de votre ami en ce qui concerne le stress.</p><p>Veuillez <a href=\"\(deeplink)\">installer cette application</a> pour commencer.</p><p>N\'hésitez pas à contacter la personne qui vous a envoyé cette invitation afin de recevoir plus de détails sur l\'étude. Vous pouvez également contacter les chercheurs.&nbsp;</p><p>CONTACT: &nbsp;Si vous avez des questions, des préoccupations ou des plaintes concernant cette recherche, ses procédures, ses risques et ses avantages, contactez la directrice du protocole, la <a href=\"mailto:Katarzyna.Wac@unige.ch\">Prof. Katarzyna Wac</a>. Il vous est également possible de contacter le deuxième chercheur, M. <a href=\"mailto:allan.berrocal@unige.ch\">Allan Berrocal</a> Institut de Science de Service Informationnel (ISS), Centre Universitaire d\'informatique (CUI), Université de Genève, Battelle, B&acirc;timent A. Bureau 230. 7, route de Drize, 1227 Carouge, Suisse Tél. +41 022 379 02 42</p><p>Merci d\'avance pour votre précieuse collaboration.</p><p>&nbsp;</p>", isHTML: true)
+            
+            present(mail, animated: true)
+        } else {
+            //If device is not setup for sending emails, display a warning to user
+            
+            //Check if language is French or English and create the alert accordingly
+            if self.language == "fr" {
+                let alert = UIAlertController(title: FrStrings.email_failed_title, message: FrStrings.email_failed_text, preferredStyle: .alert)
+                let okAction = UIAlertAction(title: FrStrings.back_button, style: .default)
+                alert.addAction(okAction)
+                self.present(alert, animated: true)
+            } else {
+                let alert = UIAlertController(title: EnStrings.email_failed_title, message: EnStrings.email_failed_text, preferredStyle: .alert)
+                let okAction = UIAlertAction(title: EnStrings.back_button, style: .default)
+                alert.addAction(okAction)
+                self.present(alert, animated: true)
+            }
         }
     }
     
@@ -417,12 +486,26 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
+            
             mail.setToRecipients(["you@yoursite.com"])
             mail.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
             
             present(mail, animated: true)
         } else {
-            print ("Cannot send email")
+            //If device is not setup for sending emails, display a warning to user
+            
+            //Check if language is French or English and create the alert accordingly
+            if self.language == "fr" {
+                let alert = UIAlertController(title: FrStrings.email_failed_title, message: FrStrings.email_failed_text, preferredStyle: .alert)
+                let okAction = UIAlertAction(title: FrStrings.back_button, style: .default)
+                alert.addAction(okAction)
+                self.present(alert, animated: true)
+            } else {
+                let alert = UIAlertController(title: EnStrings.email_failed_title, message: EnStrings.email_failed_text, preferredStyle: .alert)
+                let okAction = UIAlertAction(title: EnStrings.back_button, style: .default)
+                alert.addAction(okAction)
+                self.present(alert, animated: true)
+            }
         }
     }
     

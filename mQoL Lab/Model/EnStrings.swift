@@ -63,4 +63,10 @@ class EnStrings {
     static let quit_continue = "I want to quit"
     static let quit_abort = "Cancel"
 
+    
+    
+    //Strings for email
+    static let invitation_message = "Please join me in a research project for the University of Geneva."
+    static let email_failed_title = "Email failed"
+    static let email_failed_text = "Your device is not set up for emails. Please do so and try again."
 }
