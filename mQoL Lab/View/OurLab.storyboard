@@ -98,7 +98,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="GfL-TB-Dwb"/>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="Mra-9b-lyg">
                             <connections>
-                                <segue destination="FdY-fR-xA1" kind="show" id="Jre-oM-8ii"/>
+                                <action selector="nextPressed:" destination="zme-V4-3z4" id="38W-Hn-G25"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -106,6 +106,7 @@
                         <outlet property="infoTitle" destination="Q3G-EZ-MCE" id="zGE-P3-JBz"/>
                         <outlet property="text1" destination="Tul-kl-MZc" id="Lfu-Hq-WTH"/>
                         <outlet property="text2" destination="E8I-4C-lPF" id="6tf-yD-O4z"/>
+                        <segue destination="FdY-fR-xA1" kind="show" identifier="goToAbout" id="vFu-qV-egg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M5R-Ql-nwW" userLabel="First Responder" sceneMemberID="firstResponder"/>

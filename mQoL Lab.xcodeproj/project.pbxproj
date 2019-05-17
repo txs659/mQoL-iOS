@@ -40,6 +40,7 @@
 		8691AC2D225149C30077EA6C /* WhatToExpect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8691AC2C225149C30077EA6C /* WhatToExpect.swift */; };
 		8691AC2F22514B2D0077EA6C /* ParticipantsRights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8691AC2E22514B2D0077EA6C /* ParticipantsRights.swift */; };
 		8691AC3122514C6B0077EA6C /* RiskAndBenefits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8691AC3022514C6B0077EA6C /* RiskAndBenefits.swift */; };
+		86A024CA228EC08A005C8F49 /* Peer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A024C9228EC08A005C8F49 /* Peer.swift */; };
 		86BA7F69225372BB0054D17D /* EnStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BA7F68225372BB0054D17D /* EnStrings.swift */; };
 		86BA7F6B225372CA0054D17D /* FrStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BA7F6A225372CA0054D17D /* FrStrings.swift */; };
 		86BA7F6D2253762D0054D17D /* LabInto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BA7F6C2253762D0054D17D /* LabInto.swift */; };
@@ -86,6 +87,7 @@
 		8691AC2C225149C30077EA6C /* WhatToExpect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatToExpect.swift; sourceTree = "<group>"; };
 		8691AC2E22514B2D0077EA6C /* ParticipantsRights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantsRights.swift; sourceTree = "<group>"; };
 		8691AC3022514C6B0077EA6C /* RiskAndBenefits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskAndBenefits.swift; sourceTree = "<group>"; };
+		86A024C9228EC08A005C8F49 /* Peer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Peer.swift; sourceTree = "<group>"; };
 		86BA7F68225372BB0054D17D /* EnStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnStrings.swift; sourceTree = "<group>"; };
 		86BA7F6A225372CA0054D17D /* FrStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrStrings.swift; sourceTree = "<group>"; };
 		86BA7F6C2253762D0054D17D /* LabInto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInto.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			children = (
 				864039822241293A00209B6E /* MqolUser.swift */,
 				86FE8C452264C0FB004A357C /* StudyUser.swift */,
+				86A024C9228EC08A005C8F49 /* Peer.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				8691AC27225117520077EA6C /* AnsweringSurveys.swift in Sources */,
 				8691AC29225146DA0077EA6C /* DataCollection.swift in Sources */,
 				8691AC12224FE4A50077EA6C /* Study.swift in Sources */,
+				86A024CA228EC08A005C8F49 /* Peer.swift in Sources */,
 				861EE75522328E7E00FB57B3 /* Switcher.swift in Sources */,
 				864039832241293A00209B6E /* MqolUser.swift in Sources */,
 				864039742233C0B900209B6E /* StudyConsent.swift in Sources */,

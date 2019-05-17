@@ -48,11 +48,16 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         let isStudyStarted = UserDefaults.standard.bool(forKey: "studyLoaded")
+        let isPeer = UserDefaults.standard.bool(forKey: "isPeer")
         
-        
+        // Checking whether the user is a peer, a participant where the study is started, or
+        // a participant where the study is not started yet. These three scenrious require
+        // different UI loads.
         if isStudyStarted {
             loadStudyRunningScreen()
-        } else {
+        } else if isPeer{
+            loadPeerScreen()
+        }else {
             loadBeginStudyScreen()
         }
         
@@ -512,6 +517,14 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     //This function dismisses the email UI when the mail has been sent.
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
+    }
+    
+    
+    
+    // MARK: - Peer specific functions
+    
+    func loadPeerScreen() {
+        
     }
     
 }
