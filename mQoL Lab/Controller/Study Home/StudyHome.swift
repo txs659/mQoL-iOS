@@ -84,18 +84,21 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     
     
     // Check everytime survyes is done, to see if the start study button should be displyed.
+    // Only relevant for participants
     override func viewWillAppear(_ animated: Bool) {
-        let isStudyStarted = UserDefaults.standard.bool(forKey: "studyLoaded")
+        if !isPeer {
+            let isStudyStarted = UserDefaults.standard.bool(forKey: "studyLoaded")
         
-        if !isStudyStarted {
-            studyUser.fetchInBackground().continueOnSuccessWith { (task) -> Void in
-                let survey1Done = self.studyUser.survey1Done
-                let survey2Done = self.studyUser.survey2Done
-                let survey3Done = self.studyUser.survey3Done
-                
-                if survey1Done && survey2Done && survey3Done {
-                    DispatchQueue.main.async {
-                        self.startBtn.isHidden = false
+            if !isStudyStarted {
+                studyUser.fetchInBackground().continueOnSuccessWith { (task) -> Void in
+                    let survey1Done = self.studyUser.survey1Done
+                    let survey2Done = self.studyUser.survey2Done
+                    let survey3Done = self.studyUser.survey3Done
+                    
+                    if survey1Done && survey2Done && survey3Done {
+                        DispatchQueue.main.async {
+                            self.startBtn.isHidden = false
+                        }
                     }
                 }
             }
@@ -155,7 +158,7 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
                     let isPeerStudy = self.studyConfig.value(forKey: "isPeerStudy") as! Bool
                     if !isPeerStudy {
                         DispatchQueue.main.async {
-                            self.addPeerBtn.isHidden = false //This should be true, only false for debugging.
+                            self.addPeerBtn.isHidden = true
                         }
                     }
                     
@@ -237,7 +240,7 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
                     let isPeerStudy = self.studyConfig.value(forKey: "isPeerStudy") as! Bool
                     if !isPeerStudy {
                         DispatchQueue.main.async {
-                            self.addPeerBtn.isHidden = false //This needs to be true - only false for debugging
+                            self.addPeerBtn.isHidden = true
                         }
                     }
  
@@ -357,7 +360,9 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     @IBAction func externalSurveyPressed(_ sender: Any) {
+        let externalSurveys = self.studyConfig.value(forKey: "externalSurveys") as! [[String]]
         
+        print (externalSurveys[0][0])
     }
     
     //
