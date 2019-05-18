@@ -13,6 +13,14 @@ import MessageUI
 
 class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     
+    //
+    //
+    //
+    // MARK:- Declaration of variables
+    //
+    //
+    //
+    
     //Objects are fetched when view is loaded and stored in these variables.
     var study = Study()
     var studyConfig = StudyConfig()
@@ -49,6 +57,13 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     @IBOutlet weak var quitBtn : UIButton!
     @IBOutlet weak var addPeerBtn : UIButton!
     
+    //
+    //
+    //
+    // MARK:- Standard Swift load functions
+    //
+    //
+    //
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,8 +120,13 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
         
     }
     
-    
-    // MARK: - Functions for screen load
+    //
+    //
+    //
+    // MARK: - Functions for participant screen load
+    //
+    //
+    //
     
     //This function is called if the study has not been started. It loads all the text, buttons etc.
     func loadBeginStudyScreen () {
@@ -243,9 +263,17 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
             }
     }
     
+    //
+    //
+    //
+    // MARK:- Functions for pressed buttons
+    //
+    //
+    //
+    
     //Function fired if the 'info' icon is pressed. This will show a collection of options.
     @IBAction func infoPressed(_ sender: Any) {
-        let optionMenu = UIAlertController(title: nil, message: "", preferredStyle: .actionSheet)
+        let optionMenu = UIAlertController(title: nil, message: "Help", preferredStyle: .actionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let contactUsAction = UIAlertAction(title: "Contact us", style: .default, handler: sendEmailToUs)
@@ -328,6 +356,18 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
         self.present(alert, animated: true)
     }
     
+    @IBAction func externalSurveyPressed(_ sender: Any) {
+        
+    }
+    
+    //
+    //
+    //
+    // MARK:- Segue specific functions
+    //
+    //
+    //
+    
     
     //Creates the URL used to call the web app and then switching view to the WebView.
     private func goToSurveyURL (surveyId : String) {
@@ -350,8 +390,13 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
         vc?.targetURL = urlString
     }
     
-    
+    //
+    //
+    //
     // MARK: - Start/quit study buttons and helper functions
+    //
+    //
+    //
     
     
     //Function called when quit study is pressed.
@@ -418,27 +463,48 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     
     //Handler function called if user press quit study on pop up alert. It is called from quitStudyPressed()
     func quitHandler (_ action : UIAlertAction) {
-        ParseController.disableUserFromStudy(studyId: self.study.objectId!, status: StudyUser.STATUS_QUITED)
-        ParseController.setStudyUserFlowState(studyId: self.study.objectId!, statusFlow: StudyUser.STUDY_FLOW_STATE_3)
         
-        //Setting local values
-        UserDefaults.standard.set(false, forKey: "studyConsentGiven")
-        UserDefaults.standard.set("", forKey: "studyId")
-        UserDefaults.standard.set(false, forKey: "studyLoaded")
-        
-        //Delete all notifications
-        let manager = LocalNotificationManager()
-        manager.deleteAllNotifications()
-        
-        let exitSurvey = self.studyConfig.value(forKey: "exitSurvey") as! PFObject
-        self.goToSurveyURL(surveyId: exitSurvey.objectId!)
-        ParseController.setExitSurveyDone(studyUser: self.studyUser)
-        
-        self.exitSurveyFired = true
+        if isPeer {
+            //Do peer specific quit actions
+            
+            //Change local 'is peer' flag to false
+            UserDefaults.standard.set(false, forKey: "isPeer")
+            
+            //Fire exit survey
+            let exitSurvey = self.studyConfig.value(forKey: "exitSurveyPeer") as! PFObject
+            self.goToSurveyURL(surveyId: exitSurvey.objectId!)
+            ParseController.peerSetExitSurveyDone(peer: self.peer)
+            self.exitSurveyFired = true
+        }
+        else {
+            //Do participant specific quit actions
+            ParseController.disableUserFromStudy(studyId: self.study.objectId!, status: StudyUser.STATUS_QUITED)
+            ParseController.setStudyUserFlowState(studyId: self.study.objectId!, statusFlow: StudyUser.STUDY_FLOW_STATE_3)
+            
+            //Setting local values
+            UserDefaults.standard.set(false, forKey: "studyConsentGiven")
+            UserDefaults.standard.set("", forKey: "studyId")
+            UserDefaults.standard.set(false, forKey: "studyLoaded")
+            
+            //Delete all notifications
+            let manager = LocalNotificationManager()
+            manager.deleteAllNotifications()
+            
+            let exitSurvey = self.studyConfig.value(forKey: "exitSurvey") as! PFObject
+            self.goToSurveyURL(surveyId: exitSurvey.objectId!)
+            ParseController.setExitSurveyDone(studyUser: self.studyUser)
+            
+            self.exitSurveyFired = true
+        }
     }
     
-    
+    //
+    //
+    //
     // MARK: - Functions responsible for mail
+    //
+    //
+    //
     
     //Function triggered when user wants to invite peers - English version.
     func sendEmailToPeerEn(_ action : UIAlertAction) {
@@ -508,8 +574,8 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             
-            mail.setToRecipients(["you@yoursite.com"])
-            mail.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
+            mail.setToRecipients(["qol.unige@gmail.com"])
+            mail.setMessageBody("Write your message here:", isHTML: true)
             
             present(mail, animated: true)
         } else {
@@ -536,8 +602,13 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     
-    
+    //
+    //
+    //
     // MARK: - Peer specific functions
+    //
+    //
+    //
     
     func loadPeerScreen() {
         

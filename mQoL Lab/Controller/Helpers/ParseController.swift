@@ -426,7 +426,10 @@ class ParseController {
         }
     }
     
-    
+    static func peerSetExitSurveyDone (peer : Peer) {
+        peer.setExitSurveyDone()
+        peer.saveEventually()
+    }
     
     
 
