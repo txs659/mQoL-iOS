@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C41998BAB2D41F7DAC77B87 /* Pods_mQoL_Lab.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCEAB8823597AEE575D02EC /* Pods_mQoL_Lab.framework */; };
+		861D0AA222908CB0004E1A86 /* ExternalSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861D0AA122908CB0004E1A86 /* ExternalSurvey.swift */; };
 		861D47B722653199001D1A78 /* StudyConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861D47B622653199001D1A78 /* StudyConfig.swift */; };
 		861EE73F223288DF00FB57B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861EE73E223288DF00FB57B3 /* AppDelegate.swift */; };
 		861EE744223288DF00FB57B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 861EE742223288DF00FB57B3 /* Main.storyboard */; };
@@ -52,6 +53,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		861D0AA122908CB0004E1A86 /* ExternalSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalSurvey.swift; sourceTree = "<group>"; };
 		861D47B622653199001D1A78 /* StudyConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyConfig.swift; sourceTree = "<group>"; };
 		861EE73B223288DF00FB57B3 /* mQoL Lab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mQoL Lab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		861EE73E223288DF00FB57B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 			children = (
 				861EE7562232965100FB57B3 /* StudyHome.swift */,
 				862B589A226D9C5700CC93A7 /* SurveyDisplayer.swift */,
+				861D0AA122908CB0004E1A86 /* ExternalSurvey.swift */,
 			);
 			path = "Study Home";
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				861D0AA222908CB0004E1A86 /* ExternalSurvey.swift in Sources */,
 				8691AC27225117520077EA6C /* AnsweringSurveys.swift in Sources */,
 				8691AC29225146DA0077EA6C /* DataCollection.swift in Sources */,
 				8691AC12224FE4A50077EA6C /* Study.swift in Sources */,

@@ -55,7 +55,9 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var startBtn : UIButton!
     @IBOutlet weak var quitBtn : UIButton!
-    @IBOutlet weak var addPeerBtn : UIButton!
+    
+    //This button is multi purpose depending on if user is peer or participant
+    @IBOutlet weak var addPeerOrAssessSubjectBtn : UIButton!
     
     //
     //
@@ -79,7 +81,6 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
         }else {
             loadBeginStudyScreen()
         }
-        
     }
     
     
@@ -158,7 +159,7 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
                     let isPeerStudy = self.studyConfig.value(forKey: "isPeerStudy") as! Bool
                     if !isPeerStudy {
                         DispatchQueue.main.async {
-                            self.addPeerBtn.isHidden = true
+                            self.addPeerOrAssessSubjectBtn.isHidden = true
                         }
                     }
                     
@@ -196,6 +197,9 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
                             self.startBtn.isHidden = false
                         }
                     }
+                    
+                    //load external survey button
+                    self.loadExternalSurveyBtn()
                     
                     return nil
                 })
@@ -240,7 +244,7 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
                     let isPeerStudy = self.studyConfig.value(forKey: "isPeerStudy") as! Bool
                     if !isPeerStudy {
                         DispatchQueue.main.async {
-                            self.addPeerBtn.isHidden = true
+                            self.addPeerOrAssessSubjectBtn.isHidden = true
                         }
                     }
  
@@ -258,6 +262,9 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
                             self.daysInStudy.text = "Thank you for being in day \(daysPassed) of \(totalDays)"
                         }
                     
+                        //load external survey button
+                        self.loadExternalSurveyBtn()
+                    
                         return nil
                     })
                     
@@ -265,6 +272,25 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
                 }
             }
     }
+    
+    // This function is used to load the external survey button for both participants and
+    // peers
+    func loadExternalSurveyBtn () {
+        let externalSurveys = self.studyConfig.value(forKey: "externalSurveys") as! [[String]]
+        
+        if externalSurveys[0].isEmpty {
+            DispatchQueue.main.async {
+                self.externalSurveyBtn.isHidden = true
+            }
+        }
+        else {
+            DispatchQueue.main.async {
+                let btnText = externalSurveys[0][0]
+                self.externalSurveyBtn.setTitle(btnText, for: .normal)
+            }
+        }
+    }
+    
     
     //
     //
@@ -338,31 +364,42 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
         }
     }
     
-    /*
-     * This function is called when the user presses 'invite peers'. The user is then
-     * asked what language the mail should be writte in.
-     */
-    @IBAction func invitePeers(_ sender: Any) {
-        
-        let alert = UIAlertController(title: "Email language", message: "What language should the mail be written in?", preferredStyle: .alert)
-        
-        let englishMail = UIAlertAction(title: "English", style: .default, handler: self.sendEmailToPeerEn)
     
-        let frenchMail = UIAlertAction(title: "French", style: .default, handler: self.sendEmailToPeerFr)
+    // This function has a multi purpose:
+    //
+    // Peer: makes the user able to assess their subject whenever they want.
+    //
+    // Participant: makes the user able to invite peers. The user will get asked what
+    // language the mail should be in. If the device is not set up for sending mails,
+    // then an alert will be displayed.
+    @IBAction func invitePeerOrAssessSubject(_ sender: Any) {
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
-        
-        alert.addAction(englishMail)
-        alert.addAction(frenchMail)
-        alert.addAction(cancelAction)
-        
-        self.present(alert, animated: true)
+        if isPeer {
+            //If user is a peer
+            
+            // TODO:- Add peer survey
+            
+        }
+        else {
+            //If user is participant
+            let alert = UIAlertController(title: "Email language", message: "What language should the mail be written in?", preferredStyle: .alert)
+            
+            let englishMail = UIAlertAction(title: "English", style: .default, handler: self.sendEmailToPeerEn)
+            
+            let frenchMail = UIAlertAction(title: "French", style: .default, handler: self.sendEmailToPeerFr)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+            
+            alert.addAction(englishMail)
+            alert.addAction(frenchMail)
+            alert.addAction(cancelAction)
+            
+            self.present(alert, animated: true)
+        }
     }
     
     @IBAction func externalSurveyPressed(_ sender: Any) {
-        let externalSurveys = self.studyConfig.value(forKey: "externalSurveys") as! [[String]]
-        
-        print (externalSurveys[0][0])
+        performSegue(withIdentifier: "externalSurvey", sender: self)
     }
     
     //
@@ -391,8 +428,15 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     
     //This function is used to give pass the URL on to the WebView.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as? SurveyDisplayer
-        vc?.targetURL = urlString
+        if segue.identifier == "surveyDisplayer" {
+            let vc = segue.destination as? SurveyDisplayer
+            vc?.targetURL = urlString
+        }
+        else if segue.identifier == "externalSurvey" {
+            let vc = segue.destination as? ExternalSurvey
+            vc?.externalSurveyInfo = self.studyConfig.value(forKey: "externalSurveys") as! [[String]]
+        }
+        
     }
     
     //
@@ -616,10 +660,8 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     //
     
     func loadPeerScreen() {
-        
         //Hiding a label not relevant for peer
         daysInStudy.isHidden = true
-        addPeerBtn.isHidden = true
         startBtn.isHidden = true
         
         ParseController.getPeer().continueOnSuccessWith { (task) -> Void in
@@ -634,6 +676,10 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
                         self.studyTitle.text = self.study.value(forKey: "name") as? String
                         self.studyDescribtion.text = self.study.value(forKey: "observersDescription") as? String
                         self.studyTasks.text = self.study.value(forKey: "observerTasks") as? String
+                        
+                        // The add peer button is not relevant for peers. Instead make it
+                        // possible for peers to assess their subject whenever they want
+                        self.addPeerOrAssessSubjectBtn.setTitle("ASSESS PARTICIPANT", for: .normal)
                     }
                     ParseController.getStudyConfigByStudy(self.study).continueOnSuccessWith(block: { (task) -> Void in
                         self.studyConfig = task.result!
@@ -664,6 +710,9 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
                             self.survey2.setTitle(self.studyConfig.value(forKey: "survey2_title_peer") as? String, for: .normal)
                             self.survey3.setTitle(self.studyConfig.value(forKey: "survey3_title_peer") as? String, for: .normal)
                         }
+                        
+                        //load external survey button
+                        self.loadExternalSurveyBtn()
                         
                     })
                     
