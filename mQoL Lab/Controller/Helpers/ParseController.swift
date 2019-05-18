@@ -78,7 +78,7 @@ class ParseController {
     
     // Retreive an array of all the avaiable studies.
     static func getStudyList() -> BFTask<AnyObject> {
-        let studyQuery : PFQuery<Study> = Study.getStudiesByStatusQuery()!
+        let studyQuery : PFQuery<Study> = Study.getStudies()!
         return studyQuery.findObjectsInBackground().continueWith { (task) -> Array<Study> in
             let studies = task.result as! Array<Study>
             return studies
@@ -364,6 +364,25 @@ class ParseController {
     
     // MARK: - Peer specific functions
     
+    static func getPeer () -> BFTask<Peer> {
+        var mqolUser = MqolUser()
+        return getMqolUser().continueOnSuccessWith { (task) -> Any? in
+            mqolUser = task.result as! MqolUser
+            let peerQuery : PFQuery = Peer.getPeerByMqolUserQuery(mqolUser: mqolUser)
+            return peerQuery.fromLocalDatastore().getFirstObjectInBackground().continueWith(block: { (task) -> Any? in
+                if task.error != nil {
+                    return peerQuery.getFirstObjectInBackground().continueOnSuccessWith(block: { (task) -> Any? in
+                        let peer = task.result! as Peer
+                        peer.pinInBackground(withName: PEER_STORE_KEY)
+                        return peer
+                    })
+                }
+                return task
+            })
+        } as! BFTask<Peer>
+    }
+    
+    
     static func setUpPeerSurveyRequirements(peer : Peer, studyUser : StudyUser) {
         var study = Study()
         var studyConfig = StudyConfig()
@@ -395,6 +414,16 @@ class ParseController {
             })
         }
         
+    }
+    
+    static func peerSetSurveyDone (peer : Peer, surveyNumber : Int) {
+        if surveyNumber >= 1 && surveyNumber <= 3 {
+            peer.setSurveyDone(surveyNumber)
+            peer.saveEventually()
+        }
+        else {
+            print ("Survey number must be between 1 and 3, since it must correspond to Survey1, Survey2 or Survey3")
+        }
     }
     
     

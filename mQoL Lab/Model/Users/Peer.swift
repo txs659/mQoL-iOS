@@ -12,14 +12,14 @@ import Parse
 class Peer : PFObject, PFSubclassing {
     
     // all the keys
-    private let PARTICIPANT              = "participant";
-    private let OBSERVER                 = "observer";
-    private let STATUS                   = "status";
-    private let BASELINE_SURVEY_DONE     = "baselineSurveyDone";
-    private let ENTRY_SURVEY_DONE        = "entrySurveyDone";
-    private let EXIT_SURVEY_DONE         = "exitSurveyDone";
-    private let DEMOGRAP_SURVEY_DONE     = "demographicsSurveyDone";
-    private let CAN_FINISH               = "canFinish";
+    private static let PARTICIPANT              = "participant";
+    private static let OBSERVER                 = "observer";
+    private static let STATUS                   = "status";
+    private static let BASELINE_SURVEY_DONE     = "baselineSurveyDone";
+    private static let ENTRY_SURVEY_DONE        = "entrySurveyDone";
+    private static let EXIT_SURVEY_DONE         = "exitSurveyDone";
+    private static let DEMOGRAP_SURVEY_DONE     = "demographicsSurveyDone";
+    private static let CAN_FINISH               = "canFinish";
 
     @NSManaged var participant : StudyUser
     @NSManaged var survey1Done : Bool
@@ -31,8 +31,12 @@ class Peer : PFObject, PFSubclassing {
         return "Peer"
     }
     
+    static func getPeerByMqolUserQuery(mqolUser : MqolUser) -> PFQuery<Peer> {
+        return PFQuery.init(className: parseClassName()).whereKey(OBSERVER, equalTo: mqolUser)
+    }
+    
     public func getParticipant() -> StudyUser {
-        return value(forKey: self.PARTICIPANT) as! StudyUser
+        return value(forKey: Peer.PARTICIPANT) as! StudyUser
     }
     
     public func setSurvey1Done () {
@@ -40,7 +44,7 @@ class Peer : PFObject, PFSubclassing {
     }
     
     public func setSurvey2Done () {
-        self.survey1Done = true
+        self.survey2Done = true
     }
     
     public func setSurvey3Done () {
@@ -49,6 +53,18 @@ class Peer : PFObject, PFSubclassing {
     
     public func setExitSurveyDone () {
         self.exitSurveyDone = true
+    }
+    
+    func setSurveyDone (_ surveyNumber : Int) {
+        if surveyNumber == 1 {
+            self.survey1Done = true
+        }
+        else if surveyNumber == 2 {
+            self.survey2Done = true
+        }
+        else {
+            self.survey3Done = true
+        }
     }
     
     

@@ -88,7 +88,7 @@ class SplashScreenViewController: UIViewController {
     func checkForDynamicLinks() -> String {
         // TODO: - Insert firebase dynamic link check here
         return ""
-        //return "UFtuJ8vmvO"
+        //return "2zlZfmyPC1"
     }
 
 }

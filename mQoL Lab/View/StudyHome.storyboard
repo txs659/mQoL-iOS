@@ -105,13 +105,6 @@
                                                     <action selector="survey1Pressed:" destination="ypL-iW-Cp7" eventType="touchUpInside" id="Y5L-Sy-HNk"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bpk-GP-w93">
-                                                <rect key="frame" x="56" y="591.66666666666663" width="263" height="30"/>
-                                                <state key="normal" title="DEBUG BUTTON: DELETE CONSENTS"/>
-                                                <connections>
-                                                    <action selector="resetConsents:" destination="ypL-iW-Cp7" eventType="touchUpInside" id="Uqi-Xv-mi2"/>
-                                                </connections>
-                                            </button>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nxU-eY-hOW">
                                                 <rect key="frame" x="16" y="379.66666666666669" width="343" height="20.333333333333314"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -131,7 +124,6 @@
                                             <constraint firstAttribute="trailing" secondItem="zpF-aJ-O6d" secondAttribute="trailing" constant="38" id="GlX-Nl-lJc"/>
                                             <constraint firstItem="nxU-eY-hOW" firstAttribute="leading" secondItem="Yel-Vf-eS3" secondAttribute="leading" constant="16" id="H9d-g3-sfE"/>
                                             <constraint firstAttribute="trailing" secondItem="nxU-eY-hOW" secondAttribute="trailing" constant="16" id="Hql-Rs-XpG"/>
-                                            <constraint firstItem="Bpk-GP-w93" firstAttribute="centerX" secondItem="Yel-Vf-eS3" secondAttribute="centerX" id="IP7-0w-uaF"/>
                                             <constraint firstItem="Bi0-Gu-AS8" firstAttribute="leading" secondItem="Yel-Vf-eS3" secondAttribute="leading" constant="16" id="Mgx-ye-vA7"/>
                                             <constraint firstItem="yeK-I6-J0V" firstAttribute="leading" secondItem="Yel-Vf-eS3" secondAttribute="leading" constant="16" id="NuM-ab-m5h"/>
                                             <constraint firstItem="Y1y-xP-bv8" firstAttribute="leading" secondItem="Yel-Vf-eS3" secondAttribute="leading" constant="16" id="Ov5-lG-onj"/>
@@ -153,7 +145,6 @@
                                             <constraint firstItem="qc5-Db-yZs" firstAttribute="top" secondItem="G5m-Js-JM3" secondAttribute="bottom" constant="20" id="v2q-gu-Aty"/>
                                             <constraint firstAttribute="height" constant="697" id="vDF-Z1-yOl"/>
                                             <constraint firstItem="nxU-eY-hOW" firstAttribute="top" secondItem="yeK-I6-J0V" secondAttribute="bottom" constant="16" id="wkQ-T1-QMO"/>
-                                            <constraint firstItem="Bpk-GP-w93" firstAttribute="top" secondItem="Anf-jr-8rx" secondAttribute="bottom" constant="32" id="yi0-MB-BgF"/>
                                         </constraints>
                                     </view>
                                 </subviews>
