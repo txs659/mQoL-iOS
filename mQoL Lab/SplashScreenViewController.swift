@@ -29,8 +29,6 @@ class SplashScreenViewController: UIViewController {
             uid = identifier
         }
         
-        UserDefaults.standard.set(true, forKey: "isPeer")
-        
         // Calls the cloud code to either login or create a user with the UUID
         PFCloud.callFunction(inBackground: "registerOrLoginUser", withParameters: ["google_ad_id":"\(uid)"], block: { (object: Any?, error: Error?) in
             
@@ -45,34 +43,37 @@ class SplashScreenViewController: UIViewController {
                 PFUser.become(inBackground: sessionToken!, block: { (user, error) in
                     if error == nil {
                         
-                        var mqolUser = MqolUser()
-                        
                         ParseController.getMqolUser().continueOnSuccessWith(block: { (task) -> Void in
-                            mqolUser = task.result! as! MqolUser
+                            
                             let userStudyId = self.checkForDynamicLinks()
                             
                             //If dynamic link was found
-                            if userStudyId != nil {
-                                PFCloud.callFunction(inBackground: "registerPeer", withParameters: [self.USER_STUDY_ID: userStudyId!], block: { (object: Any?, error: Error?) in
+                            if userStudyId != "" {
+                                UserDefaults.standard.set(true, forKey: "isPeer")
+                                PFCloud.callFunction(inBackground: "registerPeer", withParameters: [self.USER_STUDY_ID: userStudyId], block: { (object: Any?, error: Error?) in
                                     
                                     if error != nil {
                                         print (error!)
                                     }
                                     else {
+                                        let peer = object as! Peer
+                                        let studyUser = peer.getParticipant()
                                         
+                                        ParseController.setUpPeerSurveyRequirements(peer: peer, studyUser: studyUser)
+                                        
+                                        PFPush.subscribeToChannel(inBackground: studyUser.getObserverChannel())
                                     }
                                     
                                 })
                             }
-                            //If no dynamic link was found, do nothing more.
-                            else {
-                                //Dismiss the loading icon
-                                hud.dismiss()
-                                
-                                // Decides what root view to show the user
-                                Switcher.updateRootVC()
-                            }
                         })
+                        //Dismiss the loading icon
+                        DispatchQueue.main.async {
+                            hud.dismiss()
+                        }
+                        
+                        // Decides what root view to show the user
+                        Switcher.updateRootVC()
                     }
                     else {
                         print ("Could not log user in using session token")
@@ -84,9 +85,10 @@ class SplashScreenViewController: UIViewController {
     
     
     
-    func checkForDynamicLinks() -> String? {
+    func checkForDynamicLinks() -> String {
         // TODO: - Insert firebase dynamic link check here
-        return nil
+        return ""
+        //return "UFtuJ8vmvO"
     }
 
 }

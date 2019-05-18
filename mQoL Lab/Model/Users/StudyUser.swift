@@ -56,6 +56,14 @@ class StudyUser : PFObject, PFSubclassing {
         flowState = "awaiting"
     }
     
+    func getStudy () -> Study {
+        return self.study
+    }
+    
+    func getObserverChannel () -> String {
+        return self.observersChannel
+    }
+    
     func setEndDate (_ duration : Int) {
         self.endDate = Calendar.current.date(byAdding: .day, value: duration, to: Date())!
         

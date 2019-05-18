@@ -11,7 +11,6 @@ import UIKit
 class LabInto: UIViewController {
     
     let language = UserDefaults.standard.string(forKey: "language")
-    let isPeer = UserDefaults.standard.bool(forKey: "isPeer")
     
     @IBOutlet weak var infoTitle: UILabel!
     @IBOutlet weak var text1: UILabel!
@@ -38,6 +37,7 @@ class LabInto: UIViewController {
     }
     
     @IBAction func nextPressed (_ sender: Any) {
+        let isPeer = UserDefaults.standard.bool(forKey: "isPeer")
         if isPeer {
             UserDefaults.standard.set(true, forKey: "peerLabScreenSeen")
             Switcher.updateRootVC()

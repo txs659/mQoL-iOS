@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         StudyUser.registerSubclass()
         Survey.registerSubclass()
         SurveyTrigger.registerSubclass()
+        Peer.registerSubclass()
         
         // Initializing call to the Parse server
         let parseConfig = ParseClientConfiguration {

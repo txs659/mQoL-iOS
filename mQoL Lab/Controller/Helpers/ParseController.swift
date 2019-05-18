@@ -23,7 +23,7 @@ class ParseController {
 
     private static let STUDY_USER_STORE_KEY = "study_users";
     
-    
+    private static let PEER_STORE_KEY = "peers"
     
     
     // Get the current user that is logged in
@@ -362,6 +362,40 @@ class ParseController {
     
     
     
+    // MARK: - Peer specific functions
+    
+    static func setUpPeerSurveyRequirements(peer : Peer, studyUser : StudyUser) {
+        var study = Study()
+        var studyConfig = StudyConfig()
+        
+        self.getStudy(studyId: studyUser.getStudy().objectId!).continueOnSuccessWith { (task) -> Void in
+            study = task.result!
+            self.getStudyConfigByStudy(study).continueOnSuccessWith(block: { (task) -> Void in
+                studyConfig = task.result!
+                
+                if !studyConfig.isSurvey1Peer() {
+                    peer.setSurvey1Done()
+                }
+                
+                if !studyConfig.isSurvey2Peer() {
+                    peer.setSurvey2Done()
+                }
+                
+                if !studyConfig.isSurvey3Peer() {
+                    peer.setSurvey3Done()
+                }
+                
+                if !studyConfig.isExitSurveyPeer() {
+                    peer.setExitSurveyDone()
+                }
+                
+                peer.pinInBackground(withName: PEER_STORE_KEY).continueOnSuccessWith(block: { (task) -> Void in
+                    peer.saveEventually()
+                })
+            })
+        }
+        
+    }
     
     
     

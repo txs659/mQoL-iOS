@@ -23,4 +23,24 @@ class StudyConfig : PFObject, PFSubclassing {
         return self.query()?.whereKey("study", equalTo: study) as! PFQuery<StudyConfig>
     }
     
+    public func isSurvey1Peer () -> Bool {
+        let survey = value(forKey: "survey1_survey_peer")
+        return survey != nil
+    }
+    
+    public func isSurvey2Peer () -> Bool {
+        let survey = value(forKey: "survey2_survey_peer")
+        return survey != nil
+    }
+    
+    public func isSurvey3Peer () -> Bool {
+        let survey = value(forKey: "survey3_survey_peer")
+        return survey != nil
+    }
+    
+    public func isExitSurveyPeer () -> Bool {
+        let survey = value(forKey: "exitSurveyPeer")
+        return survey != nil
+    }
+    
 }
