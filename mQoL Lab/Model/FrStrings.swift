@@ -10,21 +10,33 @@ import Foundation
 
 class FrStrings {
     
-    //General strings
+    // MARK:- General strings
     static let next_button = "Suivant"
     static let back_button = "Retour"
     static let checkbox_age = "Je suis âgé(e) de 18 ans ou plus."
     
-    //Introduction screen strings
+    // MARK:- Notification strings
+    static let survey_notification = "Notification mQoL"
+    static let survey_notification_text = "Merci de répondre à notre questionnaire."
+    
+    // MARK:- Study home help menu strings
+    static let menu_item_1 = "Consentement"
+    static let menu_item_2 = "Information"
+    static let menu_item_3 = "Aide"
+    static let menu_item_4 = "App Info"
+    static let menu_item_5 = "Contactez nous"
+    static let menu_item_6 = "Consentement Étude"
+    
+    // MARK:- Introduction screen strings
     static let view_lab_intro = "Introduction"
     static let view_lab_intro_p1 = "Le laboratoire sur la Qualité de la Vie (QoL) effectue de la recherche et du développement interdisciplinaire, pour améliorer la Qualité de la Vie d\'individus tout au long de leur vie. Nous faisons partie de l\'Université de Genève en Suisse."
     static let view_lab_intro_p2 = "La mission du laboratoire est de développer et d\'évaluer des nouvelles technologies mobiles avec le but de quantifier et d\'améliorer la qualité de la vie d\'individu à travers le temps et de son environnement."
 
-    //Our Lab 'About the studies' strings
+    // MARK:- Our Lab 'About the studies' strings
     static let view_lab_studies_intro = "À propos des Études"
     static let view_lab_studies_intro_p1 = "En échange de votre participation à nos études, nous pourions vous envoyer des informations concernants votre utilisation journalière de votre téléphone. Certaines études propose de gagner des prix comme des téléphones portables ou des cartes cadeaux Amazon."
     
-    //Our Lab Agreement and Consent strings
+    // MARK:- Our Lab Agreement and Consent strings
     static let view_lab_consent = "Consentement Informé du Laboratoire"
     static let view_lab_consent_p1 = "Merci de télécharger et de lire le consentement avant de continuer."
     static let view_lab_consent_download = "Télécharger le Consentement"
@@ -33,12 +45,12 @@ class FrStrings {
     static let view_lab_consent_not_agree = "2. Si les termes ne sont pas acceptés, merci de désinstaller l\'application. Merci pour votre intérêt."
     static let view_lab_agreement = "Consentement Approuvé"
     
-    //Our Lab 'Thanks for joining' page
+    // MARK:- Our Lab 'Thanks for joining' page
     static let view_lab_consent_thanks = "Merci d\'avoir rejoint le Laboratoire mQoL"
     static let view_lab_consent_thanks_p1 = "Visitez la liste des études disponible et aidez nos recherches en rejoingnant une ou plusieurs études."
     static let view_lab_see_studies = "Études"
     
-    //Study Consent strings
+    // MARK:- Study Consent strings
     static let view_study_consent = "Consentement pour l\'Étude"
     static let view_study_consent_p1 = "Vous pouvez téléchargez le consentement lié à l'étude avant de continuer. Une copie après acceptation sera disponible dans l'application."
     static let view_study_agreement_download = "Télécharger Consentement"
@@ -53,7 +65,7 @@ class FrStrings {
     static let view_study_name_surname = "Entrez votre nom et prénon ici"
     
     
-    //Strings for email
+    // MARK:- Strings for email
     static let invitation_message = "Rejoignez moi dans un projet de recherche de l\'Université de Genève."
     static let email_failed_title = "Email échoué"
     static let email_failed_text = "Votre appareil n\'est pas configuré pour les emails. Veuillez le faire et essayez à nouveau."

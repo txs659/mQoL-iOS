@@ -426,7 +426,7 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
         
     }
     
-    //This function is used to give pass the URL on to the WebView.
+    //This function is used to pass data onto the UIWebView or the external survey view.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "surveyDisplayer" {
             let vc = segue.destination as? SurveyDisplayer
@@ -483,7 +483,8 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     
-    //Handler function called if user press start study on pop up alert. It is called from startStudyPressed()
+    // Handler function called if user press start study on pop up alert. It is called from
+    // startStudyPressed()
     func continueHandler (_ action : UIAlertAction) {
 
         //Hides buttons when study is started
@@ -510,7 +511,8 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
         
     }
     
-    //Handler function called if user press quit study on pop up alert. It is called from quitStudyPressed()
+    // Handler function called if user press quit study on pop up alert. It is called from
+    // quitStudyPressed()
     func quitHandler (_ action : UIAlertAction) {
         
         if isPeer {

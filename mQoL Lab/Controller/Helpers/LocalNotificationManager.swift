@@ -12,6 +12,7 @@ import UserNotifications
 struct surveyNotification {
     var id:String
     var title:String
+    var body:String
     var survey:String
     var datetime:DateComponents
 }
@@ -69,6 +70,7 @@ class LocalNotificationManager {
         {
             let content      = UNMutableNotificationContent()
             content.title    = notification.title
+            content.body     = notification.body
             content.sound    = .default
             content.userInfo = ["survey": notification.survey]
     

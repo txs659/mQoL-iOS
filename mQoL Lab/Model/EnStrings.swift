@@ -10,22 +10,33 @@ import Foundation
 
 class EnStrings {
     
-    //General strings
+    // MARK:- General strings
     static let next_button = "Next"
     static let back_button = "Back"
     static let checkbox_age = "I am 18 years or older."
     
+    // MARK:- Notification strings
+    static let survey_notification = "mQoL Notification"
+    static let survey_notification_text = "Please answer a question for our study."
     
-    //Introduction screen strings
+    // MARK:- Study home help menu strings
+    static let menu_item_1 = "Lab Agreement"
+    static let menu_item_2 = "About us"
+    static let menu_item_3 = "Help"
+    static let menu_item_4 = "App Info"
+    static let menu_item_5 = "Contact Us"
+    static let menu_item_6 = "Study Agreement"
+    
+    // MARK:- Introduction screen strings
     static let view_lab_intro = "Introduction"
     static let view_lab_intro_p1 = "Quality of Life (QoL) technologies lab conducts inter-disciplinary research and development aimed at improving Quality of Life of individuals throughout their lives. We are part of the University of Geneva in Switzerland."
     static let view_lab_intro_p2 = "The lab mission is to develop and evaluate emerging mobile technologies with the goal of assessing individuals\' life quality as it unfolds naturally over time and in context, and improving it at all stages of life."
     
-    //Our Lab 'About the studies' strings
+    // MARK:- Our Lab 'About the studies' strings
     static let view_lab_studies_intro = "About The Studies"
     static let view_lab_studies_intro_p1 = "In exchange for your participation in our studies, some studies allow you to participate in drawings for monetary prices like gift cards."
     
-    //Our Lab Agreement and Consent strings
+    // MARK:- Our Lab Agreement and Consent strings
     static let view_lab_consent = "Lab Informed Consent"
     static let view_lab_consent_p1 = "Please download and read the Lab Agreement before you continue."
     static let view_lab_consent_download = "Download Lab Agreement"
@@ -34,13 +45,13 @@ class EnStrings {
     static let view_lab_consent_not_agree = "2. If you disagree with the terms, please feel free to uninstall the app. Thank you for your participation."
     static let view_lab_agreement = "Accept Agreement"
     
-    //Our Lab 'Thanks for joining' page
+    // MARK:- Our Lab 'Thanks for joining' page
     static let view_lab_consent_thanks = "Thank you for Joining the mQoL Lab"
     static let view_lab_consent_thanks_p1 = "Please visit the list of available studies and help our research by joining one or more studies."
     static let view_lab_see_studies = "See Studies"
     
     
-    //Study Consent strings
+    // MARK:- Study Consent strings
     static let view_study_consent = "Study Informed Consent"
     static let view_study_consent_p1 = "You can download the Study Informed Consent before you continue. Once you accept the consent, a copy will be available inside the application."
     static let view_study_agreement_download = "Download Informed Consent"
@@ -56,8 +67,7 @@ class EnStrings {
     
     
     
-    //Strings for study home screen
-    
+    // MARK:- Strings for study home screen
     static let quit_study_warning = "Please be aware that you will not be able to reverse this action. You can not rejoin the study if you quit, before it is completed."
     static let quit_study_warning_title = "Heads Up!"
     static let quit_continue = "I want to quit"
@@ -65,7 +75,7 @@ class EnStrings {
 
     
     
-    //Strings for email
+    // MARK:- Strings for email
     static let invitation_message = "Please join me in a research project for the University of Geneva."
     static let email_failed_title = "Email failed"
     static let email_failed_text = "Your device is not set up for emails. Please do so and try again."
