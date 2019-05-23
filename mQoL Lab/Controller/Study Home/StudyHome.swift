@@ -10,6 +10,7 @@ import UIKit
 import Parse
 import UserNotifications
 import MessageUI
+import PDFKit
 
 class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     
@@ -39,6 +40,8 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     var urlString = ""
     
     var exitSurveyFired = false
+    
+    var pdf = PDFDocument()
     
     let language = UserDefaults.standard.string(forKey: "language")
     let isPeer = UserDefaults.standard.bool(forKey: "isPeer")
@@ -302,14 +305,30 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     
     //Function fired if the 'info' icon is pressed. This will show a collection of options.
     @IBAction func infoPressed(_ sender: Any) {
-        let optionMenu = UIAlertController(title: nil, message: "Help", preferredStyle: .actionSheet)
+        let optionMenu = UIAlertController(title: nil, message: "", preferredStyle: .actionSheet)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let contactUsAction = UIAlertAction(title: "Contact us", style: .default, handler: sendEmailToUs)
-        
-        optionMenu.addAction(cancelAction)
-        optionMenu.addAction(contactUsAction)
-        
+        //Add French strings to buttons
+        if language == "fr" {
+            let seeLabConsentAction = UIAlertAction(title: FrStrings.menu_item_1, style: .default, handler: seeLabAgreementHandler)
+            let contactUsAction = UIAlertAction(title: FrStrings.menu_item_2, style: .default, handler: sendEmailToUs)
+            let seeStudyConsentAction = UIAlertAction(title: FrStrings.menu_item_3, style: .default, handler: seeStudyAgreementHandler)
+            let cancelAction = UIAlertAction(title: FrStrings.cancel_button, style: .cancel, handler: nil)
+            optionMenu.addAction(seeLabConsentAction)
+            optionMenu.addAction(contactUsAction)
+            optionMenu.addAction(seeStudyConsentAction)
+            optionMenu.addAction(cancelAction)
+        }
+        //Add English strings to buttons
+        else {
+            let seeLabConsentAction = UIAlertAction(title: EnStrings.menu_item_1, style: .default, handler: seeLabAgreementHandler)
+            let contactUsAction = UIAlertAction(title: EnStrings.menu_item_2, style: .default, handler: sendEmailToUs)
+            let seeStudyConsentAction = UIAlertAction(title: EnStrings.menu_item_3, style: .default, handler: seeStudyAgreementHandler)
+            let cancelAction = UIAlertAction(title: EnStrings.cancel_button, style: .cancel, handler: nil)
+            optionMenu.addAction(seeLabConsentAction)
+            optionMenu.addAction(contactUsAction)
+            optionMenu.addAction(seeStudyConsentAction)
+            optionMenu.addAction(cancelAction)
+        }
         self.present(optionMenu, animated: true, completion: nil)
     }
     
@@ -402,6 +421,46 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
         performSegue(withIdentifier: "externalSurvey", sender: self)
     }
     
+    //Handler function for displaying the lab agreement
+    func seeLabAgreementHandler (_ action : UIAlertAction) {
+        PFConfig.getInBackground { (config, error) in
+            if error != nil {
+                print (error!)
+            } else {
+                let file = config!["lab_agreement"] as! PFFileObject
+                let pdfURL = URL(string: file.url!)
+                if let pdf = PDFDocument(url: pdfURL!) {
+                    self.pdf = pdf
+                    self.performSegue(withIdentifier: "readPDF", sender: self)
+                }
+            }
+        }
+    }
+    
+    //Handler function for displaying the study agreement
+    func seeStudyAgreementHandler (_ action : UIAlertAction) {
+        let query = PFQuery(className: study.parseClassName)
+        query.getObjectInBackground(withId: study.objectId!) { (object, error) in
+            if (error == nil && object != nil) {
+                let file = object!["informedConsent"] as! PFFileObject
+                let pdfURL = URL(string: file.url!)
+                if let pdf = PDFDocument(url: pdfURL!) {
+                    self.pdf = pdf
+                    self.performSegue(withIdentifier: "readPDF", sender: self)
+                }
+                else {
+                    print ("PDF file not found")
+                }
+                
+            }
+            else {
+                print (error!)
+            }
+        }
+    }
+    
+    
+    
     //
     //
     //
@@ -435,6 +494,10 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
         else if segue.identifier == "externalSurvey" {
             let vc = segue.destination as? ExternalSurvey
             vc?.externalSurveyInfo = self.studyConfig.value(forKey: "externalSurveys") as! [[String]]
+        }
+        else if segue.identifier == "readPDF" {
+            let vc = segue.destination as? readPDF
+            vc?.pdfFile = self.pdf
         }
         
     }
@@ -624,10 +687,19 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
-            
             mail.setToRecipients(["qol.unige@gmail.com"])
-            mail.setMessageBody("Write your message here:", isHTML: true)
             
+            let mqolUser = self.studyUser.value(forKey: "mqolUser") as! PFObject
+            let mqolUserId = mqolUser.objectId
+            
+            if language == "fr" {
+                mail.setSubject(FrStrings.contactUsEmail_subject)
+                mail.setMessageBody(FrStrings.contactUsEmail_text + " \(mqolUserId!)", isHTML: true)
+            }
+            else {
+                mail.setSubject(EnStrings.contactUsEmail_subject)
+                mail.setMessageBody(EnStrings.contactUsEmail_text + " \(mqolUserId!)", isHTML: true)
+            }
             present(mail, animated: true)
         } else {
             //If device is not setup for sending emails, display a warning to user

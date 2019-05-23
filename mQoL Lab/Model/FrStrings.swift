@@ -14,6 +14,7 @@ class FrStrings {
     static let next_button = "Suivant"
     static let back_button = "Retour"
     static let checkbox_age = "Je suis âgé(e) de 18 ans ou plus."
+    static let cancel_button = "Annuler"
     
     // MARK:- Notification strings
     static let survey_notification = "Notification mQoL"
@@ -21,11 +22,8 @@ class FrStrings {
     
     // MARK:- Study home help menu strings
     static let menu_item_1 = "Consentement"
-    static let menu_item_2 = "Information"
-    static let menu_item_3 = "Aide"
-    static let menu_item_4 = "App Info"
-    static let menu_item_5 = "Contactez nous"
-    static let menu_item_6 = "Consentement Étude"
+    static let menu_item_2 = "Contactez nous"
+    static let menu_item_3 = "Consentement Étude"
     
     // MARK:- Introduction screen strings
     static let view_lab_intro = "Introduction"
@@ -69,4 +67,7 @@ class FrStrings {
     static let invitation_message = "Rejoignez moi dans un projet de recherche de l\'Université de Genève."
     static let email_failed_title = "Email échoué"
     static let email_failed_text = "Votre appareil n\'est pas configuré pour les emails. Veuillez le faire et essayez à nouveau."
+    
+    static let contactUsEmail_subject = "Aide Application mQoL"
+    static let contactUsEmail_text = "Merci d'expliquer votre problème ci-dessous. Si vous souhaitez garder votre anonymat, supprimer cette ligne ID:"
 }

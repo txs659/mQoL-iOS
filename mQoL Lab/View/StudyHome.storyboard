@@ -10,6 +10,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--readPDF-->
+        <scene sceneID="wl1-rV-ItY">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ReadPDF" referencedIdentifier="readPDF" id="fSZ-u7-eKK" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t6E-Ja-Xpm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="791" y="192"/>
+        </scene>
         <!--mQoL Studies - UNIGE-->
         <scene sceneID="c9A-ST-mxC">
             <objects>
@@ -190,11 +198,12 @@
                         <outlet property="survey3" destination="ffF-1B-Sxz" id="5pN-K8-0ng"/>
                         <segue destination="A9k-nh-z54" kind="presentation" identifier="surveyDisplayer" id="Zxw-XB-I2x"/>
                         <segue destination="xut-hW-WLR" kind="presentation" identifier="externalSurvey" id="FLC-3z-YBp"/>
+                        <segue destination="fSZ-u7-eKK" kind="presentation" identifier="readPDF" id="7UP-a1-Sbn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9F7-Es-zvV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="855.20000000000005" y="727.83251231527095"/>
+            <point key="canvasLocation" x="854" y="728"/>
         </scene>
         <!--External Survey-->
         <scene sceneID="5nq-eX-k6K">

@@ -47,6 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set("en", forKey: "language")
         }
         
+        
         //Setting this class as UserNotificationCenter delegate, so we are able to make custom actions for the notification
         UNUserNotificationCenter.current().delegate = self
         

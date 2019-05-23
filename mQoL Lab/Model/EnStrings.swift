@@ -14,6 +14,7 @@ class EnStrings {
     static let next_button = "Next"
     static let back_button = "Back"
     static let checkbox_age = "I am 18 years or older."
+    static let cancel_button = "Cancel"
     
     // MARK:- Notification strings
     static let survey_notification = "mQoL Notification"
@@ -21,11 +22,8 @@ class EnStrings {
     
     // MARK:- Study home help menu strings
     static let menu_item_1 = "Lab Agreement"
-    static let menu_item_2 = "About us"
-    static let menu_item_3 = "Help"
-    static let menu_item_4 = "App Info"
-    static let menu_item_5 = "Contact Us"
-    static let menu_item_6 = "Study Agreement"
+    static let menu_item_2 = "Contact Us"
+    static let menu_item_3 = "Study Agreement"
     
     // MARK:- Introduction screen strings
     static let view_lab_intro = "Introduction"
@@ -79,4 +77,7 @@ class EnStrings {
     static let invitation_message = "Please join me in a research project for the University of Geneva."
     static let email_failed_title = "Email failed"
     static let email_failed_text = "Your device is not set up for emails. Please do so and try again."
+    
+    static let contactUsEmail_subject = "Help mQoL Application"
+    static let contactUsEmail_text = "Please describe your issue. If you want to remain anonymous, delete this line ID:"
 }
