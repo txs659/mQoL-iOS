@@ -139,7 +139,7 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     func loadBeginStudyScreen () {
         startBtn.isHidden = true
         let studyId = UserDefaults.standard.string(forKey: "studyId")
-        ParseController.getStudy(studyId: studyId!).continueWith { (task) -> Any? in
+        ParseController.getStudy(studyId: studyId!).continueWith { (task) -> Void in
             self.study = task.result! as Study
             DispatchQueue.main.async {
                 self.studyTitle.text = self.study.object(forKey: "name") as? String
@@ -147,9 +147,9 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
                 self.studyTasks.text = self.study.object(forKey: "userTasks") as? String
                 
             }
-            return nil
-            }.continueOnSuccessWith { (task) -> Any? in
-                ParseController.getStudyConfigByStudy(self.study).continueOnSuccessWith { (task) -> Any? in
+
+            }.continueOnSuccessWith { (task) -> Void in
+                ParseController.getStudyConfigByStudy(self.study).continueOnSuccessWith { (task) -> Void in
                     
                     self.studyConfig = task.result! as StudyConfig
                     
@@ -172,7 +172,7 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
                         self.survey2.setTitle(self.studyConfig.value(forKey: "survey2_title") as? String, for: .normal)
                         self.survey3.setTitle(self.studyConfig.value(forKey: "survey3_title") as? String, for: .normal)
                     }
-                ParseController.getStudyUserByStudyId(self.study.objectId!).continueOnSuccessWith(block: { (task) -> Any? in
+                ParseController.getStudyUserByStudyId(self.study.objectId!).continueOnSuccessWith(block: { (task) -> Void in
                     self.studyUser = task.result! as StudyUser
                     
                     
@@ -203,11 +203,7 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
                     
                     //load external survey button
                     self.loadExternalSurveyBtn()
-                    
-                    return nil
                 })
-                    
-                return nil
             }
         }
     }
@@ -238,7 +234,7 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
             
             return nil
             }.continueOnSuccessWith { (task) -> Any? in
-                ParseController.getStudyConfigByStudy(self.study).continueOnSuccessWith { (task) -> Any? in
+                ParseController.getStudyConfigByStudy(self.study).continueOnSuccessWith { (task) -> Void in
                     
                     self.studyConfig = task.result! as StudyConfig
                     
@@ -251,7 +247,7 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
                         }
                     }
  
-                ParseController.getStudyUserByStudyId(self.study.objectId!).continueOnSuccessWith(block: { (task) -> Any? in
+                ParseController.getStudyUserByStudyId(self.study.objectId!).continueOnSuccessWith(block: { (task) -> Void in
                         self.studyUser = task.result! as StudyUser
                     
                         let totalDays = self.studyConfig.value(forKey: "durationDays") as! Int
@@ -267,11 +263,7 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
                     
                         //load external survey button
                         self.loadExternalSurveyBtn()
-                    
-                        return nil
                     })
-                    
-                    return nil
                 }
             }
     }
