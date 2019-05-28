@@ -92,12 +92,12 @@ class StudyList: UICollectionViewController, UICollectionViewDelegateFlowLayout 
         let selectedCell = collectionView.cellForItem(at: indexPath) as? StudyCell
         
         self.pressedCell = selectedCell!
-        self.performSegue(withIdentifier: "welcome", sender: self)
+        self.performSegue(withIdentifier: "toInfo", sender: self)
     }
     
     //Sends the pressed study data to the next view
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as? StudyWelcome
+        let vc = segue.destination as? InfoDisplayer
         vc?.study = pressedCell.study
     }
     
