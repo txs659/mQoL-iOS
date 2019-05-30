@@ -74,6 +74,17 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
         super.viewDidLoad()
         let isStudyStarted = UserDefaults.standard.bool(forKey: "studyLoaded")
         
+        if language == "fr" {
+            self.startBtn.setTitle(FrStrings.button_start_study, for: .normal)
+            self.quitBtn.setTitle(FrStrings.button_quit_study, for: .normal)
+            self.addPeerOrAssessSubjectBtn.setTitle(FrStrings.button_send_invitation, for: .normal)
+        }
+        else {
+            self.startBtn.setTitle(EnStrings.button_start_study, for: .normal)
+            self.quitBtn.setTitle(EnStrings.button_quit_study, for: .normal)
+            self.addPeerOrAssessSubjectBtn.setTitle(EnStrings.button_send_invitation, for: .normal)
+        }
+        
         // Checking whether the user is a peer, a participant where the study is started, or
         // a participant where the study is not started yet. These three scenrious require
         // different UI loads.
@@ -212,12 +223,12 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     //Loads the elements that should be shown when a study has been started and is running.
     func loadStudyRunningScreen () {
         
-        startBtn.isHidden = true
-        survey1.isHidden = true
-        survey2.isHidden = true
-        survey3.isHidden = true
-        externalSurveyBtn.isHidden = true
-        startBtn.isHidden = true
+        self.startBtn.isHidden = true
+        self.survey1.isHidden = true
+        self.survey2.isHidden = true
+        self.survey3.isHidden = true
+        self.externalSurveyBtn.isHidden = true
+        self.startBtn.isHidden = true
         self.daysInStudy.isHidden = false
         
         let studyId = UserDefaults.standard.string(forKey: "studyId")
@@ -258,7 +269,12 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
                     
                     
                         DispatchQueue.main.async {
-                            self.daysInStudy.text = "Thank you for being in day \(daysPassed) of \(totalDays)"
+                            if self.language == "fr" {
+                                self.daysInStudy.text = "\(FrStrings.view_study_home_progress_1) \(daysPassed) \(FrStrings.view_study_home_progress_2) \(totalDays)"
+                            }
+                            else {
+                                self.daysInStudy.text = "\(EnStrings.view_study_home_progress_1) \(daysPassed) \(EnStrings.view_study_home_progress_2) \(totalDays)"
+                            }
                         }
                     
                         //load external survey button
@@ -393,19 +409,39 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
         }
         else {
             //If user is participant
-            let alert = UIAlertController(title: "Email language", message: "What language should the mail be written in?", preferredStyle: .alert)
             
-            let englishMail = UIAlertAction(title: "English", style: .default, handler: self.sendEmailToPeerEn)
+            if self.language == "fr" {
+                let alert = UIAlertController(title: FrStrings.invitation_alert_title, message: FrStrings.invitation_alert_text, preferredStyle: .alert)
+                
+                let englishMail = UIAlertAction(title: FrStrings.invitation_alert_option1, style: .default, handler: self.sendEmailToPeerEn)
+                
+                let frenchMail = UIAlertAction(title: FrStrings.invitation_alert_option2, style: .default, handler: self.sendEmailToPeerFr)
+                
+                let cancelAction = UIAlertAction(title: FrStrings.cancel_button, style: .default)
+                
+                alert.addAction(englishMail)
+                alert.addAction(frenchMail)
+                alert.addAction(cancelAction)
+                
+                self.present(alert, animated: true)
+                
+            }
+            else {
+                let alert = UIAlertController(title: EnStrings.invitation_alert_title, message: EnStrings.invitation_alert_text, preferredStyle: .alert)
+                
+                let englishMail = UIAlertAction(title: EnStrings.invitation_alert_option1, style: .default, handler: self.sendEmailToPeerEn)
+                
+                let frenchMail = UIAlertAction(title: EnStrings.invitation_alert_option2, style: .default, handler: self.sendEmailToPeerFr)
+                
+                let cancelAction = UIAlertAction(title: EnStrings.cancel_button, style: .default)
+                
+                alert.addAction(englishMail)
+                alert.addAction(frenchMail)
+                alert.addAction(cancelAction)
+                
+                self.present(alert, animated: true)
+            }
             
-            let frenchMail = UIAlertAction(title: "French", style: .default, handler: self.sendEmailToPeerFr)
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .default)
-            
-            alert.addAction(englishMail)
-            alert.addAction(frenchMail)
-            alert.addAction(cancelAction)
-            
-            self.present(alert, animated: true)
         }
     }
     
@@ -506,42 +542,35 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     //Function called when quit study is pressed.
     @IBAction func quitStudyPressed(_ sender: Any) {
         //Creating the alarm pop up when quit study is pressed
-        let quitAlert = UIAlertController(title: EnStrings.quit_study_warning_title, message: EnStrings.quit_study_warning, preferredStyle: .alert)
         
-        let quitAction = UIAlertAction(title: EnStrings.quit_continue, style: .default, handler: quitHandler)
-        
-        let cancelAction = UIAlertAction(title: "Go back", style: .default)
-        
-        quitAlert.addAction(quitAction)
-        quitAlert.addAction(cancelAction)
-        
-        self.present(quitAlert, animated: true)
+        if self.language == "fr" {
+            let quitAlert = UIAlertController(title: FrStrings.quit_study_warning_title, message: FrStrings.quit_study_warning, preferredStyle: .alert)
+            
+            let quitAction = UIAlertAction(title: FrStrings.quit_continue, style: .default, handler: quitHandler)
+            
+            let cancelAction = UIAlertAction(title: FrStrings.quit_abort, style: .default)
+            
+            quitAlert.addAction(quitAction)
+            quitAlert.addAction(cancelAction)
+            self.present(quitAlert, animated: true)
+        }
+        else {
+            let quitAlert = UIAlertController(title: EnStrings.quit_study_warning_title, message: EnStrings.quit_study_warning, preferredStyle: .alert)
+            
+            let quitAction = UIAlertAction(title: EnStrings.quit_continue, style: .default, handler: quitHandler)
+            
+            let cancelAction = UIAlertAction(title: EnStrings.quit_abort, style: .default)
+            
+            quitAlert.addAction(quitAction)
+            quitAlert.addAction(cancelAction)
+            self.present(quitAlert, animated: true)
+        }
     }
     
     
     //Function called when start study is pressed.
     @IBAction func startStudyPressed(_ sender: Any) {
         
-        //Creating the alarm that pops up when start study is pressed
-        let startAlert = UIAlertController(title: "Attention", message: "Before you move on and start the study, all previous surveys need to be completed.", preferredStyle: .alert)
-        
-        let cancelAction = UIAlertAction(title: "Go back", style: .default)
-        
-        let continueAction = UIAlertAction(title: "Start survey", style: .default, handler: continueHandler)
-        
-        //Adding actions to pop-up alerts
-        startAlert.addAction(continueAction)
-        startAlert.addAction(cancelAction)
-        
-        self.present(startAlert, animated: true)
-        
-    }
-    
-    
-    // Handler function called if user press start study on pop up alert. It is called from
-    // startStudyPressed()
-    func continueHandler (_ action : UIAlertAction) {
-
         //Hides buttons when study is started
         survey1.isHidden = true
         survey2.isHidden = true
@@ -730,6 +759,13 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
         daysInStudy.isHidden = true
         startBtn.isHidden = true
         
+        if self.language == "fr" {
+            self.addPeerOrAssessSubjectBtn.setTitle(FrStrings.button_assess_paritcipant, for: .normal)
+        }
+        else {
+            self.addPeerOrAssessSubjectBtn.setTitle(EnStrings.button_assess_paritcipant, for: .normal)
+        }
+        
         ParseController.getPeer().continueOnSuccessWith { (task) -> Void in
             self.peer = task.result!
             self.participantStudyUser = self.peer.getParticipant()
@@ -742,10 +778,6 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
                         self.studyTitle.text = self.study.value(forKey: "name") as? String
                         self.studyDescribtion.text = self.study.value(forKey: "observersDescription") as? String
                         self.studyTasks.text = self.study.value(forKey: "observerTasks") as? String
-                        
-                        // The add peer button is not relevant for peers. Instead make it
-                        // possible for peers to assess their subject whenever they want
-                        self.addPeerOrAssessSubjectBtn.setTitle("ASSESS PARTICIPANT", for: .normal)
                     }
                     ParseController.getStudyConfigByStudy(self.study).continueOnSuccessWith(block: { (task) -> Void in
                         self.studyConfig = task.result!

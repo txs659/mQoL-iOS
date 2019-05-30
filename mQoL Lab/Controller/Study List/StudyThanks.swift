@@ -9,26 +9,25 @@
 import UIKit
 
 class StudyThanks: UIViewController {
+    
+    let language = UserDefaults.standard.string(forKey: "language")
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        //Setting the language for navigation buttons depending on device language
+        if language == "fr" {
+            navigationItem.backBarButtonItem?.title = FrStrings.back_button
+            navigationItem.rightBarButtonItem?.title = FrStrings.next_button
+        }
+        else {
+            navigationItem.backBarButtonItem?.title = EnStrings.back_button
+            navigationItem.rightBarButtonItem?.title = EnStrings.next_button
+        }
     }
     
     @IBAction func goToStudyHome(_ sender: Any) {
         Switcher.updateRootVC()
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

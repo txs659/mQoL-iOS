@@ -70,10 +70,31 @@ class EnStrings {
     static let quit_study_warning_title = "Heads Up!"
     static let quit_continue = "I want to quit"
     static let quit_abort = "Cancel"
+    
+    static let view_study_home_progress_1 = "Thank you for being in day"
+    static let view_study_home_progress_2 = "of"
+    
+    static let button_start_study = "Start Study"
+    static let button_quit_study = "Quit Study"
+    static let button_end_study = "End Study"
+    static let button_send_invitation = "Add Peers"
+    static let button_assess_paritcipant = "Assess Participant"
+    
+    // MARK:- Strings for external surveys
+    static let external_survey_title = "External Survey"
+    static let external_survey_1 = "Please copy the link below in a computer browser to answer this survey."
+    static let external_survey_2a = "In English: "
+    static let external_survey_2b = "In French: "
+    static let external_survey_3 = "Your unique code is:"
 
     
     
     // MARK:- Strings for email
+    static let invitation_alert_title = "Email"
+    static let invitation_alert_text = "What language should the mail be written in?"
+    static let invitation_alert_option1 = "English"
+    static let invitation_alert_option2 = "French"
+    
     static let invitation_message = "Please join me in a research project for the University of Geneva."
     static let email_failed_title = "Email failed"
     static let email_failed_text = "Your device is not set up for emails. Please do so and try again."
