@@ -53,6 +53,62 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    //Function that handles the incomming dynamic links
+    func handleIncommingDynamicLinks(_ dynamicLink : DynamicLink) {
+        guard let url = dynamicLink.url else {
+            print ("Error: No url was found")
+            return
+        }
+        print ("Incomming link with parameters: \(url.absoluteString)")
+        
+        //Check how confident we are that this is the right link
+        guard (dynamicLink.matchType == .unique || dynamicLink.matchType == .default) else {
+            print ("We are not sure that this is the right link")
+            return
+        }
+        
+        //Parse the parameters 
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+            let queryItems = components.queryItems else { return }
+        for queryItem in queryItems {
+            print (queryItem)
+        }
+    }
+    
+    //Is called if the app is opened through a universal link
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        if let incomingURL = userActivity.webpageURL {
+            print("Incomming URL: \(incomingURL)")
+            let linkHandled = DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) { (dynamicLink, error) in
+                guard error == nil else {
+                    print ("Error: \(error!.localizedDescription)")
+                    return
+                }
+                if let dynamicLink = dynamicLink {
+                    self.handleIncommingDynamicLinks(dynamicLink)
+                }
+            }
+            if linkHandled {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+        return false
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        print ("URL received through a custom scheme! \(url.absoluteString)")
+        if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
+            self.handleIncommingDynamicLinks(dynamicLink)
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

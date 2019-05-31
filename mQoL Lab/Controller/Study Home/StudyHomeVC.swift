@@ -11,6 +11,7 @@ import Parse
 import UserNotifications
 import MessageUI
 import PDFKit
+import Firebase
 
 class StudyHomeVC: UIViewController, MFMailComposeViewControllerDelegate {
     
@@ -640,12 +641,57 @@ class StudyHomeVC: UIViewController, MFMailComposeViewControllerDelegate {
     //
     //
     
+    //Function that creates Firebase Dynamic Link
+    func createDynamicLink() {
+        let studyUserId = self.studyUser.objectId! as String
+        
+        var components = URLComponents()
+        components.scheme = "http"
+        components.host = "www.qol.unige.ch"
+        components.path = "/studyUser"
+        
+        let studyUserIdQueryItem = URLQueryItem(name: "studyUser", value: studyUserId)
+        components.queryItems = [studyUserIdQueryItem]
+        
+        guard let linkParameter = components.url else { return }
+        
+        let shareLink = DynamicLinkComponents.init(link: linkParameter, domainURIPrefix: "https://h62ek.app.goo.gl")
+        
+        if let bundleId = Bundle.main.bundleIdentifier {
+            shareLink?.iOSParameters = DynamicLinkIOSParameters(bundleID: bundleId)
+        }
+        
+        shareLink?.iOSParameters?.appStoreID = "1466061031"
+        
+        shareLink?.androidParameters = DynamicLinkAndroidParameters(packageName: "ch.unige.mqol.studymanager")
+        
+        guard let longURL = shareLink?.url else { return }
+        
+        print("longURL: \(longURL)")
+        
+        shareLink?.shorten(completion: { (url, warnings, error) in
+            if let error = error {
+                print ("FDL errror: \(error)")
+            }
+            if let warnings = warnings {
+                for warning in warnings {
+                    print ("FDL warning: \(warning)")
+                }
+            }
+            guard let url = url else { return }
+            print("Short link: \(url)")
+        })
+        
+        
+    }
+    
     //Function triggered when user wants to invite peers - English version.
     func sendEmailToPeerEn(_ action : UIAlertAction) {
         if MFMailComposeViewController.canSendMail() {
             
             //Create deeplink for Firebase
             let deeplink = "https://google.com"
+            self.createDynamicLink()
             
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
