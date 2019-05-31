@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.initialize(with: parseConfig)
         
         // Use Firebase library to configure APIs
-        //FirebaseApp.configure()
+        FirebaseApp.configure()
         
         // Checks preferred language list from device
         let prefferedLan = NSLocale.preferredLanguages[0]

@@ -27,9 +27,10 @@
 			<string>Bundle ID</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.mqol.mQoL-Lab</string>
+				<string>com.qualityoflifetechnologies.mQoL-Lab</string>
 			</array>
 		</dict>
+		<dict/>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>

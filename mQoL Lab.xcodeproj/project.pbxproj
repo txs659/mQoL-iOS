@@ -36,6 +36,7 @@
 		8691AC212250F56F0077EA6C /* LabThanks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8691AC202250F56F0077EA6C /* LabThanks.swift */; };
 		8691AC29225146DA0077EA6C /* InfoDisplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8691AC28225146DA0077EA6C /* InfoDisplayer.swift */; };
 		86A024CA228EC08A005C8F49 /* Peer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A024C9228EC08A005C8F49 /* Peer.swift */; };
+		86A7012822A127A200AA99D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86A7012722A127A100AA99D5 /* GoogleService-Info.plist */; };
 		86BA7F69225372BB0054D17D /* EnStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BA7F68225372BB0054D17D /* EnStrings.swift */; };
 		86BA7F6B225372CA0054D17D /* FrStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BA7F6A225372CA0054D17D /* FrStrings.swift */; };
 		86BA7F6D2253762D0054D17D /* LabInto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BA7F6C2253762D0054D17D /* LabInto.swift */; };
@@ -78,6 +79,7 @@
 		8691AC202250F56F0077EA6C /* LabThanks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabThanks.swift; sourceTree = "<group>"; };
 		8691AC28225146DA0077EA6C /* InfoDisplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDisplayer.swift; sourceTree = "<group>"; };
 		86A024C9228EC08A005C8F49 /* Peer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Peer.swift; sourceTree = "<group>"; };
+		86A7012722A127A100AA99D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		86BA7F68225372BB0054D17D /* EnStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnStrings.swift; sourceTree = "<group>"; };
 		86BA7F6A225372CA0054D17D /* FrStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrStrings.swift; sourceTree = "<group>"; };
 		86BA7F6C2253762D0054D17D /* LabInto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabInto.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 		861EE73D223288DF00FB57B3 /* mQoL Lab */ = {
 			isa = PBXGroup;
 			children = (
+				86A7012722A127A100AA99D5 /* GoogleService-Info.plist */,
 				86226DC2227C1D8B00B73E37 /* mQoL Lab.entitlements */,
 				864039762237ABB400209B6E /* Model */,
 				861EE76522330BF400FB57B3 /* View */,
@@ -293,7 +296,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
-				ORGANIZATIONNAME = mQoL;
+				ORGANIZATIONNAME = mqol;
 				TargetAttributes = {
 					861EE73A223288DF00FB57B3 = {
 						CreatedOnToolsVersion = 10.1;
@@ -302,8 +305,11 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 							com.apple.SafariKeychain = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -334,6 +340,7 @@
 			files = (
 				861EE749223288E000FB57B3 /* LaunchScreen.storyboard in Resources */,
 				861EE7602233075700FB57B3 /* OurLab.storyboard in Resources */,
+				86A7012822A127A200AA99D5 /* GoogleService-Info.plist in Resources */,
 				861EE76222330A4600FB57B3 /* ListOfStudies.storyboard in Resources */,
 				861EE76422330B8B00FB57B3 /* StudyHome.storyboard in Resources */,
 				861EE746223288E000FB57B3 /* Assets.xcassets in Resources */,
@@ -579,14 +586,15 @@
 			baseConfigurationReference = CDBB46C3E83F3A5F014BE4F2 /* Pods-mQoL Lab.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "mQoL Lab/mQoL Lab.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 55RD9S7S4Y;
+				DEVELOPMENT_TEAM = 9R4AV5LP66;
 				INFOPLIST_FILE = "$(SRCROOT)/mQoL Lab/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mqol.mQoL-Lab";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.qualityoflifetechnologies.mQoL-Lab";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -598,14 +606,15 @@
 			baseConfigurationReference = A1DF7154F88C55FFF0699203 /* Pods-mQoL Lab.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "mQoL Lab/mQoL Lab.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 55RD9S7S4Y;
+				DEVELOPMENT_TEAM = 9R4AV5LP66;
 				INFOPLIST_FILE = "$(SRCROOT)/mQoL Lab/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mqol.mQoL-Lab";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.qualityoflifetechnologies.mQoL-Lab";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
