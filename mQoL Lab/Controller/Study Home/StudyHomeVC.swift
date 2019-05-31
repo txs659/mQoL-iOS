@@ -1,5 +1,5 @@
 //
-//  StudyHome.swift
+//  StudyHomeVC.swift
 //  mQoL Lab
 //
 //  Created by Frederik Schmøde on 08/03/2019.
@@ -12,7 +12,7 @@ import UserNotifications
 import MessageUI
 import PDFKit
 
-class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
+class StudyHomeVC: UIViewController, MFMailComposeViewControllerDelegate {
     
     //
     //
@@ -515,15 +515,15 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     //This function is used to pass data onto the UIWebView or the external survey view.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "surveyDisplayer" {
-            let vc = segue.destination as? SurveyDisplayer
+            let vc = segue.destination as? SurveyDisplayerVC
             vc?.targetURL = urlString
         }
         else if segue.identifier == "externalSurvey" {
-            let vc = segue.destination as? ExternalSurvey
+            let vc = segue.destination as? ExternalSurveyVC
             vc?.externalSurveyInfo = self.studyConfig.value(forKey: "externalSurveys") as! [[String]]
         }
         else if segue.identifier == "readPDF" {
-            let vc = segue.destination as? readPDF
+            let vc = segue.destination as? readPDFVC
             vc?.pdfFile = self.pdf
         }
         

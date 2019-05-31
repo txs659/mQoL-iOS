@@ -1,5 +1,5 @@
 //
-//  SurveyDisplayer.swift
+//  SurveyDisplayerVC.swift
 //  mQoL Lab
 //
 //  Created by Frederik Schmøde on 22/04/2019.
@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class SurveyDisplayer: UIViewController, WKUIDelegate {
+class SurveyDisplayerVC: UIViewController, WKUIDelegate {
     
     public var targetURL : String = ""
     

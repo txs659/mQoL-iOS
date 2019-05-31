@@ -1,5 +1,5 @@
 //
-//  SplashScreenViewController.swift
+//  SplashScreenVC.swift
 //  mQoL Lab
 //
 //  Created by Frederik Schmøde on 19/03/2019.
@@ -10,7 +10,7 @@ import UIKit
 import JGProgressHUD
 import Parse
 
-class SplashScreenViewController: UIViewController {
+class SplashScreenVC: UIViewController {
     
     let USER_STUDY_ID = "study_user_id"
 

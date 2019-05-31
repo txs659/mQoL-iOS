@@ -1,5 +1,5 @@
 //
-//  DataCollection.swift
+//  InfoDisplayerVC.swift
 //  mQoL Lab
 //
 //  Created by Frederik Schmøde on 31/03/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InfoDisplayer: UIViewController {
+class InfoDisplayerVC: UIViewController {
     
     public var study = Study()
     
@@ -223,7 +223,7 @@ class InfoDisplayer: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as? StudyConsent
+        let vc = segue.destination as? StudyConsentVC
         vc?.study = study
     }
 

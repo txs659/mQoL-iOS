@@ -1,5 +1,5 @@
 //
-//  StudyConsent.swift
+//  StudyConsentVC.swift
 //  mQoL Lab
 //
 //  Created by Frederik Schmøde on 09/03/2019.
@@ -10,7 +10,7 @@ import UIKit
 import PDFKit
 import Parse
 
-class StudyConsent: UIViewController, UITextFieldDelegate {
+class StudyConsentVC: UIViewController, UITextFieldDelegate {
     
     public var study = Study()
     
@@ -203,7 +203,7 @@ class StudyConsent: UIViewController, UITextFieldDelegate {
     // Sends the PDF file to the PDFView for display
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "readPDF" {
-            let vc = segue.destination as? readPDF
+            let vc = segue.destination as? readPDFVC
             vc?.pdfFile = self.pdf
         }
     }

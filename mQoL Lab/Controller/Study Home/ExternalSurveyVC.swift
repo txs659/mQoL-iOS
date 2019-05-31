@@ -1,5 +1,5 @@
 //
-//  ExternalSurvey.swift
+//  ExternalSurveyVC.swift
 //  mQoL Lab
 //
 //  Created by Frederik Schmøde on 18/05/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExternalSurvey: UIViewController {
+class ExternalSurveyVC: UIViewController {
     
     public var externalSurveyInfo = [[]]
     

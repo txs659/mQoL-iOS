@@ -1,5 +1,5 @@
 //
-//  readPDF.swift
+//  readPDFVC.swift
 //  mQoL Lab
 //
 //  Created by Frederik Schmøde on 12/04/2019.
@@ -9,7 +9,7 @@
 import UIKit
 import PDFKit
 
-class readPDF: UIViewController {
+class readPDFVC: UIViewController {
     
     public var pdfFile : PDFDocument = PDFDocument()
     

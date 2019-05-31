@@ -1,5 +1,5 @@
 //
-//  LabConsent.swift
+//  LabConsentVC.swift
 //  mQoL Lab
 //
 //  Created by Frederik Schmøde on 08/03/2019.
@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import PDFKit
 
-class LabConsent: UIViewController {
+class LabConsentVC: UIViewController {
     
     // Labels that needs strings injected
     @IBOutlet weak var pageTitle: UILabel!
@@ -120,7 +120,7 @@ class LabConsent: UIViewController {
     // Sends the PDF file to the PDFView for display
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "readPDF" {
-            let vc = segue.destination as? readPDF
+            let vc = segue.destination as? readPDFVC
             vc?.pdfFile = self.pdf
         }
     }

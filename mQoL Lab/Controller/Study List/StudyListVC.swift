@@ -1,5 +1,5 @@
 //
-//  StudyList.swift
+//  StudyListVC.swift
 //  mQoL Lab
 //
 //  Created by Frederik Schmøde on 08/03/2019.
@@ -13,7 +13,7 @@ import JGProgressHUD
 private let reuseIdentifier = "Cell"
 
 
-class StudyList: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class StudyListVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     public var studiesArray = Array<Study>()
     var pressedCell = StudyCell()
@@ -97,7 +97,7 @@ class StudyList: UICollectionViewController, UICollectionViewDelegateFlowLayout 
     
     //Sends the pressed study data to the next view
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as? InfoDisplayer
+        let vc = segue.destination as? InfoDisplayerVC
         vc?.study = pressedCell.study
     }
     
