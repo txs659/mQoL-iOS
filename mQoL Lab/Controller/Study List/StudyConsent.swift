@@ -49,7 +49,7 @@ class StudyConsent: UIViewController, UITextFieldDelegate {
     var switch6Accepted : Bool = false
     
     //Creating the alarm that pops up, if not all switches has been pressed
-    let alert = UIAlertController(title: "Agreement missing", message: "You need to write you full name and agree to all the terms in order to continue", preferredStyle: .alert)
+    let alert = UIAlertController(title: "Agreement missing", message: "You need to write your full name and agree to all the terms in order to continue", preferredStyle: .alert)
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -503,8 +503,7 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
         ParseController.getMqolUser().continueOnSuccessWith { (task) -> Void in
             let mqolUser = task.result as! MqolUser
             let mqolUserId = mqolUser.objectId! 
-            //self.urlString = "https://mqolweb.com/user/\(mqolUserId)/survey/\(surveyId)"
-            self.urlString = "localhost:3000/user/\(mqolUserId)/survey/\(surveyId)"
+            self.urlString = "https://qol1.unige.ch/mqol-web/user/\(mqolUserId)/survey/\(surveyId)"
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "surveyDisplayer", sender: self)
             }
