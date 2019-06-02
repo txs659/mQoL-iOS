@@ -405,9 +405,10 @@ class StudyHomeVC: UIViewController, MFMailComposeViewControllerDelegate {
         
         if isPeer {
             //If user is a peer
-            
-            // TODO:- Add peer survey
-            
+            let volunterySurvey = self.studyConfig.value(forKey: "peerVoluntarySurvey") as! PFObject
+            if let volunterySurveyID = volunterySurvey.objectId {
+                self.goToSurveyURL(surveyId: volunterySurveyID)
+            }
         }
         else {
             //If user is participant
@@ -835,6 +836,14 @@ class StudyHomeVC: UIViewController, MFMailComposeViewControllerDelegate {
                             self.survey1.setTitle(self.studyConfig.value(forKey: "survey1_title_peer") as? String, for: .normal)
                             self.survey2.setTitle(self.studyConfig.value(forKey: "survey2_title_peer") as? String, for: .normal)
                             self.survey3.setTitle(self.studyConfig.value(forKey: "survey3_title_peer") as? String, for: .normal)
+                        }
+                        
+                        //Check if voluntary survey is defined, else hide the button
+                        let voluntarySurvey = self.studyConfig.value(forKey: "peerVoluntarySurvey")
+                        if (voluntarySurvey == nil) {
+                            DispatchQueue.main.async {
+                                self.addPeerOrAssessSubjectBtn.isHidden = true
+                            }
                         }
                         
                         //load external survey button
