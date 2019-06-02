@@ -20,7 +20,6 @@ class SplashScreenVC: UIViewController {
         
         // Creating a loading icon on the splash screen
         let hud = JGProgressHUD(style: .dark)
-        //var uid = ""
         hud.textLabel.text = "Loading"
         hud.show(in: self.view)
         var uid = ""
