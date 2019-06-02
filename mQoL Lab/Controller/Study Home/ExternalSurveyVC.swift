@@ -12,8 +12,6 @@ class ExternalSurveyVC: UIViewController {
     
     public var externalSurveyInfo = [[]]
     
-    var mqolUserId = ""
-    
     let language = UserDefaults.standard.string(forKey: "language")
     
     @IBOutlet var pageTitle : UILabel!
@@ -27,6 +25,9 @@ class ExternalSurveyVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let fullUserName = ParseController.getCurrentParseUser().value(forKey: "username")! as! String
+        let username = fullUserName.prefix(8)
             
         if self.language == "fr" {
             self.pageTitle.text = FrStrings.external_survey_title
@@ -35,7 +36,7 @@ class ExternalSurveyVC: UIViewController {
             self.inEnglish.text = FrStrings.external_survey_2a
             self.inFrench.text = FrStrings.external_survey_2b
             
-            self.uniqueCode.text = FrStrings.external_survey_3 + self.mqolUserId
+            self.uniqueCode.text = FrStrings.external_survey_3 + " " + username
         }
         else {
             self.pageTitle.text = EnStrings.external_survey_title
@@ -44,7 +45,7 @@ class ExternalSurveyVC: UIViewController {
             self.inEnglish.text = EnStrings.external_survey_2a
             self.inFrench.text = EnStrings.external_survey_2b
             
-            self.uniqueCode.text = EnStrings.external_survey_3 + self.mqolUserId
+            self.uniqueCode.text = EnStrings.external_survey_3 + " " + username
         }
         
         self.text2.text = self.externalSurveyInfo[0][1] as? String

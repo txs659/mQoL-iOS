@@ -70,9 +70,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Parse the parameters 
         guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
             let queryItems = components.queryItems else { return }
-        for queryItem in queryItems {
-            print (queryItem)
-        }
+        
+        let studyUserId = queryItems.first?.value
+        //Setting variables in local cache for later use
+        UserDefaults.standard.set(true, forKey: "isPeer")
+        UserDefaults.standard.set(studyUserId, forKey: "peerSubjectID")
     }
     
     //Is called if the app is opened through a universal link
@@ -98,6 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return false
     }
     
+    //Is called when app is opened through a URL scheme
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         print ("URL received through a custom scheme! \(url.absoluteString)")
         if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {

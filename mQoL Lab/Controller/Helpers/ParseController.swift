@@ -156,11 +156,6 @@ class ParseController {
         }
     }
     
-    
-    
-    
-    
-    
     static func getStudyUserByStudyId (_ studyId : String) -> BFTask<StudyUser> {
         PFObject.unpinAllObjectsInBackground(withName: STUDY_USER_STORE_KEY)
         PFObject.unpinAllObjectsInBackground()

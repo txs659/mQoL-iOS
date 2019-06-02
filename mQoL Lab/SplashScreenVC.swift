@@ -44,11 +44,11 @@ class SplashScreenVC: UIViewController {
                         
                         ParseController.getMqolUser().continueOnSuccessWith(block: { (task) -> Void in
                             
-                            let userStudyId = self.checkForDynamicLinks()
+                            let isPeer = UserDefaults.standard.bool(forKey: "isPeer")
                             
-                            //If dynamic link was found
-                            if userStudyId != "" {
-                                UserDefaults.standard.set(true, forKey: "isPeer")
+                            //If the flag is set create peer object
+                            if isPeer {
+                                let userStudyId = UserDefaults.standard.value(forKey: "peerSubjectID") as! String
                                 PFCloud.callFunction(inBackground: "registerPeer", withParameters: [self.USER_STUDY_ID: userStudyId], block: { (object: Any?, error: Error?) in
                                     
                                     if error != nil {

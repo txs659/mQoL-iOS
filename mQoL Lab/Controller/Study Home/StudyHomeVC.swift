@@ -732,21 +732,22 @@ class StudyHomeVC: UIViewController, MFMailComposeViewControllerDelegate {
     
     //Function triggered when the user presses the 'contact us' button.
     func sendEmailToUs(_ action : UIAlertAction) {
+        
+        let fullUserName = ParseController.getCurrentParseUser().value(forKey: "username")! as! String
+        let username = fullUserName.prefix(8)
+        
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             mail.setToRecipients(["qol.unige@gmail.com"])
             
-            let mqolUser = self.studyUser.value(forKey: "mqolUser") as! PFObject
-            let mqolUserId = mqolUser.objectId
-            
             if language == "fr" {
                 mail.setSubject(FrStrings.contactUsEmail_subject)
-                mail.setMessageBody(FrStrings.contactUsEmail_text + " \(mqolUserId!)", isHTML: true)
+                mail.setMessageBody(FrStrings.contactUsEmail_text + " \(username)", isHTML: true)
             }
             else {
                 mail.setSubject(EnStrings.contactUsEmail_subject)
-                mail.setMessageBody(EnStrings.contactUsEmail_text + " \(mqolUserId!)", isHTML: true)
+                mail.setMessageBody(EnStrings.contactUsEmail_text + " \(username)", isHTML: true)
             }
             present(mail, animated: true)
         } else {
