@@ -50,6 +50,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Setting this class as UserNotificationCenter delegate, so we are able to make custom actions for the notification
         UNUserNotificationCenter.current().delegate = self
         
+        //Register for remote push notifications
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
+            // Enable or disable features based on authorization.
+        }
+        application.registerForRemoteNotifications()
+        
         return true
     }
     
@@ -109,6 +116,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         else {
             return false
+        }
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        
+        let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+        print(deviceTokenString)
+        
+        if let installation = PFInstallation.current() {
+            installation.setDeviceTokenFrom(deviceToken)
+            installation.saveInBackground()
         }
     }
     

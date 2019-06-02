@@ -9,7 +9,6 @@
 import UIKit
 import JGProgressHUD
 import Parse
-import UserNotifications
 
 class SplashScreenVC: UIViewController {
     
@@ -17,9 +16,6 @@ class SplashScreenVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let manager = LocalNotificationManager()
-        manager.listScheduledNotifications()
         
         // Creating a loading icon on the splash screen
         let hud = JGProgressHUD(style: .dark)
@@ -84,15 +80,6 @@ class SplashScreenVC: UIViewController {
             }
         })
     }
-    
-    
-    
-    func checkForDynamicLinks() -> String {
-        // TODO: - Insert firebase dynamic link check here
-        return ""
-        //return "2zlZfmyPC1"
-    }
-
 }
 
 
