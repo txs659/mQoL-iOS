@@ -11,7 +11,10 @@ import WebKit
 
 class SurveyDisplayerVC: UIViewController, WKUIDelegate {
     
+    public var surveyID : String = ""
     public var targetURL : String = ""
+    public var channel : String = ""
+    public var peerSurveyID : String = ""
     
     @IBOutlet var webView : WKWebView!
     

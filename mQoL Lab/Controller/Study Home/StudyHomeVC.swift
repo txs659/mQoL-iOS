@@ -38,6 +38,10 @@ class StudyHomeVC: UIViewController, MFMailComposeViewControllerDelegate {
     var survey2_survey = Survey()
     var survey3_survey = Survey()
     
+    var survey1Done = false
+    var survey2Done = false
+    var survey3Done = false
+    
     //Used in call to mqol web application
     var urlString = ""
     
@@ -131,8 +135,48 @@ class StudyHomeVC: UIViewController, MFMailComposeViewControllerDelegate {
             self.goToSurveyURL(surveyId: surveyToFire!)
             UserDefaults.standard.set(false, forKey: "fireNotificationSurvey")
             UserDefaults.standard.set("", forKey: "surveyToFire")
+            
+            //Check if push-notification flag for peers should be set
+            if !self.isPeer {
+                ParseController.getSurvey(surveyToFire!).continueOnSuccessWith { (task) -> Void in
+                    let survey : Survey = task.result!
+                    let surveyForPeer = survey.object(forKey: "surveyForPeer") as? PFObject
+                    if surveyForPeer != nil {
+                        UserDefaults.standard.set(true, forKey: "sendSurveyToPeer")
+                        UserDefaults.standard.set(surveyForPeer!.objectId, forKey: "peerSurvey")
+                    }
+                }
+            }
         }
         
+        //Check if push-notifications should be sent to peers
+        let sendSurveyToPeer = UserDefaults.standard.bool(forKey: "sendSurveyToPeer")
+        
+        if sendSurveyToPeer {
+            UserDefaults.standard.set(false, forKey: "sendSurveyToPeer")
+            let peerSurveyID = UserDefaults.standard.value(forKey: "peerSurvey") as! String
+            let channel = self.studyUser.getObserverChannel()
+            
+            let params =
+                ["customData" :
+                    [ "command" : "run_survey",
+                      "argument" : peerSurveyID,
+                      "channel" : channel,
+                      "extrax" : ""
+                    ]
+                ]
+            
+            PFCloud.callFunction(inBackground: "runSurveyOnPeer", withParameters: params) { (task, error) in
+                if error != nil {
+                    print(error!)
+                }
+                else {
+                    print ("Push notification succesfully sent!")
+                }
+            }
+        }
+        
+        //Return user to relevant view when study is ended or quited.
         if self.exitSurveyFired {
             Switcher.updateRootVC()
         }
@@ -166,10 +210,47 @@ class StudyHomeVC: UIViewController, MFMailComposeViewControllerDelegate {
                     
                     self.studyConfig = task.result! as StudyConfig
                     
-                    //Sets the surveys into accessible variables
-                    self.survey1_survey = self.studyConfig.value(forKey: "survey1_survey") as! Survey
-                    self.survey2_survey = self.studyConfig.value(forKey: "survey2_survey") as! Survey
-                    self.survey3_survey = self.studyConfig.value(forKey: "survey3_survey") as! Survey
+                    //Check if survey1 is populated, if not hide button
+                    if self.studyConfig.value(forKey: "survey1_survey") != nil {
+                        self.survey1_survey = self.studyConfig.value(forKey: "survey1_survey") as! Survey
+                        DispatchQueue.main.async {
+                            self.survey1.setTitle(self.studyConfig.value(forKey: "survey1_title") as? String, for: .normal)
+                        }
+                    }
+                    else {
+                        DispatchQueue.main.async {
+                            self.survey1.isHidden = true
+                        }
+                        self.survey1Done = true
+                    }
+                    
+                    //Check if survey2 is populated, if not hide button
+                    if self.studyConfig.value(forKey: "survey2_survey") != nil {
+                        self.survey2_survey = self.studyConfig.value(forKey: "survey2_survey") as! Survey
+                        DispatchQueue.main.async {
+                            self.survey2.setTitle(self.studyConfig.value(forKey: "survey2_title") as? String, for: .normal)
+                        }
+                    }
+                    else {
+                        DispatchQueue.main.async {
+                            self.survey2.isHidden = true
+                        }
+                        self.survey2Done = true
+                    }
+                    
+                    //Check if survey3 is populated, if not hide button
+                    if self.studyConfig.value(forKey: "survey3_survey") != nil {
+                        self.survey3_survey = self.studyConfig.value(forKey: "survey3_survey") as! Survey
+                        DispatchQueue.main.async {
+                            self.survey3.setTitle(self.studyConfig.value(forKey: "survey3_title") as? String, for: .normal)
+                        }
+                    }
+                    else {
+                        DispatchQueue.main.async {
+                            self.survey3.isHidden = true
+                        }
+                        self.survey3Done = true
+                    }
                     
                     //Checking if the study allows peers - if not button is hidden
                     let isPeerStudy = self.studyConfig.value(forKey: "isPeerStudy") as! Bool
@@ -177,13 +258,6 @@ class StudyHomeVC: UIViewController, MFMailComposeViewControllerDelegate {
                         DispatchQueue.main.async {
                             self.addPeerOrAssessSubjectBtn.isHidden = true
                         }
-                    }
-                    
-                    //Updating the survey button labels
-                    DispatchQueue.main.async {
-                        self.survey1.setTitle(self.studyConfig.value(forKey: "survey1_title") as? String, for: .normal)
-                        self.survey2.setTitle(self.studyConfig.value(forKey: "survey2_title") as? String, for: .normal)
-                        self.survey3.setTitle(self.studyConfig.value(forKey: "survey3_title") as? String, for: .normal)
                     }
                 ParseController.getStudyUserByStudyId(self.study.objectId!).continueOnSuccessWith(block: { (task) -> Void in
                     self.studyUser = task.result! as StudyUser
@@ -194,21 +268,24 @@ class StudyHomeVC: UIViewController, MFMailComposeViewControllerDelegate {
                         DispatchQueue.main.async {
                             self.survey1.isHidden = true
                         }
+                        self.survey1Done = true
                     }
                     
                     if self.studyUser.survey2Done {
                         DispatchQueue.main.async {
                             self.survey2.isHidden = true
                         }
+                        self.survey2Done = true
                     }
                     
                     if self.studyUser.survey3Done {
                         DispatchQueue.main.async {
                             self.survey3.isHidden = true
                         }
+                        self.survey3Done = true
                     }
                     
-                    if self.studyUser.survey1Done && self.studyUser.survey2Done && self.studyUser.survey3Done {
+                    if self.survey1Done && self.survey2Done && self.survey3Done {
                         DispatchQueue.main.async {
                             self.startBtn.isHidden = false
                         }
@@ -811,9 +888,44 @@ class StudyHomeVC: UIViewController, MFMailComposeViewControllerDelegate {
                     ParseController.getStudyConfigByStudy(self.study).continueOnSuccessWith(block: { (task) -> Void in
                         self.studyConfig = task.result!
                         
-                        self.survey1_survey = self.studyConfig.value(forKey: "survey1_survey_peer") as! Survey
-                        self.survey2_survey = self.studyConfig.value(forKey: "survey2_survey_peer") as! Survey
-                        self.survey3_survey = self.studyConfig.value(forKey: "survey3_survey_peer") as! Survey
+                        if self.studyConfig.value(forKey: "survey1_survey_peer") != nil {
+                            self.survey1_survey = self.studyConfig.value(forKey: "survey1_survey_peer") as! Survey
+                            DispatchQueue.main.async {
+                                self.survey1.setTitle(self.studyConfig.value(forKey: "survey1_title_peer") as? String, for: .normal)
+                            }
+                        }
+                        else {
+                            DispatchQueue.main.async {
+                                self.survey1.isHidden = true
+                            }
+                        }
+                        
+                        
+                        if self.studyConfig.value(forKey: "survey2_survey_peer") != nil {
+                            self.survey2_survey = self.studyConfig.value(forKey: "survey2_survey_peer") as! Survey
+                            DispatchQueue.main.async {
+                                self.survey2.setTitle(self.studyConfig.value(forKey: "survey2_title_peer") as? String, for: .normal)
+                            }
+                        }
+                        else {
+                            DispatchQueue.main.async {
+                                self.survey2.isHidden = true
+                            }
+                        }
+                        
+                        
+                        if self.studyConfig.value(forKey: "survey3_survey_peer") != nil {
+                            self.survey3_survey = self.studyConfig.value(forKey: "survey3_survey_peer") as! Survey
+                            DispatchQueue.main.async {
+                                self.survey3.setTitle(self.studyConfig.value(forKey: "survey3_title_peer") as? String, for: .normal)
+                            }
+                        }
+                        else {
+                            DispatchQueue.main.async {
+                                self.survey3.isHidden = true
+                            }
+                        }
+                        
                         
                         //Hide survey buttons if they are already done
                         if (self.peer.value(forKey: "survey1Done") as! Bool) {
@@ -830,12 +942,6 @@ class StudyHomeVC: UIViewController, MFMailComposeViewControllerDelegate {
                             DispatchQueue.main.async {
                                 self.survey3.isHidden = true
                             }
-                        }
-                        
-                        DispatchQueue.main.async {
-                            self.survey1.setTitle(self.studyConfig.value(forKey: "survey1_title_peer") as? String, for: .normal)
-                            self.survey2.setTitle(self.studyConfig.value(forKey: "survey2_title_peer") as? String, for: .normal)
-                            self.survey3.setTitle(self.studyConfig.value(forKey: "survey3_title_peer") as? String, for: .normal)
                         }
                         
                         //Check if voluntary survey is defined, else hide the button

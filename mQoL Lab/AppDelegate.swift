@@ -31,7 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let parseConfig = ParseClientConfiguration {
             $0.isLocalDatastoreEnabled = true
             $0.applicationId = "mQoL-app-dev"
-            $0.server = "https://qol1.unige.ch/mqol-parse-dev/"
+            $0.server = "https://qol1.unige.ch/mqol-parse-next/"
+            //$0.server = "https://qol1.unige.ch/mqol-parse-dev/"
         }
         Parse.initialize(with: parseConfig)
         
@@ -119,10 +120,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    //Is called when the app successfully signs up for remote push notifications
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        
-        let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
-        print(deviceTokenString)
         
         if let installation = PFInstallation.current() {
             installation.setDeviceTokenFrom(deviceToken)
