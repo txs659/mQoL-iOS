@@ -691,11 +691,14 @@ class StudyHomeVC: UIViewController, MFMailComposeViewControllerDelegate {
             //Change local 'is peer' flag to false
             UserDefaults.standard.set(false, forKey: "isPeer")
             
-            //Fire exit survey
-            let exitSurvey = self.studyConfig.value(forKey: "exitSurveyPeer") as! PFObject
-            self.goToSurveyURL(surveyId: exitSurvey.objectId!)
-            ParseController.peerSetExitSurveyDone(peer: self.peer)
-            self.exitSurveyFired = true
+            //Fire exit survey if the exitSurveyPeer is not empty
+            if self.studyConfig.value(forKey: "exitSurveyPeer") != nil {
+                let exitSurvey = self.studyConfig.value(forKey: "exitSurveyPeer") as! PFObject
+                self.goToSurveyURL(surveyId: exitSurvey.objectId!)
+                ParseController.peerSetExitSurveyDone(peer: self.peer)
+                self.exitSurveyFired = true
+            }
+            
         }
         else {
             //Do participant specific quit actions
@@ -742,8 +745,15 @@ class StudyHomeVC: UIViewController, MFMailComposeViewControllerDelegate {
             components.scheme = "http"
             components.host = "www.qol.unige.ch"
             
-            let studyUserIdQueryItem = URLQueryItem(name: "studyUser", value: studyUserId)
-            components.queryItems = [studyUserIdQueryItem]
+            
+            //Compose link parameters, so Android app can parse the arguments
+            let studyUserIdQueryItem1 = URLQueryItem(name: "afl", value: "http://www.qol.unige.ch/apps.html")
+            let studyUserIdQueryItem2 = URLQueryItem(name: "apn", value: "ch.unige.mqol.studymanager.debug")
+            let studyUserIdQueryItem3 = URLQueryItem(name: "ibi", value: "com.qualityoflifetechnologies.mQoL-Lab")
+            let studyUserIdQueryItem4 = URLQueryItem(name: "isi", value: "1466061031")
+            let studyUserIdQueryItem5 = URLQueryItem(name: "link", value: "http://ch.unige.mqol.studymanager?inviterIdKey=\(studyUserId)")
+            
+            components.queryItems = [studyUserIdQueryItem1, studyUserIdQueryItem2, studyUserIdQueryItem3, studyUserIdQueryItem4, studyUserIdQueryItem5]
             
             guard let linkParameter = components.url else { return }
             
@@ -956,11 +966,8 @@ class StudyHomeVC: UIViewController, MFMailComposeViewControllerDelegate {
                         self.loadExternalSurveyBtn()
                         
                     })
-                    
                 })
             })
         }
-        
     }
-    
 }

@@ -67,22 +67,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print ("Error: No url was found")
             return
         }
-        print ("Incomming link with parameters: \(url.absoluteString)")
+        print ("\n\n\nIncomming link with parameters: \(url.absoluteString) \n\n\n")
         
         //Check how confident we are that this is the right link
-        guard (dynamicLink.matchType == .unique || dynamicLink.matchType == .default) else {
+       /* guard (dynamicLink.matchType == .unique || dynamicLink.matchType == .default) else {
             print ("We are not sure that this is the right link")
             return
-        }
+        } */
         
         //Parse the parameters 
         guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
             let queryItems = components.queryItems else { return }
         
-        let studyUserId = queryItems.first?.value
-        //Setting variables in local cache for later use
-        UserDefaults.standard.set(true, forKey: "isPeer")
-        UserDefaults.standard.set(studyUserId, forKey: "peerSubjectID")
+        print("\n\n\nLink parameters are:")
+        for item in queryItems {
+            
+            print(item)
+            
+            if item.name == "inviterIdKey" {
+                let studyUserId = item.value
+                
+                //Setting variables in local cache for later use
+                UserDefaults.standard.set(true, forKey: "isPeer")
+                UserDefaults.standard.set(studyUserId, forKey: "peerSubjectID")
+            }
+            else if item.name == "link" {                
+                let newURL = URL(string: item.value!)
+                guard let components = URLComponents(url: newURL!, resolvingAgainstBaseURL: false),
+                    let newQueryItems = components.queryItems else { return }
+                
+                for newItem in newQueryItems {
+                    let studyUserId = newItem.value
+                    
+                    //Setting variables in local cache for later use
+                    UserDefaults.standard.set(true, forKey: "isPeer")
+                    UserDefaults.standard.set(studyUserId, forKey: "peerSubjectID")
+                }
+            }
+        }
     }
     
     //Is called if the app is opened through a universal link

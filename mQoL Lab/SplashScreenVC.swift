@@ -59,9 +59,11 @@ class SplashScreenVC: UIViewController {
                                         
                                         ParseController.setUpPeerSurveyRequirements(peer: peer, studyUser: studyUser)
                                         
-                                        PFPush.subscribeToChannel(inBackground: studyUser.getObserverChannel())
+                                        if let currentInstallation = PFInstallation.current() {
+                                            currentInstallation.addUniqueObject(studyUser.getObserverChannel(), forKey: "channels")
+                                            currentInstallation.saveInBackground()
+                                        }
                                     }
-                                    
                                 })
                             }
                         })
