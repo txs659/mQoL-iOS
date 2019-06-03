@@ -160,11 +160,11 @@ class StudyConsentVC: UIViewController, UITextFieldDelegate {
             ParseController.createStudyUser(studyId: study.objectId!, name : nameFieldText)
             
             //Save studyId in local storage, so it is easy to access
-            UserDefaults.standard.set(study.objectId!, forKey: "studyId")
+            UserDefaults.standard.set(self.study.objectId!, forKey: "studyId")
             
             
             //Moving on to the 'thank you' screen
-            performSegue(withIdentifier: "studyThankYou", sender: self)
+            self.performSegue(withIdentifier: "studyThankYou", sender: self)
         }
         // If all switches has not been clicked or if the name field is empty display alert.
         else {

@@ -92,7 +92,38 @@ class StudyListVC: UICollectionViewController, UICollectionViewDelegateFlowLayou
         let selectedCell = collectionView.cellForItem(at: indexPath) as? StudyCell
         
         self.pressedCell = selectedCell!
-        self.performSegue(withIdentifier: "toInfo", sender: self)
+        
+        //Check if the user has ended any previous studies
+        if UserDefaults.standard.value(forKey: "completedStudies") != nil {
+            let completedStudies = UserDefaults.standard.value(forKey: "completedStudies") as! Array<String>
+            let pressedStudyID = self.pressedCell.study.objectId!
+            
+            //If the user has finished the selected study, then an alert will be displayed.
+            if completedStudies.contains(pressedStudyID) {
+                let language = UserDefaults.standard.value(forKey: "language") as! String
+                
+                if language == "fr" {
+                    let alert = UIAlertController(title: FrStrings.study_finished_title, message: FrStrings.study_finished_message, preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: FrStrings.study_finished_close_button, style: .cancel, handler: nil)
+                    alert.addAction(okAction)
+                    self.present(alert, animated: true)
+                }
+                else {
+                    let alert = UIAlertController(title: EnStrings.study_finished_title, message: EnStrings.study_finished_message, preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: EnStrings.study_finished_close_button, style: .cancel, handler: nil)
+                    alert.addAction(okAction)
+                    self.present(alert, animated: true)
+                }
+            }
+            //If the user has completed previous studies, but not this one - continue.
+            else {
+                self.performSegue(withIdentifier: "toInfo", sender: self)
+            }
+        }
+        //If the user has not completed any previous studies - continue
+        else {
+            self.performSegue(withIdentifier: "toInfo", sender: self)
+        }
     }
     
     //Sends the pressed study data to the next view

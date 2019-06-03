@@ -64,6 +64,12 @@ class EnStrings {
     static let view_study_name_surname = "Input your name and surname here"
     
     
+    // MARK:- Strings for study list
+    static let study_finished_title = "You have finished this study."
+    static let study_finished_message = "Our records show that you have finished this study. \nIf you think this is inaccurate, please send an email to qol.unige@gmail.com with your contact information and a description of the problem. \nWe will try to resolve the inconvenience as soon as possible."
+    static let study_finished_close_button = "Ok"
+
+    
     
     // MARK:- Strings for study home screen
     static let quit_study_warning = "Please be aware that you will not be able to reverse this action. You can not rejoin the study if you quit, before it is completed."

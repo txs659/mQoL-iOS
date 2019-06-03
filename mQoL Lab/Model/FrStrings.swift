@@ -62,6 +62,11 @@ class FrStrings {
     static let view_study_agreement = "Consentement Approuvé"
     static let view_study_name_surname = "Entrez votre nom et prénon ici"
     
+    // MARK:- Strings for study list
+    static let study_finished_title = "Vous avez fini cette étude."
+    static let study_finished_message = "Nos fichiers montrent que vous avez fini cette étude. Pour ce qui est des restrictions méthodologiques, nous ne supportons pas les études multiples en parallèle. Si vous pensez que c\'est inexact, veuillez envoyer un courriel à qol.unige@gmail.com avec vos coordonnées et une description du problème. Nous tenterons de résoudre le problème dès que possible. Si vous vous êtes inscrit à la première étude par erreur, veuillez vous rendre à la page d\'accueil de l\'étude et cliquer sur le bouton Quitter l\'étude."
+    static let study_finished_close_button = "Ok"
+    
     // MARK:- Strings for study home screen
     static let quit_study_warning = "Cette action est définitive. Vous ne pourez plus rejoindre cette étude."
     static let quit_study_warning_title = "Attention!"

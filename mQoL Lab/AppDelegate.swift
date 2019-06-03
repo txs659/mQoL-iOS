@@ -70,10 +70,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print ("\n\n\nIncomming link with parameters: \(url.absoluteString) \n\n\n")
         
         //Check how confident we are that this is the right link
-       /* guard (dynamicLink.matchType == .unique || dynamicLink.matchType == .default) else {
+       guard (dynamicLink.matchType == .unique || dynamicLink.matchType == .default) else {
             print ("We are not sure that this is the right link")
             return
-        } */
+        }
         
         //Parse the parameters 
         guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false),

@@ -719,6 +719,19 @@ class StudyHomeVC: UIViewController, MFMailComposeViewControllerDelegate {
             ParseController.setExitSurveyDone(studyUser: self.studyUser)
             
             self.exitSurveyFired = true
+            
+            //Set local array of completed studies
+            //If the list is not empty, add the studyID to the list
+            if UserDefaults.standard.value(forKey: "completedStudies") != nil {
+                var completedStudies = UserDefaults.standard.value(forKey: "completedStudies") as! Array<String>
+                completedStudies.append(self.study.objectId!)
+                UserDefaults.standard.set(completedStudies, forKey: "completedStudies")
+            }
+            //Else create the local variable containing this study.
+            else {
+                UserDefaults.standard.set([self.study.objectId!], forKey: "completedStudies")
+            }
+            
         }
     }
     
