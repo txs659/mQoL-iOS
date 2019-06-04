@@ -26,10 +26,12 @@ class Switcher {
             //Loading peer screens
             if !peerLabScreenSeen {
                 rootVC = UIStoryboard(name: "OurLab", bundle: nil).instantiateViewController(withIdentifier: "ourLab") as! UINavigationController
-            } else {
+            }
+            else {
                 rootVC = UIStoryboard(name: "StudyHome", bundle: nil).instantiateViewController(withIdentifier: "studies") as! UINavigationController
             }
-        } else {
+        }
+        else {
             //Loading participant screens
             if (consentGiven && !studyConsentGiven) {
                 rootVC = UIStoryboard(name: "ListOfStudies", bundle: nil).instantiateViewController(withIdentifier: "studyList") as! UINavigationController
@@ -44,7 +46,6 @@ class Switcher {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.window?.rootViewController = rootVC
-        
     }
 
 }

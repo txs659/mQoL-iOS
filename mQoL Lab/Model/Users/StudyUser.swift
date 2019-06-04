@@ -105,6 +105,9 @@ class StudyUser : PFObject, PFSubclassing {
     
     //Puts the users name and current date into the PDF file
     func setAndSignInformedConsent (file : PFFileObject, name : String) {
+        self.studyConsent = file
+        
+        /*
         let fileUrl = URL(string : file.url!)
         let document = PDFDocument(url: fileUrl!)
         
@@ -139,7 +142,7 @@ class StudyUser : PFObject, PFSubclassing {
         } catch {
             print ("Error")
         }
-        
+        */
         
         
     }

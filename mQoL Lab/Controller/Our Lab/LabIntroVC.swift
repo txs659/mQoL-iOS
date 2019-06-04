@@ -1,5 +1,5 @@
 //
-//  LabInto.swift
+//  LabIntroVC.swift
 //  mQoL Lab
 //
 //  Created by Frederik Schmøde on 02/04/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LabInto: UIViewController {
+class LabIntroVC: UIViewController {
     
     let language = UserDefaults.standard.string(forKey: "language")
     

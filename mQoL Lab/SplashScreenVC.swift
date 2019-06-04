@@ -1,5 +1,5 @@
 //
-//  SplashScreenViewController.swift
+//  SplashScreenVC.swift
 //  mQoL Lab
 //
 //  Created by Frederik Schmøde on 19/03/2019.
@@ -10,17 +10,15 @@ import UIKit
 import JGProgressHUD
 import Parse
 
-class SplashScreenViewController: UIViewController {
+class SplashScreenVC: UIViewController {
     
     let USER_STUDY_ID = "study_user_id"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         // Creating a loading icon on the splash screen
         let hud = JGProgressHUD(style: .dark)
-        //var uid = ""
         hud.textLabel.text = "Loading"
         hud.show(in: self.view)
         var uid = ""
@@ -45,11 +43,11 @@ class SplashScreenViewController: UIViewController {
                         
                         ParseController.getMqolUser().continueOnSuccessWith(block: { (task) -> Void in
                             
-                            let userStudyId = self.checkForDynamicLinks()
+                            let isPeer = UserDefaults.standard.bool(forKey: "isPeer")
                             
-                            //If dynamic link was found
-                            if userStudyId != "" {
-                                UserDefaults.standard.set(true, forKey: "isPeer")
+                            //If the flag is set create peer object
+                            if isPeer {
+                                let userStudyId = UserDefaults.standard.value(forKey: "peerSubjectID") as! String
                                 PFCloud.callFunction(inBackground: "registerPeer", withParameters: [self.USER_STUDY_ID: userStudyId], block: { (object: Any?, error: Error?) in
                                     
                                     if error != nil {
@@ -61,9 +59,11 @@ class SplashScreenViewController: UIViewController {
                                         
                                         ParseController.setUpPeerSurveyRequirements(peer: peer, studyUser: studyUser)
                                         
-                                        PFPush.subscribeToChannel(inBackground: studyUser.getObserverChannel())
+                                        if let currentInstallation = PFInstallation.current() {
+                                            currentInstallation.addUniqueObject(studyUser.getObserverChannel(), forKey: "channels")
+                                            currentInstallation.saveInBackground()
+                                        }
                                     }
-                                    
                                 })
                             }
                         })
@@ -82,15 +82,6 @@ class SplashScreenViewController: UIViewController {
             }
         })
     }
-    
-    
-    
-    func checkForDynamicLinks() -> String {
-        // TODO: - Insert firebase dynamic link check here
-        return ""
-        //return "2zlZfmyPC1"
-    }
-
 }
 
 

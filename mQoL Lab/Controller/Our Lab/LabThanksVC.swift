@@ -1,5 +1,5 @@
 //
-//  LabThanks.swift
+//  LabThanksVC.swift
 //  mQoL Lab
 //
 //  Created by Frederik Schmøde on 31/03/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LabThanks: UIViewController {
+class LabThanksVC: UIViewController {
     
     let language = UserDefaults.standard.string(forKey: "language")
 

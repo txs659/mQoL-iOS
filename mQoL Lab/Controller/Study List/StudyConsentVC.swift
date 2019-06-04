@@ -1,5 +1,5 @@
 //
-//  StudyConsent.swift
+//  StudyConsentVC.swift
 //  mQoL Lab
 //
 //  Created by Frederik Schmøde on 09/03/2019.
@@ -10,7 +10,7 @@ import UIKit
 import PDFKit
 import Parse
 
-class StudyConsent: UIViewController, UITextFieldDelegate {
+class StudyConsentVC: UIViewController, UITextFieldDelegate {
     
     public var study = Study()
     
@@ -49,7 +49,7 @@ class StudyConsent: UIViewController, UITextFieldDelegate {
     var switch6Accepted : Bool = false
     
     //Creating the alarm that pops up, if not all switches has been pressed
-    let alert = UIAlertController(title: "Agreement missing", message: "You need to write you full name and agree to all the terms in order to continue", preferredStyle: .alert)
+    let alert = UIAlertController(title: "Agreement missing", message: "You need to write your full name and agree to all the terms in order to continue", preferredStyle: .alert)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -160,11 +160,11 @@ class StudyConsent: UIViewController, UITextFieldDelegate {
             ParseController.createStudyUser(studyId: study.objectId!, name : nameFieldText)
             
             //Save studyId in local storage, so it is easy to access
-            UserDefaults.standard.set(study.objectId!, forKey: "studyId")
+            UserDefaults.standard.set(self.study.objectId!, forKey: "studyId")
             
             
             //Moving on to the 'thank you' screen
-            performSegue(withIdentifier: "studyThankYou", sender: self)
+            self.performSegue(withIdentifier: "studyThankYou", sender: self)
         }
         // If all switches has not been clicked or if the name field is empty display alert.
         else {
@@ -203,7 +203,7 @@ class StudyConsent: UIViewController, UITextFieldDelegate {
     // Sends the PDF file to the PDFView for display
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "readPDF" {
-            let vc = segue.destination as? readPDF
+            let vc = segue.destination as? readPDFVC
             vc?.pdfFile = self.pdf
         }
     }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>907706464466-77dcrsu9ke5ne20aki89qdpo90dbrom8.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.907706464466-77dcrsu9ke5ne20aki89qdpo90dbrom8</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>907706464466-jeikbejhs9seojeimj6u6qgjqed3r88s.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyA461mkcZyiHGeg8snA-lSX1G4OYs1B7js</string>
+	<key>GCM_SENDER_ID</key>
+	<string>907706464466</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.qualityoflifetechnologies.mQoL-Lab</string>
+	<key>PROJECT_ID</key>
+	<string>mqol-study-manager</string>
+	<key>STORAGE_BUCKET</key>
+	<string>mqol-study-manager.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:907706464466:ios:59f9b85fce5e070a</string>
+	<key>DATABASE_URL</key>
+	<string>https://mqol-study-manager.firebaseio.com</string>
+</dict>
+</plist>

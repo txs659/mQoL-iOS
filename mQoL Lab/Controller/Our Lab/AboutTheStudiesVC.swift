@@ -1,5 +1,5 @@
 //
-//  AboutTheStudies.swift
+//  AboutTheStudiesVC.swift
 //  mQoL Lab
 //
 //  Created by Frederik Schmøde on 02/04/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AboutTheStudies: UIViewController {
+class AboutTheStudiesVC: UIViewController {
 
     let language = UserDefaults.standard.string(forKey: "language")
     

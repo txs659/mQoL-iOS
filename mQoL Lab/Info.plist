@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>FirebaseScreenReportingEnabled</key>
+	<false/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app is used for research purposes at the University of Geneva in Switzerland. In fact we do not record or access the user&apos;s location at any moment. </string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This app is used for research purposes at the University of Geneva in Switzerland. In fact we do not record or access the user&apos;s location at any moment. </string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -27,9 +33,10 @@
 			<string>Bundle ID</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.mqol.mQoL-Lab</string>
+				<string>com.qualityoflifetechnologies.mQoL-Lab</string>
 			</array>
 		</dict>
+		<dict/>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>

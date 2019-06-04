@@ -1,5 +1,5 @@
 //
-//  StudyHome.swift
+//  StudyHomeVC.swift
 //  mQoL Lab
 //
 //  Created by Frederik Schmøde on 08/03/2019.
@@ -11,8 +11,10 @@ import Parse
 import UserNotifications
 import MessageUI
 import PDFKit
+import Firebase
+import JGProgressHUD
 
-class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
+class StudyHomeVC: UIViewController, MFMailComposeViewControllerDelegate {
     
     //
     //
@@ -35,6 +37,10 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     var survey1_survey = Survey()
     var survey2_survey = Survey()
     var survey3_survey = Survey()
+    
+    var survey1Done = false
+    var survey2Done = false
+    var survey3Done = false
     
     //Used in call to mqol web application
     var urlString = ""
@@ -73,6 +79,17 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         let isStudyStarted = UserDefaults.standard.bool(forKey: "studyLoaded")
+        
+        if language == "fr" {
+            self.startBtn.setTitle(FrStrings.button_start_study, for: .normal)
+            self.quitBtn.setTitle(FrStrings.button_quit_study, for: .normal)
+            self.addPeerOrAssessSubjectBtn.setTitle(FrStrings.button_send_invitation, for: .normal)
+        }
+        else {
+            self.startBtn.setTitle(EnStrings.button_start_study, for: .normal)
+            self.quitBtn.setTitle(EnStrings.button_quit_study, for: .normal)
+            self.addPeerOrAssessSubjectBtn.setTitle(EnStrings.button_send_invitation, for: .normal)
+        }
         
         // Checking whether the user is a peer, a participant where the study is started, or
         // a participant where the study is not started yet. These three scenrious require
@@ -118,8 +135,48 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
             self.goToSurveyURL(surveyId: surveyToFire!)
             UserDefaults.standard.set(false, forKey: "fireNotificationSurvey")
             UserDefaults.standard.set("", forKey: "surveyToFire")
+            
+            //Check if push-notification flag for peers should be set
+            if !self.isPeer {
+                ParseController.getSurvey(surveyToFire!).continueOnSuccessWith { (task) -> Void in
+                    let survey : Survey = task.result!
+                    let surveyForPeer = survey.object(forKey: "surveyForPeer") as? PFObject
+                    if surveyForPeer != nil {
+                        UserDefaults.standard.set(true, forKey: "sendSurveyToPeer")
+                        UserDefaults.standard.set(surveyForPeer!.objectId, forKey: "peerSurvey")
+                    }
+                }
+            }
         }
         
+        //Check if push-notifications should be sent to peers
+        let sendSurveyToPeer = UserDefaults.standard.bool(forKey: "sendSurveyToPeer")
+        
+        if sendSurveyToPeer {
+            UserDefaults.standard.set(false, forKey: "sendSurveyToPeer")
+            let peerSurveyID = UserDefaults.standard.value(forKey: "peerSurvey") as! String
+            let channel = self.studyUser.getObserverChannel()
+            
+            let params =
+                ["customData" :
+                    [ "command" : "run_survey",
+                      "argument" : peerSurveyID,
+                      "channel" : channel,
+                      "extrax" : ""
+                    ]
+                ]
+            
+            PFCloud.callFunction(inBackground: "runSurveyOnPeer", withParameters: params) { (task, error) in
+                if error != nil {
+                    print(error!)
+                }
+                else {
+                    print ("Push notification succesfully sent!")
+                }
+            }
+        }
+        
+        //Return user to relevant view when study is ended or quited.
         if self.exitSurveyFired {
             Switcher.updateRootVC()
         }
@@ -139,7 +196,7 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     func loadBeginStudyScreen () {
         startBtn.isHidden = true
         let studyId = UserDefaults.standard.string(forKey: "studyId")
-        ParseController.getStudy(studyId: studyId!).continueWith { (task) -> Any? in
+        ParseController.getStudy(studyId: studyId!).continueWith { (task) -> Void in
             self.study = task.result! as Study
             DispatchQueue.main.async {
                 self.studyTitle.text = self.study.object(forKey: "name") as? String
@@ -147,16 +204,53 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
                 self.studyTasks.text = self.study.object(forKey: "userTasks") as? String
                 
             }
-            return nil
-            }.continueOnSuccessWith { (task) -> Any? in
-                ParseController.getStudyConfigByStudy(self.study).continueOnSuccessWith { (task) -> Any? in
+
+            }.continueOnSuccessWith { (task) -> Void in
+                ParseController.getStudyConfigByStudy(self.study).continueOnSuccessWith { (task) -> Void in
                     
                     self.studyConfig = task.result! as StudyConfig
                     
-                    //Sets the surveys into accessible variables
-                    self.survey1_survey = self.studyConfig.value(forKey: "survey1_survey") as! Survey
-                    self.survey2_survey = self.studyConfig.value(forKey: "survey2_survey") as! Survey
-                    self.survey3_survey = self.studyConfig.value(forKey: "survey3_survey") as! Survey
+                    //Check if survey1 is populated, if not hide button
+                    if self.studyConfig.value(forKey: "survey1_survey") != nil {
+                        self.survey1_survey = self.studyConfig.value(forKey: "survey1_survey") as! Survey
+                        DispatchQueue.main.async {
+                            self.survey1.setTitle(self.studyConfig.value(forKey: "survey1_title") as? String, for: .normal)
+                        }
+                    }
+                    else {
+                        DispatchQueue.main.async {
+                            self.survey1.isHidden = true
+                        }
+                        self.survey1Done = true
+                    }
+                    
+                    //Check if survey2 is populated, if not hide button
+                    if self.studyConfig.value(forKey: "survey2_survey") != nil {
+                        self.survey2_survey = self.studyConfig.value(forKey: "survey2_survey") as! Survey
+                        DispatchQueue.main.async {
+                            self.survey2.setTitle(self.studyConfig.value(forKey: "survey2_title") as? String, for: .normal)
+                        }
+                    }
+                    else {
+                        DispatchQueue.main.async {
+                            self.survey2.isHidden = true
+                        }
+                        self.survey2Done = true
+                    }
+                    
+                    //Check if survey3 is populated, if not hide button
+                    if self.studyConfig.value(forKey: "survey3_survey") != nil {
+                        self.survey3_survey = self.studyConfig.value(forKey: "survey3_survey") as! Survey
+                        DispatchQueue.main.async {
+                            self.survey3.setTitle(self.studyConfig.value(forKey: "survey3_title") as? String, for: .normal)
+                        }
+                    }
+                    else {
+                        DispatchQueue.main.async {
+                            self.survey3.isHidden = true
+                        }
+                        self.survey3Done = true
+                    }
                     
                     //Checking if the study allows peers - if not button is hidden
                     let isPeerStudy = self.studyConfig.value(forKey: "isPeerStudy") as! Bool
@@ -165,14 +259,7 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
                             self.addPeerOrAssessSubjectBtn.isHidden = true
                         }
                     }
-                    
-                    //Updating the survey button labels
-                    DispatchQueue.main.async {
-                        self.survey1.setTitle(self.studyConfig.value(forKey: "survey1_title") as? String, for: .normal)
-                        self.survey2.setTitle(self.studyConfig.value(forKey: "survey2_title") as? String, for: .normal)
-                        self.survey3.setTitle(self.studyConfig.value(forKey: "survey3_title") as? String, for: .normal)
-                    }
-                ParseController.getStudyUserByStudyId(self.study.objectId!).continueOnSuccessWith(block: { (task) -> Any? in
+                ParseController.getStudyUserByStudyId(self.study.objectId!).continueOnSuccessWith(block: { (task) -> Void in
                     self.studyUser = task.result! as StudyUser
                     
                     
@@ -181,21 +268,24 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
                         DispatchQueue.main.async {
                             self.survey1.isHidden = true
                         }
+                        self.survey1Done = true
                     }
                     
                     if self.studyUser.survey2Done {
                         DispatchQueue.main.async {
                             self.survey2.isHidden = true
                         }
+                        self.survey2Done = true
                     }
                     
                     if self.studyUser.survey3Done {
                         DispatchQueue.main.async {
                             self.survey3.isHidden = true
                         }
+                        self.survey3Done = true
                     }
                     
-                    if self.studyUser.survey1Done && self.studyUser.survey2Done && self.studyUser.survey3Done {
+                    if self.survey1Done && self.survey2Done && self.survey3Done {
                         DispatchQueue.main.async {
                             self.startBtn.isHidden = false
                         }
@@ -203,11 +293,7 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
                     
                     //load external survey button
                     self.loadExternalSurveyBtn()
-                    
-                    return nil
                 })
-                    
-                return nil
             }
         }
     }
@@ -216,12 +302,12 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     //Loads the elements that should be shown when a study has been started and is running.
     func loadStudyRunningScreen () {
         
-        startBtn.isHidden = true
-        survey1.isHidden = true
-        survey2.isHidden = true
-        survey3.isHidden = true
-        externalSurveyBtn.isHidden = true
-        startBtn.isHidden = true
+        self.startBtn.isHidden = true
+        self.survey1.isHidden = true
+        self.survey2.isHidden = true
+        self.survey3.isHidden = true
+        self.externalSurveyBtn.isHidden = true
+        self.startBtn.isHidden = true
         self.daysInStudy.isHidden = false
         
         let studyId = UserDefaults.standard.string(forKey: "studyId")
@@ -238,7 +324,7 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
             
             return nil
             }.continueOnSuccessWith { (task) -> Any? in
-                ParseController.getStudyConfigByStudy(self.study).continueOnSuccessWith { (task) -> Any? in
+                ParseController.getStudyConfigByStudy(self.study).continueOnSuccessWith { (task) -> Void in
                     
                     self.studyConfig = task.result! as StudyConfig
                     
@@ -251,7 +337,7 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
                         }
                     }
  
-                ParseController.getStudyUserByStudyId(self.study.objectId!).continueOnSuccessWith(block: { (task) -> Any? in
+                ParseController.getStudyUserByStudyId(self.study.objectId!).continueOnSuccessWith(block: { (task) -> Void in
                         self.studyUser = task.result! as StudyUser
                     
                         let totalDays = self.studyConfig.value(forKey: "durationDays") as! Int
@@ -262,16 +348,17 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
                     
                     
                         DispatchQueue.main.async {
-                            self.daysInStudy.text = "Thank you for being in day \(daysPassed) of \(totalDays)"
+                            if self.language == "fr" {
+                                self.daysInStudy.text = "\(FrStrings.view_study_home_progress_1) \(daysPassed) \(FrStrings.view_study_home_progress_2) \(totalDays)"
+                            }
+                            else {
+                                self.daysInStudy.text = "\(EnStrings.view_study_home_progress_1) \(daysPassed) \(EnStrings.view_study_home_progress_2) \(totalDays)"
+                            }
                         }
                     
                         //load external survey button
                         self.loadExternalSurveyBtn()
-                    
-                        return nil
                     })
-                    
-                    return nil
                 }
             }
     }
@@ -395,25 +482,53 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
         
         if isPeer {
             //If user is a peer
-            
-            // TODO:- Add peer survey
-            
+            let volunterySurvey = self.studyConfig.value(forKey: "peerVoluntarySurvey") as! PFObject
+            if let volunterySurveyID = volunterySurvey.objectId {
+                self.goToSurveyURL(surveyId: volunterySurveyID)
+            }
         }
         else {
             //If user is participant
-            let alert = UIAlertController(title: "Email language", message: "What language should the mail be written in?", preferredStyle: .alert)
+            if self.language == "fr" {
+                let alert = UIAlertController(title: FrStrings.invitation_alert_title, message: FrStrings.invitation_alert_text, preferredStyle: .alert)
+                
+                let englishMail = UIAlertAction(title: FrStrings.invitation_alert_option1, style: .default, handler: { action in
+                    self.sendEmailToPeer(action: action, mailLanguage: "en")
+                })
+                
+                let frenchMail = UIAlertAction(title: FrStrings.invitation_alert_option2, style: .default, handler: { action in
+                    self.sendEmailToPeer(action: action, mailLanguage: "fr")
+                })
+                
+                let cancelAction = UIAlertAction(title: FrStrings.cancel_button, style: .default)
+                
+                alert.addAction(englishMail)
+                alert.addAction(frenchMail)
+                alert.addAction(cancelAction)
+                
+                self.present(alert, animated: true)
+                
+            }
+            else {
+                let alert = UIAlertController(title: EnStrings.invitation_alert_title, message: EnStrings.invitation_alert_text, preferredStyle: .alert)
+                
+                let englishMail = UIAlertAction(title: EnStrings.invitation_alert_option1, style: .default, handler: { action in
+                    self.sendEmailToPeer(action: action, mailLanguage: "en")
+                })
+                
+                let frenchMail = UIAlertAction(title: EnStrings.invitation_alert_option2, style: .default, handler: { action in
+                    self.sendEmailToPeer(action: action, mailLanguage: "fr")
+                })
+                
+                let cancelAction = UIAlertAction(title: EnStrings.cancel_button, style: .default)
+                
+                alert.addAction(englishMail)
+                alert.addAction(frenchMail)
+                alert.addAction(cancelAction)
+                
+                self.present(alert, animated: true)
+            }
             
-            let englishMail = UIAlertAction(title: "English", style: .default, handler: self.sendEmailToPeerEn)
-            
-            let frenchMail = UIAlertAction(title: "French", style: .default, handler: self.sendEmailToPeerFr)
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .default)
-            
-            alert.addAction(englishMail)
-            alert.addAction(frenchMail)
-            alert.addAction(cancelAction)
-            
-            self.present(alert, animated: true)
         }
     }
     
@@ -475,8 +590,7 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
         ParseController.getMqolUser().continueOnSuccessWith { (task) -> Void in
             let mqolUser = task.result as! MqolUser
             let mqolUserId = mqolUser.objectId! 
-            //self.urlString = "https://mqolweb.com/user/\(mqolUserId)/survey/\(surveyId)"
-            self.urlString = "localhost:3000/user/\(mqolUserId)/survey/\(surveyId)"
+            self.urlString = "https://qol1.unige.ch/mqol-web/user/\(mqolUserId)/survey/\(surveyId)"
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "surveyDisplayer", sender: self)
             }
@@ -488,15 +602,15 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     //This function is used to pass data onto the UIWebView or the external survey view.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "surveyDisplayer" {
-            let vc = segue.destination as? SurveyDisplayer
+            let vc = segue.destination as? SurveyDisplayerVC
             vc?.targetURL = urlString
         }
         else if segue.identifier == "externalSurvey" {
-            let vc = segue.destination as? ExternalSurvey
+            let vc = segue.destination as? ExternalSurveyVC
             vc?.externalSurveyInfo = self.studyConfig.value(forKey: "externalSurveys") as! [[String]]
         }
         else if segue.identifier == "readPDF" {
-            let vc = segue.destination as? readPDF
+            let vc = segue.destination as? readPDFVC
             vc?.pdfFile = self.pdf
         }
         
@@ -514,42 +628,35 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     //Function called when quit study is pressed.
     @IBAction func quitStudyPressed(_ sender: Any) {
         //Creating the alarm pop up when quit study is pressed
-        let quitAlert = UIAlertController(title: EnStrings.quit_study_warning_title, message: EnStrings.quit_study_warning, preferredStyle: .alert)
         
-        let quitAction = UIAlertAction(title: EnStrings.quit_continue, style: .default, handler: quitHandler)
-        
-        let cancelAction = UIAlertAction(title: "Go back", style: .default)
-        
-        quitAlert.addAction(quitAction)
-        quitAlert.addAction(cancelAction)
-        
-        self.present(quitAlert, animated: true)
+        if self.language == "fr" {
+            let quitAlert = UIAlertController(title: FrStrings.quit_study_warning_title, message: FrStrings.quit_study_warning, preferredStyle: .alert)
+            
+            let quitAction = UIAlertAction(title: FrStrings.quit_continue, style: .default, handler: quitHandler)
+            
+            let cancelAction = UIAlertAction(title: FrStrings.quit_abort, style: .default)
+            
+            quitAlert.addAction(quitAction)
+            quitAlert.addAction(cancelAction)
+            self.present(quitAlert, animated: true)
+        }
+        else {
+            let quitAlert = UIAlertController(title: EnStrings.quit_study_warning_title, message: EnStrings.quit_study_warning, preferredStyle: .alert)
+            
+            let quitAction = UIAlertAction(title: EnStrings.quit_continue, style: .default, handler: quitHandler)
+            
+            let cancelAction = UIAlertAction(title: EnStrings.quit_abort, style: .default)
+            
+            quitAlert.addAction(quitAction)
+            quitAlert.addAction(cancelAction)
+            self.present(quitAlert, animated: true)
+        }
     }
     
     
     //Function called when start study is pressed.
     @IBAction func startStudyPressed(_ sender: Any) {
         
-        //Creating the alarm that pops up when start study is pressed
-        let startAlert = UIAlertController(title: "Attention", message: "Before you move on and start the study, all previous surveys need to be completed.", preferredStyle: .alert)
-        
-        let cancelAction = UIAlertAction(title: "Go back", style: .default)
-        
-        let continueAction = UIAlertAction(title: "Start survey", style: .default, handler: continueHandler)
-        
-        //Adding actions to pop-up alerts
-        startAlert.addAction(continueAction)
-        startAlert.addAction(cancelAction)
-        
-        self.present(startAlert, animated: true)
-        
-    }
-    
-    
-    // Handler function called if user press start study on pop up alert. It is called from
-    // startStudyPressed()
-    func continueHandler (_ action : UIAlertAction) {
-
         //Hides buttons when study is started
         survey1.isHidden = true
         survey2.isHidden = true
@@ -584,11 +691,14 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
             //Change local 'is peer' flag to false
             UserDefaults.standard.set(false, forKey: "isPeer")
             
-            //Fire exit survey
-            let exitSurvey = self.studyConfig.value(forKey: "exitSurveyPeer") as! PFObject
-            self.goToSurveyURL(surveyId: exitSurvey.objectId!)
-            ParseController.peerSetExitSurveyDone(peer: self.peer)
-            self.exitSurveyFired = true
+            //Fire exit survey if the exitSurveyPeer is not empty
+            if self.studyConfig.value(forKey: "exitSurveyPeer") != nil {
+                let exitSurvey = self.studyConfig.value(forKey: "exitSurveyPeer") as! PFObject
+                self.goToSurveyURL(surveyId: exitSurvey.objectId!)
+                ParseController.peerSetExitSurveyDone(peer: self.peer)
+                self.exitSurveyFired = true
+            }
+            
         }
         else {
             //Do participant specific quit actions
@@ -609,6 +719,19 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
             ParseController.setExitSurveyDone(studyUser: self.studyUser)
             
             self.exitSurveyFired = true
+            
+            //Set local array of completed studies
+            //If the list is not empty, add the studyID to the list
+            if UserDefaults.standard.value(forKey: "completedStudies") != nil {
+                var completedStudies = UserDefaults.standard.value(forKey: "completedStudies") as! Array<String>
+                completedStudies.append(self.study.objectId!)
+                UserDefaults.standard.set(completedStudies, forKey: "completedStudies")
+            }
+            //Else create the local variable containing this study.
+            else {
+                UserDefaults.standard.set([self.study.objectId!], forKey: "completedStudies")
+            }
+            
         }
     }
     
@@ -621,49 +744,75 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     //
     
     //Function triggered when user wants to invite peers - English version.
-    func sendEmailToPeerEn(_ action : UIAlertAction) {
+    func sendEmailToPeer(action : UIAlertAction, mailLanguage : String) {
         if MFMailComposeViewController.canSendMail() {
             
+            //Create progress HUD
+            let hud = JGProgressHUD(style: .dark)
+            hud.show(in: self.view)
+            
             //Create deeplink for Firebase
-            let deeplink = "https://google.com"
+            let studyUserId = self.studyUser.objectId! as String
             
-            let mail = MFMailComposeViewController()
-            mail.mailComposeDelegate = self
-            mail.setSubject(EnStrings.invitation_message)
-            mail.setMessageBody("<![CDATA[<p><em>Hello</em></p><p>Your friend, the sender of this message is inviting you to participate in a research study for a new data collection method to explore the role of peers in the assessment of human stress.</p><p>Your contributions as a peer will help us to enhance the accuracy of computer algorithms that are being designed to improve stress awareness. As a peer in this study, you will receive notifications to answer short surveys regarding the person who invited you to this study.&nbsp;</p><p>Please <a href=\"\(deeplink)\">install this application</a> to get started.</p><p>Please do not hesitate to contact the person who sent you this invitation so that you can receive more details about the study. You can also contact the researchers and request further clarifications at any moment.&nbsp;</p><p>CONTACT INFORMATION: &nbsp;If you have any questions, concerns or complaints about this research, its procedures, risks,&nbsp;and benefits, contact the Protocol Director, <a href=\"mailto:Katarzyna.Wac@unige.ch\">Katarzyna Wac</a></p><p>You can also contact the second investigator <a href=\"mailto:allan.berrocal@unige.ch\">Allan Berrocal</a> ISS, Center for Informatics, University of Geneva. Battelle B&acirc;timent A. Office 230. 7, route de Drize, 1227 Carouge, Switzerland Ph. +41 022 379 02 42</p><p>Thank you in advance for your invaluable collaboration.</p><p>&nbsp;</p>", isHTML: true)
+            var components = URLComponents()
+            components.scheme = "http"
+            components.host = "www.qol.unige.ch"
             
-            present(mail, animated: true)
-        } else {
-            //If device is not setup for sending emails, display a warning to user
             
-            //Check if language is French or English and create the alert accordingly
-            if self.language == "fr" {
-                let alert = UIAlertController(title: FrStrings.email_failed_title, message: FrStrings.email_failed_text, preferredStyle: .alert)
-                let okAction = UIAlertAction(title: FrStrings.back_button, style: .default)
-                alert.addAction(okAction)
-                self.present(alert, animated: true)
-            } else {
-                let alert = UIAlertController(title: EnStrings.email_failed_title, message: EnStrings.email_failed_text, preferredStyle: .alert)
-                let okAction = UIAlertAction(title: EnStrings.back_button, style: .default)
-                alert.addAction(okAction)
-                self.present(alert, animated: true)
+            //Compose link parameters, so Android app can parse the arguments
+            let studyUserIdQueryItem1 = URLQueryItem(name: "afl", value: "http://www.qol.unige.ch/apps.html")
+            let studyUserIdQueryItem2 = URLQueryItem(name: "apn", value: "ch.unige.mqol.studymanager.debug")
+            let studyUserIdQueryItem3 = URLQueryItem(name: "ibi", value: "com.qualityoflifetechnologies.mQoL-Lab")
+            let studyUserIdQueryItem4 = URLQueryItem(name: "isi", value: "1466061031")
+            let studyUserIdQueryItem5 = URLQueryItem(name: "link", value: "http://ch.unige.mqol.studymanager?inviterIdKey=\(studyUserId)")
+            
+            components.queryItems = [studyUserIdQueryItem1, studyUserIdQueryItem2, studyUserIdQueryItem3, studyUserIdQueryItem4, studyUserIdQueryItem5]
+            
+            guard let linkParameter = components.url else { return }
+            
+            let shareLink = DynamicLinkComponents.init(link: linkParameter, domainURIPrefix: "https://h62ek.app.goo.gl")
+            
+            if let bundleId = Bundle.main.bundleIdentifier {
+                shareLink?.iOSParameters = DynamicLinkIOSParameters(bundleID: bundleId)
             }
-        }
-    }
-    
-    //Function triggered when user wants to invite peers - French version.
-    func sendEmailToPeerFr(_ action : UIAlertAction) {
-        if MFMailComposeViewController.canSendMail() {
             
-            //Create deeplink for Firebase
-            let deeplink = "https://google.com"
+            shareLink?.iOSParameters?.appStoreID = "1466061031"
             
-            let mail = MFMailComposeViewController()
-            mail.mailComposeDelegate = self
-            mail.setSubject(FrStrings.invitation_message)
-            mail.setMessageBody("<![CDATA[<p>Vous avez reçu cette invitation de votre ami-e pour participer à une étude sur le stress humain.</p><p>Avec votre participation, nous espérons améliorer la précision des algorithmes informatiques que nous créons pour aider les personnes qui souffrent de stress. En tant qu\'ami d\'un participant à l\'étude vous rapportez, dans ces courts sondages, ce que vous percevez de votre ami en ce qui concerne le stress.</p><p>Veuillez <a href=\"\(deeplink)\">installer cette application</a> pour commencer.</p><p>N\'hésitez pas à contacter la personne qui vous a envoyé cette invitation afin de recevoir plus de détails sur l\'étude. Vous pouvez également contacter les chercheurs.&nbsp;</p><p>CONTACT: &nbsp;Si vous avez des questions, des préoccupations ou des plaintes concernant cette recherche, ses procédures, ses risques et ses avantages, contactez la directrice du protocole, la <a href=\"mailto:Katarzyna.Wac@unige.ch\">Prof. Katarzyna Wac</a>. Il vous est également possible de contacter le deuxième chercheur, M. <a href=\"mailto:allan.berrocal@unige.ch\">Allan Berrocal</a> Institut de Science de Service Informationnel (ISS), Centre Universitaire d\'informatique (CUI), Université de Genève, Battelle, B&acirc;timent A. Bureau 230. 7, route de Drize, 1227 Carouge, Suisse Tél. +41 022 379 02 42</p><p>Merci d\'avance pour votre précieuse collaboration.</p><p>&nbsp;</p>", isHTML: true)
+            shareLink?.androidParameters = DynamicLinkAndroidParameters(packageName: "ch.unige.mqol.studymanager")
             
-            present(mail, animated: true)
+            guard let longURL = shareLink?.url else { return }
+            
+            print("longURL: \(longURL)")
+            
+            shareLink?.shorten(completion: { (url, warnings, error) in
+                if let error = error {
+                    print ("FDL errror: \(error)")
+                }
+                if let warnings = warnings {
+                    for warning in warnings {
+                        print ("FDL warning: \(warning)")
+                    }
+                }
+                guard let inviteUrl = url else { return }
+                print("Short link: \(inviteUrl)")
+                
+                //Create mail
+                let mail = MFMailComposeViewController()
+                mail.mailComposeDelegate = self
+                
+                if mailLanguage == "fr" {
+                    mail.setSubject(FrStrings.invitation_message)
+                    mail.setMessageBody("<![CDATA[<p>Vous avez reçu cette invitation de votre ami-e pour participer à une étude sur le stress humain.</p><p>Avec votre participation, nous espérons améliorer la précision des algorithmes informatiques que nous créons pour aider les personnes qui souffrent de stress. En tant qu\'ami d\'un participant à l\'étude vous rapportez, dans ces courts sondages, ce que vous percevez de votre ami en ce qui concerne le stress.</p><p>Veuillez <a href=\"\(inviteUrl)\">installer cette application</a> pour commencer.</p><p>N\'hésitez pas à contacter la personne qui vous a envoyé cette invitation afin de recevoir plus de détails sur l\'étude. Vous pouvez également contacter les chercheurs.&nbsp;</p><p>CONTACT: &nbsp;Si vous avez des questions, des préoccupations ou des plaintes concernant cette recherche, ses procédures, ses risques et ses avantages, contactez la directrice du protocole, la <a href=\"mailto:Katarzyna.Wac@unige.ch\">Prof. Katarzyna Wac</a>. Il vous est également possible de contacter le deuxième chercheur, M. <a href=\"mailto:allan.berrocal@unige.ch\">Allan Berrocal</a> Institut de Science de Service Informationnel (ISS), Centre Universitaire d\'informatique (CUI), Université de Genève, Battelle, B&acirc;timent A. Bureau 230. 7, route de Drize, 1227 Carouge, Suisse Tél. +41 022 379 02 42</p><p>Merci d\'avance pour votre précieuse collaboration.</p><p>&nbsp;</p>", isHTML: true)
+                }
+                else {
+                    mail.setSubject(EnStrings.invitation_message)
+                    mail.setMessageBody("<![CDATA[<p><em>Hello</em></p><p>Your friend, the sender of this message is inviting you to participate in a research study for a new data collection method to explore the role of peers in the assessment of human stress.</p><p>Your contributions as a peer will help us to enhance the accuracy of computer algorithms that are being designed to improve stress awareness. As a peer in this study, you will receive notifications to answer short surveys regarding the person who invited you to this study.&nbsp;</p><p>Please <a href=\"\(inviteUrl)\">install this application</a> to get started.</p><p>Please do not hesitate to contact the person who sent you this invitation so that you can receive more details about the study. You can also contact the researchers and request further clarifications at any moment.&nbsp;</p><p>CONTACT INFORMATION: &nbsp;If you have any questions, concerns or complaints about this research, its procedures, risks,&nbsp;and benefits, contact the Protocol Director, <a href=\"mailto:Katarzyna.Wac@unige.ch\">Katarzyna Wac</a></p><p>You can also contact the second investigator <a href=\"mailto:allan.berrocal@unige.ch\">Allan Berrocal</a> ISS, Center for Informatics, University of Geneva. Battelle B&acirc;timent A. Office 230. 7, route de Drize, 1227 Carouge, Switzerland Ph. +41 022 379 02 42</p><p>Thank you in advance for your invaluable collaboration.</p><p>&nbsp;</p>", isHTML: true)
+                }
+                DispatchQueue.main.async {
+                    hud.dismiss()
+                }
+                self.present(mail, animated: true)
+            })
         } else {
             //If device is not setup for sending emails, display a warning to user
             
@@ -684,21 +833,22 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
     
     //Function triggered when the user presses the 'contact us' button.
     func sendEmailToUs(_ action : UIAlertAction) {
+        
+        let fullUserName = ParseController.getCurrentParseUser().value(forKey: "username")! as! String
+        let username = fullUserName.prefix(8)
+        
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             mail.setToRecipients(["qol.unige@gmail.com"])
             
-            let mqolUser = self.studyUser.value(forKey: "mqolUser") as! PFObject
-            let mqolUserId = mqolUser.objectId
-            
             if language == "fr" {
                 mail.setSubject(FrStrings.contactUsEmail_subject)
-                mail.setMessageBody(FrStrings.contactUsEmail_text + " \(mqolUserId!)", isHTML: true)
+                mail.setMessageBody(FrStrings.contactUsEmail_text + " \(username)", isHTML: true)
             }
             else {
                 mail.setSubject(EnStrings.contactUsEmail_subject)
-                mail.setMessageBody(EnStrings.contactUsEmail_text + " \(mqolUserId!)", isHTML: true)
+                mail.setMessageBody(EnStrings.contactUsEmail_text + " \(username)", isHTML: true)
             }
             present(mail, animated: true)
         } else {
@@ -738,6 +888,13 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
         daysInStudy.isHidden = true
         startBtn.isHidden = true
         
+        if self.language == "fr" {
+            self.addPeerOrAssessSubjectBtn.setTitle(FrStrings.button_assess_paritcipant, for: .normal)
+        }
+        else {
+            self.addPeerOrAssessSubjectBtn.setTitle(EnStrings.button_assess_paritcipant, for: .normal)
+        }
+        
         ParseController.getPeer().continueOnSuccessWith { (task) -> Void in
             self.peer = task.result!
             self.participantStudyUser = self.peer.getParticipant()
@@ -750,17 +907,48 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
                         self.studyTitle.text = self.study.value(forKey: "name") as? String
                         self.studyDescribtion.text = self.study.value(forKey: "observersDescription") as? String
                         self.studyTasks.text = self.study.value(forKey: "observerTasks") as? String
-                        
-                        // The add peer button is not relevant for peers. Instead make it
-                        // possible for peers to assess their subject whenever they want
-                        self.addPeerOrAssessSubjectBtn.setTitle("ASSESS PARTICIPANT", for: .normal)
                     }
                     ParseController.getStudyConfigByStudy(self.study).continueOnSuccessWith(block: { (task) -> Void in
                         self.studyConfig = task.result!
                         
-                        self.survey1_survey = self.studyConfig.value(forKey: "survey1_survey_peer") as! Survey
-                        self.survey2_survey = self.studyConfig.value(forKey: "survey2_survey_peer") as! Survey
-                        self.survey3_survey = self.studyConfig.value(forKey: "survey3_survey_peer") as! Survey
+                        if self.studyConfig.value(forKey: "survey1_survey_peer") != nil {
+                            self.survey1_survey = self.studyConfig.value(forKey: "survey1_survey_peer") as! Survey
+                            DispatchQueue.main.async {
+                                self.survey1.setTitle(self.studyConfig.value(forKey: "survey1_title_peer") as? String, for: .normal)
+                            }
+                        }
+                        else {
+                            DispatchQueue.main.async {
+                                self.survey1.isHidden = true
+                            }
+                        }
+                        
+                        
+                        if self.studyConfig.value(forKey: "survey2_survey_peer") != nil {
+                            self.survey2_survey = self.studyConfig.value(forKey: "survey2_survey_peer") as! Survey
+                            DispatchQueue.main.async {
+                                self.survey2.setTitle(self.studyConfig.value(forKey: "survey2_title_peer") as? String, for: .normal)
+                            }
+                        }
+                        else {
+                            DispatchQueue.main.async {
+                                self.survey2.isHidden = true
+                            }
+                        }
+                        
+                        
+                        if self.studyConfig.value(forKey: "survey3_survey_peer") != nil {
+                            self.survey3_survey = self.studyConfig.value(forKey: "survey3_survey_peer") as! Survey
+                            DispatchQueue.main.async {
+                                self.survey3.setTitle(self.studyConfig.value(forKey: "survey3_title_peer") as? String, for: .normal)
+                            }
+                        }
+                        else {
+                            DispatchQueue.main.async {
+                                self.survey3.isHidden = true
+                            }
+                        }
+                        
                         
                         //Hide survey buttons if they are already done
                         if (self.peer.value(forKey: "survey1Done") as! Bool) {
@@ -779,21 +967,20 @@ class StudyHome: UIViewController, MFMailComposeViewControllerDelegate {
                             }
                         }
                         
-                        DispatchQueue.main.async {
-                            self.survey1.setTitle(self.studyConfig.value(forKey: "survey1_title_peer") as? String, for: .normal)
-                            self.survey2.setTitle(self.studyConfig.value(forKey: "survey2_title_peer") as? String, for: .normal)
-                            self.survey3.setTitle(self.studyConfig.value(forKey: "survey3_title_peer") as? String, for: .normal)
+                        //Check if voluntary survey is defined, else hide the button
+                        let voluntarySurvey = self.studyConfig.value(forKey: "peerVoluntarySurvey")
+                        if (voluntarySurvey == nil) {
+                            DispatchQueue.main.async {
+                                self.addPeerOrAssessSubjectBtn.isHidden = true
+                            }
                         }
                         
                         //load external survey button
                         self.loadExternalSurveyBtn()
                         
                     })
-                    
                 })
             })
         }
-        
     }
-    
 }
