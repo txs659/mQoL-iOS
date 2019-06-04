@@ -66,6 +66,9 @@ class SplashScreenVC: UIViewController {
                                     }
                                 })
                             }
+                            
+                            self.updateParseInstallationObject()
+                            
                         })
                         //Dismiss the loading icon
                         DispatchQueue.main.async {
@@ -82,6 +85,22 @@ class SplashScreenVC: UIViewController {
             }
         })
     }
+    
+    //This function adds the current user to the ParseInstallation object. It also adds two standard
+    //channels to the same installation object.
+    func updateParseInstallationObject() {
+        if let installation = PFInstallation.current() {
+            if let user = PFUser.current() {
+                installation.setValue(user, forKey: "user")
+                installation.addUniqueObject("mqol_surveys", forKey: "channels")
+                installation.addUniqueObject("mqol_broadcast", forKey: "channels")
+                installation.setValue("gcm", forKey: "pushType")
+                installation.saveInBackground()
+            }
+        }
+    }
+    
+    
 }
 
 
