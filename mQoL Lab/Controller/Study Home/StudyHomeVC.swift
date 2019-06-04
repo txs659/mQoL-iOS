@@ -112,11 +112,19 @@ class StudyHomeVC: UIViewController, MFMailComposeViewControllerDelegate {
         
             if !isStudyStarted {
                 studyUser.fetchInBackground().continueOnSuccessWith { (task) -> Void in
-                    let survey1Done = self.studyUser.survey1Done
-                    let survey2Done = self.studyUser.survey2Done
-                    let survey3Done = self.studyUser.survey3Done
+                    let studyUserSurvey1Done = self.studyUser.survey1Done
+                    let studyUserSurvey2Done = self.studyUser.survey2Done
+                    let studyUserSurvey3Done = self.studyUser.survey3Done
                     
-                    if survey1Done && survey2Done && survey3Done {
+                    //Flags collected from StudyUser object
+                    if studyUserSurvey1Done && studyUserSurvey2Done && studyUserSurvey3Done {
+                        DispatchQueue.main.async {
+                            self.startBtn.isHidden = false  
+                        }
+                    }
+                    //Flags collected from local variables, in case less than 3 prior studies
+                    //is avaiable for this study.
+                    else if self.survey1Done && self.survey2Done && self.survey3Done {
                         DispatchQueue.main.async {
                             self.startBtn.isHidden = false
                         }
