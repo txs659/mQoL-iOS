@@ -78,6 +78,7 @@ class StudyHomeVC: UIViewController, MFMailComposeViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let isStudyStarted = UserDefaults.standard.bool(forKey: "studyLoaded")
         
         if language == "fr" {
@@ -119,7 +120,7 @@ class StudyHomeVC: UIViewController, MFMailComposeViewControllerDelegate {
                     //Flags collected from StudyUser object
                     if studyUserSurvey1Done && studyUserSurvey2Done && studyUserSurvey3Done {
                         DispatchQueue.main.async {
-                            self.startBtn.isHidden = false  
+                            self.startBtn.isHidden = false
                         }
                     }
                     //Flags collected from local variables, in case less than 3 prior studies
@@ -166,17 +167,13 @@ class StudyHomeVC: UIViewController, MFMailComposeViewControllerDelegate {
             let channel = self.studyUser.getObserverChannel()
             
             let params =
-                ["customData" :
-                    [ "command" : "run_survey",
-                      "argument" : peerSurveyID,
-                      "channel" : channel,
-                      "extrax" : ""
-                    ]
-                ]
+                ["customData" : """
+                    {"command" : "run_survey","argument" :"\(peerSurveyID)","extras" : "", \"channel\" : "\(channel)"}
+                    """]
             
-            PFCloud.callFunction(inBackground: "runSurveyOnPeer", withParameters: params) { (task, error) in
+            PFCloud.callFunction(inBackground: "runSurveyOnPeer", withParameters: params) { (object, error) in
                 if error != nil {
-                    print(error!)
+                    print("The error is: \(error!)")
                 }
                 else {
                     print ("Push notification succesfully sent!")
