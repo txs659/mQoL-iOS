@@ -32,7 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.isLocalDatastoreEnabled = true
             $0.applicationId = "mQoL-app-dev"
             $0.server = "https://qol1.unige.ch/mqol-parse-next/"
-            //$0.server = "https://qol1.unige.ch/mqol-parse-dev/"
         }
         Parse.initialize(with: parseConfig)
         
@@ -58,6 +57,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         application.registerForRemoteNotifications()
         
+        //Check if the app was launched due to a push notification
+        if let notificationPayload = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? NSDictionary {
+            
+            //Get the surveyID from the payload.
+            let survey = notificationPayload["argument"] as? String
+            
+            //Store the information in the local cache
+            UserDefaults.standard.set(true, forKey: "fireNotificationSurvey")
+            UserDefaults.standard.set(survey, forKey: "surveyToFire")
+        }
+        
         return true
     }
     
@@ -82,8 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("\n\n\nLink parameters are:")
         for item in queryItems {
             
-            print(item)
-            
+            //Used if the dynamic link has been created by an iOS.
             if item.name == "inviterIdKey" {
                 let studyUserId = item.value
                 
@@ -91,6 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 UserDefaults.standard.set(true, forKey: "isPeer")
                 UserDefaults.standard.set(studyUserId, forKey: "peerSubjectID")
             }
+            //Used if the dynamic link has been created by an Android
             else if item.name == "link" {                
                 let newURL = URL(string: item.value!)
                 guard let components = URLComponents(url: newURL!, resolvingAgainstBaseURL: false),
@@ -151,6 +161,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    //Is called if push notification is recieved when the app is running
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        if let survey = userInfo["argument"] as? String {
+            //Store the information in the local cache
+            UserDefaults.standard.set(true, forKey: "fireNotificationSurvey")
+            UserDefaults.standard.set(survey, forKey: "surveyToFire")
+            completionHandler(UIBackgroundFetchResult.newData)
+        }
+        completionHandler(UIBackgroundFetchResult.noData)
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -175,6 +196,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+
+// MARK:- Local notification extensions
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
     
